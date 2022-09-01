@@ -102,4 +102,7 @@ Route::middleware('auth')->group(function() {
         Route::get('slider-page', 'slider')->name('slider');
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
+    Route::get('quotation', function(){
+        return view('quotation.index');
+    })->name('quotation-index');
 });
