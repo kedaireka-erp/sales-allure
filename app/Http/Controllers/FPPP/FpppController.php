@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class FpppController extends Controller
 {
     public function index(){
-        $fppps = Fppp::paginate(20);
+        $fppps = Fppp::orderBy('production_phase', 'desc')->paginate(20);
         return view("fppps.index", compact("fppps"));
     }
 

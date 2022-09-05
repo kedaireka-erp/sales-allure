@@ -105,19 +105,15 @@ Route::middleware('auth')->group(function () {
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
     
-    Route::resource('status', StatusController::class);
-
     Route::get('quotation', function () {
         return view('quotation.index');
     })->name('quotation-index');
 
+    //route status
+    Route::resource('status', StatusController::class);
+
     //route FPPP
     Route::resource('fppps', FpppController::class);
-    // Route::get("/fppps", [FpppController::class, "index"])->name("fppps.index");
-    // Route::get("/fppps/create", [FpppController::class, "create"])->name("fppps.create");
-    // Route::post("/fppps/store", [FpppController::class, "store"])->name("fppps.store");
-    // Route::get("/fppps/edit/{id}", [FpppController::class, "edit"])->name("fppps.edit");
-    // Route::post("/fppps/update/{id}", [FpppController::class, "update"])->name("fppps.update");
-    // Route::delete("/fppps/destroy/{id}", [FpppController::class, "destroy"])->name("fppps.destroy");
+
     
 });
