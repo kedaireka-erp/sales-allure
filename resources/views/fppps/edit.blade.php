@@ -24,10 +24,8 @@
                         <label for="fppp_type" class="form-label">Tipe FPPP</label>
                         <select data-placeholder="Pilih Tipe FPPP" class="tom-select w-full" id="fppp_type" name="fppp_type"
                             single>
-                            @foreach ($fppps as $fppp)
-                                <option value="{{ $fppp->fppp_type }}">{{ $fppp->fppp_type }}</option>
-                            @endforeach
-                            <option value="{{ $fppp->fppp_type }}">{{ $fppp->fppp_type }}</option>
+                            <option {{$fppp->fppp_type == 'produksi' ? 'selected' : ''}} value="produksi">Produksi</option>
+                            <option {{$fppp->fppp_type == 'memo' ? 'selected' : ''}} value="memo">Memo</option>
                         </select>
                     </div>
                     <div class="mt-5">
@@ -40,15 +38,17 @@
                         <label for="order_status" class="form-label">Status Order</label>
                         <select data-placeholder="Pilih Status Order" class="tom-select w-full" id="order_status"
                             name="order_status" single>
-                            @foreach ($fppps as $fppp)
-                                <option value="{{ $fppp->order_status }}">{{ $fppp->order_status }}</option>
-                            @endforeach
+                            <option {{$fppp->order_status == 'baru' ? 'selected' : ''}} value="baru">Baru</option>
+                            <option {{$fppp->order_status == 'tambahan' ? 'selected' : ''}} value="tambahan">Tambahan</option>
+                            <option {{$fppp->order_status == 'revisino' ? 'selected' : ''}} value="revisino">Revisi</option>
+                            <option {{$fppp->order_status == 'lainlain' ? 'selected' : ''}} value="lainlain">Lain-Lain</option>
+
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
                         <input id="production_time" type="number" class="form-control w-full"
-                            placeholder="Input Waktu Produksi" name="production_time" value="{{ $fppp->production_time}}">
+                            placeholder="Input Waktu Produksi" name="production_time" value="{{ $fppp->production_time }}">
                     </div>
                     <div class="mt-5">
                         <label for="color" class="form-label">Warna </label>
@@ -59,52 +59,49 @@
                         <label for="glass" class="form-label">Kaca</label>
                         <select data-placeholder="Pilih Kaca" class="tom-select w-full" id="glass" name="glass"
                             single>
-                            @foreach ($fppps as $fppp)
-                                <option value="{{$fppp->glass}}">{{$fppp->glass}}</option>
-                            @endforeach
+                            <option {{$fppp->glass == 'included' ? 'selected' : ''}} value="included">Included</option>
+                            <option {{$fppp->glass == 'excluded' ? 'selected' : ''}} value="excluded">Excluded</option>
+                            <option {{$fppp->glass == 'included_excluded' ? 'selected' : ''}} value="included_excluded">Included & Excluded</option>
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="glass_type" class="form-label">Jenis Kaca </label>
                         <input id="glass_type" type="text" class="form-control w-full" placeholder="Input Kaca"
-                            name="glass_type" value="{{$fppp->glass_type}}">
+                            name="glass_type" value="{{ $fppp->glass_type }}">
                     </div>
                     <div class="mt-5">
                         <label for="retrieval_deadline" class="form-label">Deadline Pengambilan </label>
                         <input id="retrieval_deadline" type="date" class="form-control w-full"
-                            placeholder="Input Tanggal " name="retrieval_deadline" value="{{$fppp->retrieval_deadline}}">
+                            placeholder="Input Tanggal " name="retrieval_deadline" value="{{ $fppp->retrieval_deadline }}">
                     </div>
                     <div class="mt-5">
                         <label for="box_usage" class="form-label">Penggunaan Peti</label>
                         <select data-placeholder="Pilih Penggunaan Peti" class="tom-select w-full" id="box_usage"
                             name="box_usage" single>
-                            @foreach ($fppps as $fppp)
-                                <option value="{{$fppp->box_usage}}">{{$fppp->box_usage}}</option>
-                            @endforeach
+                            <option {{$fppp->box_usage == 'tidak' ? 'selected' : ''}} value="tidak">Tidak</option>
+                            <option {{$fppp->box_usage == 'ya' ? 'selected' : ''}} value="ya">Ya</option>
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="sealant_usage" class="form-label">Penggunaan Sealant</label>
                         <select data-placeholder="Pilih Penggunaan Sealant" class="tom-select w-full" id="sealant_usage"
                             name="sealant_usage" single>
-                            @foreach ($fppps as $fppp)
-                                <option value="{{$fppp->sealant_usage}}">{{$fppp->sealant_usage}}</option>
-                            @endforeach
+                            <option {{$fppp->sealant_usage == 'tidak' ? 'selected' : ''}} value="tidak">Tidak</option>
+                            <option {{$fppp->sealant_usage == 'ya' ? 'selected' : ''}} value="ya">Ya</option>
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="delivery_to_expedition" class="form-label">Pengiriman ke Ekspedisi</label>
                         <select data-placeholder="Pilih Pengiriman ke Ekspedisi" class="tom-select w-full"
                             id="delivery_to_expedition" name="delivery_to_expedition" single>
-                            @foreach ($fppps as $fppp)
-                                <option value="{{$fppp->delivery_to_expedition}}">{{$fppp->delivery_to_expedition}}</option>
-                            @endforeach
+                            <option {{$fppp->delivery_to_expedition == 'tidak' ? 'selected' : ''}} value="tidak">Tidak</option>
+                            <option {{$fppp->delivery_to_expedition == 'ya' ? 'selected' : ''}} value="ya">Ya</option>
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="note" class="form-label">Catatan </label>
                         <input id="note" type="text" class="form-control w-full"
-                            placeholder="Catatan (Opsional)" name="note" value="{{$fppp->note}}">
+                            placeholder="Catatan (Opsional)" name="note" value="{{ $fppp->note }}">
                     </div>
 
 

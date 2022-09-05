@@ -48,10 +48,10 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="whitespace-nowrap">NO. FPPP</th>
-                    <th class="whitespace-nowrap">TIPE FPPP</th>
-                    <th class="whitespace-nowrap">TAHAP PRODUKSI</th>
-                    <th class="whitespace-nowrap">NO. QUOTATION</th>
+                    <th class="text-center whitespace-nowrap">NO. FPPP</th>
+                    <th class="text-center whitespace-nowrap">TIPE FPPP</th>
+                    <th class="text-center whitespace-nowrap">TAHAP PRODUKSI</th>
+                    <th class="text-center whitespace-nowrap">NO. QUOTATION</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
