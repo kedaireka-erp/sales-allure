@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\ColorSchemeController;
@@ -103,6 +104,9 @@ Route::middleware('auth')->group(function () {
         Route::get('slider-page', 'slider')->name('slider');
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
+    
+    Route::resource('status', StatusController::class);
+
     Route::get('quotation', function () {
         return view('quotation.index');
     })->name('quotation-index');
