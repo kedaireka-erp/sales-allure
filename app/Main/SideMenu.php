@@ -43,9 +43,9 @@ class SideMenu
                     ],
                     'status' => [
                         'icon' => '',
-                        'route_name' => 'dashboard-overview-2',
+                        'route_name' => 'status.index',
                         'params' => [
-                            'layout' => 'simple-menu'
+                            'layout' => 'side-menu'
                         ],
                         'title' => 'Status'
                     ]
