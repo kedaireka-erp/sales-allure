@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyType;
+use Faker\Provider\ar_EG\Company;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
 
         \App\Models\Fppp::factory(100)->create();
+
+        CompanyType::factory(20)->create();
 
     }
 }

@@ -51,6 +51,29 @@ class SideMenu
                     ]
                 ]
             ],
+            'company' => [
+                'icon' => 'box',
+                'title' => 'Company',
+                'sub_menu' => [
+                    'company' => [
+                        'icon' => '',
+                        'route_name' => 'dashboard-overview-2',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Company'
+                    ],
+                    'company_type' => [
+                        'icon' => '',
+                        'route_name' => 'company_types.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Company Types'
+                    ],
+                    
+                ]
+            ],
             'contact' => [
                 // 'icon' => 'inbox',
                 'icon' => 'users',

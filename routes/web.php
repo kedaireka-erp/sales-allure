@@ -7,6 +7,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\ColorSchemeController;
+use App\Http\Controllers\CompanyTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,5 +116,6 @@ Route::middleware('auth')->group(function () {
     //route FPPP
     Route::resource('fppps', FpppController::class);
 
-    
+    //route company_types
+    Route::resource('company_types', CompanyTypeController::class);
 });
