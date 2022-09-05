@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DarkModeController;
+use App\Http\Controllers\DealSourceController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyTypeController;
@@ -105,7 +106,7 @@ Route::middleware('auth')->group(function () {
         Route::get('slider-page', 'slider')->name('slider');
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
-    
+
     Route::get('quotation', function () {
         return view('quotation.index');
     })->name('quotation-index');
@@ -118,4 +119,7 @@ Route::middleware('auth')->group(function () {
 
     //route company_types
     Route::resource('company_types', CompanyTypeController::class);
+    
+    //route deal source
+    Route::resource('deal_sources', DealSourceController::class);
 });

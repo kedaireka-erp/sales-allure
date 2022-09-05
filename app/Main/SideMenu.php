@@ -146,7 +146,7 @@ class SideMenu
                     ],
                     'deal-source' => [
                         'icon' => '',
-                        'route_name' => 'file-manager',
+                        'route_name' => 'deal_sources.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
