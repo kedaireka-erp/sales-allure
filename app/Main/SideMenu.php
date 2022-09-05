@@ -133,7 +133,7 @@ class SideMenu
             ],
             'fppp' => [
                 'icon' => 'credit-card',
-                'route_name' => 'point-of-sale',
+                'route_name' => 'fppps.index',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
