@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Status;
+use App\Models\DealSource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class StatusController extends Controller
+class DealSourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class StatusController extends Controller
      */
     public function index()
     {
-        $statuses = Status::all();
+        $dealSources = DealSource::all();
 
-        return view('status.index', compact('statuses'));
+        return view('deal_sources.index', compact('dealSources'));
     }
 
     /**
@@ -27,7 +27,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        return view('status.create');
+        return view('deal_sources.create');
     }
 
     /**
@@ -38,21 +38,21 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        $statuses = Status::create([
+        $dealSources = DealSource::create([
             'name' => $request->name,
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('status.index');
+        return redirect()->route('deal_sources.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Status  $status
+     * @param  \App\Models\DealSource  $dealSource
      * @return \Illuminate\Http\Response
      */
-    public function show(Status $status)
+    public function show(DealSource $dealSource)
     {
         //
     }
@@ -60,44 +60,42 @@ class StatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Status  $status
+     * @param  \App\Models\DealSource  $dealSource
      * @return \Illuminate\Http\Response
      */
-    public function edit(Status $status)
+    public function edit(DealSource $dealSource)
     {
-
-        return view('status.edit', compact('status'));
+        return view('deal_sources.edit', compact('dealSource'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Status  $status
+     * @param  \App\Models\DealSource  $dealSource
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Status $status)
+    public function update(Request $request, DealSource $dealSource)
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required',
         'deskripsi' => 'nullable|max:300'
     ]);
-    $status->update($validator->validate());
+    $dealSource->update($validator->validate());
 
-        return to_route('status.index');
+        return to_route('deal_sources.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Status  $status
+     * @param  \App\Models\DealSource  $dealSource
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Status $status)
+    public function destroy(DealSource $dealSource)
     {
-        $status->delete();
+        $dealSource->delete();
 
-        return redirect()->route('status.index');
-
+        return redirect()->route('deal_sources.index');
     }
 }
