@@ -34,6 +34,7 @@ import "./validation";
 import "./zoom";
 import "./notification";
 import "./tabulator";
+import "./tabulator-fppp";
 import "./calendar";
 
 /*
