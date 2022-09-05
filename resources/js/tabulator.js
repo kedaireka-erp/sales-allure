@@ -128,14 +128,16 @@ import Tabulator from "tabulator-tables";
                         </div>`);
                         $(a)
                             .find(".edit")
-                            .on("click", function () {
-                                alert("EDIT");
+                            .on("click", function (event) {
+                                // alert("EDIT");
+
+
                             });
 
                         $(a)
                             .find(".delete")
-                            .on("click", function () {
-                                alert("DELETE");
+                            .on("click", function (event) {
+                                // alert("DELETE");
                             });
 
                         return a[0];
