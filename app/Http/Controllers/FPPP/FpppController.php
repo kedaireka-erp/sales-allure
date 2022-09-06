@@ -46,7 +46,7 @@ class FpppController extends Controller
             "note"=>$request->note,
         ]);
 
-        return to_route("fppps.index");
+        return to_route("fppps.index")->with('success', 'FPPP berhasil dibuat!');
     }
 
 
@@ -76,7 +76,7 @@ class FpppController extends Controller
             "note"=>$request->note?? $fppp->note,
         ]);
 
-        return to_route("fppps.index");
+        return to_route("fppps.index")->with('success', 'FPPP berhasil diubah!');
     }
 
 
@@ -84,7 +84,7 @@ class FpppController extends Controller
         $fppp = Fppp::findOrFail($id);
         $fppp->delete();
         
-        return to_route("fppps.index");
+        return to_route("fppps.index")->with('success', 'FPPP berhasil dihapus!');
     }
 
 
