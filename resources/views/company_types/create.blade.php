@@ -20,7 +20,7 @@
                     </div>
                     <div class="text-left mt-5">
                         <label for="description" class="form-label">Company Type Description</label>
-                        <textarea name="description" id="description"class="form-control w-full" placeholder="Input Nama Company Type" rows="10"></textarea>
+                        <textarea name="description" id="description"class="form-control w-full" placeholder="Input Deskripsi Company Type" rows="10"></textarea>
                     </div>
                     <div class="text-right mt-5">
                         <button type="submit" class="btn btn-primary w-24">Save</button>
