@@ -13,6 +13,12 @@ class FpppController extends Controller
         return view("fppps.index", compact("fppps"));
     }
 
+    public function show(){
+        $fppps = Fppp::all();
+
+        return view("fppps.detail", compact("fppps"));
+    }
+
     public function getData(){
         $fppps = Fppp::all();
         
