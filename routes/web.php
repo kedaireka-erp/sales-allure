@@ -9,10 +9,8 @@ use App\Http\Controllers\DealSourceController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyTypeController;
-<<<<<<< HEAD
 use App\Http\Controllers\LeadSourceController;
-=======
->>>>>>> dev
+
 
 /*
 |--------------------------------------------------------------------------
@@ -112,9 +110,6 @@ Route::middleware('auth')->group(function () {
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
 
-<<<<<<< HEAD
-    Route::resource('leadsources', LeadSourceController::class);
-=======
     Route::get('quotation', function () {
         return view('quotation.index');
     })->name('quotation-index');
@@ -130,5 +125,7 @@ Route::middleware('auth')->group(function () {
     
     //route deal source
     Route::resource('deal_sources', DealSourceController::class);
->>>>>>> dev
+
+    //lead source
+    Route::resource('leadsources', LeadSourceController::class);
 });

@@ -16,18 +16,6 @@ class SideMenu
             'dashboard' => [
                 'icon' => 'home',
                 'title' => 'Dashboard',
-<<<<<<< HEAD
-                'sub_menu' => [
-                    'dashboard-overview-1' => [
-                        'icon' => '',
-                        'route_name' => 'dashboard-overview-1',
-                        'params' => [
-                            'layout' => 'side-menu',
-                        ],
-                        'title' => 'Overview 1'
-                    ],
-                    'dashboard-overview-2' => [
-=======
                 'route_name' => 'dashboard-overview-1',
                 'params' => [
                     'layout' => 'side-menu',
@@ -38,7 +26,6 @@ class SideMenu
                 'title' => 'Approachment',
                 'sub_menu' => [
                     'side-menu' => [
->>>>>>> dev
                         'icon' => '',
                         'route_name' => 'dashboard-overview-2',
                         'params' => [
@@ -113,11 +100,7 @@ class SideMenu
                     ],
                     'lead-source' => [
                         'icon' => '',
-<<<<<<< HEAD
                         'route_name' => 'leadsources.index',
-=======
-                        'route_name' => 'categories',
->>>>>>> dev
                         'params' => [
                             'layout' => 'side-menu'
                         ],
