@@ -92,7 +92,7 @@ class SideMenu
                     ],
                     'contact-type' => [
                         'icon' => '',
-                        'route_name' => 'categories',
+                        'route_name' => 'contact_types.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
