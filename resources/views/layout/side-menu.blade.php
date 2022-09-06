@@ -79,6 +79,7 @@
         <!-- BEGIN: Content -->
         <div class="content">
             @include('../layout/components/top-bar')
+            <x-session-alert/>
             @yield('subcontent')
         </div>
         <!-- END: Content -->

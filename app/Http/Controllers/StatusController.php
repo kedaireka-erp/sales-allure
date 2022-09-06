@@ -43,7 +43,7 @@ class StatusController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('status.index');
+        return redirect()->route('status.index')->with('success', 'Status berhasil dibuat!');
     }
 
     /**
