@@ -7,51 +7,15 @@
 @section('subcontent')
 <h1 class="intro-y text-xl font-md mt-10 ">FPPP</h1>
 <div class="grid grid-cols-12 gap-6 mt-5">
-    <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-        <a href="{{ route('fppps.create') }}" class="btn btn-primary shadow-md mr-2">Tambah FPPP</a>
-        <div class="dropdown">
-            <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                <span class="w-5 h-5 flex items-center justify-center">
-                    <i class="w-4 h-4" data-lucide="plus"></i>
-                </span>
-            </button>
-            <div class="dropdown-menu w-40">
-                <ul class="dropdown-content">
-                    <li>
-                        <a href="" class="dropdown-item">
-                            <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="dropdown-item">
-                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="dropdown-item">
-                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="hidden md:block mx-auto text-slate-500"></div>
-        <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-            <div class="w-56 relative text-slate-500">
-                <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
-            </div>
-        </div>
-    </div>
     <!-- BEGIN: Data List -->
     <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="text-center whitespace-nowrap">NO. FPPP</th>
-                    <th class="text-center whitespace-nowrap">TIPE FPPP</th>
-                    <th class="text-center whitespace-nowrap">TAHAP PRODUKSI</th>
-                    <th class="text-center whitespace-nowrap">NO. QUOTATION</th>
+                    <th class="whitespace-nowrap">NO. FPPP</th>
+                    <th class="whitespace-nowrap">TIPE FPPP</th>
+                    <th class="whitespace-nowrap">TAHAP PRODUKSI</th>
+                    <th class="whitespace-nowrap">NO. QUOTATION</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
@@ -64,22 +28,8 @@
                     <td>259/ASTRAL/AP084/08/2022/R4</td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center text-primary mr-3" href="javascript:;">
+                            <a class="flex items-center text-primary mr-3" href="{{ route('fppps.show', $fppp->id) }}">
                                 <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
-                            </a>
-                            <a class="flex items-center text-success mr-3" href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" icon-name="file-text" data-lucide="file-text"
-                                    class="lucide lucide-file-text block mx-auto">
-                                    <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z">
-                                    </path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                                    <line x1="10" y1="9" x2="8" y2="9"></line>
-                                </svg>
-                                PDF
                             </a>
                             <a class="flex items-center mr-3" href="{{ route('fppps.edit', $fppp->id) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit

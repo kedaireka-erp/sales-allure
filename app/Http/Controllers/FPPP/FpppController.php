@@ -13,6 +13,12 @@ class FpppController extends Controller
         return view("fppps.index", compact("fppps"));
     }
 
+    public function show(){
+        $fppps = Fppp::all();
+
+        return view("fppps.detail", compact("fppps"));
+    }
+
     public function getData(){
         $fppps = Fppp::all();
         
@@ -40,7 +46,7 @@ class FpppController extends Controller
             "note"=>$request->note,
         ]);
 
-        return to_route("fppps.index");
+        return to_route("fppps.index")->with('success', 'FPPP berhasil dibuat!');
     }
 
 
@@ -63,14 +69,14 @@ class FpppController extends Controller
             "color"=>$request->fppp_no?? $fppp->color,
             "glass"=>$request->glass?? $fppp->glass,
             "glass_type"=>$request->glass_type?? $fppp->glass_type,
-            "retrieval_deadline"=>$request->retrieval_deadline?? $fppp->retrieval_deadline,
+            "retrieval_deadline"=>$request->fppp_no?? $fppp->retrieval_deadline,
             "box_usage"=>$request->box_usage?? $fppp->box_usage,
             "sealant_usage"=>$request->sealant_usage?? $fppp->sealant_usage,
             "delivery_to_expedition"=>$request->delivery_to_expedition?? $fppp->delivery_to_expedition,
             "note"=>$request->note?? $fppp->note,
         ]);
 
-        return to_route("fppps.index");
+        return to_route("fppps.index")->with('success', 'FPPP berhasil diubah!');
     }
 
 
@@ -78,7 +84,7 @@ class FpppController extends Controller
         $fppp = Fppp::findOrFail($id);
         $fppp->delete();
         
-        return to_route("fppps.index");
+        return to_route("fppps.index")->with('success', 'FPPP berhasil dihapus!');
     }
 
 

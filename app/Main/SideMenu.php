@@ -100,7 +100,7 @@ class SideMenu
                     ],
                     'lead-source' => [
                         'icon' => '',
-                        'route_name' => 'categories',
+                        'route_name' => 'leadsources.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],

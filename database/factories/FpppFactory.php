@@ -26,12 +26,10 @@ class FpppFactory extends Factory
             "glass"=>$this->faker->randomElement(["included", "excluded", "included_excluded"]),
             "glass_type"=>$this->faker->word(),
             "retrieval_deadline"=>$this->faker->date(),
-            "box_usage"=>$this->faker->numberBetween(0,1),
-            "sealant_usage"=>$this->faker->numberBetween(0,1),
-            "delivery_to_expedition"=>$this->faker->numberBetween(0,1),
+            "box_usage"=>$this->faker->randomElement(["tidak", "ya"]),
+            "sealant_usage"=>$this->faker->randomElement(["tidak", "ya"]),
+            "delivery_to_expedition"=>$this->faker->randomElement(["tidak", "ya"]),
             "note"=>$this->faker->word(),
-
-          
 
         ];
     }

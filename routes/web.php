@@ -10,6 +10,8 @@ use App\Http\Controllers\DealSourceController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
+use App\Http\Controllers\LeadSourceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +108,7 @@ Route::middleware('auth')->group(function () {
         Route::get('chart-page', 'chart')->name('chart');
         Route::get('slider-page', 'slider')->name('slider');
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
+        Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
 
     Route::get('quotation', function () {
@@ -126,4 +129,8 @@ Route::middleware('auth')->group(function () {
 
     // route contact_type
     Route::resource('contact_types', ContactTypeController::class);
+    
+    //lead source
+    Route::resource('leadsources', LeadSourceController::class);
+
 });
