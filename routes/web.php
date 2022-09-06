@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
+use App\Http\Controllers\CompanyTypeController;
+use App\Http\Controllers\LeadSourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,5 +103,8 @@ Route::middleware('auth')->group(function() {
         Route::get('chart-page', 'chart')->name('chart');
         Route::get('slider-page', 'slider')->name('slider');
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
+        Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
+
+    Route::resource('leadsources', LeadSourceController::class);
 });

@@ -29,59 +29,180 @@ class SideMenu
                         'icon' => '',
                         'route_name' => 'dashboard-overview-2',
                         'params' => [
-                            'layout' => 'side-menu',
-                        ],
-                        'title' => 'Overview 2'
-                    ],
-                    'dashboard-overview-3' => [
-                        'icon' => '',
-                        'route_name' => 'dashboard-overview-3',
-                        'params' => [
-                            'layout' => 'side-menu',
-                        ],
-                        'title' => 'Overview 3'
-                    ],
-                    'dashboard-overview-4' => [
-                        'icon' => '',
-                        'route_name' => 'dashboard-overview-4',
-                        'params' => [
-                            'layout' => 'side-menu',
-                        ],
-                        'title' => 'Overview 4'
-                    ]
-                ]
-            ],
-            'menu-layout' => [
-                'icon' => 'box',
-                'title' => 'Menu Layout',
-                'sub_menu' => [
-                    'side-menu' => [
-                        'icon' => '',
-                        'route_name' => 'dashboard-overview-1',
-                        'params' => [
                             'layout' => 'side-menu'
                         ],
-                        'title' => 'Side Menu'
+                        'title' => 'Pendekatan'
                     ],
-                    'simple-menu' => [
+                    'activity' => [
                         'icon' => '',
-                        'route_name' => 'dashboard-overview-1',
+                        'route_name' => 'dashboard-overview-2',
                         'params' => [
                             'layout' => 'simple-menu'
                         ],
-                        'title' => 'Simple Menu'
+                        'title' => 'Activity'
                     ],
-                    'top-menu' => [
+                    'status' => [
                         'icon' => '',
-                        'route_name' => 'dashboard-overview-1',
+                        'route_name' => 'status.index',
                         'params' => [
-                            'layout' => 'top-menu'
+                            'layout' => 'side-menu'
                         ],
-                        'title' => 'Top Menu'
+                        'title' => 'Status'
                     ]
                 ]
             ],
-            'e-commerce' => [
+            'company' => [
+                'icon' => 'box',
+                'title' => 'Company',
+                'sub_menu' => [
+                    'company' => [
+                        'icon' => '',
+                        'route_name' => 'dashboard-overview-2',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Company'
+                    ],
+                    'company_type' => [
+                        'icon' => '',
+                        'route_name' => 'company_types.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Company Types'
+                    ],
+                    
+                ]
+            ],
+            'contact' => [
+                // 'icon' => 'inbox',
+                'icon' => 'users',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Contact',
+                'sub_menu' => [
+                    'contact' => [
+                        'icon' => '',
+                        'route_name' => 'categories',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Contact'
+                    ],
+                    'contact-type' => [
+                        'icon' => '',
+                        'route_name' => 'categories',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Contact Type'
+                    ],
+                    'lead-source' => [
+                        'icon' => '',
+                        'route_name' => 'leadsources.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Lead Source'
+                    ],
+                    'lead-status' => [
+                        'icon' => '',
+                        'route_name' => 'categories',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Lead Status'
+                    ],
+                    'lead-priority' => [
+                        'icon' => '',
+                        'route_name' => 'categories',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Lead Priority'
+                    ],
+                    'lead-interest' => [
+                        'icon' => '',
+                        'route_name' => 'categories',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Lead Interest'
+                    ]
+                ],
+            ],
+            'quotation' => [
+                'icon' => 'hard-drive',
+                'title' => 'Quotation',
+                'sub_menu' => [
+                    'quotation' => [
+                        'icon' => '',
+                        'route_name' => 'quotation-index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Quotation'
+                    ],
+                    'deal-source' => [
+                        'icon' => '',
+                        'route_name' => 'deal_sources.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Deal Source'
+                    ]
+                ]
+            ],
+            'fppp' => [
+                'icon' => 'credit-card',
+                'route_name' => 'fppps.index',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'FPPP'
+            ],
+            'devider',
+            'role-permission' => [
+                'icon' => 'message-square',
+                'route_name' => 'chat',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'User Role'
+            ],
+            'profile' => [
+                'icon' => 'trello',
+                'title' => 'Profile',
+                'sub_menu' => [
+                    'profile-overview-1' => [
+                        'icon' => '',
+                        'route_name' => 'profile-overview-1',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Overview 1'
+                    ],
+                    'profile-overview-2' => [
+                        'icon' => '',
+                        'route_name' => 'profile-overview-2',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Overview 2'
+                    ],
+                    'profile-overview-3' => [
+                        'icon' => '',
+                        'route_name' => 'profile-overview-3',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Overview 3'
+                    ]
+                ]
+            ],
+            'devider',
+            'product' => [
                 'icon' => 'shopping-bag',
                 'title' => 'E-Commerce',
                 'sub_menu' => [
