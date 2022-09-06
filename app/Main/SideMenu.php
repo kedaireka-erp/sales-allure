@@ -16,6 +16,7 @@ class SideMenu
             'dashboard' => [
                 'icon' => 'home',
                 'title' => 'Dashboard',
+<<<<<<< HEAD
                 'sub_menu' => [
                     'dashboard-overview-1' => [
                         'icon' => '',
@@ -26,6 +27,18 @@ class SideMenu
                         'title' => 'Overview 1'
                     ],
                     'dashboard-overview-2' => [
+=======
+                'route_name' => 'dashboard-overview-1',
+                'params' => [
+                    'layout' => 'side-menu',
+                ],
+            ],
+            'approachment' => [
+                'icon' => 'box',
+                'title' => 'Approachment',
+                'sub_menu' => [
+                    'side-menu' => [
+>>>>>>> dev
                         'icon' => '',
                         'route_name' => 'dashboard-overview-2',
                         'params' => [
@@ -100,7 +113,11 @@ class SideMenu
                     ],
                     'lead-source' => [
                         'icon' => '',
+<<<<<<< HEAD
                         'route_name' => 'leadsources.index',
+=======
+                        'route_name' => 'categories',
+>>>>>>> dev
                         'params' => [
                             'layout' => 'side-menu'
                         ],
@@ -204,7 +221,7 @@ class SideMenu
             'devider',
             'product' => [
                 'icon' => 'shopping-bag',
-                'title' => 'E-Commerce',
+                'title' => 'Product',
                 'sub_menu' => [
                     'categories' => [
                         'icon' => '',
@@ -298,30 +315,6 @@ class SideMenu
                     ],
                 ]
             ],
-            'inbox' => [
-                'icon' => 'inbox',
-                'route_name' => 'inbox',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Inbox'
-            ],
-            'file-manager' => [
-                'icon' => 'hard-drive',
-                'route_name' => 'file-manager',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'File Manager'
-            ],
-            'point-of-sale' => [
-                'icon' => 'credit-card',
-                'route_name' => 'point-of-sale',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Point of Sale'
-            ],
             'chat' => [
                 'icon' => 'message-square',
                 'route_name' => 'chat',
@@ -396,36 +389,6 @@ class SideMenu
                             'layout' => 'side-menu'
                         ],
                         'title' => 'Layout 3'
-                    ]
-                ]
-            ],
-            'profile' => [
-                'icon' => 'trello',
-                'title' => 'Profile',
-                'sub_menu' => [
-                    'profile-overview-1' => [
-                        'icon' => '',
-                        'route_name' => 'profile-overview-1',
-                        'params' => [
-                            'layout' => 'side-menu'
-                        ],
-                        'title' => 'Overview 1'
-                    ],
-                    'profile-overview-2' => [
-                        'icon' => '',
-                        'route_name' => 'profile-overview-2',
-                        'params' => [
-                            'layout' => 'side-menu'
-                        ],
-                        'title' => 'Overview 2'
-                    ],
-                    'profile-overview-3' => [
-                        'icon' => '',
-                        'route_name' => 'profile-overview-3',
-                        'params' => [
-                            'layout' => 'side-menu'
-                        ],
-                        'title' => 'Overview 3'
                     ]
                 ]
             ],

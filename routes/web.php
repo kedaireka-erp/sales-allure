@@ -3,10 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DarkModeController;
+use App\Http\Controllers\DealSourceController;
+use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyTypeController;
+<<<<<<< HEAD
 use App\Http\Controllers\LeadSourceController;
+=======
+>>>>>>> dev
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +28,14 @@ use App\Http\Controllers\LeadSourceController;
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
 Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
 
-Route::controller(AuthController::class)->middleware('loggedin')->group(function() {
+Route::controller(AuthController::class)->middleware('loggedin')->group(function () {
     Route::get('login', 'loginView')->name('login.index');
     Route::post('login', 'login')->name('login.check');
 });
 
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::controller(PageController::class)->group(function() {
+    Route::controller(PageController::class)->group(function () {
         Route::get('/', 'dashboardOverview1')->name('dashboard-overview-1');
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
         Route::get('dashboard-overview-3-page', 'dashboardOverview3')->name('dashboard-overview-3');
@@ -106,5 +112,23 @@ Route::middleware('auth')->group(function() {
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
 
+<<<<<<< HEAD
     Route::resource('leadsources', LeadSourceController::class);
+=======
+    Route::get('quotation', function () {
+        return view('quotation.index');
+    })->name('quotation-index');
+
+    //route status
+    Route::resource('status', StatusController::class);
+
+    //route FPPP
+    Route::resource('fppps', FpppController::class);
+
+    //route company_types
+    Route::resource('company_types', CompanyTypeController::class);
+    
+    //route deal source
+    Route::resource('deal_sources', DealSourceController::class);
+>>>>>>> dev
 });
