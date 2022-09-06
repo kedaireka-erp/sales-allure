@@ -5,10 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DarkModeController;
-use App\Http\Controllers\DealSourceController;
 use App\Http\Controllers\FPPP\FpppController;
+use App\Http\Controllers\DealSourceController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyTypeController;
+use App\Http\Controllers\ContactTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,4 +123,7 @@ Route::middleware('auth')->group(function () {
     
     //route deal source
     Route::resource('deal_sources', DealSourceController::class);
+
+    // route contact_type
+    Route::resource('contact_types', ContactTypeController::class);
 });
