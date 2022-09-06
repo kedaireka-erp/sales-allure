@@ -28,9 +28,9 @@ return new class extends Migration
             $table->enum("glass", ["included", "excluded", "included_excluded"])->nullable();
             $table->string("glass_type")->nullable();
             $table->date("retrieval_deadline")->nullable();
-            $table->enum("box_usage", ["tidak", "ya"])->nullable();
-            $table->enum("sealant_usage", ["tidak", "ya"])->nullable();
-            $table->enum("delivery_to_expedition", ["tidak", "ya"])->nullable();
+            $table->boolean("box_usage")->nullable();
+            $table->boolean("sealant_usage")->nullable();
+            $table->boolean("delivery_to_expedition")->nullable();
             $table->text("note")->nullable();
             // $table->string("attachment"); //tipe data???
             $table->timestamps();

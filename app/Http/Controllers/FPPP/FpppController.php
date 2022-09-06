@@ -63,7 +63,7 @@ class FpppController extends Controller
             "color"=>$request->fppp_no?? $fppp->color,
             "glass"=>$request->glass?? $fppp->glass,
             "glass_type"=>$request->glass_type?? $fppp->glass_type,
-            "retrieval_deadline"=>$request->retrieval_deadline?? $fppp->retrieval_deadline,
+            "retrieval_deadline"=>$request->fppp_no?? $fppp->retrieval_deadline,
             "box_usage"=>$request->box_usage?? $fppp->box_usage,
             "sealant_usage"=>$request->sealant_usage?? $fppp->sealant_usage,
             "delivery_to_expedition"=>$request->delivery_to_expedition?? $fppp->delivery_to_expedition,
