@@ -60,7 +60,7 @@ class QuotationController extends Controller
      */
     public function show(Quotation $quotation)
     {
-        //
+        return view('quotation.detail', compact('quotation'));
     }
 
     /**
@@ -108,5 +108,11 @@ class QuotationController extends Controller
         $quotation->delete();
 
         return to_route('quotation.index')->with('success', 'Quotation dengan Nomor '.$quotation->no_quotation.'  berhasil dihapus!');;
+    }
+
+    public function quotationToFppp(Quotation $quo){
+        $quotations=Quotation::all();
+        return view('fppps.create', compact('quotations','quo'));
+
     }
 }
