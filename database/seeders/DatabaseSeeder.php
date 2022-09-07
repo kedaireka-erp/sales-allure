@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fppp;
 use App\Models\Status;
 use App\Models\Quotation;
 use App\Models\DealSource;
@@ -22,7 +23,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
 
-        \App\Models\Fppp::factory(100)->create();
 
         CompanyType::factory(20)->create();
 
@@ -35,6 +35,9 @@ class DatabaseSeeder extends Seeder
         Status::factory(10)->create();
         
         Quotation::factory(20)->create();
+
+        Fppp::factory(100)->create();
+
 
     }
 }
