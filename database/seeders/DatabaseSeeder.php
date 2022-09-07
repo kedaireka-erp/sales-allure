@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
 use Faker\Provider\ar_EG\Company;
@@ -23,6 +24,8 @@ class DatabaseSeeder extends Seeder
         CompanyType::factory(20)->create();
 
         ContactType::factory(20)->create();
+
+        CompanyArea::factory(20)->create();
 
     }
 }
