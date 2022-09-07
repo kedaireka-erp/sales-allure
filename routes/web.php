@@ -7,10 +7,11 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\DealSourceController;
+use App\Http\Controllers\LeadSourceController;
 use App\Http\Controllers\ColorSchemeController;
+use App\Http\Controllers\CompanyAreaController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
-use App\Http\Controllers\LeadSourceController;
 
 
 /*
@@ -132,5 +133,8 @@ Route::middleware('auth')->group(function () {
     
     //lead source
     Route::resource('leadsources', LeadSourceController::class);
+
+    //route company_areas
+    Route::resource('company_areas', CompanyAreaController::class);
 
 });
