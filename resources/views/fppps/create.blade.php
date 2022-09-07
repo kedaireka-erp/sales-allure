@@ -14,11 +14,11 @@
             <form action="{{ route('fppps.store') }}" method="post">
                 @csrf
                 <div class="intro-y box p-5">
-                    <div>
+                    {{-- <div>
                         <label for="fppp_no" class="form-label">No. FPPP </label>
                         <input id="fppp_no" type="number" class="form-control w-full" placeholder="Input No FPPP"
                             name="fppp_no">
-                    </div>
+                    </div> --}}
                     <div class="mt-5">
                         <label for="fppp_type" class="form-label">Tipe FPPP</label>
                         <select data-placeholder="Pilih Tipe FPPP" class="tom-select w-full" id="fppp_type" name="fppp_type"
@@ -32,6 +32,24 @@
                         <input id="production_phase" type="number" class="form-control w-full"
                             placeholder="Input Tahap Produksi" name="production_phase">
                     </div>
+                    {{-- <div class="mt-5">
+                        <label for="fppp_type" class="form-label">Tipe FPPP</label>
+                        <select data-placeholder="Pilih Tipe FPPP" class="tom-select w-full" id="fppp_type" name="fppp_type"
+                            single>
+                            <option {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi
+                            </option>
+                            <option {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</option>
+                        </select>
+                    </div> --}}
+                    <div class="mt-5">
+                        <label for="Quotation">No. Quotation</label>
+                        <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
+                            name="quotation_id">
+                            @foreach ($quotations as $quotation)
+                                <option value="{{ $quotation->id }}">{{ $quotation->no_quotation }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="mt-5">
                         <label for="order_status" class="form-label">Status Order</label>
                         <select data-placeholder="Pilih Status Order" class="tom-select w-full" id="order_status"
@@ -44,8 +62,8 @@
                     </div>
                     <div class="mt-5">
                         <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
-                        <input id="production_time" type="number" class="form-control w-full" placeholder="Input Waktu Produksi"
-                            name="production_time">
+                        <input id="production_time" type="number" class="form-control w-full"
+                            placeholder="Input Waktu Produksi" name="production_time">
                     </div>
                     <div class="mt-5">
                         <label for="color" class="form-label">Warna </label>
@@ -96,23 +114,15 @@
                         </select>
                     </div>
                     <div class="mt-5">
-                        <label for="note" class="form-label">Catatan </label>
-                        <input id="note" type="text" class="form-control w-full"
-                            placeholder="Catatan (Opsional)" name="note">
-                    </div>
-
-
-
-                    {{-- <div class="mt-5">
-                        <label for="note">Catatan</label>
+                        <label for="note" class="mb-2">Catatan</label>
                         <div class="mt-2">
-                            <div class="editor">
-                            </div>
+                            <textarea name="note" id="note" cols="30" rows="10" class="editor"></textarea>
                         </div>
-                    </div> --}}
-                    <div class="text-right mt-5">
-                        <button type="submit" class="btn btn-primary w-24">Save</button>
                     </div>
+                </div>
+                <div class="text-right mt-5">
+                    <button type="submit" class="btn btn-primary w-24">Save</button>
+                </div>
             </form>
             <!-- END: Form Layout -->
         </div>

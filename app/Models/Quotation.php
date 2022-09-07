@@ -19,4 +19,8 @@ class Quotation extends Model
     public function Status(){
         return $this->belongsTo(Status::class);
     }
+
+    public function fppp(){
+        return $this->hasMany(Fppp::class);
+    }
 }
