@@ -10,6 +10,7 @@ use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\DealSourceController;
 use App\Http\Controllers\LeadSourceController;
 use App\Http\Controllers\ColorSchemeController;
+use App\Http\Controllers\CompanyAreaController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
 
@@ -134,7 +135,12 @@ Route::middleware('auth')->group(function () {
     //lead source
     Route::resource('leadsources', LeadSourceController::class);
 
+
     // Quotation
     Route::resource('quotation', QuotationController::class);
+    
+    //route company_areas
+    Route::resource('company_areas', CompanyAreaController::class);
+
 
 });

@@ -71,7 +71,14 @@ class SideMenu
                         ],
                         'title' => 'Company Types'
                     ],
-                    
+                    'company_area' => [
+                        'icon' => '',
+                        'route_name' => 'company_areas.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Company Areas'
+                    ],
                 ]
             ],
             'contact' => [
