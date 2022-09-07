@@ -60,19 +60,13 @@
                     <td>{{ $type->status }}</td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center text-primary mr-3" href="javascript:;">
-                                <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
-                            </a>
                             <a class="flex items-center mr-3" href="{{ route('contact_types.edit', $type->id) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>
-                            <button class="flex items-center text-danger" data-tw-toggle="modal"
-                                data-tw-target="#delete-confirmation-modal">
-                                <i data-lucide="trash-2" class="w-4 h-4 mr-1" type="submit"></i> Delete
-                            </button>
-                            <form action="{{ route('contact_types.destroy', $type->id) }}" method="post" id="delete_form_fppp">
+                            <form action="{{ route('contact_types.destroy', $type) }}" method="post">
                                 @csrf
-                                @method('DELETE')
+                                @method('Delete')
+                                <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
                             </form>
                         </div>
                     </td>
@@ -148,7 +142,7 @@
                     <button type="button" data-tw-dismiss="modal"
                         class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
 
-                    <button onclick="event.preventDefault(); document.querySelector('#delete_form_fppp').submit()"
+                    <button onclick="event.preventDefault(); document.querySelector('#delete_form_contact_type').submit()"
                         class="btn btn-outline-danger w-24 mr-1">
                         <i data-lucide="trash-2" class="w-4 h-4 mr-1" type="submit"></i> Delete
                     </button>
