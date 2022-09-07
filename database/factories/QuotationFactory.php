@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Status;
+use App\Models\DealSource;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,10 @@ class QuotationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'no_quotation' => '123/'.$this->faker->numberBetween(100,300).'/'.$this->faker->numberBetween(0,100),
+            'deal_source_id' => DealSource::all()->random()->id,
+            'status_id' => Status::all()->random()->id,
+            'keterangan' => $this->faker->realText($maxNbChars = 200, $indexSize = 2)
         ];
     }
 }
