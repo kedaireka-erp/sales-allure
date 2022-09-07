@@ -100,9 +100,9 @@
                         <tbody>
                             @foreach ($quotations as $quotation)
                                 <tr class="intro-x">
-                                    <td class="w-40">
+                                    <td class="w-10">
                                         <div class="flex">
-                                            <div class="font-medium whitespace-nowrap">{{ $loop->iteration }}</div>
+                                        <div class="font-medium whitespace-nowrap">{{ $loop->iteration }}</div>
                                         </div>
                                     </td>
                                     <td>
@@ -110,7 +110,7 @@
                                     </td>
                                     <td class="text-center">{{ $quotation->dealsource->name }}</td>
                                     <td class="text-center">{{ $quotation->status->name }}</td>
-                                    <td class="text-center">{{ $quotation->keterangan }}</td>
+                                    <td class="text-center">{!! Str::limit($quotation->keterangan, 20) !!}</td>
                                     <td class="table-report__action w-56">
                                         <div class="flex justify-center items-center">
                                             <a href="{{ route('quotation.show', $quotation) }}" class="flex items-center text-primary mr-3">

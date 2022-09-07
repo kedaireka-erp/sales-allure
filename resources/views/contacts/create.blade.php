@@ -14,7 +14,7 @@
             <form action="{{ route('contacts.store') }}" method="post">
                 @csrf
                 <div class="intro-y box p-5">
-                    <div>
+                    <div class="mt-5">
                         <label for="contact_type" class="form-label">Contact Type</label>
                         <select class="custom-select d-block w-full form-control mb-3" id="contact_type"
                                 name="contact_type_id">
@@ -24,17 +24,17 @@
                                 @endforeach
                             </select>
                     </div>
-                    <div>
+                    <div class="mt-5">
                         <label for="name" class="form-label">Contact Name </label>
                         <input id="name" type="text" class="form-control w-full" placeholder="Masukkan Nama Kontak"
                             name="name" required>
                     </div>
-                    <div>
+                    <div class="mt-5">
                         <label for="email" class="form-label">E-mail </label>
                         <input id="email" type="text" class="form-control w-full" placeholder="Masukkan Email"
                             name="email" required>
                     </div>
-                    <div>
+                    <div class="mt-5">
                         <label for="address" class="form-label">Address </label>
                         <input id="address" type="text" class="form-control w-full" placeholder="Masukkan Alamat"
                             name="address" required>

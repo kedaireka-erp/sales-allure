@@ -15,16 +15,20 @@ class FpppController extends Controller
         return view("fppps.index", compact("fppps"));
     }
 
-    public function show()
+    public function show(Fppp $fppp)
     {
-        $fppps = Fppp::with("quotation")->get();
+        return view('fppps.detail', [
+            'fppp' => $fppp,
+            'quotations'=> $fppp->quotations
+        ]);
 
-        return view("fppps.detail", compact("fppps"));
     }
 
     public function create()
     {
-        $quotations=Quotation::get();
+        $quotations=Quotation::whereHas('Status', function($query){
+            return $query->where('name', 'won');
+        })->get();
         return view("fppps.create", compact("quotations"));
     }
 
@@ -89,6 +93,6 @@ class FpppController extends Controller
         $fppp = Fppp::findOrFail($id);
         $fppp->delete();
 
-        return to_route("fppps.index")->with('danger', 'FPPP dengan Nomor '.$fppp->fppp_no.'  berhasil dihapus!');
+        return to_route("fppps.index")->with('success', 'FPPP dengan Nomor '.$fppp->fppp_no.'  berhasil dihapus!');
     }
 }

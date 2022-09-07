@@ -8,7 +8,7 @@
     <h1 class="intro-y text-xl font-md mt-10 ">FPPP</h1>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('fppps.create') }}" class="btn btn-primary shadow-md mr-2">Tambah FPPP</a>
+            <a href="{{ route('fppps.create') }}" class="btn btn-primary shadow-md mr-2 zoom-in transition">Tambah FPPP</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                     @foreach ($fppps as $no => $fppp)
-                        <tr class="intro-x">
+                        <tr class="intro-x zoom-in transition">
                             <td>{{ $fppp->fppp_no }}</td>
                             <td>{{ ucfirst($fppp->fppp_type) }}</td>
                             <td class="text-center">{{ $fppp->production_phase }}</td>
