@@ -8,7 +8,7 @@
 <h1 class="intro-y text-xl font-md mt-10 ">COMPANY</h1>
 <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-        <a href="{{ route('companies.create') }}" class="btn btn-primary shadow-md mr-2">Tambah Company Area</a>
+        <a href="{{ route('companies.create') }}" class="btn btn-primary shadow-md mr-2">Tambah Company</a>
         <div class="dropdown">
             <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                 <span class="w-5 h-5 flex items-center justify-center">
@@ -49,6 +49,8 @@
             <thead>
                 <tr>
                     <th class="whitespace-nowrap">NAME</th>
+                    <th class="whitespace-nowrap">COMPANY TYPE</th>
+                    <th class="whitespace-nowrap">COMPANY AREA</th>
                     <th class="whitespace-nowrap">PHONE NUMBER</th>
                     <th class="whitespace-nowrap">ADDRESS</th>
                     <th class="whitespace-nowrap">DESCRIPTION</th>
@@ -59,6 +61,8 @@
                 @foreach ($companies as $no => $company)
                 <tr class="intro-x">
                     <td>{{ $company->name }}</td>
+                    <td>{{ $company->type }}</td>
+                    <td>{{ $company->area }}</td>
                     <td>{{ $company->phone_number }}</td>
                     <td>{{ $company->address }}</td>
                     <td>{!!$company->description !!}</td>                   
@@ -70,7 +74,7 @@
                             <a class="flex items-center mr-3" href="{{ route('companies.edit', $company->id) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>           
-                            <form action="{{ route('companies.destroy', $company) }}" method="post">
+                            <form action="{{ route('companies.destroy', $company -> id) }}" method="post">
                                 @csrf
                                 @method('Delete')
                                 <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
