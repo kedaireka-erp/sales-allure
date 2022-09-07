@@ -22,7 +22,7 @@
                     </div>
                     <div class="text-left mt-5">
                         <label for="description" class="form-label">Company Area Description</label>
-                        <textarea name="description" id="description" class="form-control w-full" placeholder="Input Deskripsi Company Area" 
+                        <textarea class="editor" name="description" id="description" class="form-control w-full" placeholder="Input Deskripsi Company Area" 
                         rows="10">{{ $company_area->description }}</textarea>
                     </div>
                     <div class="text-right mt-5">

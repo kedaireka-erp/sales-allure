@@ -57,24 +57,19 @@
                 @foreach ($company_areas as $no => $area)
                 <tr class="intro-x">
                     <td>{{ $area->name }}</td>
-                    <td>{{ Str::limit($area->description, 100) }}</td>
-                    
+                    <td>{!!$area->description !!}</td>                   
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
                             <a class="flex items-center text-primary mr-3" href="javascript:;">
                                 <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
-                            </a>
-                            
+                            </a>                          
                             <a class="flex items-center mr-3" href="{{ route('company_areas.edit', $area->id) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
-                            </a>
-                            <button class="flex items-center text-danger" data-tw-toggle="modal"
-                                data-tw-target="#delete-confirmation-modal">
-                                <i data-lucide="trash-2" class="w-4 h-4 mr-1" type="submit"></i> Delete
-                            </button>
-                            <form action="{{ route('company_areas.destroy', $area->id) }}" method="post" id="delete_form_fppp">
+                            </a>           
+                            <form action="{{ route('company_areas.destroy', $area) }}" method="post">
                                 @csrf
-                                @method('DELETE')
+                                @method('Delete')
+                                <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
                             </form>
                         </div>
                     </td>

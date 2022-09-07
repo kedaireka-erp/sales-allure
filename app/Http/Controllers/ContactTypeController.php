@@ -43,9 +43,9 @@ class ContactTypeController extends Controller
     
     public function edit($id)
     {
-        $contactType = ContactType::findOrFile($id);
-        $contactTypes = ContactType::all();
-        return view('contact_types.edit', compact('contact_types'));
+        $contact_type = ContactType::findOrFail($id);
+        $contact_types = ContactType::all();
+        return view('contact_types.edit', compact('contact_type', 'contact_types'));
     }
 
     
@@ -60,6 +60,7 @@ class ContactTypeController extends Controller
     
     public function destroy(ContactType $contactType)
     {
-        //
+        $contactType->delete();
+        return redirect()->route('contact_types.index');
     }
 }

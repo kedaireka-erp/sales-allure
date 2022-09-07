@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\QuotationController;
@@ -135,7 +137,6 @@ Route::middleware('auth')->group(function () {
     //lead source
     Route::resource('leadsources', LeadSourceController::class);
 
-
     // Quotation
     Route::resource('quotation', QuotationController::class);
     
@@ -144,6 +145,12 @@ Route::middleware('auth')->group(function () {
 
     //Route Quotation-to-FPPP
     Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
+
+    //route contact
+    Route::resource('contacts', ContactController::class);
+
+    //route company
+    Route::resource('companies', CompanyController::class);
 
 
 });
