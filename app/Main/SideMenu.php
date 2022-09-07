@@ -145,7 +145,7 @@ class SideMenu
                 'sub_menu' => [
                     'quotation' => [
                         'icon' => '',
-                        'route_name' => 'quotation-index',
+                        'route_name' => 'quotation.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
