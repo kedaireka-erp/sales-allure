@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\CompanyArea;
+use App\Models\CompanyType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,8 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->company,
+            'company_type_id' => CompanyType::all()->random()->id,
+            'company_area_id' => CompanyArea::all()->random()->id,
             'phone_number' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
             'description' => $this->faker->text,
