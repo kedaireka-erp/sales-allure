@@ -4,13 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\Fppp;
 use App\Models\Status;
+use App\Models\Company;
 use App\Models\Quotation;
 use App\Models\DealSource;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
 use Illuminate\Database\Seeder;
-use Faker\Provider\ar_EG\Company;
 
 class DatabaseSeeder extends Seeder
 {
@@ -38,6 +38,6 @@ class DatabaseSeeder extends Seeder
 
         Fppp::factory(100)->create();
 
-
+        Company::factory(20)->create();
     }
 }
