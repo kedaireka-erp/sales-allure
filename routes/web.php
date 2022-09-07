@@ -6,11 +6,12 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
+use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\DealSourceController;
+use App\Http\Controllers\LeadSourceController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
-use App\Http\Controllers\LeadSourceController;
 
 
 /*
@@ -111,9 +112,9 @@ Route::middleware('auth')->group(function () {
         Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
     });
 
-    Route::get('quotation', function () {
-        return view('quotation.index');
-    })->name('quotation-index');
+    // Route::get('quotation', function () {
+    //     return view('quotation.index');
+    // })->name('quotation-index');
 
     //route status
     Route::resource('status', StatusController::class);
@@ -132,5 +133,8 @@ Route::middleware('auth')->group(function () {
     
     //lead source
     Route::resource('leadsources', LeadSourceController::class);
+
+    // Quotation
+    Route::resource('quotation', QuotationController::class);
 
 });
