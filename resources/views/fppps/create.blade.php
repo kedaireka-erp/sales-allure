@@ -46,7 +46,7 @@
                         <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
                             name="quotation_id">
                             @foreach ($quotations as $quotation)
-                                <option value="{{ $quotation->id }}">{{ $quotation->no_quotation }}</option>
+                                <option {{ $quo && $quo->id == $quotation->id ? 'selected' : '' }} value="{{ $quotation->id }}">{{ $quotation->no_quotation }}</option>
                             @endforeach
                         </select>
                     </div>
