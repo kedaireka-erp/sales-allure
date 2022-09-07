@@ -71,7 +71,14 @@ class SideMenu
                         ],
                         'title' => 'Company Types'
                     ],
-                    
+                    'company_area' => [
+                        'icon' => '',
+                        'route_name' => 'company_areas.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Company Areas'
+                    ],
                 ]
             ],
             'contact' => [
@@ -92,7 +99,7 @@ class SideMenu
                     ],
                     'contact-type' => [
                         'icon' => '',
-                        'route_name' => 'categories',
+                        'route_name' => 'contact_types.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
@@ -138,7 +145,7 @@ class SideMenu
                 'sub_menu' => [
                     'quotation' => [
                         'icon' => '',
-                        'route_name' => 'quotation-index',
+                        'route_name' => 'quotation.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
