@@ -15,10 +15,10 @@ class CompanyAreaController extends Controller
     public function index()
     {
         $company_areas = CompanyArea::all();
+        
         return view('company_areas.index', compact('company_areas'));
     }
-
-    
+   
     public function create()
     {
         return view('company_areas.create');
@@ -35,8 +35,7 @@ class CompanyAreaController extends Controller
 
         return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil dibuat!');
     }
-
-    
+ 
     public function show(CompanyArea $companyArea)
     {
         //
