@@ -113,6 +113,9 @@
                                     <td class="text-center">{!! Str::limit($quotation->keterangan, 20) !!}</td>
                                     <td class="table-report__action w-56">
                                         <div class="flex justify-center items-center">
+                                            <a href="{{ route('quotation.show', $quotation) }}" class="flex items-center text-primary mr-3">
+                                                <i data-lucide="eye" class="w-4 h-4 mr-1"></i>Detail
+                                            </a>
                                             <a href="{{ route('quotation.edit', $quotation) }}" class="flex items-center mr-3">
                                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>Edit
                                             </a>
