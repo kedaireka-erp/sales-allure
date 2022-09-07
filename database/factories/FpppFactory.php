@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Quotation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +17,9 @@ class FpppFactory extends Factory
     public function definition()
     {
         return [
-            "fppp_no"=>"",
+            "fppp_no"=>"021/FPPP/AST/09/2022",
             "fppp_type"=>$this->faker->randomElement(["produksi", "memo"]),
             "production_phase"=>$this->faker->numberBetween(1,10),
-            "quotation_id"=> Quotation::all()->random()->id,
             "order_status"=>$this->faker->randomElement(["baru", "tambahan", "revisino", "lainlain"]),
             "production_time"=>$this->faker->numberBetween(1,10),
             "color"=>$this->faker->word(),

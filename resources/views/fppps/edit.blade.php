@@ -11,22 +11,23 @@
     <div class="grid grid-cols-12 gap-10 mt-3">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
-            <form action="{{ route('fppps.update', $fppp->id) }}" method="post" class="dropzone">
+            <form action="{{ route('fppps.update', $fppp->id) }}" method="post">
                 @csrf
                 @method('PATCH')
                 <div class="intro-y box p-5">
-                    {{-- <div>
+                    <div>
                         <label for="fppp_no" class="form-label">No. FPPP </label>
                         <input id="fppp_no" type="number" class="form-control w-full" placeholder="Input No FPPP"
                             name="fppp_no" value="{{ $fppp->fppp_no }}">
-                    </div> --}}
+                    </div>
                     <div class="mt-5">
                         <label for="fppp_type" class="form-label">Tipe FPPP</label>
                         <select data-placeholder="Pilih Tipe FPPP" class="tom-select w-full" id="fppp_type" name="fppp_type"
                             single>
-                            <option {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi
-                            </option>
-                            <option {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</option>
+                            @foreach ($fppps as $fppp)
+                                <option value="{{ $fppp->fppp_type }}">{{ $fppp->fppp_type }}</option>
+                            @endforeach
+                            <option value="{{ $fppp->fppp_type }}">{{ $fppp->fppp_type }}</option>
                         </select>
                     </div>
                     <div class="mt-5">
@@ -36,32 +37,18 @@
                             value="{{ $fppp->production_phase }}">
                     </div>
                     <div class="mt-5">
-                        <label for="quotation">No. Quotation</label>
-                        <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
-                            name="quotation_id">
-                            @foreach ($quotations as $quotation)
-                                <option value="{{ $quotation->id }}"
-                                    {{ $quotation->id == $fppp->quotation_id ? 'selected' : '' }}>{{ $quotation->no_quotation }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mt-5">
                         <label for="order_status" class="form-label">Status Order</label>
                         <select data-placeholder="Pilih Status Order" class="tom-select w-full" id="order_status"
                             name="order_status" single>
-                            <option {{ $fppp->order_status == 'baru' ? 'selected' : '' }} value="baru">Baru</option>
-                            <option {{ $fppp->order_status == 'tambahan' ? 'selected' : '' }} value="tambahan">Tambahan
-                            </option>
-                            <option {{ $fppp->order_status == 'revisino' ? 'selected' : '' }} value="revisino">Revisi
-                            </option>
-                            <option {{ $fppp->order_status == 'lainlain' ? 'selected' : '' }} value="lainlain">Lain-Lain
-                            </option>
+                            @foreach ($fppps as $fppp)
+                                <option value="{{ $fppp->order_status }}">{{ $fppp->order_status }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
                         <input id="production_time" type="number" class="form-control w-full"
-                            placeholder="Input Waktu Produksi" name="production_time" value="{{ $fppp->production_time }}">
+                            placeholder="Input Waktu Produksi" name="production_time" value="{{ $fppp->production_time}}">
                     </div>
                     <div class="mt-5">
                         <label for="color" class="form-label">Warna </label>
@@ -72,69 +59,63 @@
                         <label for="glass" class="form-label">Kaca</label>
                         <select data-placeholder="Pilih Kaca" class="tom-select w-full" id="glass" name="glass"
                             single>
-                            <option {{ $fppp->glass == 'included' ? 'selected' : '' }} value="included">Included</option>
-                            <option {{ $fppp->glass == 'excluded' ? 'selected' : '' }} value="excluded">Excluded</option>
-                            <option {{ $fppp->glass == 'included_excluded' ? 'selected' : '' }} value="included_excluded">
-                                Included & Excluded</option>
+                            @foreach ($fppps as $fppp)
+                                <option value="{{$fppp->glass}}">{{$fppp->glass}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="glass_type" class="form-label">Jenis Kaca </label>
                         <input id="glass_type" type="text" class="form-control w-full" placeholder="Input Kaca"
-                            name="glass_type" value="{{ $fppp->glass_type }}">
+                            name="glass_type" value="{{$fppp->glass_type}}">
                     </div>
                     <div class="mt-5">
                         <label for="retrieval_deadline" class="form-label">Deadline Pengambilan </label>
                         <input id="retrieval_deadline" type="date" class="form-control w-full"
-                            placeholder="Input Tanggal " name="retrieval_deadline" value="{{ $fppp->retrieval_deadline }}">
+                            placeholder="Input Tanggal " name="retrieval_deadline" value="{{$fppp->retrieval_deadline}}">
                     </div>
                     <div class="mt-5">
                         <label for="box_usage" class="form-label">Penggunaan Peti</label>
                         <select data-placeholder="Pilih Penggunaan Peti" class="tom-select w-full" id="box_usage"
                             name="box_usage" single>
-                            <option {{ $fppp->box_usage == 'tidak' ? 'selected' : '' }} value="tidak">Tidak</option>
-                            <option {{ $fppp->box_usage == 'ya' ? 'selected' : '' }} value="ya">Ya</option>
+                            @foreach ($fppps as $fppp)
+                                <option value="{{$fppp->box_usage}}">{{$fppp->box_usage}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="sealant_usage" class="form-label">Penggunaan Sealant</label>
                         <select data-placeholder="Pilih Penggunaan Sealant" class="tom-select w-full" id="sealant_usage"
                             name="sealant_usage" single>
-                            <option {{ $fppp->sealant_usage == 'tidak' ? 'selected' : '' }} value="tidak">Tidak</option>
-                            <option {{ $fppp->sealant_usage == 'ya' ? 'selected' : '' }} value="ya">Ya</option>
+                            @foreach ($fppps as $fppp)
+                                <option value="{{$fppp->sealant_usage}}">{{$fppp->sealant_usage}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="delivery_to_expedition" class="form-label">Pengiriman ke Ekspedisi</label>
                         <select data-placeholder="Pilih Pengiriman ke Ekspedisi" class="tom-select w-full"
                             id="delivery_to_expedition" name="delivery_to_expedition" single>
-                            <option {{ $fppp->delivery_to_expedition == 'tidak' ? 'selected' : '' }} value="tidak">Tidak
-                            </option>
-                            <option {{ $fppp->delivery_to_expedition == 'ya' ? 'selected' : '' }} value="ya">Ya
-                            </option>
+                            @foreach ($fppps as $fppp)
+                                <option value="{{$fppp->delivery_to_expedition}}">{{$fppp->delivery_to_expedition}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5">
+                        <label for="note" class="form-label">Catatan </label>
+                        <input id="note" type="text" class="form-control w-full"
+                            placeholder="Catatan (Opsional)" name="note" value="{{$fppp->note}}">
+                    </div>
+
+
+
+                    {{-- <div class="mt-5">
                         <label for="note">Catatan</label>
                         <div class="mt-2">
-                                <textarea name="note" id="note" cols="30" rows="10" class="editor">{!!old("note", $fppp->note)!!}</textarea>
-                        </div>
-                    </div>
-
-                    <div class="mt-5 mb-5">
-                        <div class="fallback">
-                            <input name="attachment" type="file" multiple />
-                        </div>
-                        <div class="dz-message" data-dz-message>
-                            <div class="text-lg font-medium">Drop files here or click to upload.</div>
-                            <div class="text-slate-500">
-                                This is just a demo dropzone. Selected files are <span class="font-medium">not</span>
-                                actually uploaded.
+                            <div class="editor">
                             </div>
                         </div>
-                    </div>
-
-
+                    </div> --}}
                     <div class="text-right mt-5">
                         <button type="submit" class="btn btn-primary w-24">Save</button>
                     </div>

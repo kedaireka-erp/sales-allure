@@ -2,16 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Fppp;
-use App\Models\Status;
-use App\Models\Quotation;
-use App\Models\DealSource;
-use App\Models\Contact;
-use App\Models\CompanyArea;
 use App\Models\CompanyType;
-use App\Models\ContactType;
-use Illuminate\Database\Seeder;
 use Faker\Provider\ar_EG\Company;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,22 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserSeeder::class);
-        $this->call(StatusSeeder::class);
-        $this->call(DealSourceSeeder::class);
+
+        \App\Models\Fppp::factory(100)->create();
 
         CompanyType::factory(20)->create();
-
-        ContactType::factory(20)->create();
-
-        CompanyArea::factory(20)->create();
-
-        
-        Quotation::factory(20)->create();
-
-        Contact::factory(20)->create();
-
-        Fppp::factory(100)->create();
-
 
     }
 }

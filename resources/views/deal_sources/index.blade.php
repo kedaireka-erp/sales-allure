@@ -33,7 +33,7 @@
                 <tbody>
                     @foreach ($dealSources as $dealSource)
                         <tr class="intro-x">
-                            <td class="w-10">
+                            <td class="w-40">
                                 <div class="flex">
                                     <div class="font-medium whitespace-nowrap">{{ $loop->iteration }}</div>
                                 </div>
@@ -41,7 +41,7 @@
                             <td>
                                 <div class="font-medium whitespace-nowrap">{{ $dealSource->name }}</div>
                             </td>
-                            <td class="text-center">{{ Str::limit($dealSource->deskripsi, 50) }}</td>
+                            <td class="text-center">{{ $dealSource->deskripsi }}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a href="{{ route('deal_sources.edit', $dealSource) }}" class="flex items-center mr-3">

@@ -21,8 +21,8 @@
                     </div>
                     <div class="mt-3">
                         <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <div class="mb-3">
-                                <textarea name="deskripsi" type="text" class="editor" id="deskripsi"></textarea>
+                            <div class="input-group mb-3">
+                                <textarea name="deskripsi" type="text" class="form-control" id="deskripsi"></textarea>
                             </div>
                     </div>
                     <div class="text-right mt-5">
