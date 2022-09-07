@@ -32,6 +32,24 @@
                         <input id="production_phase" type="number" class="form-control w-full"
                             placeholder="Input Tahap Produksi" name="production_phase">
                     </div>
+                    {{-- <div class="mt-5">
+                        <label for="fppp_type" class="form-label">Tipe FPPP</label>
+                        <select data-placeholder="Pilih Tipe FPPP" class="tom-select w-full" id="fppp_type" name="fppp_type"
+                            single>
+                            <option {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi
+                            </option>
+                            <option {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</option>
+                        </select>
+                    </div> --}}
+                    <div class="mt-5">
+                        <label for="Quotation">No. Quotation</label>
+                        <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
+                            name="quotation_id">
+                            @foreach ($quotations as $quotation)
+                                <option {{ $quo && $quo->id == $quotation->id ? 'selected' : '' }} value="{{ $quotation->id }}">{{ $quotation->no_quotation }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="mt-5">
                         <label for="order_status" class="form-label">Status Order</label>
                         <select data-placeholder="Pilih Status Order" class="tom-select w-full" id="order_status"

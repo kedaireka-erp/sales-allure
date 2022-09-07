@@ -109,4 +109,10 @@ class QuotationController extends Controller
 
         return to_route('quotation.index');
     }
+
+    public function quotationToFppp(Quotation $quo){
+        $quotations=Quotation::all();
+        return view('fppps.create', compact('quotations','quo'));
+
+    }
 }
