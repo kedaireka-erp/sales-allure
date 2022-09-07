@@ -13,7 +13,8 @@ class Fppp extends Model
     protected $fillable=[
         "fppp_no", 
         "fppp_type", 
-        "production_phase", 
+        "production_phase",
+        "quotation_id", 
         "order_status", 
         "production_time", 
         "color", 
@@ -25,5 +26,9 @@ class Fppp extends Model
         "delivery_to_expedition", 
         "note", 
     ];
+
+    public function quotation(){
+        return $this->belongsto(Quotation::class);
+    }
 
 }

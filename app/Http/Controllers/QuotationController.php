@@ -60,7 +60,7 @@ class QuotationController extends Controller
      */
     public function show(Quotation $quotation)
     {
-        //
+        return view('quotation.detail', compact('quotation'));
     }
 
     /**

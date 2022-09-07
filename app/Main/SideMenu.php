@@ -57,7 +57,7 @@ class SideMenu
                 'sub_menu' => [
                     'company' => [
                         'icon' => '',
-                        'route_name' => 'dashboard-overview-2',
+                        'route_name' => 'companies.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],

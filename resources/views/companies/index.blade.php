@@ -5,10 +5,10 @@
 @endsection
 
 @section('subcontent')
-<h1 class="intro-y text-xl font-md mt-10 ">CONTACT TYPES</h1>
+<h1 class="intro-y text-xl font-md mt-10 ">COMPANY</h1>
 <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-        <a href="{{ route('contact_types.create') }}" class="btn btn-primary shadow-md mr-2">Tambah Contact Type</a>
+        <a href="{{ route('companies.create') }}" class="btn btn-primary shadow-md mr-2">Tambah Company Area</a>
         <div class="dropdown">
             <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                 <span class="w-5 h-5 flex items-center justify-center">
@@ -48,22 +48,29 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="text-center whitespace-nowrap">JENIS KONTAK</th>
-                    <th class="text-center whitespace-nowrap">STATUS</th>
+                    <th class="whitespace-nowrap">NAME</th>
+                    <th class="whitespace-nowrap">PHONE NUMBER</th>
+                    <th class="whitespace-nowrap">ADDRESS</th>
+                    <th class="whitespace-nowrap">DESCRIPTION</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($contact_types as $no => $type)
+                @foreach ($companies as $no => $company)
                 <tr class="intro-x">
-                    <td>{{ $type->name }}</td>
-                    <td>{{ $type->status }}</td>
+                    <td>{{ $company->name }}</td>
+                    <td>{{ $company->phone_number }}</td>
+                    <td>{{ $company->address }}</td>
+                    <td>{!!$company->description !!}</td>                   
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3" href="{{ route('contact_types.edit', $type->id) }}">
+                            <a class="flex items-center text-primary mr-3" href="javascript:;">
+                                <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
+                            </a>                          
+                            <a class="flex items-center mr-3" href="{{ route('companies.edit', $company->id) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
-                            </a>
-                            <form action="{{ route('contact_types.destroy', $type) }}" method="post">
+                            </a>           
+                            <form action="{{ route('companies.destroy', $company) }}" method="post">
                                 @csrf
                                 @method('Delete')
                                 <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
@@ -142,7 +149,7 @@
                     <button type="button" data-tw-dismiss="modal"
                         class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
 
-                    <button onclick="event.preventDefault(); document.querySelector('#delete_form_contact_type').submit()"
+                    <button onclick="event.preventDefault(); document.querySelector('#delete_form_fppp').submit()"
                         class="btn btn-outline-danger w-24 mr-1">
                         <i data-lucide="trash-2" class="w-4 h-4 mr-1" type="submit"></i> Delete
                     </button>

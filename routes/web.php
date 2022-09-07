@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\QuotationController;
@@ -145,6 +146,7 @@ Route::middleware('auth')->group(function () {
     //route contact
     Route::resource('contacts', ContactController::class);
 
-
+    //route company
+    Route::resource('companies', CompanyController::class);
 
 });

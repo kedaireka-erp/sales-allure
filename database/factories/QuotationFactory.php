@@ -19,7 +19,7 @@ class QuotationFactory extends Factory
     public function definition()
     {
         return [
-            'no_quotation' => '123/'.$this->faker->numberBetween(100,300).'/'.$this->faker->numberBetween(0,100),
+            'no_quotation' => .$this->faker->numberBetween(100,300).'/ASTRAL/'.$this->faker->numberBetween(0,100).'/AP'.$this->faker->numberBetween(0,100),
             'deal_source_id' => DealSource::all()->random()->id,
             'status_id' => Status::all()->random()->id,
             'keterangan' => $this->faker->realText($maxNbChars = 200, $indexSize = 2)

@@ -23,8 +23,8 @@
                         <label for="status" class="form-label">Contact Type Status</label>
                         <select data-placeholder="Pilih Status Kontak" class="tom-select w-full" id="status"
                             name="status" single>
-                            <option value="0" selected>Active</option>
-                            <option value="1">Nonactive</option>
+                            <option value="active" selected>Active</option>
+                            <option value="nonactive">Nonactive</option>
                         </select>
                     </div>
 
