@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\QuotationController;
@@ -142,5 +143,6 @@ Route::middleware('auth')->group(function () {
     //route company_areas
     Route::resource('company_areas', CompanyAreaController::class);
 
-
+    //route company
+    Route::resource('companies', CompanyController::class);
 });
