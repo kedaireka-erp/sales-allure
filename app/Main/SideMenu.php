@@ -91,7 +91,7 @@ class SideMenu
                 'sub_menu' => [
                     'contact' => [
                         'icon' => '',
-                        'route_name' => 'categories',
+                        'route_name' => 'contacts.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],

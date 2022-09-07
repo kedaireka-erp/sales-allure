@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use App\Models\Fppp;
 use App\Models\Status;
 use App\Models\Company;
@@ -36,8 +37,12 @@ class DatabaseSeeder extends Seeder
         
         Quotation::factory(20)->create();
 
+
+        Contact::factory(20)->create();
+
         Fppp::factory(100)->create();
 
         Company::factory(20)->create();
+
     }
 }
