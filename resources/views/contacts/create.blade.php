@@ -39,6 +39,22 @@
                         <input id="address" type="text" class="form-control w-full" placeholder="Masukkan Alamat"
                             name="address" required>
                     </div>
+                    <div>
+                        <label for="phone" class="form-label">Phone Number </label>
+                        <input id="phone" type="text" class="form-control w-full" placeholder="Masukkan No Telepon"
+                            name="phone" required>
+                    </div>
+                    <div>
+                        <label for="ownerphone" class="form-label">Owner Phone Number </label>
+                        <input id="ownerphone" type="text" class="form-control w-full" placeholder="Masukkan No Telepon Owner"
+                            name="ownerphone" required>
+                    </div>
+                    <div class="mt-5">
+                        <label for="note" class="mb-2">Deskripsi</label>
+                        <div class="mt-2">
+                            <textarea name="note" id="note" cols="30" rows="10" class="editor"></textarea>
+                        </div>
+                    </div>
                     <div class="text-right mt-5">
                         <button type="submit" class="btn btn-primary w-24">Save</button>
                     </div>

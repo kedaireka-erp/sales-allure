@@ -39,19 +39,24 @@ class ContactController extends Controller
     
     public function show(Contact $contact)
     {
-        //
+        return view('contacts.detail', compact('contact'));
     }
 
     
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        $contacts = Contact::all();
+        return view('contacts.edit', compact('contact', 'contacts'));
     }
 
     
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
+
+        return to_route('contact_types.index');
     }
 
     
