@@ -10,6 +10,7 @@ class LeadSource extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'description'
     ];
 }
