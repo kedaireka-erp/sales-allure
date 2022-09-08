@@ -8,7 +8,6 @@ use App\Models\Status;
 use App\Models\Company;
 use App\Models\Quotation;
 use App\Models\DealSource;
-use App\Models\Contact;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
