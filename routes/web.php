@@ -143,10 +143,14 @@ Route::middleware('auth')->group(function () {
     //route company_areas
     Route::resource('company_areas', CompanyAreaController::class);
 
+    //Route Quotation-to-FPPP
+    Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
+
     //route contact
     Route::resource('contacts', ContactController::class);
 
     //route company
     Route::resource('companies', CompanyController::class);
+
 
 });

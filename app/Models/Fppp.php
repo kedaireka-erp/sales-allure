@@ -25,10 +25,16 @@ class Fppp extends Model
         "sealant_usage", 
         "delivery_to_expedition", 
         "note", 
+        "attachment"
     ];
 
     public function quotation(){
         return $this->belongsto(Quotation::class);
     }
+
+    public function files(){
+        return $this->hasMany(File::class, "fppp_id", "id");
+    }
+
 
 }

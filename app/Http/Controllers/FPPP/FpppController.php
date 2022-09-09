@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\FPPP;
 
+use App\Models\File;
 use App\Models\Fppp;
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Quotation;
 
 class FpppController extends Controller
 {
@@ -15,16 +16,21 @@ class FpppController extends Controller
         return view("fppps.index", compact("fppps"));
     }
 
-    public function show()
+    public function show(Fppp $fppp)
     {
-        $fppps = Fppp::with("quotation")->get();
+        return view('fppps.detail', [
+            'fppp' => $fppp,
+            'quotations'=> $fppp->quotations
+        ]);
 
-        return view("fppps.detail", compact("fppps"));
     }
 
     public function create()
     {
-        $quotations=Quotation::get();
+        $quotations=Quotation::whereHas('Status', function($query){
+            return $query->where('name', 'won');
+        })->get();
+        $files=File::get();
         return view("fppps.create", compact("quotations"));
     }
 
@@ -45,6 +51,7 @@ class FpppController extends Controller
             "sealant_usage" => $request->sealant_usage,
             "delivery_to_expedition" => $request->delivery_to_expedition,
             "note" => $request->note,
+            "file_id" => $request->file_id,
         ]);
 
         return to_route("fppps.index")->with('success', 'FPPP dengan Nomor '.$fppp->fppp_no.'  berhasil dibuat!');
@@ -55,9 +62,12 @@ class FpppController extends Controller
     {
         $fppp = Fppp::findOrFail($id);
         $fppps = Fppp::all();
-        $quotations = Quotation::get();
+        $quotations=Quotation::whereHas('Status', function($query){
+            return $query->where('name', 'won');
+        })->get();
+        $files=File::get();
 
-        return view("fppps.edit", compact("fppp", "fppps", "quotations"));
+        return view("fppps.edit", compact("fppp", "fppps", "quotations", "files"));
     }
 
     public function update(Request $request, $id)
@@ -78,6 +88,7 @@ class FpppController extends Controller
             "sealant_usage" => $request->sealant_usage ?? $fppp->sealant_usage,
             "delivery_to_expedition" => $request->delivery_to_expedition ?? $fppp->delivery_to_expedition,
             "note" => $request->note ?? $fppp->note,
+            "file_id" => $request->file_id ?? $fppp->file_id,
         ]);
 
         return to_route("fppps.index")->with('success', 'FPPP dengan Nomor '.$fppp->fppp_no.'  berhasil diubah!');
@@ -89,6 +100,6 @@ class FpppController extends Controller
         $fppp = Fppp::findOrFail($id);
         $fppp->delete();
 
-        return to_route("fppps.index")->with('danger', 'FPPP dengan Nomor '.$fppp->fppp_no.'  berhasil dihapus!');
+        return to_route("fppps.index")->with('success', 'FPPP dengan Nomor '.$fppp->fppp_no.'  berhasil dihapus!');
     }
 }
