@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
 
         Fppp::factory(100)->create();
 
+        Company::factory(20)->create();
 
         File::factory(20)->create();
     }

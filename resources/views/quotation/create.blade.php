@@ -19,6 +19,7 @@
                         <input id="no_quotation" type="text" name="no_quotation" class=" w-full form-control"
                             placeholder="Masukkan nomor Quotation">
                     </div>
+                    <div class="mt-3">
                         <label for="deal_source" class="form-label">Deal Source</label>
                         <select class="tom-select w-full mb-3" id="deal_source"
                             name="deal_source_id">

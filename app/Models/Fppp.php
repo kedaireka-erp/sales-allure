@@ -25,6 +25,7 @@ class Fppp extends Model
         "sealant_usage", 
         "delivery_to_expedition", 
         "note", 
+        "attachment"
     ];
 
     public function quotation(){
