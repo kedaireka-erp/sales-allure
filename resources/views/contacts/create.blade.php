@@ -24,7 +24,21 @@
                                 @endforeach
                             </select>
                     </div>
+<<<<<<< Updated upstream
                     <div>
+=======
+                    <div class="mt-5">
+                        <label for="lead_source" class="form-label">Lead Source</label>
+                            <select class="custom-select d-block w-full form-control mb-3" id="lead_source"
+                                    name="lead_source_id">
+                                    <option selected>Lead Source</option>
+                                    @foreach ($leadSources as $leadSource)
+                                        <option value="{{ $leadSource->id }}">{{ $leadSource->name }}</option>
+                                    @endforeach
+                                </select>
+                    </div>
+                    <div class="mt-5">
+>>>>>>> Stashed changes
                         <label for="name" class="form-label">Contact Name </label>
                         <input id="name" type="text" class="form-control w-full" placeholder="Masukkan Nama Kontak"
                             name="name" required>
@@ -39,15 +53,10 @@
                         <input id="address" type="text" class="form-control w-full" placeholder="Masukkan Alamat"
                             name="address" required>
                     </div>
-                    <div>
+                    <div class="mt-5">
                         <label for="phone" class="form-label">Phone Number </label>
                         <input id="phone" type="text" class="form-control w-full" placeholder="Masukkan No Telepon"
                             name="phone" required>
-                    </div>
-                    <div>
-                        <label for="ownerphone" class="form-label">Owner Phone Number </label>
-                        <input id="ownerphone" type="text" class="form-control w-full" placeholder="Masukkan No Telepon Owner"
-                            name="ownerphone" required>
                     </div>
                     <div class="mt-5">
                         <label for="note" class="mb-2">Deskripsi</label>
