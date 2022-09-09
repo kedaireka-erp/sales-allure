@@ -17,7 +17,7 @@ class QuotationController extends Controller
      */
     public function index()
     {
-        $quotations = Quotation::with('Status','DealSource')->paginate();
+        $quotations = Quotation::with('Status','DealSource')->get();
 
         return view('quotation.index', compact('quotations'));
     }
@@ -42,14 +42,14 @@ class QuotationController extends Controller
      */
     public function store(Request $request)
     {
-        $quotations = Quotation::create([
+        $quotation = Quotation::create([
             'no_quotation' => $request->no_quotation,
             'deal_source_id' => $request->deal_source_id,
             'status_id' => $request->status_id,
             'keterangan' => $request->keterangan,
         ]);
 
-        return redirect()->route('quotation.index')->with('success', 'Quotation berhasil dibuat!');
+        return redirect()->route('quotation.index')->with('success', 'Quotation dengan Nomor '.$quotation->no_quotation.'  berhasil dibuat!');;
     }
 
     /**
@@ -107,7 +107,7 @@ class QuotationController extends Controller
     {
         $quotation->delete();
 
-        return to_route('quotation.index');
+        return to_route('quotation.index')->with('success', 'Quotation dengan Nomor '.$quotation->no_quotation.'  berhasil dihapus!');;
     }
 
     public function quotationToFppp(Quotation $quo){

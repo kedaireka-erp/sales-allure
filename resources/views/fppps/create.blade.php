@@ -11,7 +11,7 @@
     <div class="grid grid-cols-12 gap-10 mt-3">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
-            <form action="{{ route('fppps.store') }}" method="post" class="dropzone enctype="multipart/form-data">
+            <form action="{{ route('fppps.store') }}" method="post" class="dropzone" enctype="multipart/form-data">
                 @csrf
                 <div class="intro-y box p-5">
                     {{-- <div>
@@ -46,7 +46,12 @@
                         <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
                             name="quotation_id">
                             @foreach ($quotations as $quotation)
-                                <option {{ $quo && $quo->id == $quotation->id ? 'selected' : '' }} value="{{ $quotation->id }}">{{ $quotation->no_quotation }}</option>
+                                @isset($quo)
+                                    <option {{ $quo->id == $quotation->id ? 'selected' : '' }} value="{{ $quotation->id }}">
+                                        {{ $quotation->no_quotation }}</option>
+                                @endisset
+                                <option value="{{ $quotation->id }}">
+                                    {{ $quotation->no_quotation }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -120,7 +125,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="mt-5 mb-5">
                         <div class="fallback">
                             <input name="attachment" type="file" multiple />

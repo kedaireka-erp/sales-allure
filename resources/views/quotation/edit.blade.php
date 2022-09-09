@@ -35,7 +35,7 @@
                             </select>
                     <div class="mt-3">
                         <label for="deskripsi" class="form-label">Keterangan</label>
-                            <div class="input-group mb-3">
+                            <div class="mb-3">
                                 <textarea name="keterangan" type="text" class="form-control editor" id="deskripsi">{{ $quotation->keterangan }}</textarea>
                                 </div>
                     </div>

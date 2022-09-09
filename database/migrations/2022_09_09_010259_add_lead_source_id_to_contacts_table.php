@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lead_sources', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->foreignId('lead_source_id')->nullable();   
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lead_sources');
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->dropColumn("lead_source_id");
+        });
     }
 };

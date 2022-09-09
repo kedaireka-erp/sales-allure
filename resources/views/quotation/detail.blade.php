@@ -9,7 +9,7 @@
         <h2 class="text-lg font-medium mr-auto">Detail Quotation</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a href="{{ route('quotation.fppp', ['quo' => $quotation]) }}" class="btn btn-primary shadow-md mr-2">
-            <span class="text">Tambah FPPP</span>
+            <span class="text">Buat FPPP</span>
             </a>
             <button class="btn btn-primary shadow-md mr-2">Print</button>
             <div class="dropdown ml-auto sm:ml-0">

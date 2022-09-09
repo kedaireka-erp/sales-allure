@@ -20,6 +20,24 @@
                         <input id="name" type="text" class="form-control w-full" placeholder="Input Nama Company"
                             name="name" value="{{ $company->name }}" required>
                     </div>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Company Type </label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="company_type_id">
+                        <option selected value="">Select Company Tipe</option>
+                        @foreach ($company_types as $tp)
+                        <option {{ $tp->id == $company->company_type_id ? 'selected' : ''}} value="{{ $tp->id }}">{{ $tp->name }}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Company Area </label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="company_area_id">
+                        <option selected value="">Select Company Area</option>
+                        @foreach ($company_areas as $ar)
+                        <option {{ $ar->id == $company->company_area_id ? 'selected' : ''}} value="{{ $ar->id }}">{{ $ar->name }}</option>
+                        @endforeach
+                    </select>
+                    </div>
                     <div>
                         <label for="phone_number" class="form-label">Company Phone Number </label>
                         <input id="phone_number" type="text" class="form-control w-full" placeholder="Input Phone Number Company"

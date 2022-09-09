@@ -21,7 +21,8 @@ class LeadSourceController extends Controller
     public function store(Request $request)
     {
         $leadSources = LeadSource::create([
-            "name" => $request->name
+            "name" => $request->name,
+            "description" => $request->description
         ]);
 
         return redirect()->route('leadsources.index');
@@ -38,7 +39,8 @@ class LeadSourceController extends Controller
     {
         $leadSource = LeadSource::findOrFail($id);
         $leadSource->update([
-            "name" => $request->name ?? $leadSource->name
+            "name" => $request->name ?? $leadSource->name,
+            "description" => $request->description ?? $leadSource->description
         ]);
 
         return redirect()->route('leadsources.index');
