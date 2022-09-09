@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\StatusController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\QuotationController;
@@ -152,5 +153,10 @@ Route::middleware('auth')->group(function () {
     //route company
     Route::resource('companies', CompanyController::class);
 
+    //route user
+    Route::get('account/{account}/profile', [AccountController::class, 'show'])->name('account.profile');
+    Route::get('account/{account}/profile/edit', [AccountController::class, 'edit'])->name('account.profile.edit');
+    Route::patch('account/{account}/profile/update', [AccountController::class, 'update'])->name('account.profile.update');
+    // Route::get('user', [UserController::class, 'topProfile'])->name('user');
 
 });
