@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\File;
 use App\Models\Quotation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -32,7 +33,6 @@ class FpppFactory extends Factory
             "sealant_usage"=>$this->faker->randomElement(["tidak", "ya"]),
             "delivery_to_expedition"=>$this->faker->randomElement(["tidak", "ya"]),
             "note"=>$this->faker->word(),
-
         ];
     }
 }

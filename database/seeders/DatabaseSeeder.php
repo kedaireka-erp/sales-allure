@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\File;
 use App\Models\Fppp;
 use App\Models\Status;
+use App\Models\Company;
+use App\Models\Contact;
 use App\Models\Quotation;
 use App\Models\DealSource;
-use App\Models\Contact;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
 use Illuminate\Database\Seeder;
-use Faker\Provider\ar_EG\Company;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,7 +33,6 @@ class DatabaseSeeder extends Seeder
 
         CompanyArea::factory(20)->create();
 
-        
         Quotation::factory(20)->create();
 
         Contact::factory(20)->create();
@@ -40,5 +40,6 @@ class DatabaseSeeder extends Seeder
         Fppp::factory(100)->create();
 
 
+        File::factory(20)->create();
     }
 }
