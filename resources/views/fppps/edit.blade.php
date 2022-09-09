@@ -35,13 +35,15 @@
                             placeholder="Input Tahap Produksi" name="production_phase"
                             value="{{ $fppp->production_phase }}">
                     </div>
+
                     <div class="mt-5">
-                        <label for="quotation">No. Quotation</label>
+                        <label for="quotation" class="form-label">No. Quotation</label>
                         <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
                             name="quotation_id">
                             @foreach ($quotations as $quotation)
                                 <option value="{{ $quotation->id }}"
-                                    {{ $quotation->id == $fppp->quotation_id ? 'selected' : '' }}>{{ $quotation->no_quotation }}</option>
+                                    {{ $quotation->id == $fppp->quotation_id ? 'selected' : '' }}>
+                                    {{ $quotation->no_quotation }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -117,7 +119,7 @@
                     <div class="mt-5">
                         <label for="note">Catatan</label>
                         <div class="mt-2">
-                                <textarea name="note" id="note" cols="30" rows="10" class="editor">{!!old("note", $fppp->note)!!}</textarea>
+                            <textarea name="note" id="note" cols="30" rows="10" class="editor">{!! old('note', $fppp->note) !!}</textarea>
                         </div>
                     </div>
 

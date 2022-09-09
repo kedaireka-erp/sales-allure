@@ -32,4 +32,9 @@ class Fppp extends Model
         return $this->belongsto(Quotation::class);
     }
 
+    public function files(){
+        return $this->hasMany(File::class, "fppp_id", "id");
+    }
+
+
 }
