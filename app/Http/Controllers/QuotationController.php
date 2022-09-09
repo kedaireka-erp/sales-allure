@@ -94,7 +94,7 @@ class QuotationController extends Controller
     ]);
     $quotation->update($validator->validate());
 
-        return to_route('quotation.index');
+        return to_route('quotation.index')->with('success', 'Quotation dengan Nomor '.$quotation->no_quotation.'  berhasil diubah!');
     }
 
     /**
