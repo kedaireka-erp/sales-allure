@@ -49,19 +49,19 @@
             <thead>
                 <tr>
                     <th class="whitespace-nowrap">NO. FPPP</th>
-                    <th class="whitespace-nowrap">TIPE FPPP</th>
-                    <th class="whitespace-nowrap">TAHAP PRODUKSI</th>
-                    <th class="whitespace-nowrap">NO. QUOTATION</th>
+                    <th class="text-center whitespace-nowrap">TIPE FPPP</th>
+                    <th class="text-center whitespace-nowrap">TAHAP PRODUKSI</th>
+                    <th class="text-center whitespace-nowrap">NO. QUOTATION</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($fppps as $no => $fppp)
                 <tr class="intro-x zoom-in transition">
-                    <td>{{ $fppp->fppp_no }}</td>
-                    <td>{{ ucfirst($fppp->fppp_type) }}</td>
+                    <td >{{ $fppp->fppp_no }}</td>
+                    <td class="text-center">{{ ucfirst($fppp->fppp_type) }}</td>
                     <td class="text-center">{{ $fppp->production_phase }}</td>
-                    <td>{{$fppp->Quotation->no_quotation}}</td>
+                    <td class="text-center">{{$fppp->Quotation->no_quotation}}</td>
                     <td class="table-report__action w-fit">
                         {{-- <div class="flex justify-center items-center">
                             <a class="flex items-center text-primary mr-3" href="{{ route('fppps.show', $fppp->id) }}">
