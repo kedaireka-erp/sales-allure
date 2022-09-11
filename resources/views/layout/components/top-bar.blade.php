@@ -101,12 +101,12 @@
         <div class="dropdown-menu w-56">
             <ul class="dropdown-content bg-primary text-white">
                 <li class="p-2">
-                    <div class="font-medium">{{ $fakers[0]['users'][0]['name'] }}</div>
-                    <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">{{ $fakers[0]['jobs'][0] }}</div>
+                    <div class="font-medium">{{ Auth()->user()->name }}</div>
+                    <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">{{ Auth()->user()->email }}</div>
                 </li>
                 <li><hr class="dropdown-divider border-white/[0.08]"></li>
                 <li>
-                    <a href="" class="dropdown-item hover:bg-white/5">
+                    <a href="{{ route('account.profile', Auth()->user()) }}" class="dropdown-item hover:bg-white/5">
                         <i data-lucide="user" class="w-4 h-4 mr-2"></i> Profile
                     </a>
                 </li>

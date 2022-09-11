@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\LeadSource;
 use App\Models\ContactType;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class ContactController extends Controller
     public function create()
     {
         $contactTypes = ContactType::all();
-        return view('contacts.create', compact('contactTypes'));
+        $leadSources = LeadSource::all();
+        return view('contacts.create', compact('contactTypes', 'leadSources'));
     }
 
     
@@ -27,9 +29,12 @@ class ContactController extends Controller
     {
         $request->validate([
             'contact_type_id'=> 'nullable' ,
+            'lead_source_id' => 'nullable',
             'name' =>'required',
             'email' =>'required',
             'address' =>'required',
+            // 'phone_number' =>'required',
+            // 'description' =>'required',
         ]);
 
         Contact::create($request->all());
@@ -45,24 +50,35 @@ class ContactController extends Controller
     
     public function edit($id)
     {
+        $contactTypes = ContactType::get();
+        $leadSources = LeadSource::get();
         $contact = Contact::findOrFail($id);
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources'));
     }
 
     
     public function update(Request $request, $id)
     {
         $contact = Contact::findOrFail($id);
-        $contact->update($request->all());
+        $contact->update([
+            'contact_type_id'=> $request->contact_type_id ?? $contact->contact_type_id,
+            'lead_source_id' => $request->lead_source_id ?? $contact->clead_source_id,
+            'name' => $request->name ?? $contact->name,
+            'email' =>$request->email ?? $contact->email,
+            'address' =>$request->address ?? $contact->address,
+            // 'phone_number' =>$request->phone_number ?? $contact->phone_number,
+            // 'description' =>$request->description ?? $contact->description,
+        ]);
 
-        return to_route('contact_types.index');
+        
+        return to_route('contacts.index')->with('success', 'Contact Edited Successfully.');
     }
 
     
     public function destroy(Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('contacts.index');
+        return redirect()->route('contacts.index')->with('success', 'Contact Deleted Successfully.');
     }
 }

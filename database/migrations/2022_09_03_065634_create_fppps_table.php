@@ -32,7 +32,6 @@ return new class extends Migration
             $table->enum("sealant_usage", ["tidak", "ya"])->nullable();
             $table->enum("delivery_to_expedition", ["tidak", "ya"])->nullable();
             $table->text("note")->nullable();
-            $table->string("attachment")->nullable(); //tipe data???
             $table->timestamps();
         });
     }
