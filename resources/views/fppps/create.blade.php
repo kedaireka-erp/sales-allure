@@ -33,14 +33,14 @@
                             placeholder="Input Tahap Produksi" name="production_phase">
                     </div>
                     {{-- <div class="mt-5">
-                        <label for="fppp_type" class="form-label">Tipe FPPP</label>
-                        <select data-placeholder="Pilih Tipe FPPP" class="tom-select w-full" id="fppp_type" name="fppp_type"
-                            single>
-                            <option {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi
-                            </option>
-                            <option {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</option>
-                        </select>
-                    </div> --}}
+                    <label for="fppp_type" class="form-label">Tipe FPPP</label>
+                    <select data-placeholder="Pilih Tipe FPPP" class="tom-select w-full" id="fppp_type" name="fppp_type"
+                        single>
+                        <option {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi
+                        </option>
+                        <option {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</option>
+                    </select>
+                </div> --}}
                     <div class="mt-5">
                         <label for="Quotation">No. Quotation</label>
                         <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
@@ -65,6 +65,20 @@
                             <option value="lainlain">Lain-lain</option>
                         </select>
                     </div>
+                    <div class="mt-5" id="fppp_lain">
+                        <label for="fppp_revisino" class="form-label">No FPPP Yang Direvisi</label>
+                        <select data-placeholder="Pilih No FPPP" class="tom-select w-full" name="fppp_revisino" single>
+                            @foreach ($fppps as $fppp)
+                                <option value="{{ $fppp->fppp_no }}">{{ $fppp->fppp_no }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mt-5" id="catatan_status_order">
+                        <label for="note" class="mb-2">Keterangan Lain-lain</label>
+                        <div class="mt-2">
+                            <textarea name="fppp_keterangan" cols="30" rows="10" class="editor "></textarea>
+                        </div>
+                    </div>
                     <div class="mt-5">
                         <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
                         <input id="production_time" type="number" class="form-control w-full"
@@ -72,7 +86,7 @@
                     </div>
                     <div class="mt-5">
                         <label for="color" class="form-label">Warna </label>
-                        <input id="color" type="text" class="form-control w-full" placeholder="Input Tahap Produksi"
+                        <input id="color" type="text" class="form-control w-full" placeholder="Input Warna"
                             name="color">
                     </div>
                     <div class="mt-5">
@@ -86,13 +100,13 @@
                     </div>
                     <div class="mt-5">
                         <label for="glass_type" class="form-label">Jenis Kaca </label>
-                        <input id="glass_type" type="text" class="form-control w-full" placeholder="Input Kaca"
+                        <input id="glass_type" type="text" class="form-control w-full" placeholder="Input Jenis Kaca"
                             name="glass_type">
                     </div>
                     <div class="mt-5">
                         <label for="retrieval_deadline" class="form-label">Deadline Pengambilan </label>
                         <input id="retrieval_deadline" type="date" class="form-control w-full"
-                            placeholder="Input Tanggal " name="retrieval_deadline">
+                            placeholder="Input Deadline Pengambilan" name="retrieval_deadline">
                     </div>
                     <div class="mt-5">
                         <label for="box_usage" class="form-label">Penggunaan Peti</label>

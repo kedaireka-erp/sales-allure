@@ -18,6 +18,8 @@ class Fppp extends Model
         "production_phase",
         "quotation_id", 
         "order_status", 
+        "fppp_revisino",
+        "fppp_keterangan",
         "production_time", 
         "color", 
         "glass", 
