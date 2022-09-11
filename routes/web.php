@@ -15,7 +15,7 @@ use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyAreaController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
-
+use App\Http\Controllers\LeadStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,5 +152,6 @@ Route::middleware('auth')->group(function () {
     //route company
     Route::resource('companies', CompanyController::class);
 
-
+    //route Kontak -> Lead Status
+    Route::resource('leadstatuses', LeadStatusController::class);
 });
