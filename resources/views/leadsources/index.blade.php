@@ -32,7 +32,7 @@
                         <tr class="intro-x">
                             <td class="text-left">{{ ++$no }}</td>
                             <td class="text-left">{{ $ls->name }}</td>
-                            <td class="text-left">{{ $ls->description }}</td>
+                            <td class="text-left">{!! $ls->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3" href="{{ route('leadsources.edit', $ls->id) }}">
