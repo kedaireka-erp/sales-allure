@@ -27,11 +27,12 @@ class FpppController extends Controller
 
     public function create()
     {
+        $fppps=Fppp::get();
         $quotations=Quotation::whereHas('Status', function($query){
             return $query->where('name', 'won');
         })->get();
         $files=File::get();
-        return view("fppps.create", compact("quotations"));
+        return view("fppps.create", compact("fppps", "quotations"));
     }
 
     public function store(Request $request)
@@ -42,6 +43,8 @@ class FpppController extends Controller
             "production_phase" => $request->production_phase,
             "quotation_id" => $request->quotation_id,
             "order_status" => $request->order_status,
+            "fppp_revisino" => $request->fppp_revisino,
+            "fppp_keterangan" => $request->fppp_keterangan,
             "production_time" => $request->production_time,
             "color" => $request->color,
             "glass" => $request->glass,
@@ -79,6 +82,8 @@ class FpppController extends Controller
             "production_phase" => $request->production_phase ?? $fppp->production_phase,
             "quotation_id" => $request->quotation_id ?? $fppp->quotation->id,
             "order_status" => $request->order_status ?? $fppp->order_status,
+            "fppp_revisino" => $request->fppp_revisino ?? $fppp->fppp_revisino,
+            "fppp_keterangan" => $request->fppp_keterangan ?? $fppp->fppp_keterangan,
             "production_time" => $request->production_time ?? $fppp->production_time,
             "color" => $request->fppp_no ?? $fppp->color,
             "glass" => $request->glass ?? $fppp->glass,

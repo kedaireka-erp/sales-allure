@@ -23,6 +23,8 @@ return new class extends Migration
             // $table->integer("project_address"); //ambil dari quotation WON
             // $table->integer("sales_name"); //masukin nama-nama sales???
             $table->enum("order_status", ["baru", "tambahan", "revisino", "lainlain"])->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
+            $table->string("fppp_revisino")->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
+            $table->string("fppp_keterangan")->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
             $table->integer("production_time")->nullable();
             $table->string("color")->nullable();
             $table->enum("glass", ["included", "excluded", "included_excluded"])->nullable();
