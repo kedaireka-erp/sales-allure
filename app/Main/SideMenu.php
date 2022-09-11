@@ -115,7 +115,7 @@ class SideMenu
                     ],
                     'lead-status' => [
                         'icon' => '',
-                        'route_name' => 'categories',
+                        'route_name' => 'leadstatuses.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
