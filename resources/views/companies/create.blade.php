@@ -18,8 +18,12 @@
                         <label for="name" class="form-label">Company Name</label>
                         <input id="name" type="text" class="form-control w-full" placeholder="Input Nama Company" name="name" required>
                     </div>
-                    <div class="form-group">
-                        <label for="name" class="form-label">Company Type</label>
+                    <div class="text-left mt-5">
+                        <label for="phone_number" class="form-label">Company Phone Number</label>
+                        <input id="phone_number" type="text" class="form-control w-full" placeholder="Input Phone Number Company" name="phone_number" required>
+                    </div>
+                    <div class="form-group text-left mt-5">
+                        <label for="company_type" class="form-label">Company Type</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="company_type_id">
                         <option selected value="">Select Company Type</option>
                         @foreach ($types as $tp)
@@ -27,8 +31,16 @@
                         @endforeach
                     </select>
                     </div>
-                    <div class="form-group">
-                        <label for="name" class="form-label">Company Area</label>
+                    <div class="text-left mt-5">
+                        <label for="address" class="form-label">Company Address</label>
+                        <input id="address" type="text" class="form-control w-full" placeholder="Input Address Company" name="address" required>
+                    </div>
+                    <div class="text-left mt-5">
+                        <label for="city" class="form-label">City</label>
+                        <input id="city" type="text" class="form-control w-full" placeholder="Input City" name="city">
+                    </div>
+                    <div class="form-group text-left mt-5">
+                        <label for="company_area" class="form-label">Company Area</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="company_area_id">
                         <option selected value="">Select Company Area</option>
                         @foreach ($areas as $ar)
@@ -36,17 +48,29 @@
                         @endforeach
                     </select>
                     </div>
-                    <div>
-                        <label for="phone_number" class="form-label">Company Phone Number</label>
-                        <input id="phone_number" type="text" class="form-control w-full" placeholder="Input Phone Number Company" name="phone_number" required>
+                    <div class="text-left mt-5">
+                        <label for="postal_code" class="form-label">Postal Code</label>
+                        <input id="postal_code" type="number" class="form-control w-full" placeholder="Input Postal Code" name="postal_code">
                     </div>
-                    <div>
-                        <label for="address" class="form-label">Company Address</label>
-                        <input id="address" type="text" class="form-control w-full" placeholder="Input Address Company" name="address" required>
+                    <div class="text-left mt-5">
+                        <label for="number_of_employees" class="form-label">Number of Employees</label>
+                        <input id="number_of_employees" type="number" class="form-control w-full" placeholder="Input Number of Employees" name="number_of_employees">
+                    </div>
+                    <div class="text-left mt-5">
+                        <label for="annual_revenue" class="form-label">Annual Revenue</label>
+                        <input id="annual_revenue" type="number" class="form-control w-full" placeholder="Input Annual Revemue" name="annual_revenue">
+                    </div>
+                    <div class="text-left mt-5">
+                        <label for="time_zone" class="form-label">Time Zone</label>
+                        <input id="time_zone" type="text" class="form-control w-full" placeholder="Input Time Zone" name="time_zone">
                     </div>
                     <div class="text-left mt-5">
                         <label for="description" class="form-label">Company Description</label>
                         <textarea class="editor" name="description" id="description"class="form-control w-full" placeholder="Input Deskripsi Company" rows="10"></textarea>
+                    </div>
+                    <div class="text-left mt-5">
+                        <label for="linkedin_company" class="form-label">LinkedIn Company Page</label>
+                        <input id="linkedin_company" type="text" class="form-control w-full" placeholder="Input Linkedin Company Page" name="linkedin_company">
                     </div>
                     <div class="text-right mt-5">
                         <button type="submit" class="btn btn-primary w-24">Save</button>
