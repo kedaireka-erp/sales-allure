@@ -12,11 +12,17 @@ class Company extends Model
     protected $table="companies";
     protected $fillable = [
         'name',
-        'company_type_id',
-        'company_area_id',
         'phone_number',
+        'company_type_id',
         'address',
+        'city',
+        'company_area_id',
+        'postal_code',
+        'number_of_employees',
+        'annual_revenue',
+        'time_zone',
         'description',
+        'linkedin_company',
     ];
 
     public function company_type(){

@@ -44,11 +44,17 @@ class CompanyController extends Controller
         
         $validated = Validator::make($request->all(), [
             'name' => 'required',
-            'company_type_id' => 'required',
-            'company_area_id' => 'required',
             'phone_number' => 'required',
+            'company_type_id' => 'required',
             'address' => 'required',
-            'description' => 'required',
+            'city' => 'nullable',
+            'company_area_id' => 'required',
+            'postal_code' => 'nullable',
+            'number_of_employees' => 'nullable',
+            'annual_revenue' => 'nullable',
+            'time_zone' => 'nullable',
+            'description' => 'nullable',
+            'linkedin_company' => 'nullable',
         ]);
         Company::create($validated->validated());
 
@@ -57,19 +63,21 @@ class CompanyController extends Controller
         return redirect()->route('companies.index')->with('success', 'Company berhasil dibuat!');
     }
 
-    public function show(Company $company)
+    public function show($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $companies = Company::with('company_type', 'company_area')->get();
+        return view('companies.detail', compact('company', 'companies'));
     }
 
     public function edit($id)
     {
         $company = Company::findOrFail($id);
-        // $companies = Company::all();
+        $companies = Company::all();
         $company_types = CompanyType::get();
         $company_areas = CompanyArea::get();
         // return view('companies.edit', compact('company', 'companies'));
-        return view('companies.edit', compact('company', 'company_types', 'company_areas'));
+        return view('companies.edit', compact('company', 'companies', 'company_types', 'company_areas'));
     }
 
     public function update(Request $request, $id)
@@ -78,11 +86,17 @@ class CompanyController extends Controller
         // $company->update($request->all());
         $company->update([
             'name' => $request->name ?? $company->name,
-            'company_type_id' => $request->company_type_id ?? $company->company_type_id,
-            'company_area_id' => $request->company_area_id ?? $company->company_area_id,
             'phone_number' => $request->phone_number ?? $company->phone_number,
+            'company_type_id' => $request->company_type_id ?? $company->company_type_id,
             'address' => $request->address ?? $company->address,
+            'city' => $request->city ?? $company->city,
+            'company_area_id' => $request->company_area_id ?? $company->company_area_id,
+            'postal_code' => $request->postal_code ?? $company->postal_code,
+            'number_of_employees' => $request->number_of_employees ?? $company->number_of_employees,
+            'annual_revenue' => $request->annual_revenue ?? $company->annual_revenue,
+            'time_zone' => $request->time_zone ?? $company->time_zone,
             'description' => $request->description ?? $company->description,
+            'linkedin_company' => $request->linkedin_company ?? $company->linkedin_company,
         ]);
 
         return to_route('companies.index')->with('success', 'Company berhasil diubah!');

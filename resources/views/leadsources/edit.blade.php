@@ -17,14 +17,16 @@
                 <div class="intro-y box p-5">
                     <div>
                         <label for="name" class="form-label">Nama Lead Source</label>
-                        <input id="name" name="name" type="text" class="form-control w-full" value="{{ $leadSource->name }}">
+                        <input id="name" name="name" type="text" class="form-control w-full"
+                            value="{{ $leadSource->name }}">
                     </div>
                     <div class="mt-3">
                         <label for="description" class="form-label">Deskripsi</label>
-                            <textarea name="description" type="text" class="editor" id="description">{{ $leadSource->description }}</textarea>
+                        <textarea name="description" type="text" class="editor" id="description">{{ $leadSource->description }}</textarea>
                     </div>
                     <div class="text-right mt-5">
-                        <a type="button" href="{{ route('leadsources.index') }}" class="btn btn-outline-secondary w-24 mr-1">Batal</a>
+                        <a type="button" href="{{ route('leadsources.index') }}"
+                            class="btn btn-outline-secondary w-24 mr-1">Batal</a>
                         <button type="submit" class="btn btn-primary w-24">Ubah</button>
                     </div>
                 </div>
