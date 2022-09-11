@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Models\Status;
 use App\Models\DealSource;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Quotation extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $table="quotations";
     protected $fillable=["no_quotation","deal_source_id","status_id","keterangan"];
 
