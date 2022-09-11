@@ -16,7 +16,7 @@ use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyAreaController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
-
+use App\Http\Controllers\LeadStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,19 +128,19 @@ Route::middleware('auth')->group(function () {
 
     //route company_types
     Route::resource('company_types', CompanyTypeController::class);
-    
+
     //route deal source
     Route::resource('deal_sources', DealSourceController::class);
 
     // route contact_type
     Route::resource('contact_types', ContactTypeController::class);
-    
+
     //lead source
     Route::resource('leadsources', LeadSourceController::class);
 
     // Quotation
     Route::resource('quotation', QuotationController::class);
-    
+
     //route company_areas
     Route::resource('company_areas', CompanyAreaController::class);
 
@@ -159,4 +159,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('account/{account}/profile/update', [AccountController::class, 'update'])->name('account.profile.update');
     // Route::get('user', [UserController::class, 'topProfile'])->name('user');
 
+    //route Kontak -> Lead Status
+    Route::resource('leadstatuses', LeadStatusController::class);
 });
