@@ -131,7 +131,7 @@ class SideMenu
                     ],
                     'lead-interest' => [
                         'icon' => '',
-                        'route_name' => 'categories',
+                        'route_name' => 'leadinterests.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
