@@ -61,7 +61,8 @@
                     <td >{{ $fppp->fppp_no }}</td>
                     <td class="text-center">{{ ucfirst($fppp->fppp_type) }}</td>
                     <td class="text-center">{{ $fppp->production_phase }}</td>
-                    <td class="text-center" class="text-center">{{$fppp->Quotation->no_quotation}}</td>
+
+                    <td class="text-center">{{$fppp->Quotation->no_quotation ?? ''}}</td>
                     <td class="table-report__action w-fit">
                         {{-- <div class="flex justify-center items-center">
                             <a class="flex items-center text-primary mr-3" href="{{ route('fppps.show', $fppp->id) }}">

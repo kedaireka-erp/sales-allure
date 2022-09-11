@@ -9,7 +9,7 @@
         <h2 class="text-lg font-medium mr-auto">Detail Quotation</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a href="{{ route('quotation.fppp', ['quo' => $quotation]) }}" class="btn btn-primary shadow-md mr-2">
-            <span class="text">Buat FPPP</span>
+                <span class="text">Buat FPPP</span>
             </a>
             <button class="btn btn-primary shadow-md mr-2">Print</button>
             <div class="dropdown ml-auto sm:ml-0">
@@ -38,14 +38,33 @@
     <!-- BEGIN: Invoice -->
     <div class="intro-y box overflow-hidden mt-5">
         <div class="border-b border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
-            <div class="px-5 py-10 sm:px-20 sm:py-20">
-                <div class="text-primary font-semibold text-3xl">Quotation</div>
-                <div class="mt-2">Quotation No. {{ $quotation->no_quotation }}</div>
-                <div class="mt-2">
-                    <b>Status :</b> {{ $quotation->Status->name }}
+            <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
+                <span class="font-bold text-primary">LOGO</span>
+                <div class="flex flex-col items-center h-full">
+                    <h1 class="text-primary font-semibold text-xl">QUOTATION</h1>
+                    <h2 class="text-primary font-semibold text-lg">No. {{ $quotation->no_quotation }}</h2>
                 </div>
-                <div class="mt-2">
-                    <b>Deal Source :</b> {{ $quotation->DealSource->name }}
+                <div class="mt-1">Kode-Kode</div>
+            </div>
+            <div class="mt-5 w-full flex flex-col gap-y-3">
+                <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class="text-base text-slate-500">Status </div>
+                        <div class="text-base text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class="text-base font-semibold text-slate-500">{{ $quotation->Status->name }}</div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class="text-base text-slate-500">Deal Source </div>
+                        <div class="text-base text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class="text-base font-semibold text-slate-500">{{ $quotation->DealSource->name }}</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="px-5 sm:px-16 py-10 sm:py-20">
