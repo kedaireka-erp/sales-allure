@@ -48,15 +48,15 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="text-center whitespace-nowrap">NAMA</th>
-                    <th class="text-center whitespace-nowrap">JENIS</th>
-                    <th class="text-center whitespace-nowrap">EMAIL</th>
-                    <th class="text-center whitespace-nowrap">ALAMAT</th>
+                    <th class="text-center whitespace-nowrap text-primary">NAMA</th>
+                    <th class="text-center whitespace-nowrap text-primary">JENIS</th>
+                    <th class="text-center whitespace-nowrap text-primary">EMAIL</th>
+                    <th class="text-center whitespace-nowrap text-primary">ALAMAT</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($contacts as $no => $contact)
-                <tr class="intro-x">
+                <tr class="intro-x zoom-in transition">
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->contactType->name }}</td>
                     <td>{{ $contact->email }}</td>

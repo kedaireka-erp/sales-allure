@@ -48,24 +48,24 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="whitespace-nowrap">COMPANY NAME</th>
-                    <th class="whitespace-nowrap">PHONE NUMBER</th>
-                    <th class="whitespace-nowrap">COMPANY TYPE</th>
+                    <th class="whitespace-nowrap text-primary">COMPANY NAME</th>
+                    <th class="whitespace-nowrap text-primary">PHONE NUMBER</th>
+                    <th class="whitespace-nowrap text-primary">COMPANY TYPE</th>
                     {{-- <th class="whitespace-nowrap">ADDRESS</th> --}}
                     {{-- <th class="whitespace-nowrap">CITY</th> --}}
-                    <th class="whitespace-nowrap">COMPANY AREA</th>
+                    <th class="whitespace-nowrap text-primary">COMPANY AREA</th>
                     {{-- <th class="whitespace-nowrap">POSTAL CODE</th> --}}
                     {{-- <th class="whitespace-nowrap">NUMBER OF EMPLOYEES</th> --}}
                     {{-- <th class="whitespace-nowrap">ANNUAL REVENUE</th> --}}
                     {{-- <th class="whitespace-nowrap">TIME ZONE</th> --}}
                     {{-- <th class="whitespace-nowrap">DESCRIPTION</th> --}}
                     {{-- <th class="whitespace-nowrap">LINKEDIN COMPANY PAGE</th> --}}
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($companies as $no => $company)
-                <tr class="intro-x">
+                <tr class="intro-x zoom-in transition">
                     <td>{{ $company->name }}</td>
                     <td>{{ $company->phone_number }}</td>
                     <td>{{ $company->type }}</td>

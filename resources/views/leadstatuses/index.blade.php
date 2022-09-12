@@ -21,15 +21,15 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace" style="width: 5%">No.</th>
-                        <th class="whitespace-nowrap">Nama Lead Status</th>
-                        <th class="whitespace-nowrap">Deskripsi</th>
-                        <th class="text-center whitespace-nowrap">Aksi</th>
+                        <th class="whitespace text-primary" style="width: 5%">No.</th>
+                        <th class="whitespace-nowrap text-primary">Nama Lead Status</th>
+                        <th class="whitespace-nowrap text-primary">Deskripsi</th>
+                        <th class="text-center whitespace-nowrap text-primary">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($leadStatuses as $no => $lstat)
-                        <tr class="intro-x">
+                        <tr class="intro-x zoom-in transition">
                             <td class="text-left">{{ ++$no }}</td>
                             <td class="text-left">{{ $lstat->name }}</td>
                             <td class="text-left">{!! $lstat->description !!}</td>
