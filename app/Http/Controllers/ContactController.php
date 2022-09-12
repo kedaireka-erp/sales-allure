@@ -33,8 +33,8 @@ class ContactController extends Controller
             'name' =>'required',
             'email' =>'required',
             'address' =>'required',
-            // 'phone_number' =>'required',
-            // 'description' =>'required',
+            'phone' =>'required',
+            'note' =>'required',
         ]);
 
         Contact::create($request->all());
@@ -67,8 +67,8 @@ class ContactController extends Controller
             'name' => $request->name ?? $contact->name,
             'email' =>$request->email ?? $contact->email,
             'address' =>$request->address ?? $contact->address,
-            // 'phone_number' =>$request->phone_number ?? $contact->phone_number,
-            // 'description' =>$request->description ?? $contact->description,
+            'phone' =>$request->phone ?? $contact->phone,
+            'note' =>$request->note ?? $contact->note,
         ]);
 
         

@@ -123,7 +123,7 @@ class SideMenu
                     ],
                     'lead-priority' => [
                         'icon' => '',
-                        'route_name' => 'categories',
+                        'route_name' => 'leadpriorities.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
