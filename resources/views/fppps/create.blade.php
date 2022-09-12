@@ -42,7 +42,7 @@
                     </select>
                 </div> --}}
                     <div class="mt-5">
-                        <label for="Quotation">No. Quotation</label>
+                        <label for="Quotation" class = "form-label">No. Quotation</label>
                         <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
                             name="quotation_id">
                             @foreach ($quotations as $quotation)
@@ -132,66 +132,14 @@
                             <option value="1">Ya</option>
                         </select>
                     </div>
-                </div>
-                <div class="mt-5">
-                    <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
-                    <input id="production_time" type="number" class="form-control w-full"
-                        placeholder="Input Waktu Produksi" name="production_time">
-                </div>
-                <div class="mt-5">
-                    <label for="color" class="form-label">Warna </label>
-                    <input id="color" type="text" class="form-control w-full" placeholder="Input Tahap Produksi"
-                        name="color">
-                </div>
-                <div class="mt-5">
-                    <label for="glass" class="form-label">Kaca</label>
-                    <select data-placeholder="Pilih Kaca" class="tom-select w-full" id="glass" name="glass" single>
-                        <option value="included" selected>Included</option>
-                        <option value="excluded">Excluded</option>
-                        <option value="included_excluded">Included & Excluded</option>
-                    </select>
-                </div>
-                <div class="mt-5">
-                    <label for="glass_type" class="form-label">Jenis Kaca </label>
-                    <input id="glass_type" type="text" class="form-control w-full" placeholder="Input Kaca"
-                        name="glass_type">
-                </div>
-                <div class="mt-5">
-                    <label for="retrieval_deadline" class="form-label">Deadline Pengambilan </label>
-                    <input id="retrieval_deadline" type="date" class="form-control w-full" placeholder="Input Tanggal "
-                        name="retrieval_deadline">
-                </div>
-                <div class="mt-5">
-                    <label for="box_usage" class="form-label">Penggunaan Peti</label>
-                    <select data-placeholder="Pilih Penggunaan Peti" class="tom-select w-full" id="box_usage"
-                        name="box_usage" single>
-                        <option value="0" selected>Tidak</option>
-                        <option value="1">Ya</option>
-                    </select>
-                </div>
-                <div class="mt-5">
-                    <label for="sealant_usage" class="form-label">Penggunaan Sealant</label>
-                    <select data-placeholder="Pilih Penggunaan Sealant" class="tom-select w-full" id="sealant_usage"
-                        name="sealant_usage" single>
-                        <option value="0" selected>Tidak</option>
-                        <option value="1">Ya</option>
-                    </select>
-                </div>
-                <div class="mt-5">
-                    <label for="delivery_to_expedition" class="form-label">Pengiriman ke Ekspedisi</label>
-                    <select data-placeholder="Pilih Pengiriman ke Ekspedisi" class="tom-select w-full"
-                        id="delivery_to_expedition" name="delivery_to_expedition" single>
-                        <option value="0" selected>Tidak</option>
-                        <option value="1">Ya</option>
-                    </select>
-                </div>
-                <div class="mt-5">
-                    <label for="note" class="mb-2">Catatan</label>
-                    <div class="mt-2">
-                        <textarea name="note" id="note" cols="30" rows="10" class="editor"></textarea>
+                    <div class="mt-5">
+                        <label for="note" class="mb-2">Catatan</label>
+                        <div class="mt-2">
+                            <textarea name="note" id="note" cols="30" rows="10" class="editor"></textarea>
+                        </div>
                     </div>
+    
                 </div>
-
 
                 <div class="mt-5 mb-5">
                     <div class="fallback">
