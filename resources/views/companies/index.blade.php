@@ -68,10 +68,10 @@
                 <tr class="intro-x zoom-in transition">
                     <td>{{ $company->name }}</td>
                     <td>{{ $company->phone_number }}</td>
-                    <td>{{ $company->type }}</td>
+                    <td>{{ $company->company_type->name }}</td>
                     {{-- <td>{{ $company->address }}</td> --}}
                     {{-- <td>{{ $company->city }}</td> --}}
-                    <td>{{ $company->area }}</td>
+                    <td>{{ $company->company_area->name }}</td>
                     {{-- <td>{{ $company->postal_code }}</td> --}}
                     {{-- <td>{{ $company->number_of_employees }}</td> --}}
                     {{-- <td>{{ $company->annual_revenue }}</td> --}}

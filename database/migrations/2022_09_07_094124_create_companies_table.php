@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('time_zone')->nullable();
             $table->text('description')->nullable();
             $table->string('linkedin_company')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
