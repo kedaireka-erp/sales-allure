@@ -13,4 +13,9 @@ class LeadSource extends Model
         'name',
         'description'
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }
