@@ -23,6 +23,8 @@ class ContactFactory extends Factory
             'contact_type_id'=>ContactType::all()->random()->id,
             'email'=> $this->faker->email(),
             'address'=> $this->faker->address(),
+            'phone'=> $this->faker->phoneNumber(),
+            'note'=> $this->faker->text(),
         ];
     }
 }
