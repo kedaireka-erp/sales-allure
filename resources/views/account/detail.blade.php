@@ -561,7 +561,7 @@
                 <!-- END: New Authors -->
             </div>
         </div>
-        <div id="edit" class="tab-pane active" role="tabpanel" aria-labelledby="edit-tab">
+        <div id="edit" class="tab-pane" role="tabpanel" aria-labelledby="edit-tab">
             <div class="intro-y flex items-center mt-8">
                 <h2 class="text-lg font-medium mr-auto">Edit Profile</h2>
             </div>
