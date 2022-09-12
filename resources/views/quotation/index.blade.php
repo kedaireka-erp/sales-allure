@@ -94,17 +94,17 @@
                 <table class="table table-report -mt-2">
                     <thead>
                         <tr>
-                            <TH CLASS="whitespace-nowrap">NO.</TH>
-                            <th class="whitespace-nowrap">NO. QUOTATION</th>
-                            <th class="text-center whitespace-nowrap">DEAL SOURCE</th>
-                            <th class="text-center whitespace-nowrap">STATUS</th>
-                            <th class="text-center whitespace-nowrap">KETERANGAN</th>
-                            <th class="text-center whitespace-nowrap">ACTIONS</th>
+                            <TH CLASS="whitespace-nowrap text-primary">NO.</TH>
+                            <th class="whitespace-nowrap text-primary">NO. QUOTATION</th>
+                            <th class="text-center whitespace-nowrap text-primary">DEAL SOURCE</th>
+                            <th class="text-center whitespace-nowrap text-primary">STATUS</th>
+                            <th class="text-center whitespace-nowrap text-primary">KETERANGAN</th>
+                            <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($quotations as $quotation)
-                        <tr class="intro-x">
+                        <tr class="intro-x zoom-in transition">
                             <td class="w-10">
                                 <div class="flex">
                                     <div class="font-medium whitespace-nowrap">{{ $loop->iteration }}</div>

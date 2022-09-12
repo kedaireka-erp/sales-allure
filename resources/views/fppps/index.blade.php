@@ -48,21 +48,21 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="whitespace-nowrap">NO. FPPP</th>
-                    <th class="text-center text-center whitespace-nowrap">TIPE FPPP</th>
-                    <th class="text-center text-center whitespace-nowrap">TAHAP PRODUKSI</th>
-                    <th class="text-center text-center whitespace-nowrap">NO. QUOTATION</th>
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    <th class="whitespace-nowrap text-primary">NO. FPPP</th>
+                    <th class="text-center whitespace-nowrap text-primary">TIPE FPPP</th>
+                    <th class="text-center whitespace-nowrap text-primary">TAHAP PRODUKSI</th>
+                    <th class="text-center whitespace-nowrap text-primary">NO. QUOTATION</th>
+                    <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($fppps as $no => $fppp)
                 <tr class="intro-x zoom-in transition">
-                    <td >{{ $fppp->fppp_no }}</td>
-                    <td class="text-center">{{ ucfirst($fppp->fppp_type) }}</td>
-                    <td class="text-center">{{ $fppp->production_phase }}</td>
+                    <td class="text-base">{{ $fppp->fppp_no }}</td>
+                    <td class="text-base text-center">{{ ucfirst($fppp->fppp_type) }}</td>
+                    <td class="text-base text-center">{{ $fppp->production_phase }}</td>
 
-                    <td class="text-center">{{$fppp->Quotation->no_quotation ?? ''}}</td>
+                    <td class="text-base text-center">{{$fppp->Quotation->no_quotation ?? ''}}</td>
                     <td class="table-report__action w-fit">
                         {{-- <div class="flex justify-center items-center">
                             <a class="flex items-center text-primary mr-3" href="{{ route('fppps.show', $fppp->id) }}">
