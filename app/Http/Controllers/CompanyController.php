@@ -6,6 +6,7 @@ use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -14,8 +15,8 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $companies = Company::with('company_type', 'company_area')->get();
-        
+        $companies = Company::with(['company_area', 'company_type'])->get();
+
         return view('companies.index', compact('companies'));
     }
 
@@ -29,19 +30,17 @@ class CompanyController extends Controller
     }
 
     public function store(CompanyRequest $request)
-    {              
+    {
+  
         $validated = $request->validated();
-
-        $create = Company::create($validated);
-
-        if($create)
-        {
-            return redirect()->route('companies.index')->with('success', 'Company berhasil dibuat!');
+        try {
+            Company::create($validated);
+            
+        } catch (Exception $e) {
+            return redirect()->route('companies.create')->with('error', $e->getMessage());
         }
-        else
-        {
-            return redirect()->route('companies.create')->with('error', 'Company gagal dibuat!');
-        }     
+
+        return redirect()->route('companies.index')->with('success', 'Company created successfully.');
     }
 
     public function show($id)
@@ -62,7 +61,7 @@ class CompanyController extends Controller
         $company_types = CompanyType::get();
 
         $company_areas = CompanyArea::get();
-        
+
         return view('companies.edit', compact('company', 'companies', 'company_types', 'company_areas'));
     }
 
@@ -74,29 +73,23 @@ class CompanyController extends Controller
 
         $update = $company->update($validated);
 
-        if($update)
-        {
-            return redirect()->route('companies.index')->with('success', 'Company berhasil diubah!');
+
+        if ($update) {
+            return to_route('companies.index')->with('success', 'Company berhasil diubah!');
         }
-        else
-        {
-            return redirect()->route('companies.edit', $company->id)->with('error', 'Company gagal diubah!');
-        }
+
+        return to_route('companies.edit', $company->id)->with('error', 'Company gagal diubah!');
     }
 
     public function destroy($id)
     {
         $company = Company::findOrFail($id);
-
         $deleted = $company->delete();
-        
-        if($deleted)
-        {
-            return redirect()->route('companies.index')->with('success', 'Company berhasil dihapus!');
+
+
+        if ($deleted) {
+            return to_route("companies.index")->with('success', 'Company berhasil dihapus!');
         }
-        else
-        {
-            return redirect()->route('companies.index')->with('error', 'Company gagal dihapus!');
-        }     
+        return to_route("companies.index")->with('error', 'Company gagal dihapus!');
     }
 }

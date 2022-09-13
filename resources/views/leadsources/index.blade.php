@@ -21,16 +21,18 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace" style="width: 5%">No.</th>
-                        <th class="whitespace-nowrap">Nama Lead Source</th>
-                        <th class="text-center whitespace-nowrap">Aksi</th>
+                        <th class="whitespace text-primary" style="width: 5%">No.</th>
+                        <th class="whitespace-nowrap text-primary">Nama Lead Source</th>
+                        <th class="whitespace-nowrap text-primary">Deskripsi</th>
+                        <th class="text-center whitespace-nowrap text-primary">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($leadSources as $no => $ls)
-                        <tr class="intro-x">
+                        <tr class="intro-x zoom-in transition">
                             <td class="text-left">{{ ++$no }}</td>
                             <td class="text-left">{{ $ls->name }}</td>
+                            <td class="text-left">{!! $ls->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3" href="{{ route('leadsources.edit', $ls->id) }}">

@@ -48,14 +48,14 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="text-center whitespace-nowrap">JENIS KONTAK</th>
-                    <th class="text-center whitespace-nowrap">STATUS</th>
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    <th class="text-center whitespace-nowrap text-primary">JENIS KONTAK</th>
+                    <th class="text-center whitespace-nowrap text-primary">STATUS</th>
+                    <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($contact_types as $no => $type)
-                <tr class="intro-x">
+                <tr class="intro-x zoom-in transition">
                     <td>{{ $type->name }}</td>
                     <td>{{ $type->status }}</td>
                     <td class="table-report__action w-56">
