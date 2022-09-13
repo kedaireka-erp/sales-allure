@@ -41,7 +41,6 @@ class ContactController extends Controller
     
     public function show(Contact $contact)
     {
-        $contact = Contact::with('ContactType', 'LeadSource')->get();
         return view('contacts.detail', compact('contact'));
     }
 

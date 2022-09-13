@@ -117,21 +117,7 @@
                             <td class="text-center">{{ $quotation->status->name }}</td>
                             <td class="text-center">{!! Str::limit($quotation->keterangan, 20) !!}</td>
                             <td class="table-report__action w-fit">
-                                {{-- <div class="flex justify-center items-center">
-                                    <a href="{{ route('quotation.show', $quotation) }}"
-                                        class="flex items-center text-primary mr-3">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>Detail
-                                    </a>
-                                    <a href="{{ route('quotation.edit', $quotation) }}" class="flex items-center mr-3">
-                                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>Edit
-                                    </a>
-                                    <form action="{{ route('quotation.destroy', $quotation) }}" method="post">
-                                        @csrf
-                                        @method('Delete')
-                                        <button type="submit" class="flex items-center text-danger"><i
-                                                data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
-                                    </form>
-                                </div> --}}
+                                
                                 <div class="dropdown flex justify-center">
                                     <button class="dropdown-toggle btn px-2 box rounded-full" aria-expanded="false"
                                         data-tw-toggle="dropdown">
@@ -167,7 +153,7 @@
                                             </li>
                                             <li>
                                                 <div class="flex gap-2 p-1 flex-wrap">
-                                                    <a href="{{ route('quotation.edit', $quotation) }}" class="flex items-center mr-3">
+                                                    <a href="{{ route('quotation.edit', $quotation) }}" class="flex items-center text-success mr-3">
                                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>Edit
                                                     </a>
                                                     <form action="{{ route('quotation.destroy', $quotation) }}"
