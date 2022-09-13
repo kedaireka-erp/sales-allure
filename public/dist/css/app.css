@@ -3743,6 +3743,10 @@ select{
     --tw-border-opacity: 1;
     border-color: rgb(var(--color-primary) / var(--tw-border-opacity));
 }
+.border-red-700{
+    --tw-border-opacity: 1;
+    border-color: rgb(185 28 28 / var(--tw-border-opacity));
+}
 .border-white\/\[0\.08\]{
     border-color: rgb(255 255 255 / 0.08);
 }
@@ -3791,10 +3795,6 @@ select{
 .border-gray-300{
     --tw-border-opacity: 1;
     border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-.border-red-700{
-    --tw-border-opacity: 1;
-    border-color: rgb(185 28 28 / var(--tw-border-opacity));
 }
 .border-opacity-10{
     --tw-border-opacity: 0.1;

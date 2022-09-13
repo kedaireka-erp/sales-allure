@@ -16,7 +16,7 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|min:3',
             'phone_number' => 'required',
             'company_type_id' => 'required|exists:company_types,id',
             'address' => 'required',
@@ -33,8 +33,8 @@ class CompanyRequest extends FormRequest
 
     public function withValidator($validator)
     {
-       if($validator->fails()) {
-           return redirect()->route('companies.create')->with('error', $validator->errors())->withInput();
-       }
+        if ($validator->fails()) {
+            return back()->with('error', $validator->errors())->withInput();
+        }
     }
 }
