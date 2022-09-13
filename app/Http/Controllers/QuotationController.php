@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fppp;
 use App\Models\Status;
 use App\Models\Quotation;
 use App\Models\DealSource;
@@ -88,6 +89,7 @@ class QuotationController extends Controller
     public function quotationToFppp(Quotation $quo)
     {
         $quotations = Quotation::all();
-        return view('fppps.create', compact('quotations', 'quo'));
+        $fppps = Fppp::all();
+        return view('fppps.create', compact('quotations', 'quo', 'fppps'));
     }
 }

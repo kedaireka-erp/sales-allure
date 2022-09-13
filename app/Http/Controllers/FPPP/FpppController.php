@@ -37,7 +37,7 @@ class FpppController extends Controller
 
     public function store(FpppRequest $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $validated = $request->validated();
         $create = Fppp::create($validated);
         

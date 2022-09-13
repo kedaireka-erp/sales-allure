@@ -41,71 +41,71 @@
             <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
                 <span class="font-bold text-primary">LOGO</span>
                 <div class="flex flex-col items-center h-full">
-                    <h1 class="text-primary font-semibold text-xl">QUOTATION</h1>
-                    <h2 class="text-primary font-semibold text-lg">Quotation No. {{ $quotation->no_quotation }}</h2>
+                    <h1 class="text-primary font-semibold lg:text-xl text-md">QUOTATION</h1>
+                    <h2 class="text-primary font-semibold lg:text-lg text-base">Quotation No. {{ $quotation->no_quotation }}</h2>
                 </div>
                 <div class="mt-1">Kode-kode</div>
             </div>
-            <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
-                <div class="mt-5 w-full flex flex-col gap-y-3">
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">ID Penginput </div>
-                            <div class="text-base text-slate-500">:</div>
+            <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                <div class="mt-5 w-full flex flex-col text-sm lg:text-base gap-y-3">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">ID Penginput </div>
+                            <div class="text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">12345678</div>
+                            <div class="font-semibold text-slate-500">12345678</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Kode Aplikator</div>
-                            <div class="text-base text-slate-500">:</div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 lg:w-full">
+                        <div class="w-full  max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Kode Aplikator</div>
+                            <div class="text-slate-500">:</div>
                         </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">APP1234</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">ID Currency</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">192/893/APPPP/1293</div>
+                        <div class="w-full">
+                            <div class="font-semibold text-slate-500">APP1234</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Nama Proyek</div>
-                            <div class="text-base text-slate-500">:</div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">ID Currency</div>
+                            <div class="text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">Proyek Gajah Satwa</div>
+                            <div class="font-semibold text-slate-500">192/893/APPPP/1293</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Nama Owner</div>
-                            <div class="text-base text-slate-500">:</div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Nama Proyek</div>
+                            <div class="text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">{{ $fakers[0]['users'][0]['name'] }}</div>
+                            <div class="font-semibold text-slate-500">Proyek Gajah Satwa</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Kontak</div>
-                            <div class="text-base text-slate-500">:</div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Nama Owner</div>
+                            <div class="text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">{{ $fakers[0]['users'][1]['name'] }}</div>
+                            <div class="font-semibold text-slate-500">{{ $fakers[0]['users'][0]['name'] }}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Kontak</div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="font-semibold text-slate-500">{{ $fakers[0]['users'][1]['name'] }}</div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-5 w-full flex flex-col gap-y-3">
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                <div class="mt-5 w-full flex flex-col gap-y-3 text-sm lg:text-base">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">No. Quotation Customer</div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
@@ -113,8 +113,8 @@
                             <div class="text-base font-semibold text-slate-500">123/123/ASTRAL/321</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Alamat Proyek</div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
@@ -122,8 +122,8 @@
                             <div class="text-base font-semibold text-slate-500">Jl. Baru</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Status </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
@@ -131,8 +131,8 @@
                             <div class="text-base font-semibold text-slate-500">{{ $quotation->Status->name }}</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Deal Source </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
@@ -140,8 +140,8 @@
                             <div class="text-base font-semibold text-slate-500">{{ $quotation->DealSource->name }}</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Tanggal </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
@@ -149,8 +149,8 @@
                             <div class="text-base font-semibold text-slate-500">12 Desember 2020</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Revisi ke- 7</div>
                         </div>
                     </div>
