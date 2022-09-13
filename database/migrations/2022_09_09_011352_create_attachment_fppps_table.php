@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('attachment_fppps', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('fppp_id')->nullable();
             $table->string("name")->nullable();
             $table->string("path")->nullable();
             $table->timestamps();
