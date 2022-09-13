@@ -25,8 +25,8 @@ class SideMenu
                 'icon' => 'message-circle',
                 'title' => 'Approachment',
                 'sub_menu' => [
-                    'side-menu' => [
-                        'icon' => '',
+                    'pendekatan' => [
+                        'icon' => 'message-circle',
                         'route_name' => 'dashboard-overview-2',
                         'params' => [
                             'layout' => 'side-menu'
@@ -34,7 +34,7 @@ class SideMenu
                         'title' => 'Pendekatan'
                     ],
                     'activity' => [
-                        'icon' => '',
+                        'icon' => 'activity',
                         'route_name' => 'dashboard-overview-2',
                         'params' => [
                             'layout' => 'simple-menu'
@@ -42,7 +42,7 @@ class SideMenu
                         'title' => 'Activity'
                     ],
                     'status' => [
-                        'icon' => '',
+                        'icon' => 'thumbs-up',
                         'route_name' => 'status.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -56,7 +56,7 @@ class SideMenu
                 'title' => 'Company',
                 'sub_menu' => [
                     'company' => [
-                        'icon' => '',
+                        'icon' => 'home',
                         'route_name' => 'companies.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -64,7 +64,7 @@ class SideMenu
                         'title' => 'Company'
                     ],
                     'company_type' => [
-                        'icon' => '',
+                        'icon' => 'list',
                         'route_name' => 'company_types.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -72,7 +72,7 @@ class SideMenu
                         'title' => 'Company Types'
                     ],
                     'company_area' => [
-                        'icon' => '',
+                        'icon' => 'map-pin',
                         'route_name' => 'company_areas.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -90,7 +90,7 @@ class SideMenu
                 'title' => 'Contact',
                 'sub_menu' => [
                     'contact' => [
-                        'icon' => '',
+                        'icon' => 'users',
                         'route_name' => 'contacts.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -98,7 +98,7 @@ class SideMenu
                         'title' => 'Contact'
                     ],
                     'contact-type' => [
-                        'icon' => '',
+                        'icon' => 'user-check',
                         'route_name' => 'contact_types.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -106,7 +106,7 @@ class SideMenu
                         'title' => 'Contact Type'
                     ],
                     'lead-source' => [
-                        'icon' => '',
+                        'icon' => 'send',
                         'route_name' => 'leadsources.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -114,7 +114,7 @@ class SideMenu
                         'title' => 'Lead Source'
                     ],
                     'lead-status' => [
-                        'icon' => '',
+                        'icon' => 'thumbs-up',
                         'route_name' => 'leadstatuses.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -122,7 +122,7 @@ class SideMenu
                         'title' => 'Lead Status'
                     ],
                     'lead-priority' => [
-                        'icon' => '',
+                        'icon' => 'bookmark',
                         'route_name' => 'leadpriorities.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -130,7 +130,7 @@ class SideMenu
                         'title' => 'Lead Priority'
                     ],
                     'lead-interest' => [
-                        'icon' => '',
+                        'icon' => 'smile',
                         'route_name' => 'categories',
                         'params' => [
                             'layout' => 'side-menu'
@@ -144,7 +144,7 @@ class SideMenu
                 'title' => 'Quotation',
                 'sub_menu' => [
                     'quotation' => [
-                        'icon' => '',
+                        'icon' => 'layout',
                         'route_name' => 'quotation.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -152,7 +152,7 @@ class SideMenu
                         'title' => 'Quotation'
                     ],
                     'deal-source' => [
-                        'icon' => '',
+                        'icon' => 'at-sign',
                         'route_name' => 'deal_sources.index',
                         'params' => [
                             'layout' => 'side-menu'
