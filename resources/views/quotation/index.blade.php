@@ -94,12 +94,12 @@
                 <table class="table table-report -mt-2">
                     <thead>
                         <tr>
-                            <TH CLASS="whitespace-nowrap">NO.</TH>
-                            <th class="whitespace-nowrap">NO. QUOTATION</th>
-                            <th class="text-center whitespace-nowrap">DEAL SOURCE</th>
-                            <th class="text-center whitespace-nowrap">STATUS</th>
-                            <th class="text-center whitespace-nowrap">KETERANGAN</th>
-                            <th class="text-center whitespace-nowrap">ACTIONS</th>
+                            <TH CLASS="whitespace-nowrap text-primary">NO.</TH>
+                            <th class="whitespace-nowrap text-primary">NO. QUOTATION</th>
+                            <th class="text-center whitespace-nowrap text-primary">DEAL SOURCE</th>
+                            <th class="text-center whitespace-nowrap text-primary">STATUS</th>
+                            <th class="text-center whitespace-nowrap text-primary">KONTAK</th>
+                            <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,7 +115,7 @@
                             </td>
                             <td class="text-center">{{ $quotation->dealsource->name }}</td>
                             <td class="text-center">{{ $quotation->status->name }}</td>
-                            <td class="text-center">{!! Str::limit($quotation->keterangan, 20) !!}</td>
+                            <td class="text-center">{{ $fakers[0]['users'][0]['name'] }}</td>
                             <td class="table-report__action w-fit">
                                 {{-- <div class="flex justify-center items-center">
                                     <a href="{{ route('quotation.show', $quotation) }}"
