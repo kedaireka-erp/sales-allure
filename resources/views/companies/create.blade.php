@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group text-left mt-5">
                         <label for="company_type" class="form-label">Company Type</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="company_type_id">
+                        <select class="form-control tom-select" id="exampleFormControlSelect1" name="company_type_id">
                         <option selected value="">Select Company Type</option>
                         @foreach ($types as $tp)
                         <option value="{{ $tp->id }}">{{ $tp->name }}</option>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group text-left mt-5">
                         <label for="company_area" class="form-label">Company Area</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="company_area_id">
+                        <select class="form-control tom-select" id="exampleFormControlSelect1" name="company_area_id">
                         <option selected value="">Select Company Area</option>
                         @foreach ($areas as $ar)
                         <option value="{{ $ar->id }}">{{ $ar->name }}</option>
