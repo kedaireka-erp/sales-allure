@@ -14,7 +14,7 @@ class FpppController extends Controller
 {
     public function index()
     {
-        $fppps = Fppp::with("quotation")->orderBy('id', 'desc')->paginate(20);
+        $fppps = Fppp::with("quotation")->orderBy('id', 'desc')->paginate(10);
         return view("fppps.index", compact("fppps"));
     }
 

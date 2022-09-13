@@ -79,7 +79,7 @@
         <!-- BEGIN: Content -->
         <div class="content w-full">
             @include('../layout/components/top-bar')
-            <x-session-alert/>
+            @include('components.session-alert')
             @yield('subcontent')
         </div>
         <!-- END: Content -->
