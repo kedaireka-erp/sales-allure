@@ -44,4 +44,11 @@ class FpppRequest extends FormRequest
 
         ];
     }
+
+    public function withValidator($validator)
+    {
+        if ($validator->fails()) {
+            return redirect()->route('companies.create')->with('error', $validator->errors())->withInput();
+        }
+    }
 }

@@ -66,6 +66,9 @@
             </form>
             <!-- END: Form Layout -->
         </div>
+        @isset($record)
+            
+        @endisset
     </div>
 @endsection
 
