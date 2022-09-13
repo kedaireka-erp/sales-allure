@@ -104,7 +104,7 @@
                     </thead>
                     <tbody>
                         @foreach ($quotations as $quotation)
-                        <tr class="intro-x">
+                        <tr class="intro-x zoom-in transition">
                             <td class="w-10">
                                 <div class="flex">
                                     <div class="font-medium whitespace-nowrap">{{ $loop->iteration }}</div>

@@ -16,6 +16,7 @@ use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyAreaController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
+use App\Http\Controllers\LeadPriorityController;
 use App\Http\Controllers\LeadStatusController;
 
 /*
@@ -161,4 +162,7 @@ Route::middleware('auth')->group(function () {
 
     //route Kontak -> Lead Status
     Route::resource('leadstatuses', LeadStatusController::class);
+
+    //route Kontak -> Lead Priority
+    Route::resource('leadpriorities', LeadPriorityController::class);
 });

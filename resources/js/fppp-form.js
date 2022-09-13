@@ -20,4 +20,11 @@
             $('#fppp_lain').hide();
         }
     });
+
+    $("body").on("load", "#order_status", function () {
+        const selected = $(this).val();
+        if(selected == 'lainlain'){
+            $('#catatan_status_order').show();
+        }
+    });
 })();

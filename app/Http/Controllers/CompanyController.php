@@ -14,13 +14,15 @@ class CompanyController extends Controller
     public function index()
     {
         // $companies = Company::all();
-        $companies = DB::table('companies')
-            ->join('company_types', 'companies.company_type_id', '=', 'company_types.id')
-            ->join('company_areas', 'companies.company_area_id', '=', 'company_areas.id')
-            ->select('companies.*', 'company_types.name as type', 'company_areas.name as area')
-            ->orderBy('companies.id')
-            ->get();
+        // $companies = DB::table('companies')
+        //     ->join('company_types', 'companies.company_type_id', '=', 'company_types.id')
+        //     ->join('company_areas', 'companies.company_area_id', '=', 'company_areas.id')
+        //     ->select('companies.*', 'company_types.name as type', 'company_areas.name as area')
+        //     ->orderBy('companies.id')
+        //     ->get();
 
+        $companies = Company::with(['company_type'], ['company_area'])->get();
+        
         return view('companies.index', compact('companies'));
     }
 
