@@ -44,6 +44,7 @@ class CompanyAreaController extends Controller
     public function edit($id)
     {
         $company_area = CompanyArea::findOrFail($id);
+
         $company_areas = CompanyArea::all();
        
         return view('company_areas.edit', compact('company_area', 'company_areas'));
@@ -52,6 +53,7 @@ class CompanyAreaController extends Controller
     public function update(Request $request, $id)
     {
         $company_area = CompanyArea::findOrFail($id);
+
         $company_area->update([
             'name' => $request->name ?? $company_area->name,
             'description' => $request->description ?? $company_area->description,
@@ -63,6 +65,7 @@ class CompanyAreaController extends Controller
     public function destroy($id)
     {
         $company_area = CompanyArea::findOrFail($id);
+        
         $company_area->delete();
         
         return to_route("company_areas.index")->with('success', 'Company Area berhasil dihapus!');
