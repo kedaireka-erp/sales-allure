@@ -31,10 +31,17 @@ class CompanyAreaController extends Controller
             'description' => 'required',
         ]);
 
-        CompanyArea::create($request->all());
+        $create = CompanyArea::create($request->all());
 
-        return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil dibuat!');
-    }
+        if($create)
+        {
+            return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil dibuat!');
+        }
+        else
+        {
+            return redirect()->route('company_areas.create')->with('error', 'Company Area gagal dibuat!');
+        }
+    }   
  
     public function show(CompanyArea $companyArea)
     {
@@ -54,20 +61,34 @@ class CompanyAreaController extends Controller
     {
         $company_area = CompanyArea::findOrFail($id);
 
-        $company_area->update([
+        $update = $company_area->update([
             'name' => $request->name ?? $company_area->name,
             'description' => $request->description ?? $company_area->description,
         ]);
 
-        return to_route('company_areas.index')->with('success', 'Company Area berhasil diubah!');
-    }
+        if($update)
+        {
+            return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil diubah!');
+        }
+        else
+        {
+            return redirect()->route('company_areas.edit')->with('error', 'Company Area gagal diubah!');
+        }
+}
 
     public function destroy($id)
     {
         $company_area = CompanyArea::findOrFail($id);
         
-        $company_area->delete();
+        $deleted = $company_area->delete();
         
-        return to_route("company_areas.index")->with('success', 'Company Area berhasil dihapus!');
+        if($deleted)
+        {
+            return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil dihapus!');
+        }
+        else
+        {
+            return redirect()->route('company_areas.index')->with('error', 'Company Area gagal dihapus!');
+        }
     }
 }

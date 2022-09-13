@@ -76,7 +76,7 @@ class CompanyController extends Controller
 
         if($update)
         {
-            return redirect()->route('companies.index')->with('success', 'Company berhasil diuabh!');
+            return redirect()->route('companies.index')->with('success', 'Company berhasil diubah!');
         }
         else
         {
