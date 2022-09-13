@@ -73,6 +73,7 @@ class CompanyController extends Controller
 
         $update = $company->update($validated);
 
+
         if ($update) {
             return to_route('companies.index')->with('success', 'Company berhasil diubah!');
         }
