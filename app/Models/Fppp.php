@@ -37,7 +37,7 @@ class Fppp extends Model
     }
 
     public function files(){
-        return $this->hasMany(File::class, "fppp_id", "id");
+        return $this->hasMany(AttachmentFppp::class, "fppp_id", "id");
     }
 
 

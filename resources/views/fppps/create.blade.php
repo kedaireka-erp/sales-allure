@@ -143,7 +143,7 @@
 
                 <div class="mt-5 mb-5">
                     <div class="fallback">
-                        <input name="attachment" type="file" multiple />
+                        <input name="attachment[]" type="file" multiple />
                     </div>
                     <div class="dz-message" data-dz-message>
                         <div class="text-lg font-medium">Drop files here or click to upload.</div>

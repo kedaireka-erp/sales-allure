@@ -8,6 +8,7 @@ use App\Models\Quotation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FpppRequest;
+use App\Models\AttachmentFppp;
 
 class FpppController extends Controller
 {
@@ -31,15 +32,24 @@ class FpppController extends Controller
         $quotations = Quotation::whereHas('Status', function ($query) {
             return $query->where('name', 'won');
         })->get();
-        $files = File::get();
         return view("fppps.create", compact("fppps", "quotations"));
     }
 
     public function store(FpppRequest $request)
     {
+        // dd($request->all());
         $validated = $request->validated();
-        
         $create = Fppp::create($validated);
+        
+
+        foreach($request->file('attachment') as $att){
+            $ori_name = $att->getClientOriginalName();
+            AttachmentFppp::create([
+                'name' => $ori_name,
+                'path' => 'public/fppp/'.$ori_name,
+                'fppp_id' => $create->id
+            ]);
+        }
 
         if ($create) {
             return to_route("fppps.index")->with('success', 'FPPP dengan Nomor ' . $create->fppp_no . '  berhasil dibuat!');
@@ -55,7 +65,6 @@ class FpppController extends Controller
         $quotations = Quotation::whereHas('Status', function ($query) {
             return $query->where('name', 'won');
         })->get();
-        $files = File::get();
 
         return view("fppps.edit", compact("fppp", "fppps", "quotations", "files"));
     }
