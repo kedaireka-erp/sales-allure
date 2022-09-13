@@ -55,7 +55,7 @@
                             <button
                                 class="nav-link w-full py-2"
                                 data-tw-toggle="pill"
-                                data-tw-target="#friends"
+                                data-tw-target="#setting"
                                 type="button"
                                 role="tab"
                                 aria-controls="friends"
@@ -124,7 +124,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div id="friends" class="tab-pane" role="tabpanel" aria-labelledby="friends-tab">
+                <div id="setting" class="tab-pane" role="tabpanel" aria-labelledby="friends-tab">
                     <div class="pr-1">
                         <div class="box p-5 mt-5">
                             <div class="relative text-slate-500">

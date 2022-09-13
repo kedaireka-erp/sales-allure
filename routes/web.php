@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\StatusController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\QuotationController;
@@ -15,7 +16,8 @@ use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyAreaController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
-
+use App\Http\Controllers\LeadPriorityController;
+use App\Http\Controllers\LeadStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,19 +129,19 @@ Route::middleware('auth')->group(function () {
 
     //route company_types
     Route::resource('company_types', CompanyTypeController::class);
-    
+
     //route deal source
     Route::resource('deal_sources', DealSourceController::class);
 
     // route contact_type
     Route::resource('contact_types', ContactTypeController::class);
-    
+
     //lead source
     Route::resource('leadsources', LeadSourceController::class);
 
     // Quotation
     Route::resource('quotation', QuotationController::class);
-    
+
     //route company_areas
     Route::resource('company_areas', CompanyAreaController::class);
 
@@ -152,5 +154,15 @@ Route::middleware('auth')->group(function () {
     //route company
     Route::resource('companies', CompanyController::class);
 
+    //route user
+    Route::get('account/{account}/profile', [AccountController::class, 'show'])->name('account.profile');
+    Route::get('account/{account}/profile/edit', [AccountController::class, 'edit'])->name('account.profile.edit');
+    Route::patch('account/{account}/profile/update', [AccountController::class, 'update'])->name('account.profile.update');
+    // Route::get('user', [UserController::class, 'topProfile'])->name('user');
 
+    //route Kontak -> Lead Status
+    Route::resource('leadstatuses', LeadStatusController::class);
+
+    //route Kontak -> Lead Priority
+    Route::resource('leadpriorities', LeadPriorityController::class);
 });

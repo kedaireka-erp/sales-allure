@@ -14,7 +14,7 @@ class SideMenu
     {
         return [
             'dashboard' => [
-                'icon' => 'home',
+                'icon' => 'layers',
                 'title' => 'Dashboard',
                 'route_name' => 'dashboard-overview-1',
                 'params' => [
@@ -22,7 +22,7 @@ class SideMenu
                 ],
             ],
             'approachment' => [
-                'icon' => 'box',
+                'icon' => 'message-circle',
                 'title' => 'Approachment',
                 'sub_menu' => [
                     'pendekatan' => [
@@ -52,7 +52,7 @@ class SideMenu
                 ]
             ],
             'company' => [
-                'icon' => 'box',
+                'icon' => 'home',
                 'title' => 'Company',
                 'sub_menu' => [
                     'company' => [
@@ -140,7 +140,7 @@ class SideMenu
                 ],
             ],
             'quotation' => [
-                'icon' => 'hard-drive',
+                'icon' => 'layout',
                 'title' => 'Quotation',
                 'sub_menu' => [
                     'quotation' => [
@@ -162,7 +162,7 @@ class SideMenu
                 ]
             ],
             'fppp' => [
-                'icon' => 'credit-card',
+                'icon' => 'file-text',
                 'route_name' => 'fppps.index',
                 'params' => [
                     'layout' => 'side-menu'
