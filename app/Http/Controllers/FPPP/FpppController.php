@@ -58,23 +58,18 @@ class FpppController extends Controller
             return $query->where('name', 'won');
         })->get();
 
-        return view("fppps.edit", compact("fppp", "fppps", "quotations", "files"));
+        return view("fppps.edit", compact("fppp", "fppps", "quotations"));
     }
 
     public function update(FpppRequest $request, $id)
     {
         $fppp = Fppp::findOrFail($id);
         $validated = $request->validated();
-    
-        try {
-            $update = $fppp->update($validated);
-
-        } catch (Exception $e) {
-            return back()->with("error", $e->getMessage());
+        $update = $fppp->update($validated);
+        if ($update) {
+            return to_route("fppps.index")->with('success', 'FPPP dengan Nomor ' . $fppp->fppp_no . '  berhasil diubah!');
         }
-
-        return redirect()->route("fppps.index")->with("success", "FPPP Berhasil Diupdate!");
-
+        return to_route("fppps.edit", $fppp->id)->with('error', 'FPPP gagal diubah!');
     }
 
     public function destroy($id)
