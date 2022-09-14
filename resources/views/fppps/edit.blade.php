@@ -33,22 +33,18 @@
                         <label for="production_phase" class="form-label">Tahap Produksi </label>
                         <input id="production_phase" type="number" class="form-control w-full"
                             placeholder="Input Tahap Produksi" name="production_phase"
-                            value="{{ old("production_phase", $fppp->production_phase)}}">
+                            value="{{ $fppp->production_phase }}">
                     </div>
 
                     <div class="mt-5">
                         <label for="quotation" class="form-label">No. Quotation</label>
-                        <select data-placeholder="Pilih No. Quotation" class="@error("quotation_id") border-red-700 @enderror tom-select w-full" id="quotation"
+                        <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
                             name="quotation_id">
                             @foreach ($quotations as $quotation)
                                 <option value="{{ $quotation->id }}"
                                     {{ $quotation->id == $fppp->quotation_id ? 'selected' : '' }}>
                                     {{ $quotation->no_quotation }}</option>
                             @endforeach
-                            @error('quotation_id')
-                            <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-
                         </select>
                     </div>
                     <div class="mt-5">
@@ -83,12 +79,12 @@
                     <div class="mt-5">
                         <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
                         <input id="production_time" type="number" class="form-control w-full"
-                            placeholder="Input Waktu Produksi" name="production_time" value="{{ old("production_time", $fppp->production_time)}}">
+                            placeholder="Input Waktu Produksi" name="production_time" value="{{ $fppp->production_time }}">
                     </div>
                     <div class="mt-5">
                         <label for="color" class="form-label">Warna </label>
                         <input id="color" type="text" class="form-control w-full" placeholder="Input Tahap Produksi"
-                            name="color" value="{{ old("color", $fppp->color ) }}">
+                            name="color" value="{{ $fppp->color }}">
                     </div>
                     <div class="mt-5">
                         <label for="glass" class="form-label">Kaca</label>
@@ -103,13 +99,13 @@
                     <div class="mt-5">
                         <label for="glass_type" class="form-label">Jenis Kaca </label>
                         <input id="glass_type" type="text" class="form-control w-full" placeholder="Input Kaca"
-                            name="glass_type" value="{{ old("glass_type", $fppp->glass_type) }}">
+                            name="glass_type" value="{{ $fppp->glass_type }}">
                     </div>
                     <div class="mt-5">
                         <label for="retrieval_deadline" class="form-label">Deadline Pengambilan </label>
                         <input id="retrieval_deadline" type="date" class="form-control w-full"
                             placeholder="Input Tanggal " name="retrieval_deadline"
-                            value="{{ old('retrieval_deadline', $fppp->retrieval_deadline) }}">
+                            value="{{ $fppp->retrieval_deadline }}">
                     </div>
                     <div class="mt-5">
                         <label for="box_usage" class="form-label">Penggunaan Peti</label>
