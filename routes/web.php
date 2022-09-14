@@ -156,6 +156,7 @@ Route::middleware('auth')->group(function () {
 
     //route user
     Route::get('account/{account}/profile', [AccountController::class, 'show'])->name('account.profile');
+    Route::get('account/{account}/personal-information', [AccountController::class, 'personal'])->name('account.personal-information');
     Route::get('account/{account}/profile/edit', [AccountController::class, 'edit'])->name('account.profile.edit');
     Route::patch('account/{account}/profile/update', [AccountController::class, 'update'])->name('account.profile.update');
     // Route::get('user', [UserController::class, 'topProfile'])->name('user');
