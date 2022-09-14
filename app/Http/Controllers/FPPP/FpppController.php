@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FpppRequest;
 use App\Models\AttachmentFppp;
-use Exception;
 
 class FpppController extends Controller
 {
@@ -65,16 +64,11 @@ class FpppController extends Controller
     {
         $fppp = Fppp::findOrFail($id);
         $validated = $request->validated();
-    
-        try {
-            $update = $fppp->update($validated);
-
-        } catch (Exception $e) {
-            return back()->with("error", $e->getMessage());
+        $update = $fppp->update($validated);
+        if ($update) {
+            return to_route("fppp.index")->with('success', 'FPPP dengan Nomor ' . $update->fppp_no . '  berhasil diubah!');
         }
-
-        return redirect()->route("fppps.index")->with("success", "FPPP Berhasil Diupdate!");
-
+        return to_route("fppp.edit", $fppp->id)->with('error', 'FPPP gagal diubah!');
     }
 
     public function destroy($id)
