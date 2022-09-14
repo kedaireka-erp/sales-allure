@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FpppRequest;
 use App\Models\AttachmentFppp;
-
 class FpppController extends Controller
 {
     public function index()
@@ -57,7 +56,7 @@ class FpppController extends Controller
             return $query->where('name', 'won');
         })->get();
 
-        return view("fppps.edit", compact("fppp", "fppps", "quotations", "files"));
+        return view("fppps.edit", compact("fppp", "fppps", "quotations"));
     }
 
     public function update(FpppRequest $request, $id)
@@ -66,9 +65,9 @@ class FpppController extends Controller
         $validated = $request->validated();
         $update = $fppp->update($validated);
         if ($update) {
-            return to_route("fppp.index")->with('success', 'FPPP dengan Nomor ' . $update->fppp_no . '  berhasil diubah!');
+            return to_route("fppps.index")->with('success', 'FPPP dengan Nomor ' . $fppp->fppp_no . '  berhasil diubah!');
         }
-        return to_route("fppp.edit", $fppp->id)->with('error', 'FPPP gagal diubah!');
+        return to_route("fppps.edit", $fppp->id)->with('error', 'FPPP gagal diubah!');
     }
 
     public function destroy($id)
