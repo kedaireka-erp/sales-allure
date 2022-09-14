@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Validator;
 class AccountController extends Controller
 {
     public function show(User $account){
-        return view('account.detail', compact('account'));
+        return view('account.profile', compact('account'));
+    }
+    public function personal(User $account){
+        return view('account.personal', compact('account'));
     }
     
     public function edit(User $account)
@@ -24,6 +27,8 @@ class AccountController extends Controller
             'email' => 'required',
             // 'password' => 'required',
             'gender' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required',
             // 'photo' => 'nullable|file|image|max:5120'
         ]);
         $account->update($validator->validate());
