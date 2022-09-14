@@ -24,13 +24,20 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'contact_type_id'=> 'nullable' ,
-            'lead_source_id' => 'nullable',
+            'contact_type_id'=> 'required|exists:contact_types,id' ,
+            'lead_source_id' => 'required|exists:lead_sources,id',
             'name' =>'required',
             'email' =>'required',
             'address' =>'required',
             'phone' =>'required',
             'note' =>'required',
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        if ($validator->fails()) {
+            return back()->with('error', $validator->errors())->withInput();
+        }
     }
 }
