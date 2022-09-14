@@ -35,13 +35,15 @@
                             placeholder="Input Tahap Produksi" name="production_phase"
                             value="{{ $fppp->production_phase }}">
                     </div>
+
                     <div class="mt-5">
-                        <label for="quotation">No. Quotation</label>
+                        <label for="quotation" class="form-label">No. Quotation</label>
                         <select data-placeholder="Pilih No. Quotation" class="tom-select w-full" id="quotation"
                             name="quotation_id">
                             @foreach ($quotations as $quotation)
                                 <option value="{{ $quotation->id }}"
-                                    {{ $quotation->id == $fppp->quotation_id ? 'selected' : '' }}>{{ $quotation->no_quotation }}</option>
+                                    {{ $quotation->id == $fppp->quotation_id ? 'selected' : '' }}>
+                                    {{ $quotation->no_quotation }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -58,6 +60,22 @@
                             </option>
                         </select>
                     </div>
+                    <div class="mt-5" id="fppp_lain">
+                        <label for="fppp_lain" class="form-label">No FPPP Yang Direvisi</label>
+                        <select data-placeholder="Pilih No FPPP" class="tom-select w-full" name="fppp_revisino" single>
+                            @foreach ($fppps as $f)
+                                <option {{ $f->fppp_no == $fppp->fppp_revisino ? 'selected' : '' }}
+                                    value="{{ $f->fppp_no }}">{{ $f->fppp_no }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mt-5" id="catatan_status_order">
+                        <label for="note" class="mb-2">Keterangan Lain-lain</label>
+                        <div class="mt-2">
+                            <textarea name="fppp_keterangan" cols="30" rows="10" class="editor ">{!! old('fppp_keterangan', $fppp->fppp_keterangan) !!}</textarea>
+                        </div>
+                    </div>
+
                     <div class="mt-5">
                         <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
                         <input id="production_time" type="number" class="form-control w-full"
@@ -86,7 +104,8 @@
                     <div class="mt-5">
                         <label for="retrieval_deadline" class="form-label">Deadline Pengambilan </label>
                         <input id="retrieval_deadline" type="date" class="form-control w-full"
-                            placeholder="Input Tanggal " name="retrieval_deadline" value="{{ $fppp->retrieval_deadline }}">
+                            placeholder="Input Tanggal " name="retrieval_deadline"
+                            value="{{ $fppp->retrieval_deadline }}">
                     </div>
                     <div class="mt-5">
                         <label for="box_usage" class="form-label">Penggunaan Peti</label>
@@ -117,7 +136,7 @@
                     <div class="mt-5">
                         <label for="note">Catatan</label>
                         <div class="mt-2">
-                                <textarea name="note" id="note" cols="30" rows="10" class="editor">{!!old("note", $fppp->note)!!}</textarea>
+                            <textarea name="note" id="note" cols="30" rows="10" class="editor">{!! old('note', $fppp->note) !!}</textarea>
                         </div>
                     </div>
 

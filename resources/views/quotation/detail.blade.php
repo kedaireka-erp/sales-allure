@@ -9,7 +9,7 @@
         <h2 class="text-lg font-medium mr-auto">Detail Quotation</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a href="{{ route('quotation.fppp', ['quo' => $quotation]) }}" class="btn btn-primary shadow-md mr-2">
-            <span class="text">Buat FPPP</span>
+                <span class="text">Buat FPPP</span>
             </a>
             <button class="btn btn-primary shadow-md mr-2">Print</button>
             <div class="dropdown ml-auto sm:ml-0">
@@ -38,14 +38,129 @@
     <!-- BEGIN: Invoice -->
     <div class="intro-y box overflow-hidden mt-5">
         <div class="border-b border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
-            <div class="px-5 py-10 sm:px-20 sm:py-20">
-                <div class="text-primary font-semibold text-3xl">Quotation</div>
-                <div class="mt-2">Quotation No. {{ $quotation->no_quotation }}</div>
-                <div class="mt-2">
-                    <b>Status :</b> {{ $quotation->Status->name }}
+            <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
+                <span class="font-bold text-primary">LOGO</span>
+                <div class="flex flex-col items-center h-full">
+                    <h1 class="text-primary font-semibold lg:text-xl text-md">QUOTATION</h1>
+                    <h2 class="text-primary font-semibold lg:text-lg text-base">Quotation No. {{ $quotation->no_quotation }}</h2>
                 </div>
-                <div class="mt-2">
-                    <b>Deal Source :</b> {{ $quotation->DealSource->name }}
+                <div class="mt-1">Kode-kode</div>
+            </div>
+            <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                <div class="mt-5 w-full flex flex-col text-sm lg:text-base gap-y-3">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">ID Penginput </div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="font-semibold text-slate-500">12345678</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 lg:w-full">
+                        <div class="w-full  max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Kode Aplikator</div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class="w-full">
+                            <div class="font-semibold text-slate-500">APP1234</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">ID Currency</div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="font-semibold text-slate-500">192/893/APPPP/1293</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Nama Proyek</div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="font-semibold text-slate-500">Proyek Gajah Satwa</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Nama Owner</div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="font-semibold text-slate-500">{{ $fakers[0]['users'][0]['name'] }}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Kontak</div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="font-semibold text-slate-500">{{ $fakers[0]['users'][1]['name'] }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 w-full flex flex-col gap-y-3 text-sm lg:text-base">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">No. Quotation Customer</div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">123/123/ASTRAL/321</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Alamat Proyek</div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">Jl. Baru</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Status </div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">{{ $quotation->Status->name }}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Deal Source </div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">{{ $quotation->DealSource->name }}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Tanggal </div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">12 Desember 2020</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Revisi ke- 7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
+                <div class="text-center sm:text-left mt-10 sm:mt-0">
+                    <div class="text-base text-slate-500"><b>Alasan</b></div>
+                    <div class="mt-1">Lorem Ipsum is simply dummy text of the printing</div>
+                </div>
             </div>
         </div>
         <div class="px-5 sm:px-16 py-10 sm:py-20">

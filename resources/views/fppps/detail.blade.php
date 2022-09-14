@@ -1,122 +1,190 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Invoice Layout - Midone - Tailwind HTML Admin Template</title>
+<title>Invoice Layout - Midone - Tailwind HTML Admin Template</title>
 @endsection
 
 @section('subcontent')
-    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">Detail FPPP</h2>
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button class="btn btn-primary shadow-md mr-2">Download</button>
-            <div class="dropdown ml-auto sm:ml-0">
-                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center">
-                        <i class="w-4 h-4" data-lucide="plus"></i>
-                    </span>
-                </button>
-                <div class="dropdown-menu w-40">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export Word
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export PDF
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">Detail FPPP</h2>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <button class="btn btn-primary shadow-md mr-2">Print</button>
+        <div class="dropdown ml-auto sm:ml-0">
+            <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                <span class="w-5 h-5 flex items-center justify-center">
+                    <i class="w-4 h-4" data-lucide="plus"></i>
+                </span>
+            </button>
+            <div class="dropdown-menu w-40">
+                <ul class="dropdown-content">
+                    <li>
+                        <a href="" class="dropdown-item">
+                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export Word
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="dropdown-item">
+                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export PDF
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- BEGIN: Invoice -->
-    <div class="intro-y box overflow-hidden mt-5">
-        <div class="border-b border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
-            <div class="px-5 py-10 sm:px-20 sm:py-20">
-                <div class="text-primary font-semibold text-3xl" align="center">FORM PAKET PERMINTAAN PRODUKSI</div>
-                <div class="mt-2 text-xl" align="center">
-                    No. <span class="font-md">{{ $fppp->fppp_no }}</span>
+</div>
+<!-- BEGIN: Invoice -->
+<div class=" box overflow-hidden mt-5 w-full">
+    <div class=" w-full border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
+        <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
+            <span class="font-bold text-primary">LOGO</span>
+            <div class="flex flex-col items-center h-full">
+                <h1 class="text-primary font-semibold text-lg lg:text-xl">FORM PAKET PERMINTAAN PRODUKSI</h1>
+                <h2 class="text-primary font-semibold text-md lg:text-lg">No: {{ $fppp->fppp_no }}</h2>
+                <p class="text-primary  text-md lg:text-lg">Mockup/Produksi Tahap {{ $fppp->production_phase }}</p>
+            </div>
+            <div class="mt-1">Kode-Kode</div>
+        </div>
+        <div class="mt-5 w-full flex flex-col gap-y-3">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Tanggal </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <div class="text-xl" align="center">
-                    Mockup/Produksi Tahap <span class="font-md">{{ $fppp->production_phase }}</span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{\Carbon\Carbon::parse($fppp->created_at)->format("d F Y")}}</div>
                 </div>
-                <div class="mt-5 text-lg">
-                    Tanggal                    : <span class="font-md">{{\Carbon\Carbon::parse($fppp->created_at)->format("d F Y")}}</span>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Divisi </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Divisi                     : <span class="font-md">ASTRAL</span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">ASTRAL</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Nama Aplikator             : <span class="font-md">???</span>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Nama Aplikator </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Sales/Site Manager         : <span class="font-md">???</span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">PT KENCANA MIRAE INDUSTRI</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Nama Proyek                : <span class="font-md">???</span>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Nama Proyek </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Status Order               : <span class="font-md">{{$fppp->order_status}}</span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">BINA BAKTI OFFICE TAHAP 2</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Waktu Produksi             : <span class="font-md">{{$fppp->production_time}} Hari</span>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full mb-3">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Alamat Proyek </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <br>
-                <div class="mt-2 text-lg">
-                    <b>PAKET DATA PRODUKSI</b><span class="font-md"></span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">JAKARTA</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Gambar                     : <span class="font-md">??? Lembar</span>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Sales/Site Manager </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Kode Item                  : <span class="font-md"><b>#TERLAMPIR</b></span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">IBU AGUSTIN</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Warna                      : <span class="font-md">{{ucfirst($fppp->color)}}</span>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Status Order</div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Kaca                       : <span class="font-md">{{ucfirst($fppp->glass)}}</span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->order_status}}</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Jenis Kaca                 : <span class="font-md">{{ucfirst($fppp->glass_type)}}</span>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Waktu Produksi </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
-                <br>
-                <div class="mt-2 text-lg">
-                    <b>PENGIRIMAN</b><span class="font-md"></span>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->production_time}} Hari</div>
                 </div>
-                <div class="mt-2 text-lg">
-                    Deadline Pengiriman        : <span class="font-md">{{\Carbon\Carbon::parse($fppp->retrieval_deadline)->format("d F Y")}}</span>
-                </div>
-                <div class="mt-2 text-lg">
-                    Penggunaan Peti            : <span class="font-md">{{ucfirst($fppp->box_usage)}}</span>
-                </div>
-                <div class="mt-2 text-lg">
-                    Penggunaan Sealant         : <span class="font-md">{{ucfirst($fppp->sealant_usage)}}</span>
-                </div>
-                <div class="mt-2 text-lg">
-                    Pengiriman ke Ekspedisi    : <span class="font-md">{{ucfirst($fppp->delivery_to_expedition)}}</span>
-                </div>
-                <div class="mt-2 text-lg">
-                    Note : <span class="font-md">{{$fppp->note}}</span>
-                </div>
-            </div>  
-            {{-- <div class="flex flex-col lg:flex-row px-5 sm:px-20 pt-10 pb-10 sm:pb-20">
-                <div>
-                    <div class="text-base text-slate-500">Client Details</div>
-                    <div class="text-lg font-medium text-primary mt-2">Arnold Schwarzenegger</div>
-                    <div class="mt-1">arnodlschwarzenegger@gmail.com</div>
-                    <div class="mt-1">260 W. Storm Street New York, NY 10025.</div>
-                </div>
-                <div class="lg:text-right mt-10 lg:mt-0 lg:ml-auto">
-                    <div class="text-base text-slate-500">Payment to</div>
-                    <div class="text-lg font-medium text-primary mt-2">Left4code</div>
-                    <div class="mt-1">left4code@gmail.com</div>
-                </div>
-            </div> --}}
+            </div>
+            <hr>
         </div>
     </div>
-    <!-- END: Invoice -->
+    <div class="px-5 sm:px-16 py-10 sm:py-20">
+        <div class="overflow-x-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="border-b-2 dark:border-darkmode-400 whitespace-nowrap">DESCRIPTION</th>
+                        <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">QTY</th>
+                        <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">PRICE</th>
+                        <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">SUBTOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border-b dark:border-darkmode-400">
+                            <div class="font-medium whitespace-nowrap">Midone HTML Admin Template</div>
+                            <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
+                        </td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32">2</td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$50</td>
+                    </tr>
+                    <tr>
+                        <td class="border-b dark:border-darkmode-400">
+                            <div class="font-medium whitespace-nowrap">Vuejs Admin Template</div>
+                            <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
+                        </td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32">1</td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$25</td>
+                    </tr>
+                    <tr>
+                        <td class="border-b dark:border-darkmode-400">
+                            <div class="font-medium whitespace-nowrap">React Admin Template</div>
+                            <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
+                        </td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32">1</td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
+                        <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$25</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="font-medium whitespace-nowrap">Laravel Admin Template</div>
+                            <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
+                        </td>
+                        <td class="text-right w-32">3</td>
+                        <td class="text-right w-32">$25</td>
+                        <td class="text-right w-32 font-medium">$75</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
+        <div class="text-center sm:text-left mt-10 sm:mt-0">
+            <div class="text-base text-slate-500">Bank Transfer</div>
+            <div class="text-lg text-primary font-medium mt-2">Elon Musk</div>
+            <div class="mt-1">Bank Account : 098347234832</div>
+            <div class="mt-1">Code : LFT133243</div>
+        </div>
+        <div class="text-center sm:text-right sm:ml-auto">
+            <div class="text-base text-slate-500">Total Amount</div>
+            <div class="text-xl text-primary font-medium mt-2">$20.600.00</div>
+            <div class="mt-1">Taxes included</div>
+        </div>
+    </div>
+</div>
+<!-- END: Invoice -->
 @endsection

@@ -48,14 +48,14 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="whitespace-nowrap">NAME</th>
-                    <th class="whitespace-nowrap">DESCRIPTION</th>
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    <th class="whitespace-nowrap text-primary">NAME</th>
+                    <th class="whitespace-nowrap text-primary">DESCRIPTION</th>
+                    <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($company_areas as $no => $area)
-                <tr class="intro-x">
+                <tr class="intro-x zoom-in transition">
                     <td>{{ $area->name }}</td>
                     <td>{!!$area->description !!}</td>                   
                     <td class="table-report__action w-56">

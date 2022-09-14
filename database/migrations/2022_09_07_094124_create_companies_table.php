@@ -18,7 +18,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone_number');
             $table->string('address');
-            $table->text('description');
+            $table->string('city')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->integer('number_of_employees')->nullable();
+            $table->integer('annual_revenue')->nullable();
+            $table->string('time_zone')->nullable();
+            $table->text('description')->nullable();
+            $table->string('linkedin_company')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

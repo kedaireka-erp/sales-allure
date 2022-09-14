@@ -10,6 +10,12 @@ class LeadSource extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'description'
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

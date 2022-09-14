@@ -20,11 +20,17 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->company,
-            'company_type_id' => CompanyType::all()->random()->id,
-            'company_area_id' => CompanyArea::all()->random()->id,
             'phone_number' => $this->faker->phoneNumber,
+            'company_type_id' => CompanyType::all()->random()->id,
             'address' => $this->faker->address,
+            'city' => $this->faker->city,
+            'company_area_id' => CompanyArea::all()->random()->id,
+            'postal_code' => $this->faker->postcode,
+            'number_of_employees' => $this->faker->numberBetween(10, 100),
+            'annual_revenue' => $this->faker->numberBetween(1000000, 100000000),
+            'time_zone' => $this->faker->timezone,
             'description' => $this->faker->text,
+            'linkedin_company' => $this->faker->url,
         ];
     }
 }

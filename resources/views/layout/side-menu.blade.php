@@ -41,7 +41,7 @@
                                         <li>
                                             <a href="{{ isset($subMenu['route_name']) ? route($subMenu['route_name'], $subMenu['params']) : 'javascript:;' }}" class="{{ $second_level_active_index == $subMenuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                                 <div class="side-menu__icon">
-                                                    <i data-lucide="activity"></i>
+                                                    <i data-lucide="{{ $subMenu['icon'] }}"></i>
                                                 </div>
                                                 <div class="side-menu__title">
                                                     {{ $subMenu['title'] }}
@@ -77,9 +77,9 @@
         </nav>
         <!-- END: Side Menu -->
         <!-- BEGIN: Content -->
-        <div class="content">
+        <div class="content w-full">
             @include('../layout/components/top-bar')
-            <x-session-alert/>
+            @include('components.session-alert')
             @yield('subcontent')
         </div>
         <!-- END: Content -->
