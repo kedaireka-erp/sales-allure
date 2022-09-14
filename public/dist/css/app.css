@@ -3743,6 +3743,10 @@ select{
     --tw-border-opacity: 1;
     border-color: rgb(var(--color-primary) / var(--tw-border-opacity));
 }
+.border-red-700{
+    --tw-border-opacity: 1;
+    border-color: rgb(185 28 28 / var(--tw-border-opacity));
+}
 .border-white\/\[0\.08\]{
     border-color: rgb(255 255 255 / 0.08);
 }
@@ -3791,10 +3795,6 @@ select{
 .border-gray-300{
     --tw-border-opacity: 1;
     border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-.border-red-700{
-    --tw-border-opacity: 1;
-    border-color: rgb(185 28 28 / var(--tw-border-opacity));
 }
 .border-opacity-10{
     --tw-border-opacity: 0.1;
@@ -3899,6 +3899,14 @@ select{
 .bg-indigo-900{
     --tw-bg-opacity: 1;
     background-color: rgb(49 46 129 / var(--tw-bg-opacity));
+}
+.bg-red-500{
+    --tw-bg-opacity: 1;
+    background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+.bg-red-600{
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 .bg-opacity-20{
     --tw-bg-opacity: 0.2;
@@ -18601,6 +18609,9 @@ html body{
     .lg\:w-56{
         width: 14rem;
     }
+    .lg\:w-full{
+        width: 100%;
+    }
     .lg\:flex-row{
         flex-direction: row;
     }
@@ -18691,6 +18702,18 @@ html body{
     .lg\:text-3xl{
         font-size: 1.875rem;
         line-height: 2.25rem;
+    }
+    .lg\:text-base{
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .lg\:text-xl{
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+    .lg\:text-lg{
+        font-size: 1.125rem;
+        line-height: 1.75rem;
     }
     .before\:lg\:block::before{
         content: var(--tw-content);

@@ -15,7 +15,7 @@ class FpppController extends Controller
 {
     public function index()
     {
-        $fppps = Fppp::with("quotation")->orderBy('id', 'desc')->paginate(10);
+        $fppps = Fppp::with("quotation")->orderBy('created_at', 'desc')->orderBy('quotation_id', 'desc')->paginate(10);
         return view("fppps.index", compact("fppps"));
     }
 
@@ -38,19 +38,10 @@ class FpppController extends Controller
 
     public function store(FpppRequest $request)
     {
-        // dd($request->all());
+        
         $validated = $request->validated();
         $create = Fppp::create($validated);
         
-
-        foreach($request->file('attachment') as $att){
-            $ori_name = $att->getClientOriginalName();
-            AttachmentFppp::create([
-                'name' => $ori_name,
-                'path' => 'public/fppp/'.$ori_name,
-                'fppp_id' => $create->id
-            ]);
-        }
 
         if ($create) {
             return to_route("fppps.index")->with('success', 'FPPP dengan Nomor ' . $create->fppp_no . '  berhasil dibuat!');

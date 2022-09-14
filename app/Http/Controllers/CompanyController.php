@@ -70,15 +70,15 @@ class CompanyController extends Controller
         $company = Company::findOrFail($id);
 
         $validated = $request->validated();
-
-        $update = $company->update($validated);
-
-
-        if ($update) {
-            return to_route('companies.index')->with('success', 'Company berhasil diubah!');
+        
+        try {
+            $company->update($validated);
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
 
-        return to_route('companies.edit', $company->id)->with('error', 'Company gagal diubah!');
+        return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
+
     }
 
     public function destroy($id)
