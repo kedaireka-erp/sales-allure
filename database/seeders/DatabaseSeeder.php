@@ -37,11 +37,13 @@ class DatabaseSeeder extends Seeder
 
         LeadSource::factory(5)->create();
 
+        Company::factory(20)->create();
+        
         Contact::factory(20)->create();
 
         Fppp::factory(100)->create();
 
-        Company::factory(20)->create();
+        
 
     }
 }

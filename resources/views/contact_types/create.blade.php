@@ -16,8 +16,12 @@
                 <div class="intro-y box p-5">
                     <div>
                         <label for="name" class="form-label">Contact Type Name </label>
-                        <input id="name" type="text" class="form-control w-full" placeholder="Nama Jenis Kontak"
-                            name="name" required>
+                        <input id="name" type="text" class="form-control w-full @error('name') border-red-700
+                        @enderror" placeholder="Nama Jenis Kontak"
+                            name="name" value="{{ old('name') }}">
+                        @error('name')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                        
+                        @enderror
                     </div>
                     <div class="mt-5">
                         <label for="status" class="form-label">Contact Type Status</label>
@@ -27,16 +31,6 @@
                             <option value="nonactive">Nonactive</option>
                         </select>
                     </div>
-
-
-
-                    {{-- <div class="mt-5">
-                        <label for="note">Catatan</label>
-                        <div class="mt-2">
-                            <div class="editor">
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="text-right mt-5">
                         <button type="submit" class="btn btn-primary w-24">Save</button>
                     </div>

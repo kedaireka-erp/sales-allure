@@ -32,4 +32,9 @@ class Contact extends Model
     {
         return $this->belongsTo(LeadSource::class);
     }
+
+    public function Company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
