@@ -27,7 +27,7 @@ class FpppRequest extends FormRequest
             //
             "fppp_type" => 'nullable',
             "production_phase" => 'nullable',
-            "quotation_id" => 'required|exists:quotations,id',
+            "quotation_id" => 'required',
             "order_status" => 'nullable',
             "fppp_revisino" => 'nullable',
             "fppp_keterangan" => 'nullable',
@@ -48,7 +48,7 @@ class FpppRequest extends FormRequest
     public function withValidator($validator)
     {
         if ($validator->fails()) {
-            return back()->with('error', $validator->errors())->withInput();
+            return redirect()->route('companies.create')->with('error', $validator->errors())->withInput();
         }
     }
 }

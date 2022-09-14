@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
 {
+    public function show(User $account){
+        return view('account.detail', compact('account'));
+    }
     public function edit(User $account)
     {
         return view('account.edit', compact('account'));

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FpppRequest;
 use App\Models\AttachmentFppp;
-use Exception;
 
 class FpppController extends Controller
 {
