@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\Company;
 use App\Models\Contact;
 use App\Models\LeadSource;
 use App\Models\ContactType;
@@ -22,9 +23,10 @@ class ContactController extends Controller
    
     public function create()
     {
+        $companies = Company::all();
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();        
-        return view('contacts.create', compact('contactTypes', 'leadSources'));
+        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources'));
     }
 
     
@@ -50,11 +52,12 @@ class ContactController extends Controller
     
     public function edit($id)
     {
+        $companies = Company::get();
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
         $contact = Contact::findOrFail($id);
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies'));
     }
 
     

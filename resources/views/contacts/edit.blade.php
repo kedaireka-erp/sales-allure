@@ -16,10 +16,27 @@
                 @method('PATCH')
                 <div class="intro-y box p-5">
                     <div class="mt-5">
+                        <label for="company" class="form-label">Company</label>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('company_id') border-red-700                            
+                        @enderror" id="company" name="company_id" placeholder="Select Company">                       
+                                @isset($record->company_id)
+                                @foreach ($companies as $company)
+                                    <option value="{{ $company->id }}"  {{ $company->id === $contacts->company_id ? 'selected' : '' }}>{{ $company->name }}</option>
+                                @endforeach
+                                @endisset
+
+                                @foreach ($companies as $company)
+                                <option value="{{ $company->id }}" >{{ $company->name }}</option>
+                                @endforeach 
+                        </select>
+                        @error('company_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
+                    </div>
+                    <div class="mt-5">
                         <label for="contact_type" class="form-label">Contact Type</label>
                         <select class="custom-select d-block w-full form-control mb-3 tom-select @error('contact_type_id') border-red-700                            
-                        @enderror" id="contact_type"
-                                name="contact_type_id" placeholder="Contact Type">
+                        @enderror" id="contact_type" name="contact_type_id" placeholder="Contact Type">
                                 @foreach ($contactTypes as $contactType)
                                     <option {{ $contactType->id == $contact->contact_type_id ? 'selected' : ''}} value="{{ $contactType->id }}">{{ $contactType->name }}</option>
                                 @endforeach
@@ -31,13 +48,11 @@
                     <div class="mt-5">
                         <label for="lead_source" class="form-label">Lead Source</label>
                             <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_source_id') border-red-700                            
-                            @enderror" id="lead_source"
-                                    name="lead_source_id" placeholder="Lead Source">
+                            @enderror" id="lead_source" name="lead_source_id" placeholder="Lead Source">
                                         @isset($record->lead_source_id)
-                                        @foreach ($leadSources as $leadSource)
-                                            <option value="{{ $leadSource->id }}"  {{ $leadSource->id === $contacts->leadSource_id ? 'selected' : '' }}>{{ $leadSource->name }}</option>
-                                        @endforeach
-                                            
+                                            @foreach ($leadSources as $leadSource)
+                                                <option value="{{ $leadSource->id }}"  {{ $leadSource->id === $contacts->leadSource_id ? 'selected' : '' }}>{{ $leadSource->name }}</option>
+                                            @endforeach
                                         @endisset
 
                                         @foreach ($leadSources as $leadSource)

@@ -15,10 +15,21 @@
                 @csrf
                 <div class="intro-y box p-5">
                     <div class="mt-5">
+                        <label for="company" class="form-label">Company</label>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('company_id') border-red-700                            
+                        @enderror" id="company" placeholder="Select Company" name="company_id">
+                                @foreach ($companies as $company)
+                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('company_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
+                    </div>
+                    <div class="mt-5">
                         <label for="contact_type" class="form-label">Contact Type</label>
                         <select class="custom-select d-block w-full form-control mb-3 tom-select @error('contact_type_id') border-red-700                            
-                        @enderror" id="contact_type" placeholder="Contact Type"
-                                name="contact_type_id">
+                        @enderror" id="contact_type" placeholder="Contact Type" name="contact_type_id">
                                 @foreach ($contactTypes as $contactType)
                                     <option value="{{ $contactType->id }}">{{ $contactType->name }}</option>
                                 @endforeach
@@ -29,16 +40,15 @@
                     </div>
                     <div class="mt-5">
                         <label for="lead_source" class="form-label">Lead Source</label>
-                            <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_source_id') border-red-700                            
-                            @enderror" id="lead_source" placeholder="Lead Source"
-                                    name="lead_source_id">                                   
-                                    @foreach ($leadSources as $leadSource)
-                                        <option value="{{ $leadSource->id }}">{{ $leadSource->name }}</option>
-                                    @endforeach
-                            </select>
-                            @error('lead_source_id')
-                                <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
-                            @enderror
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_source_id') border-red-700                            
+                        @enderror" id="lead_source" placeholder="Lead Source" name="lead_source_id">                                   
+                                @foreach ($leadSources as $leadSource)
+                                    <option value="{{ $leadSource->id }}">{{ $leadSource->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('lead_source_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mt-5">
                         <label for="name" class="form-label">Contact Name </label>
