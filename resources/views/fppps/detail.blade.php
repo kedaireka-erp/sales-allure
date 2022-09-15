@@ -32,6 +32,13 @@
         </div>
     </div>
 </div>
+@if ($fppp->files)
+    <div class="p-5">
+        @foreach ($fppp->files as $file)
+        <img src="{{ asset('storage/'.$file->path) }}" alt="{{ $file->name }}" srcset="" class="w-20">
+        @endforeach
+    </div>
+@endif
 <!-- BEGIN: Invoice -->
 <div class=" box overflow-hidden mt-5 w-full">
     <div class=" w-full border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">

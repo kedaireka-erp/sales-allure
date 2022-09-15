@@ -10,7 +10,7 @@ class AttachmentFppp extends Model
     use HasFactory;
 
     protected $table="attachment_fppps";
-    protected $fillable=["name", "path"];
+    protected $fillable=["name", "path", "fppp_id"];
 
     public function fppp(){
         return $this->belongsTo(Fppp::class);
