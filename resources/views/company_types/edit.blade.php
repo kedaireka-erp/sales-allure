@@ -18,7 +18,7 @@
                     <div>
                         <label for="name" class="form-label">Company Type Name </label>
                         <input id="name" type="text" class="@error('name') border-red-700 @enderror form-control w-full" placeholder="Input Nama Company Type"
-                            name="name" value="{{ old('name', $company_type->name) }}" required>
+                            name="name" value="{{ old('name', $company_type->name) }}">
                         @error('name')
                             <p class="text-red-700 text-sm mt-1">{{ $message }}</p>                            
                         @enderror
