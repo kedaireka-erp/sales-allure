@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\ContactType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContactTypeController extends Controller
 {
@@ -23,15 +25,18 @@ class ContactTypeController extends Controller
     
     public function store(Request $request)
     {
+        
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:contact_types|max:255',
             'status' => 'required',
         ]);
-
-        ContactType::create($request->all());
-
-        return redirect()->route('contact_types.index')
-            ->with('success', 'ContactType created successfully.');
+            
+        try {
+            $contact_type = ContactType::create($request->all());
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+        return redirect()->route('contact_types.index')->with('success', 'Contact Type created successfully.');
     }
 
     
@@ -52,15 +57,32 @@ class ContactTypeController extends Controller
     public function update(Request $request, $id)
     {
         $contact_type = ContactType::findOrFail($id);
-        $contact_type->update($request->all());
+        $request->validate([
+            'name' => 'required|unique:contact_types|max:255',
+            'status' => 'required',
+        ]);
 
-        return to_route('contact_types.index');
+        try {
+            $contact_type->update($request->all());
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->route('contact_types.index')->with('success', 'Contact Type Update Successfully.');
     }
 
     
     public function destroy(ContactType $contactType)
     {
         $contactType->delete();
-        return redirect()->route('contact_types.index');
+        $deleted = $contactType->delete();
+        if($deleted)
+        {
+            return redirect()->route('contact_types.index')->with('success', 'Contact Type Deleted Successfully!');
+        }
+        else
+        {
+            return redirect()->route('contact_types.index')->with('error', 'Contact Type Deleted Failed!');
+        }
     }
 }

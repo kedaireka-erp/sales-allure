@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\Company;
 use App\Models\Contact;
 use App\Models\LeadSource;
+use App\Models\LeadStatus;
 use App\Models\ContactType;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
@@ -20,22 +24,25 @@ class ContactController extends Controller
    
     public function create()
     {
+        $companies = Company::all();
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();        
-        return view('contacts.create', compact('contactTypes', 'leadSources'));
+        $leadStatuses = LeadStatus::all();
+        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses'));
     }
 
     
     public function store(ContactRequest $request)
     {
         $validated = $request->validated();
-        $create = Contact::create($validated);
 
-        if($create){
-            return redirect()->route('contacts.index')->with('success', 'Contact created successfully');
-        }   
+        try {
+            $contact = Contact::create($validated);
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }  
 
-        return redirect()->route('contacts.create')->with('error', 'Contact Created Failed.');
+        return redirect()->route('contacts.index')->with('success', 'Contact Created Successfully.');
     }
 
     
@@ -47,11 +54,13 @@ class ContactController extends Controller
     
     public function edit($id)
     {
+        $companies = Company::get();
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
+        $leadStatuses = LeadStatus::get();
         $contact = Contact::findOrFail($id);
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses'));
     }
 
     
@@ -59,13 +68,14 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $validated = $request->validated();
-        $update = $contact->update($validated);
 
-        if($update){
-            return redirect()->route('contacts.index')->with('success', 'Contact updated successfully');
+        try {
+            $contact->update($validated);
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
 
-        return to_route('contacts.edit', $contact->id)->with('error', 'Contact Edited Failed.');
+        return redirect()->route('contacts.index')->with('success', 'Contact Update Successfully.');
     }
 
     
@@ -78,6 +88,6 @@ class ContactController extends Controller
             return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully');
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Contact Deleted Failed.');
+        return redirect()->route('contacts.index')->with('error', 'Contact Deleted Failed.');
     }
 }
