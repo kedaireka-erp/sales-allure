@@ -16,22 +16,25 @@ return new class extends Migration
         Schema::create('fppps', function (Blueprint $table) {
             $table->id();
             $table->string("fppp_no")->nullable(); //format no fppp?
-            $table->enum("fppp_type",["produksi", "memo"])->nullable();
             $table->integer("production_phase")->nullable();
             // $table->integer("applicator_name"); //ambil dari quotation WON
             // $table->integer("project_name"); //ambil dari quotation WON
             // $table->integer("project_address"); //ambil dari quotation WON
             // $table->integer("sales_name"); //masukin nama-nama sales???
-            $table->enum("order_status", ["baru", "tambahan", "revisino", "lainlain"])->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
+            $table->string("fppp_revisino")->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
+            $table->string("fppp_keterangan")->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
             $table->integer("production_time")->nullable();
             $table->string("color")->nullable();
-            $table->enum("glass", ["included", "excluded", "included_excluded"])->nullable();
             $table->string("glass_type")->nullable();
             $table->date("retrieval_deadline")->nullable();
+            $table->enum("fppp_type",["produksi", "memo"])->nullable();
+            $table->enum("order_status", ["baru", "tambahan", "revisino", "lainlain"])->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
+            $table->enum("glass", ["included", "excluded", "included_excluded"])->nullable();
             $table->enum("box_usage", ["tidak", "ya"])->nullable();
             $table->enum("sealant_usage", ["tidak", "ya"])->nullable();
             $table->enum("delivery_to_expedition", ["tidak", "ya"])->nullable();
             $table->text("note")->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

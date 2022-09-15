@@ -5,10 +5,10 @@
 @endsection
 
 @section('subcontent')
-<h1 class="intro-y text-xl font-md mt-10 ">CONTACT</h1>
+<h2 class="intro-y text-lg font-medium mt-10">Contacts</h2>
 <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-        <a href="{{ route('contacts.create') }}" class="btn btn-primary shadow-md mr-2">Tambah Contact</a>
+        <a href="{{ route('contacts.create') }}" class="btn btn-primary shadow-md mr-2">Add New Contact</a>
         <div class="dropdown">
             <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                 <span class="w-5 h-5 flex items-center justify-center">
@@ -19,23 +19,18 @@
                 <ul class="dropdown-content">
                     <li>
                         <a href="" class="dropdown-item">
-                            <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                            <i data-lucide="users" class="w-4 h-4 mr-2"></i> Add Group
                         </a>
                     </li>
                     <li>
                         <a href="" class="dropdown-item">
-                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="dropdown-item">
-                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF
+                            <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Send Message
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="hidden md:block mx-auto text-slate-500"></div>
+        <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
         <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
             <div class="w-56 relative text-slate-500">
                 <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
@@ -43,45 +38,55 @@
             </div>
         </div>
     </div>
-    <!-- BEGIN: Data List -->
-    <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-        <table class="table table-report -mt-2">
-            <thead>
-                <tr>
-                    <th class="text-center whitespace-nowrap">NAMA</th>
-                    <th class="text-center whitespace-nowrap">JENIS</th>
-                    <th class="text-center whitespace-nowrap">EMAIL</th>
-                    <th class="text-center whitespace-nowrap">ALAMAT</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($contacts as $no => $contact)
-                <tr class="intro-x">
-                    <td>{{ $contact->name }}</td>
-                    <td>{{ $contact->contactType->name }}</td>
-                    <td>{{ $contact->email }}</td>
-                    <td>{{ $contact->address }}</td>
-                    <td class="table-report__action w-56">
-                        <div class="flex justify-center items-center">
-                            <a class="flex items-center text-primary mr-3" href="{{ route('contacts.show', $contact->id) }}">
-                                <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
-                            </a>
-                            <a class="flex items-center mr-3" href="{{ route('contacts.edit', $contact->id) }}">
-                                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
-                            </a>
-                            <form action="{{ route('contacts.destroy', $contact) }}" method="post">
-                                @csrf
-                                @method('Delete')
-                                <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <!-- BEGIN: Users Layout -->
+    @foreach ($contacts as $contact)
+    <div class="intro-y col-span-12 md:col-span-6">
+        <div class="box">
+            <div
+                class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
+                    <img alt="Midone - HTML Admin Template" class="rounded-full"
+                        src="https://picsum.photos/id/{{ $contact->id }}/300/300">
+                </div>
+                <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
+                    <a href="{{ route('contacts.show', $contact) }}" class="font-medium">{{ $contact->name }}</a>
+                    <div class="text-slate-500 text-xs mt-0.5">{{ $contact->ContactType ? $contact->ContactType->name : '' }}</div>
+                </div>
+                <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
+                    <a href=""
+                        class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
+                        title="Facebook">
+                        <i class="w-3 h-3 fill-current" data-lucide="facebook"></i>
+                    </a>
+                    <a href=""
+                        class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
+                        title="Twitter">
+                        <i class="w-3 h-3 fill-current" data-lucide="twitter"></i>
+                    </a>
+                    <a href=""
+                        class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
+                        title="Linked In">
+                        <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="w-full flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
+                <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
+                    <p class="text-md text-slate-400">
+                        PT Graha Persada
+                    </p>
+                </div>
+                <form action="{{ route('contacts.destroy', $contact) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-primary py-1 px-2 mr-2">Delete</button>
+                </form>
+                <a href="{{ route('contacts.edit', $contact) }}" class="btn btn-outline-secondary py-1 px-2">Update</a>
+            </div>
+        </div>
     </div>
-    <!-- END: Data List -->
+    @endforeach
+    <!-- END: Users Layout -->
     <!-- BEGIN: Pagination -->
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
         <nav class="w-full sm:w-auto sm:mr-auto">
@@ -132,5 +137,4 @@
     </div>
     <!-- END: Pagination -->
 </div>
-
 @endsection

@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\CompanyArea;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyAreaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $company_areas = CompanyArea::all();
@@ -26,15 +23,29 @@ class CompanyAreaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'description' => 'nullable',
         ]);
 
-        CompanyArea::create($request->all());
-
-        return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil dibuat!');
-    }
+        if($validated->fails())
+        {
+            return back()->withErrors($validated)->with('error', 'Company Area gagal dibuat!')->withInput();
+        }
+        else
+        {
+            $create = CompanyArea::create($request->all());
+            
+            if($create)
+            {
+                return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil dibuat!');
+            }
+            else
+            {
+                return redirect()->route('company_areas.create')->with('error', 'Company Area gagal dibuat!');
+            }
+        }
+    }   
  
     public function show(CompanyArea $companyArea)
     {
@@ -44,6 +55,7 @@ class CompanyAreaController extends Controller
     public function edit($id)
     {
         $company_area = CompanyArea::findOrFail($id);
+
         $company_areas = CompanyArea::all();
        
         return view('company_areas.edit', compact('company_area', 'company_areas'));
@@ -52,19 +64,44 @@ class CompanyAreaController extends Controller
     public function update(Request $request, $id)
     {
         $company_area = CompanyArea::findOrFail($id);
-        $company_area->update([
-            'name' => $request->name ?? $company_area->name,
-            'description' => $request->description ?? $company_area->description,
+
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'description' => 'nullable',
         ]);
 
-        return to_route('company_areas.index')->with('success', 'Company Area berhasil diubah!');
-    }
+        if($validated->fails())
+        {
+            return back()->withErrors($validated)->with('error', 'Company Area gagal diubah!')->withInput();
+        }
+        else
+        {
+            $update = $company_area->update($request->all());
+            
+            if($update)
+            {
+                return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil diubah!');
+            }
+            else
+            {
+                return redirect()->route('company_areas.edit')->with('error', 'Company Area gagal diubah!');
+            }
+        }
+}
 
     public function destroy($id)
     {
         $company_area = CompanyArea::findOrFail($id);
-        $company_area->delete();
         
-        return to_route("company_areas.index")->with('success', 'Company Area berhasil dihapus!');
+        $deleted = $company_area->delete();
+        
+        if($deleted)
+        {
+            return redirect()->route('company_areas.index')->with('success', 'Company Area berhasil dihapus!');
+        }
+        else
+        {
+            return redirect()->route('company_areas.index')->with('error', 'Company Area gagal dihapus!');
+        }
     }
 }

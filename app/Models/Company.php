@@ -2,21 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Company extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table="companies";
     protected $fillable = [
         'name',
-        'company_type_id',
-        'company_area_id',
         'phone_number',
+        'company_type_id',
         'address',
+        'city',
+        'company_area_id',
+        'postal_code',
+        'number_of_employees',
+        'annual_revenue',
+        'time_zone',
         'description',
+        'linkedin_company',
     ];
 
     public function company_type(){
@@ -25,5 +32,10 @@ class Company extends Model
 
     public function company_area(){
         return $this->belongsto(CompanyArea::class);
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
     }
 }

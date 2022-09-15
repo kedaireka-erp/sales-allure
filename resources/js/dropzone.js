@@ -5,6 +5,7 @@ import Dropzone from "dropzone";
 
     // Dropzone
     Dropzone.autoDiscover = false;
+    Dropzone.autoProcessQueue = false;
     $(".dropzone").each(function () {
         let options = {
             accept: (file, done) => {

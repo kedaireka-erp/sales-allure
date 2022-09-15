@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
-            $table->id();
-            $table->string("name")->nullable();
-            $table->string("path")->nullable();
-            $table->timestamps();
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->foreignId('lead_status_id')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->dropColumn("lead_status_id");
+        });
     }
 };

@@ -32,89 +32,96 @@
         </div>
     </div>
 </div>
+@if ($fppp->files)
+    <div class="p-5">
+        @foreach ($fppp->files as $file)
+        <img src="{{ asset('storage/'.$file->path) }}" alt="{{ $file->name }}" srcset="" class="w-20">
+        @endforeach
+    </div>
+@endif
 <!-- BEGIN: Invoice -->
 <div class=" box overflow-hidden mt-5 w-full">
     <div class=" w-full border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
         <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
             <span class="font-bold text-primary">LOGO</span>
             <div class="flex flex-col items-center h-full">
-                <h1 class="text-primary font-semibold text-xl">FORM PAKET PERMINTAAN PRODUKSI</h1>
-                <h2 class="text-primary font-semibold text-lg">No: {{ $fppp->fppp_no }}</h2>
-                <p class="text-primary  text-lg">Mockup/Produksi Tahap {{ $fppp->production_phase }}</p>
+                <h1 class="text-primary font-semibold text-lg lg:text-xl">FORM PAKET PERMINTAAN PRODUKSI</h1>
+                <h2 class="text-primary font-semibold text-md lg:text-lg">No: {{ $fppp->fppp_no }}</h2>
+                <p class="text-primary  text-md lg:text-lg">Mockup/Produksi Tahap {{ $fppp->production_phase }}</p>
             </div>
             <div class="mt-1">Kode-Kode</div>
         </div>
         <div class="mt-5 w-full flex flex-col gap-y-3">
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Tanggal </div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Tanggal </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">{{\Carbon\Carbon::parse($fppp->created_at)->format("d F Y")}}</div>
+                    <div class=" font-semibold text-slate-500">{{\Carbon\Carbon::parse($fppp->created_at)->format("d F Y")}}</div>
                 </div>
             </div>
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Divisi </div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Divisi </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">ASTRAL</div>
+                    <div class=" font-semibold text-slate-500">ASTRAL</div>
                 </div>
             </div>
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Nama Aplikator </div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Nama Aplikator </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">PT KENCANA MIRAE INDUSTRI</div>
+                    <div class=" font-semibold text-slate-500">PT KENCANA MIRAE INDUSTRI</div>
                 </div>
             </div>
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Nama Proyek </div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Nama Proyek </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">BINA BAKTI OFFICE TAHAP 2</div>
+                    <div class=" font-semibold text-slate-500">BINA BAKTI OFFICE TAHAP 2</div>
                 </div>
             </div>
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full mb-3">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full mb-3">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Alamat Proyek </div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Alamat Proyek </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">JAKARTA</div>
+                    <div class=" font-semibold text-slate-500">JAKARTA</div>
                 </div>
             </div>
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Sales/Site Manager </div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Sales/Site Manager </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">IBU AGUSTIN</div>
+                    <div class=" font-semibold text-slate-500">IBU AGUSTIN</div>
                 </div>
             </div>
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Status Order</div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Status Order</div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">{{$fppp->order_status}}</div>
+                    <div class=" font-semibold text-slate-500">{{$fppp->order_status}}</div>
                 </div>
             </div>
-            <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class="text-base text-slate-500">Waktu Produksi </div>
-                    <div class="text-base text-slate-500">:</div>
+                    <div class=" text-slate-500">Waktu Produksi </div>
+                    <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class="text-base font-semibold text-slate-500">{{$fppp->production_time}} Hari</div>
+                    <div class=" font-semibold text-slate-500">{{$fppp->production_time}} Hari</div>
                 </div>
             </div>
             <hr>

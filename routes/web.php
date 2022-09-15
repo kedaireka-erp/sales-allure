@@ -126,6 +126,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('status', StatusController::class);
 
     //route FPPP
+    Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
+    Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
     Route::resource('fppps', FpppController::class);
 
     //route company_types
@@ -157,8 +159,10 @@ Route::middleware('auth')->group(function () {
 
     //route user
     Route::get('account/{account}/profile', [AccountController::class, 'show'])->name('account.profile');
+    Route::get('account/{account}/personal-information', [AccountController::class, 'personal'])->name('account.personal-information');
     Route::get('account/{account}/profile/edit', [AccountController::class, 'edit'])->name('account.profile.edit');
     Route::patch('account/{account}/profile/update', [AccountController::class, 'update'])->name('account.profile.update');
+    Route::post('account/photo-profile', [AccountController::class, 'photoProfile'])->name('account.photoProfile');
     // Route::get('user', [UserController::class, 'topProfile'])->name('user');
 
     //route Kontak -> Lead Status

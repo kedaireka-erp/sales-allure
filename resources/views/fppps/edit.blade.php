@@ -60,6 +60,22 @@
                             </option>
                         </select>
                     </div>
+                    <div class="mt-5" id="fppp_lain">
+                        <label for="fppp_lain" class="form-label">No FPPP Yang Direvisi</label>
+                        <select data-placeholder="Pilih No FPPP" class="tom-select w-full" name="fppp_revisino" single>
+                            @foreach ($fppps as $f)
+                                <option {{ $f->fppp_no == $fppp->fppp_revisino ? 'selected' : '' }}
+                                    value="{{ $f->fppp_no }}">{{ $f->fppp_no }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mt-5" id="catatan_status_order">
+                        <label for="note" class="mb-2">Keterangan Lain-lain</label>
+                        <div class="mt-2">
+                            <textarea name="fppp_keterangan" cols="30" rows="10" class="editor ">{!! old('fppp_keterangan', $fppp->fppp_keterangan) !!}</textarea>
+                        </div>
+                    </div>
+
                     <div class="mt-5">
                         <label for="production_time" class="form-label">Waktu Produksi (Hari)</label>
                         <input id="production_time" type="number" class="form-control w-full"
@@ -88,7 +104,8 @@
                     <div class="mt-5">
                         <label for="retrieval_deadline" class="form-label">Deadline Pengambilan </label>
                         <input id="retrieval_deadline" type="date" class="form-control w-full"
-                            placeholder="Input Tanggal " name="retrieval_deadline" value="{{ $fppp->retrieval_deadline }}">
+                            placeholder="Input Tanggal " name="retrieval_deadline"
+                            value="{{ $fppp->retrieval_deadline }}">
                     </div>
                     <div class="mt-5">
                         <label for="box_usage" class="form-label">Penggunaan Peti</label>

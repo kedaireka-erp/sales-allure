@@ -34,7 +34,6 @@ import "./validation";
 import "./zoom";
 import "./notification";
 import "./tabulator";
-import "./tabulator-fppp";
 import "./calendar";
 
 /*
@@ -57,3 +56,6 @@ import "./side-menu";
 import "./mobile-menu";
 import "./side-menu-tooltip";
 import "./dark-mode-switcher";
+import "./fppp-form";
+import "./filepond";
+

@@ -48,33 +48,45 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="whitespace-nowrap">NAME</th>
-                    <th class="whitespace-nowrap">COMPANY TYPE</th>
-                    <th class="whitespace-nowrap">COMPANY AREA</th>
-                    <th class="whitespace-nowrap">PHONE NUMBER</th>
-                    <th class="whitespace-nowrap">ADDRESS</th>
-                    <th class="whitespace-nowrap">DESCRIPTION</th>
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    <th class="whitespace-nowrap text-primary">COMPANY NAME</th>
+                    <th class="whitespace-nowrap text-primary">PHONE NUMBER</th>
+                    <th class="whitespace-nowrap text-primary">COMPANY TYPE</th>
+                    {{-- <th class="whitespace-nowrap">ADDRESS</th> --}}
+                    {{-- <th class="whitespace-nowrap">CITY</th> --}}
+                    <th class="whitespace-nowrap text-primary">COMPANY AREA</th>
+                    {{-- <th class="whitespace-nowrap">POSTAL CODE</th> --}}
+                    {{-- <th class="whitespace-nowrap">NUMBER OF EMPLOYEES</th> --}}
+                    {{-- <th class="whitespace-nowrap">ANNUAL REVENUE</th> --}}
+                    {{-- <th class="whitespace-nowrap">TIME ZONE</th> --}}
+                    {{-- <th class="whitespace-nowrap">DESCRIPTION</th> --}}
+                    {{-- <th class="whitespace-nowrap">LINKEDIN COMPANY PAGE</th> --}}
+                    <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($companies as $no => $company)
-                <tr class="intro-x">
+                <tr class="intro-x zoom-in transition">
                     <td>{{ $company->name }}</td>
-                    <td>{{ $company->type }}</td>
-                    <td>{{ $company->area }}</td>
                     <td>{{ $company->phone_number }}</td>
-                    <td>{{ $company->address }}</td>
-                    <td>{!!$company->description !!}</td>                   
+                    <td>{{ $company->company_type->name }}</td>
+                    {{-- <td>{{ $company->address }}</td> --}}
+                    {{-- <td>{{ $company->city }}</td> --}}
+                    <td>{{ $company->company_area->name }}</td>
+                    {{-- <td>{{ $company->postal_code }}</td> --}}
+                    {{-- <td>{{ $company->number_of_employees }}</td> --}}
+                    {{-- <td>{{ $company->annual_revenue }}</td> --}}
+                    {{-- <td>{{ $company->time_zone}}</td> --}}
+                    {{-- <td>{!!$company->description !!}</td>  --}}
+                    {{-- <td>{{ $company->linkedin_company }}</td>                   --}}
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center text-primary mr-3" href="javascript:;">
+                            <a class="flex items-center text-primary mr-3" href="{{ route('companies.show', $company->id) }}">
                                 <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
                             </a>                          
                             <a class="flex items-center mr-3" href="{{ route('companies.edit', $company->id) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>           
-                            <form action="{{ route('companies.destroy', $company -> id) }}" method="post">
+                            <form action="{{ route('companies.destroy', $company->id) }}" method="post">
                                 @csrf
                                 @method('Delete')
                                 <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
