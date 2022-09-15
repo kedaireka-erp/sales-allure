@@ -115,7 +115,7 @@
                             </td>
                             <td class="text-center">{{ $quotation->dealsource->name }}</td>
                             <td class="text-center">{{ $quotation->status->name }}</td>
-                            <td class="text-center">{{ $fakers[0]['users'][0]['name'] }}</td>
+                            <td class="text-center">{{ $quotation->contact->name }}</td>
                             <td class="table-report__action w-fit">
                                 
                                 <div class="dropdown flex justify-center">
