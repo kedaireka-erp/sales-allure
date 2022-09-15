@@ -99,7 +99,7 @@
                             <div class="text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="font-semibold text-slate-500">{{ $fakers[0]['users'][1]['name'] }}</div>
+                            <div class="font-semibold text-slate-500">{{ $quotation->Contact->name }}</div>
                         </div>
                     </div>
                 </div>

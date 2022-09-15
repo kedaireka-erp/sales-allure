@@ -34,8 +34,6 @@ class DatabaseSeeder extends Seeder
 
         CompanyArea::factory(20)->create();
 
-        Quotation::factory(20)->create();
-
         LeadSource::factory(5)->create();
 
         LeadStatus::factory(20)->create();
@@ -43,6 +41,8 @@ class DatabaseSeeder extends Seeder
         Company::factory(20)->create();
         
         Contact::factory(20)->create();
+
+        Quotation::factory(20)->create();
 
         Fppp::factory(100)->create();
 
