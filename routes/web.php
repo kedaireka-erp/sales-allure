@@ -159,6 +159,7 @@ Route::middleware('auth')->group(function () {
     Route::get('account/{account}/personal-information', [AccountController::class, 'personal'])->name('account.personal-information');
     Route::get('account/{account}/profile/edit', [AccountController::class, 'edit'])->name('account.profile.edit');
     Route::patch('account/{account}/profile/update', [AccountController::class, 'update'])->name('account.profile.update');
+    Route::post('account/photo-profile', [AccountController::class, 'photoProfile'])->name('account.photoProfile');
     // Route::get('user', [UserController::class, 'topProfile'])->name('user');
 
     //route Kontak -> Lead Status
