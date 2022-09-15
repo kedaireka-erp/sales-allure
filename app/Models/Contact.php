@@ -37,6 +37,7 @@ class Contact extends Model
     public function Quotation()
     {
         return $this->hasMany(Quotation::class);
+    }
 
     public function Company()
     {
