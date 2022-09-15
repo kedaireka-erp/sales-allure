@@ -26,6 +26,7 @@ class ContactRequest extends FormRequest
         return [
             'contact_type_id'=> 'required|exists:contact_types,id' ,
             'lead_source_id' => 'required|exists:lead_sources,id',
+            'lead_status_id' => 'required|exists:lead_statuses,id',
             'name' =>'required',
             'email' =>'required',
             'address' =>'required',

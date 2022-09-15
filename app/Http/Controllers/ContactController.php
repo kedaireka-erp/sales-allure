@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\LeadSource;
+use App\Models\LeadStatus;
 use App\Models\ContactType;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
@@ -26,7 +27,8 @@ class ContactController extends Controller
         $companies = Company::all();
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();        
-        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources'));
+        $leadStatuses = LeadStatus::all();
+        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses'));
     }
 
     
@@ -55,9 +57,10 @@ class ContactController extends Controller
         $companies = Company::get();
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
+        $leadStatuses = LeadStatus::get();
         $contact = Contact::findOrFail($id);
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses'));
     }
 
     

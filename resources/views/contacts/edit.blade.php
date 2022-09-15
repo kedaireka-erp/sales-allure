@@ -64,6 +64,18 @@
                             @enderror
                     </div>
                     <div class="mt-5">
+                        <label for="lead_status" class="form-label">Lead Status</label>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_status_id') border-red-700                            
+                        @enderror" id="lead_status" name="lead_status_id" placeholder="Lead Status">
+                                @foreach ($leadStatuses as $leadStatus)
+                                    <option {{ $leadStatus->id == $contact->lead_status_id ? 'selected' : ''}} value="{{ $leadStatus->id }}">{{ $leadStatus->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('lead_status_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
+                    </div>
+                    <div class="mt-5">
                         <label for="name" class="form-label">Contact Name </label>
                         <input id="name" type="text" class="@error('name') border-red-700                            
                         @enderror form-control w-full" placeholder="Input Nama Contact"
