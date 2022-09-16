@@ -70,24 +70,13 @@ class FpppController extends Controller
         return to_route("fppps.create")->with('error', 'FPPP gagal dibuat!');
     }
 
-<<<<<<< Updated upstream
-
-    public function edit($id)
-    {
-        $fppp = Fppp::findOrFail($id);
-        $fppps = Fppp::all();
-        $quotations = Quotation::whereHas('Status', function ($query) {
-            return $query->where('name', 'won');
-        })->get();
-
-=======
     public function edit(Fppp $fppp)
     {      
         $fppps = Fppp::get();
         $quotations = Quotation::whereHas('Status', function ($query) {
             return $query->where('name', 'won');
         })->get();
->>>>>>> Stashed changes
+
         return view("fppps.edit", compact("fppp", "fppps", "quotations"));
     }
 
