@@ -12,6 +12,7 @@ use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
 use App\Models\LeadSource;
+use App\Models\LeadStatus;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -33,15 +34,17 @@ class DatabaseSeeder extends Seeder
 
         CompanyArea::factory(20)->create();
 
-        Quotation::factory(20)->create();
-
         LeadSource::factory(5)->create();
 
-        Contact::factory(20)->create();
-
-        Fppp::factory(100)->create();
+        LeadStatus::factory(20)->create();
 
         Company::factory(20)->create();
+        
+        Contact::factory(20)->create();
+
+        Quotation::factory(20)->create();
+
+        Fppp::factory(100)->create();
 
     }
 }

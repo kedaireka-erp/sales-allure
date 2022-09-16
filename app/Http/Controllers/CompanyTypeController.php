@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyTypeController extends Controller
 {
@@ -22,20 +23,27 @@ class CompanyTypeController extends Controller
   
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+        $validation = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'description' => 'nullable',
         ]);
 
-        $create = CompanyType::create($request->all());
-
-        if($create)
+        if($validation->fails())
         {
-            return redirect()->route('company_types.index')->with('success', 'Company Type berhasil dibuat!');
+            return back()->withErrors($validation)->with('error', 'Company Type gagal dibuat!')->withInput();
         }
         else
         {
-            return redirect()->route('company_types.create')->with('error', 'Company Type gagal dibuat!');
+            $create = CompanyType::create($request->all());
+            
+            if($create)
+            {
+                return redirect()->route('company_types.index')->with('success', 'Company Type berhasil dibuat!');
+            }
+            else
+            {
+                return redirect()->route('company_types.create')->with('error', 'Company Type gagal dibuat!');
+            }
         }
     }
    
@@ -55,18 +63,29 @@ class CompanyTypeController extends Controller
      
     public function update(Request $request, $id)
     {
-
         $company_type = CompanyType::findOrFail($id);
 
-        $update = $company_type->update($request->all());
+        $validation = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'description' => 'nullable',
+        ]);
 
-        if($update)
+        if($validation->fails())
         {
-            return redirect()->route('company_types.index')->with('success', 'Company Type berhasil diubah!');
+            return back()->withErrors($validation)->with('error', 'Company Type gagal diubah!')->withInput();
         }
         else
         {
-            return redirect()->route('company_types.edit')->with('error', 'Company Type gagal diubah!');
+            $update = $company_type->update($request->all());
+            
+            if($update)
+            {
+                return redirect()->route('company_types.index')->with('success', 'Company Type berhasil diubah!');
+            }
+            else
+            {
+                return redirect()->route('company_types.edit', $id)->with('error', 'Company Type gagal diubah!');
+            }
         }
     }
 

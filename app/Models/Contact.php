@@ -17,6 +17,7 @@ class Contact extends Model
         'name',
         'contact_type_id',
         'lead_source_id',
+        'lead_status_id',
         'email',
         'address',
         'phone',
@@ -31,5 +32,20 @@ class Contact extends Model
     public function LeadSource()
     {
         return $this->belongsTo(LeadSource::class);
+    }
+
+    public function Quotation()
+    {
+        return $this->hasMany(Quotation::class);
+    }
+
+    public function Company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function LeadStatus()
+    {
+        return $this->belongsTo(LeadStatus::class);
     }
 }

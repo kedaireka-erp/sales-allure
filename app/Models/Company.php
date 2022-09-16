@@ -33,4 +33,9 @@ class Company extends Model
     public function company_area(){
         return $this->belongsto(CompanyArea::class);
     }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

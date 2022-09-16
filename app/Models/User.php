@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','gender'
+        'name', 'email', 'password','gender','phone_number','address'
     ];
 
     /**
@@ -58,5 +58,9 @@ class User extends Authenticatable
         } else {
             return url('media-example/no-image.png');
         }
+    }
+
+    public function tempFiles(){
+        return $this->hasMany(TempFiles::class);
     }
 }
