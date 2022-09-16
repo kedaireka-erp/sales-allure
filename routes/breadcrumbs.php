@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 //========================[Dashboard]========================//
 //Dashboard
@@ -269,4 +270,19 @@ Breadcrumbs::for('leadpriorities.edit', function ($trail, $leadpriority) {
     $trail->parent('leadpriorities.index');
     $trail->push($leadpriority->name, route('leadpriorities.show', $leadpriority->id));
     $trail->push('Edit', route('leadpriorities.edit', $leadpriority->id));
+});
+
+//========================[Account]========================//
+Breadcrumbs::for('account.profile', function ($trail, User $account) {
+    $trail->push('Account', route('account.profile', $account));
+});
+
+Breadcrumbs::for('account.personal-information', function ($trail, User $account) {
+    $trail->parent('account.profile', $account);
+    $trail->push('Personal Information', route('account.personal-information', $account));
+});
+
+Breadcrumbs::for('account.profile.edit', function ($trail, User $account) {
+    $trail->parent('account.profile', $account);
+    $trail->push('Change Password', route('account.profile.edit', $account));
 });
