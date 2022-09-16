@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Activity;
 use App\Models\Fppp;
 use App\Models\Status;
 use App\Models\Company;
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(DealSourceSeeder::class);
+        $this->call(ActivitySeeder::class);
 
         CompanyType::factory(20)->create();
 

@@ -3489,6 +3489,9 @@ select{
 .w-9{
     width: 2.25rem;
 }
+.w-28{
+    width: 7rem;
+}
 .min-w-\[6rem\]{
     min-width: 6rem;
 }

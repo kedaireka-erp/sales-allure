@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
@@ -120,6 +121,9 @@ Route::middleware('auth')->group(function () {
     // Route::get('quotation', function () {
     //     return view('quotation.index');
     // })->name('quotation-index');
+
+    //route approachment -> activity
+    Route::resource('activities', ActivityController::class);
 
     //route status
     Route::resource('status', StatusController::class);
