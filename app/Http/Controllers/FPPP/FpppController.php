@@ -70,6 +70,16 @@ class FpppController extends Controller
         return to_route("fppps.create")->with('error', 'FPPP gagal dibuat!');
     }
 
+    public function edit(Fppp $fppp)
+    {      
+        $fppps = Fppp::get();
+        $quotations = Quotation::whereHas('Status', function ($query) {
+            return $query->where('name', 'won');
+        })->get();
+
+        return view("fppps.edit", compact("fppp", "fppps", "quotations"));
+    }
+
     public function update(FpppRequest $request, $id)
     {
         $fppp = Fppp::findOrFail($id);
