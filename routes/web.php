@@ -125,6 +125,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('status', StatusController::class);
 
     //route FPPP
+    Route::get('fppps/export/', [FpppController::class, 'export'])->name('fppps.export');
     Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
     Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
     Route::resource('fppps', FpppController::class);

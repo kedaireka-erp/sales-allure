@@ -23,7 +23,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown-item">
+                            <a href="{{ route('fppps.export') }}" class="dropdown-item">
                                 <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
                             </a>
                         </li>
