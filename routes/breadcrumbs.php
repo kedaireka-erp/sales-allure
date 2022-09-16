@@ -286,3 +286,25 @@ Breadcrumbs::for('account.profile.edit', function ($trail, User $account) {
     $trail->parent('account.profile', $account);
     $trail->push('Change Password', route('account.profile.edit', $account));
 });
+
+//========================[Activity]========================//
+//Activity Index
+Breadcrumbs::for('activities.index', function ($trail) {
+    $trail->push('Activity Index', route('activities.index'));
+});
+//Activity Create
+Breadcrumbs::for('activities.create', function ($trail) {
+    $trail->parent('activities.index');
+    $trail->push('Create', route('activities.create'));
+});
+//Activity Show
+Breadcrumbs::for('activities.show', function ($trail, $activity) {
+    $trail->parent('activities.index');
+    $trail->push($activity->name, route('activities.show', $activity->id));
+});
+//Activity Edit
+Breadcrumbs::for('activities.edit', function ($trail, $activity) {
+    $trail->parent('activities.index');
+    $trail->push($activity->name, route('activities.show', $activity->id));
+    $trail->push('Edit', route('activities.edit', $activity->id));
+});
