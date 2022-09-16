@@ -30,9 +30,9 @@ return new class extends Migration
             $table->enum("fppp_type",["produksi", "memo"])->nullable();
             $table->enum("order_status", ["baru", "tambahan", "revisino", "lainlain"])->nullable(); //Cara bikin "Revisi dari FPPP No" dan "Lain-Lain" bisa diinput???
             $table->enum("glass", ["included", "excluded", "included_excluded"])->nullable();
-            $table->enum("box_usage", ["tidak", "ya"])->nullable();
-            $table->enum("sealant_usage", ["tidak", "ya"])->nullable();
-            $table->enum("delivery_to_expedition", ["tidak", "ya"])->nullable();
+            $table->boolean("box_usage")->nullable();
+            $table->boolean("sealant_usage")->nullable();
+            $table->boolean("delivery_to_expedition")->nullable();
             $table->text("note")->nullable();
             $table->softDeletes();
             $table->timestamps();
