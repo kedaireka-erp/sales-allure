@@ -17,11 +17,10 @@
                 <div class="intro-y box p-5">
                     <div>
                         <label for="name" class="form-label">Contact Type Name </label>
-                        <input id="name" type="text" class="  w-full @error('name') border-red-700
-                        @enderror" placeholder="Input Nama Contact Type"
+                        <input id="name" type="text" class="@error('name') border-red-700 @enderror form-control w-full " placeholder="Input Nama Contact Type"
                             name="name" value="{{ old('name', $contact_type->name) }}">
                     @error('name')
-                        <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                       
+                        <p class="text-red-700 text-sm mt-1">{{ $message }}</p>                       
                     @enderror   
                     </div>
                     <div class="mt-5">
