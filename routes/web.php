@@ -140,13 +140,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('leadsources', LeadSourceController::class);
 
     // Quotation
+    Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
+    Route::get('quotation/export/', [QuotationController::class, 'export'])->name('quotation.export');
     Route::resource('quotation', QuotationController::class);
 
     //route company_areas
     Route::resource('company_areas', CompanyAreaController::class);
-
-    //Route Quotation-to-FPPP
-    Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
 
     //route contact
     Route::resource('contacts', ContactController::class);

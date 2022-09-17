@@ -8,6 +8,8 @@ use App\Models\Contact;
 use App\Models\Quotation;
 use App\Models\DealSource;
 use Illuminate\Http\Request;
+use App\Exports\QuotationExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
 class QuotationController extends Controller
@@ -96,5 +98,10 @@ class QuotationController extends Controller
         $quotations = Quotation::all();
         $fppps = Fppp::all();
         return view('fppps.create', compact('quotations', 'quo', 'fppps'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new QuotationExport, 'quotation.xlsx');
     }
 }

@@ -24,7 +24,7 @@ class AccountController extends Controller
         ]);
         if ($request->file('photo')) {
             $file = $request->file('photo');
-            $filename =$file->getClientOriginalName();
+            $filename =date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('storage/profile'), $filename);
             $update = $filename;
         }
