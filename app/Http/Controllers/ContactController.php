@@ -41,7 +41,7 @@ class ContactController extends Controller
 
         try {
             $contact = Contact::create($validated);
-            // $contact->leadInterests()->sync($request->leadInterest);
+            $contact->leadInterests()->sync($request->leadInterest);
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }  
