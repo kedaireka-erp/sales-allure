@@ -308,3 +308,25 @@ Breadcrumbs::for('activities.edit', function ($trail, $activity) {
     $trail->push($activity->name, route('activities.show', $activity->id));
     $trail->push('Edit', route('activities.edit', $activity->id));
 });
+
+//========================[Lead Interests]========================//
+//Lead Interests Index
+Breadcrumbs::for('leadinterests.index', function ($trail) {
+    $trail->push('Lead Interests Index', route('leadinterests.index'));
+});
+//Lead Interests Create
+Breadcrumbs::for('leadinterests.create', function ($trail) {
+    $trail->parent('leadinterests.index');
+    $trail->push('Create', route('leadinterests.create'));
+});
+//Lead Interests Show
+Breadcrumbs::for('leadinterests.show', function ($trail, $leadInterest) {
+    $trail->parent('leadinterests.index');
+    $trail->push($leadInterest->name, route('leadinterests.show', $leadInterest->id));
+});
+//Lead Interests Edit
+Breadcrumbs::for('leadinterests.edit', function ($trail, $leadInterest) {
+    $trail->parent('leadinterests.index');
+    $trail->push($leadInterest->name, route('leadinterests.show', $leadInterest->id));
+    $trail->push('Edit', route('leadinterests.edit', $leadInterest->id));
+});
