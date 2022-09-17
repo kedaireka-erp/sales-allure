@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
@@ -122,10 +123,14 @@ Route::middleware('auth')->group(function () {
     //     return view('quotation.index');
     // })->name('quotation-index');
 
+    //route approachment -> activity
+    Route::resource('activities', ActivityController::class);
+
     //route status
     Route::resource('status', StatusController::class);
 
     //route FPPP
+    Route::get('fppps/export/', [FpppController::class, 'export'])->name('fppps.export');
     Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
     Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
     Route::resource('fppps', FpppController::class);

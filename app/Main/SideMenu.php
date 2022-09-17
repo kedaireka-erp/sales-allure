@@ -35,9 +35,9 @@ class SideMenu
                     ],
                     'activity' => [
                         'icon' => 'activity',
-                        'route_name' => 'dashboard-overview-2',
+                        'route_name' => 'activities.index',
                         'params' => [
-                            'layout' => 'simple-menu'
+                            'layout' => 'side-menu'
                         ],
                         'title' => 'Activity'
                     ],

@@ -7,6 +7,7 @@ use App\Models\File;
 use App\Models\Fppp;
 use App\Models\Quotation;
 use App\Models\TempFiles;
+use App\Exports\FpppExport;
 use Termwind\Components\Dd;
 use Illuminate\Http\Request;
 use App\Models\AttachmentFppp;
@@ -14,6 +15,7 @@ use App\Http\Requests\FpppRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 
 class FpppController extends Controller
@@ -68,11 +70,9 @@ class FpppController extends Controller
         return to_route("fppps.create")->with('error', 'FPPP gagal dibuat!');
     }
 
-
-    public function edit($id)
-    {
-        $fppp = Fppp::findOrFail($id);
-        $fppps = Fppp::all();
+    public function edit(Fppp $fppp)
+    {      
+        $fppps = Fppp::get();
         $quotations = Quotation::whereHas('Status', function ($query) {
             return $query->where('name', 'won');
         })->get();
@@ -132,5 +132,10 @@ class FpppController extends Controller
             return response()->json(['success' => 'success']);
         }
         return response()->json(['error' => 'something wrong']);
+    }
+
+    public function export()
+    {
+        return Excel::download(new FpppExport, 'fppps.xlsx');
     }
 }
