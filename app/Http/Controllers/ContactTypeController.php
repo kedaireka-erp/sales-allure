@@ -51,23 +51,21 @@ class ContactTypeController extends Controller
     }
 
     
-    public function show(ContactType $contactType)
+    public function show(ContactType $contact_type)
     {
         //
     }
 
     
-    public function edit($id)
+    public function edit(ContactType $contact_type)
     {
-        $contact_type = ContactType::findOrFail($id);
         $contact_types = ContactType::all();
         return view('contact_types.edit', compact('contact_type', 'contact_types'));
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request, ContactType $contact_type)
     {
-        $contact_type = ContactType::findOrFail($id);
         $validated = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'status' => 'required',
@@ -93,10 +91,9 @@ class ContactTypeController extends Controller
     }
 
     
-    public function destroy(ContactType $contactType)
+    public function destroy(ContactType $contact_type)
     {
-        $contactType->delete();
-        $deleted = $contactType->delete();
+        $deleted = $contact_type->delete();
         if($deleted)
         {
             return redirect()->route('contact_types.index')->with('success', 'Contact Type Deleted Successfully!');

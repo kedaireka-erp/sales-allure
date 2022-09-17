@@ -11,7 +11,7 @@
     <div class="grid grid-cols-12 gap-10 mt-3">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
-            <form action="{{ route('contacts.update', $contact->id) }}" method="post">
+            <form action="{{ route('contacts.update', $contact) }}" method="post">
                 @csrf
                 @method('PATCH')
                 <div class="intro-y box p-5">
