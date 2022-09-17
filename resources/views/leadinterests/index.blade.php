@@ -22,20 +22,20 @@
                 <thead>
                     <tr>
                         <th class="whitespace" style="width: 5%">No.</th>
-                        <th class="whitespace-nowrap">Nama Lead Priority</th>
+                        <th class="whitespace-nowrap">Nama Lead Interest</th>
                         <th class="whitespace-nowrap">Deskripsi</th>
                         <th class="text-center whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($leadInterests as $no => $leadInterest)
+                    @foreach ($leadInterests as $no => $leadinterest)
                         <tr class="intro-x">
                             <td class="text-left">{{ ++$no }}</td>
-                            <td class="text-left">{{ $leadInterest->name }}</td>
-                            <td class="text-left">{!! $leadInterest->description !!}</td>
+                            <td class="text-left">{{ $leadinterest->name }}</td>
+                            <td class="text-left">{!! $leadinterest->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('leadinterests.edit', $leadInterest->id) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('leadinterests.edit', $leadinterest) }}" >
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Ubah
                                     </a>
                                 </div>

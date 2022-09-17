@@ -130,8 +130,8 @@ class SideMenu
                         'title' => 'Lead Priority'
                     ],
                     'lead-interest' => [
-                        'icon' => '',
-                        'route_name' => 'categories',
+                        'icon' => 'star',
+                        'route_name' => 'leadinterests.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],

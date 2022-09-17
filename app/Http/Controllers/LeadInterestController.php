@@ -29,19 +29,16 @@ class LeadInterestController extends Controller
         return redirect()->route('leadinterests.index');
     }
 
-    public function edit($id)
+    public function edit(LeadInterest $leadinterest)
     {
-        $leadInterest = leadInterest::findOrFail($id);
-
-        return view("leadinterests.edit", compact("leadInterest"));
+        return view("leadinterests.edit", compact("leadinterest"));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, LeadInterest $leadinterest)
     {
-        $leadInterest = leadInterest::findOrFail($id);
-        $leadInterest->update([
-            "name" => $request->name ?? $leadInterest->name,
-            "description" => $request->description ?? $leadInterest->description
+        $leadinterest->update([
+            "name" => $request->name ?? $leadinterest->name,
+            "description" => $request->description ?? $leadinterest->description
         ]);
 
         return redirect()->route('leadinterests.index');
