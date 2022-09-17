@@ -86,7 +86,7 @@
 <!-- END: Profile Info -->
 <div class="tab-content mt-5">
     <!-- BEGIN: Profile More -->
-    <div id="profile-more" class="tab-pane " role="tabpanel" aria-labelledby="profile-tab">
+    <div id="profile-more" class="tab-pane active" role="tabpanel" aria-labelledby="profile-tab">
         <div class="grid grid-cols-12 gap-6">
             <!-- BEGIN: Profile -->
             <div class="intro-y box col-span-12 lg:col-span-6">
@@ -165,7 +165,7 @@
     </div>
     <!-- END: Profile More -->
     <!-- BEGIN: Avctivities -->
-    <div id="activities" class="tab-pane active" role="tabpanel" aria-labelledby="account-tab">
+    <div id="activities" class="tab-pane " role="tabpanel" aria-labelledby="account-tab">
         <div class="grid grid-cols-12 gap-6">
             <!-- BEGIN: Pendekatan -->
             <div class="intro-y box col-span-12">
