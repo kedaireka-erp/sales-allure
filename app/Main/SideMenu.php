@@ -34,7 +34,7 @@ class SideMenu
                         'title' => 'Pendekatan'
                     ],
                     'activity' => [
-                        'icon' => 'activity',
+                        'icon' => 'coffee',
                         'route_name' => 'activities.index',
                         'params' => [
                             'layout' => 'side-menu'
@@ -130,8 +130,8 @@ class SideMenu
                         'title' => 'Lead Priority'
                     ],
                     'lead-interest' => [
-                        'icon' => 'smile',
-                        'route_name' => 'categories',
+                        'icon' => 'star',
+                        'route_name' => 'leadinterests.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],

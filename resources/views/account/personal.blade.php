@@ -35,11 +35,7 @@
                                 value="{{ Auth()->user()->address }}" disabled>
                         </div>
                     </div>
-                    <div class="col-span-12 xl:col-span-6">
-                        <u><a href="{{ route('account.profile.edit', $account) }}">
-                                <i data-lucide="edit" class="w-4 h-4 mr-2"></i>Edit Information
-                            </a></u>
-                    </div>
+                    
                 </div>
 
             </div>

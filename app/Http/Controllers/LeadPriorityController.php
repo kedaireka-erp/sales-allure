@@ -28,28 +28,25 @@ class LeadPriorityController extends Controller
         return redirect()->route('leadpriorities.index');
     }
 
-    public function edit($id)
+    public function edit(leadPriority $leadpriority)
     {
-        $leadPriority = leadPriority::findOrFail($id);
 
-        return view("leadpriorities.edit", compact("leadPriority"));
+        return view("leadpriorities.edit", compact("leadpriority"));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, leadPriority $leadpriority)
     {
-        $leadPriority = leadPriority::findOrFail($id);
-        $leadPriority->update([
-            "name" => $request->name ?? $leadPriority->name,
-            "description" => $request->description ?? $leadPriority->description
+        $leadpriority->update([
+            "name" => $request->name ?? $leadpriority->name,
+            "description" => $request->description ?? $leadpriority->description
         ]);
 
         return redirect()->route('leadpriorities.index');
     }
 
-    public function destroy($id)
+    public function destroy(leadPriority $leadpriority)
     {
-        $leadPriority = leadPriority::findOrFail($id);
-        $leadPriority->delete();
+        $leadpriority->delete();
 
         return redirect()->route('leadpriorities.index');
     }
