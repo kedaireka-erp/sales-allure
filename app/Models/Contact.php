@@ -53,4 +53,9 @@ class Contact extends Model
     {
         return $this->belongsToMany(LeadInterest::class, 'contact_interests');
     }
+
+    public function approachment(){
+        return $this->hasMany(Approachment::class);
+    }
+
 }

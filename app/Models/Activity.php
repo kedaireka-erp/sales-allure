@@ -14,4 +14,11 @@ class Activity extends Model
         "name", 
         "desc" 
     ];
+    
+    public function approachment()
+    {
+        return $this->belongsToMany(Approachment::class, 'approachment_activities');
+    }
+
+
 }

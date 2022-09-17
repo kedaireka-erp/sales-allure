@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('approachment_activities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('deskripsi')->nullable();
-            $table->string('model')->nullable();
+            $table->foreignId('approachment_id');
+            $table->foreignId('activity_id');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('approachment_activities');
     }
 };
