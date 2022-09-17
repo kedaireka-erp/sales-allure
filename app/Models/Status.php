@@ -15,4 +15,12 @@ class Status extends Model
     public function StatusQuotation(){
         return $this->hasMany(Quotation::class);
     }
+
+    public function approachments()
+    {
+        return $this->belongsToMany(Approachment::class, 'approachment_statuses');
+    }
+
+
+
 }

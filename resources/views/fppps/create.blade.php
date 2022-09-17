@@ -130,6 +130,13 @@
                         <option value="1">Ya</option>
                     </select>
                 </div>
+                <div class="mt-5" id="note">
+                    <label for="note" class="mb-2">Note</label>
+                    <div class="mt-2">
+                        <textarea name="note" cols="30" rows="10" class="editor "></textarea>
+                    </div>
+                </div>
+
 
                 <div class="mt-5">
                     <label for="filepond" class="form-label">Attachments </label>

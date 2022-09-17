@@ -27,7 +27,7 @@ class SideMenu
                 'sub_menu' => [
                     'pendekatan' => [
                         'icon' => 'message-circle',
-                        'route_name' => 'dashboard-overview-2',
+                        'route_name' => 'approachments.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
