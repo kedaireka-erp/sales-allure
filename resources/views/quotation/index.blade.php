@@ -74,7 +74,7 @@
                             </a>
                         </li>
                         <li>
-                            <a id="tabulator-export-xlsx" href="javascript:;" class="dropdown-item">
+                            <a id="tabulator-export-xlsx" href="{{ route('quotation.export') }}" class="dropdown-item">
                                 <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export XLSX
                             </a>
                         </li>
