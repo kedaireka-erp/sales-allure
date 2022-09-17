@@ -60,7 +60,7 @@
                     <td>{{ $type->status }}</td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3" href="{{ route('contact_types.edit', $type->id) }}">
+                            <a class="flex items-center mr-3" href="{{ route('contact_types.edit', $type) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>
                             <form action="{{ route('contact_types.destroy', $type) }}" method="post">

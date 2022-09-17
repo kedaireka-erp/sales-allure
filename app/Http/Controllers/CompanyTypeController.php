@@ -47,23 +47,21 @@ class CompanyTypeController extends Controller
         }
     }
    
-    public function show(CompanyType $companyType)
+    public function show(CompanyType $company_type)
     {
         //
     }
   
-    public function edit($id)
+    public function edit(CompanyType $company_type)
     {
-        $company_type = CompanyType::findOrFail($id);
 
         $company_types = CompanyType::all();
         
         return view('company_types.edit', compact('company_type', 'company_types'));
     }
      
-    public function update(Request $request, $id)
+    public function update(Request $request, CompanyType $company_type)
     {
-        $company_type = CompanyType::findOrFail($id);
 
         $validation = Validator::make($request->all(), [
             'name' => 'required|min:3',
@@ -89,9 +87,8 @@ class CompanyTypeController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(CompanyType $company_type)
     {
-        $company_type = CompanyType::findOrFail($id);
         
         $deleted = $company_type->delete();
         

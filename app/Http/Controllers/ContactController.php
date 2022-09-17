@@ -56,21 +56,19 @@ class ContactController extends Controller
     }
 
     
-    public function edit($id)
+    public function edit(Contact $contact)
     {
         $companies = Company::get();
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
         $leadStatuses = LeadStatus::get();
-        $contact = Contact::findOrFail($id);
         $contacts = Contact::all();
         return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses'));
     }
 
     
-    public function update(ContactRequest $request, $id)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        $contact = Contact::findOrFail($id);
         $validated = $request->validated();
 
         try {
