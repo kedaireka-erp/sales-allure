@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusSeeder::class);
         $this->call(DealSourceSeeder::class);
         $this->call(ActivitySeeder::class);
+        $this->call(LeadInterestSeeder::class);
 
         CompanyType::factory(20)->create();
 
