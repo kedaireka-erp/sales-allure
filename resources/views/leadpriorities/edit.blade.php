@@ -11,18 +11,18 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
-            <form action="{{ route('leadpriorities.update', $leadPriority->id) }}" method="POST">
+            <form action="{{ route('leadpriorities.update', $leadpriority->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="intro-y box p-5">
                     <div>
                         <label for="name" class="form-label">Nama Lead Priority</label>
                         <input id="name" name="name" type="text" class="form-control w-full"
-                            value="{{ $leadPriority->name }}">
+                            value="{{ $leadpriority->name }}">
                     </div>
                     <div class="mt-3">
                         <label for="description" class="form-label">Deskripsi</label>
-                        <textarea name="description" type="text" class="editor" id="description">{{ $leadPriority->description }}</textarea>
+                        <textarea name="description" type="text" class="editor" id="description">{{ $leadpriority->description }}</textarea>
                     </div>
                     <div class="text-right mt-5">
                         <a type="button" href="{{ route('leadpriorities.index') }}"

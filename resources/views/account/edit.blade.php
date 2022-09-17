@@ -1,8 +1,4 @@
-@extends('../layout/' . $layout)
-
-@section('subhead')
-    <title>Edit Information</title>
-@endsection
+@extends('account.side-menu')
 
 @section('profile')
     <div class="col-span-12 lg:col-span-8 2xl:col-span-9">
@@ -12,24 +8,42 @@
             @method('patch')
             <div class="intro-y box lg:mt-5">
                 <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <h2 class="font-medium text-base mr-auto">Sales Information</h2>
+                    <h2 class="font-medium text-base mr-auto">Edit Personal Information</h2>
                 </div>
-
                 <div class="p-5">
                     <div class="flex flex-col-reverse xl:flex-row flex-col">
                         <div class="flex-1 mt-6 xl:mt-0">
                             <div class="grid grid-cols-12 gap-x-5">
                                 <div class="col-span-12 2xl:col-span-6">
                                     <div>
-                                        <label for="name" class="form-label">Name</label>
+                                        <label for="name" class="form-label">Nama</label>
                                         <input id="name" name="name" type="text" class="form-control"
                                             placeholder="Masukkan nama" value="{{ $account->name }}">
                                     </div>
                                     <div class="mt-3">
-                                        <label for="email" class="form-label">Email Address</label>
+                                        <label for="email" class="form-label">Alamat Email</label>
                                         <input id="email" name="email" type="text" class="form-control"
                                             placeholder="Masukkan email anda" value="{{ $account->email }}">
                                     </div>
+                                    <div class="mt-3">
+                                        <label for="gender" class="form-label">Jenis Kelamin</label>
+                                        <select id="gender" name="gender" data-search="true" class="tom-select w-full">
+                                            <option value="male" {{ $account->gender === 'male' ? 'selected' : '' }}>Male</option>
+                                            <option value="female" {{ $account->gender === 'female' ? 'selected' : '' }}>Female
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label for="phone_number" class="form-label">No. Telepon</label>
+                                        <input id="phone_number" name="phone_number" type="text" class="form-control"
+                                            placeholder="Input phone number" value="{{ $account->phone_number }}">
+                                    </div>
+                                    <div class="mt-3">
+                                        <label for="address" class="form-label">Alamat</label>
+                                        <input id="address" name="address" type="text" class="form-control"
+                                            placeholder="input address" value="{{ $account->address }}">
+                                    </div>
+        
 
                                 </div>
                             </div>
@@ -57,44 +71,5 @@
             </div>
         <!-- END: Display Information -->
 
-        <!-- BEGIN: Personal Information -->
-        <form action="{{ route('account.profile.update', $account) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('patch')
-            <div class="intro-y box mt-5">
-                <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <h2 class="font-medium text-base mr-auto">Personal Information</h2>
-                </div>
-                <div class="p-5">
-                    <div class="grid grid-cols-12 gap-x-5">
-                        <div class="col-span-12 xl:col-span-6">
-                            <div class="mt-3">
-                                <label for="gender" class="form-label">Gender</label>
-                                <select id="gender" name="gender" data-search="true" class="tom-select w-full">
-                                    <option value="male" {{ $account->gender === 'male' ? 'selected' : '' }}>Male</option>
-                                    <option value="female" {{ $account->gender === 'female' ? 'selected' : '' }}>Female
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="mt-3 xl:mt-0">
-                                <label for="phone_number" class="form-label">Phone Number</label>
-                                <input id="phone_number" name="phone_number" type="text" class="form-control"
-                                    placeholder="Input phone number" value="{{ $account->phone_number }}">
-                            </div>
-                            <div class="mt-3">
-                                <label for="address" class="form-label">Address</label>
-                                <input id="address" name="address" type="text" class="form-control"
-                                    placeholder="input address" value="{{ $account->address }}">
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex justify-end mt-4">
-                        <button type="submit" class="btn btn-primary w-20 mr-auto">Save</button>
-                    </div>
-                </div>
-            </div>
-        <!-- END: Personal Information -->
-    </div>
     </div>
 @endsection

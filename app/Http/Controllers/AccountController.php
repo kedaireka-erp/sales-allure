@@ -17,19 +17,22 @@ class AccountController extends Controller
         return view('account.personal', compact('account'));
     }
 
-    public function photoProfile(Request $request)
+    public function photoProfile(Request $request, User $account)
     {
-        $photo = new User();
-
+        $validator = Validator::make($request->all(), [
+        'photo' => 'nullable|file|image|max:5120'
+        ]);
         if ($request->file('photo')) {
-            $photo = $request->file('photo');
-            $filename = date('YmdHi') . $photo->getClientOriginalName();
-            $photo->move(public_path('storage/profile'), $filename);
-            $photo['photo'] = $filename;
+            $file = $request->file('photo');
+            $filename =$file->getClientOriginalName();
+            $file->move(public_path('storage/profile'), $filename);
+            $update = $filename;
         }
-        $photo->save();
+        $account->update($validator->validate());
 
-        return to_route('account.profile');
+        
+
+        return to_route('account.profile', $account);
     }
 
     public function edit(User $account)
