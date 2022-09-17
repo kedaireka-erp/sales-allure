@@ -34,7 +34,7 @@ class SideMenu
                         'title' => 'Pendekatan'
                     ],
                     'activity' => [
-                        'icon' => 'activity',
+                        'icon' => 'coffee',
                         'route_name' => 'activities.index',
                         'params' => [
                             'layout' => 'side-menu'

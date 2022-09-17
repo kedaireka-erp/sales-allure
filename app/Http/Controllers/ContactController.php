@@ -48,7 +48,11 @@ class ContactController extends Controller
     
     public function show(Contact $contact)
     {
-        return view('contacts.detail', compact('contact'));
+        $companies = Company::all();
+        $contactTypes = ContactType::all();
+        $leadSources = LeadSource::all();
+        $leadStatuses = LeadStatus::all();
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses'));
     }
 
     
