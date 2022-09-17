@@ -3820,6 +3820,9 @@ select{
     --tw-bg-opacity: 1;
     background-color: rgb(var(--color-pending) / var(--tw-bg-opacity));
 }
+.bg-success\/10{
+    background-color: rgb(var(--color-success) / 0.1);
+}
 .bg-pending\/10{
     background-color: rgb(var(--color-pending) / 0.1);
 }
