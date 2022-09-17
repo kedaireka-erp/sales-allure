@@ -13,4 +13,9 @@ class LeadInterest extends Model
         'name',
         'description'
     ];
+
+    public function Contacts()
+    {
+        return $this->belongsToMany(Contact::class, 'contact_interests');
+    }
 }
