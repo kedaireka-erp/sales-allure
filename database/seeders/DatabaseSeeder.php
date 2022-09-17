@@ -8,11 +8,12 @@ use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Quotation;
 use App\Models\DealSource;
+use App\Models\LeadSource;
+use App\Models\LeadStatus;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
-use App\Models\LeadSource;
-use App\Models\LeadStatus;
+use App\Models\DetailQuotation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -45,6 +46,8 @@ class DatabaseSeeder extends Seeder
         Quotation::factory(20)->create();
 
         Fppp::factory(100)->create();
+
+        DetailQuotation::factory(100)->create();
 
     }
 }
