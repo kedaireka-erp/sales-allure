@@ -1,8 +1,4 @@
-@extends('../layout/' . $layout)
-
-@section('subhead')
-    <title>Profil</title>
-@endsection
+@extends('account.side-menu')
 
 @section('profile')
     
@@ -12,7 +8,7 @@
                 <!-- BEGIN: Daily Sales -->
                 <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">Quotation</h2>
+                        <h2 class="font-medium text-base mr-auto">Personal Information</h2>
                         <div class="dropdown ml-auto sm:hidden">
                             <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
                                 <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
@@ -27,40 +23,52 @@
                                 </ul>
                             </div>
                         </div>
-                        <button class="btn btn-outline-secondary hidden sm:flex">
-                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download Excel
-                        </button>
                     </div>
                     <div class="p-5">
                         <div class="relative flex items-center">
-                            <div class="w-12 h-12 flex-none image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('dist/images/' . $fakers[0]['photos'][0]) }}">
+                            <div class="w-12 h-12 flex items-center justify-center image-fit">
+                                <i data-lucide="user" class="w-full"></i>
                             </div>
                             <div class="ml-4 mr-auto">
-                                <a href="" class="font-medium">{{ $fakers[0]['users'][0]['name'] }}</a>
-                                <div class="text-slate-500 mr-5 sm:mr-5">Proyek Gajah Satwa</div>
+                                <div class="text-slate-500 mr-5 sm:mr-5">Nama</div>
+                                <div class="font-medium">{{ Auth()->user()->name }}</div>
                             </div>
-                            <div class="font-medium text-slate-600 dark:text-slate-500"><strong>Won</strong></div>
                         </div>
-                        <div class="relative flex items-center mt-5">
-                            <div class="w-12 h-12 flex-none image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('dist/images/' . $fakers[1]['photos'][0]) }}">
+                        <div class="relative flex items-center">
+                            <div class="w-12 h-12 flex items-center justify-center image-fit">
+                                <i data-lucide="mail" class="w-full"></i>
                             </div>
                             <div class="ml-4 mr-auto">
-                                <a href="" class="font-medium">{{ $fakers[1]['users'][0]['name'] }}</a>
-                                <div class="text-slate-500 mr-5 sm:mr-5">Proyek Gajah Mungkur</div>
+                                <div class="text-slate-500 mr-5 sm:mr-5">Email</div>
+                                <div class="font-medium">{{ Auth()->user()->email }}</div>
                             </div>
-                            <div class="font-medium text-slate-600 dark:text-slate-500"><strong>Revisi Quotation</strong></div>
                         </div>
-                        <div class="relative flex items-center mt-5">
-                            <div class="w-12 h-12 flex-none image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{ asset('dist/images/' . $fakers[2]['photos'][0]) }}">
+                        <div class="relative flex items-center">
+                            <div class="w-12 h-12 flex items-center justify-center image-fit">
+                                <i data-lucide="smile" class="w-full"></i>
                             </div>
                             <div class="ml-4 mr-auto">
-                                <a href="" class="font-medium">{{ $fakers[2]['users'][0]['name'] }}</a>
-                                <div class="text-slate-500 mr-5 sm:mr-5">Proyek Gajah Turu</div>
+                                <div class="text-slate-500 mr-5 sm:mr-5">Jenis Kelamin</div>
+                                <div class="font-medium">{{ Auth()->user()->gender }}</div>
                             </div>
-                            <div class="font-medium text-slate-600 dark:text-slate-500"><strong>Won</strong></div>
+                        </div>
+                        <div class="relative flex items-center">
+                            <div class="w-12 h-12 flex items-center justify-center image-fit">
+                                <i data-lucide="phone" class="w-full"></i>
+                            </div>
+                            <div class="ml-4 mr-auto">
+                                <div class="text-slate-500 mr-5 sm:mr-5">No. Telepon</div>
+                                <div class="font-medium">{{ Auth()->user()->phone_number }}</div>
+                            </div>
+                        </div>
+                        <div class="relative flex items-center">
+                            <div class="w-12 h-12 flex items-center justify-center image-fit">
+                                <i data-lucide="globe" class="w-full"></i>
+                            </div>
+                            <div class="ml-4 mr-auto">
+                                <div class="text-slate-500 mr-5 sm:mr-5">Alamat</div>
+                                <div class="font-medium">{{ Auth()->user()->address }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -594,5 +602,4 @@
                 <!-- END: General Statistics -->
             </div>
         </div>
-    </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Status;
 use App\Models\DealSource;
+use App\Models\DetailQuotation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,5 +29,9 @@ class Quotation extends Model
 
     public function fppp(){
         return $this->hasMany(Fppp::class);
+    }
+
+    public function DetailQuotation(){
+        return $this->hasMany(DetailQuotation::class);
     }
 }
