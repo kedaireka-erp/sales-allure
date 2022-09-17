@@ -95,13 +95,15 @@
                             <select data-placeholder="Pilih Lead Interest" class="tom-select w-full" id="leadInterest"
                                 name="leadInterest[]" multiple>
                                 @foreach ($leadInterests as $key => $leadInterest)
-                                    @foreach ($contact->leadInterests as $p)
-                                        @if ($p->id == $key)
-                                            <option value="{{ $key }}" selected>{{ $leadInterest->name }}</option>
-                                        @else
-                                            <option value="{{ $key }}">{{ $leadInterest->name }}</option>
-                                        @endif
-                                    @endforeach
+
+                                        @foreach ($contact->leadInterests as $p)
+                                            @if ($p->id == $leadInterest->id)
+                                                <option value="{{ $leadInterest->id }}" selected>{{ $leadInterest->name }}</option>
+                                            <option value="{{ $leadInterest->id }}" selected>{{ $leadInterest->name }}</option>
+                                            @else
+                                            <option value="{{ $leadInterest->id }}">{{ $leadInterest->name }}</option>
+                                            @endif
+                                        @endforeach
                                 @endforeach
                             </select>
                         </div>
