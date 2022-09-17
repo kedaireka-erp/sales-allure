@@ -62,6 +62,16 @@
                             <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+                    {{-- <div class="mt-5">
+                        <label for="note" class="mb-2">Lead Interest</label>
+                        <div class="mt-2">
+                            <select data-placeholder="Pilih Lead Interest" class="tom-select w-full" id="leadInterest" name="leadInterest[]" multiple>
+                                @foreach ($leadInterests as $key => $leadInterest)
+                                    <option value="{{ $leadInterest->id }}">{{ $leadInterest->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div> --}}
                     <div class="mt-5">
                         <label for="name" class="form-label">Contact Name </label>
                         <input id="name" type="text" class="@error('name') border-red-700                            
