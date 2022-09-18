@@ -69,9 +69,5 @@ class User extends Authenticatable
         return $this->hasMany(Contact::class);
 
     }
-    
-    public function tempFiles(){
-        return $this->hasMany(TempFiles::class);
-    }
 
 }
