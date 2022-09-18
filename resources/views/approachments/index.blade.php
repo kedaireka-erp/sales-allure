@@ -41,6 +41,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
+                        <th class="whitespace-nowrap text-primary">NO</th>
                         <th class="whitespace-nowrap text-primary">NAMA KONTAK</th>
                         <th class="text-center whitespace-nowrap text-primary">AKTIVITAS</th>
                         <th class="text-center whitespace-nowrap text-primary">TANGGAL</th>
@@ -52,6 +53,7 @@
                 <tbody>
                     @foreach ($approachments as $no => $approachment)
                         <tr class="intro-x zoom-in transition">
+                            <td class="text-base text-center">{{ $no + $approachments->firstItem() }}</td>
                             <td class="text-base text-center">{{ $approachment->contact->name ?? '' }}</td>
                             <td class="text-base text-center">AAAAAAAAA</td>
                             <td class="text-base text-center">{{ $approachment->date }}</td>
@@ -83,7 +85,7 @@
             </table>
         </div>
         <!-- END: Data List -->
-        {{-- {{ $fppps->links('components.custom-pagination') }} --}}
+        {{ $approachments->links('components.custom-pagination') }}
     </div>
     <!-- BEGIN: Modal Content -->
     <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">

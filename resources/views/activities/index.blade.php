@@ -29,6 +29,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
+                        <th class="whitespace-nowrap text-primary w-fit">NO</th>
                         <th class="whitespace-nowrap text-primary w-fit">JENIS</th>
                         <th class="text-center whitespace-nowrap text-primary w-fit">DESKRIPSI</th>
                         <th class="text-center whitespace-nowrap text-primary w-fit">ACTIONS</th>
@@ -37,6 +38,7 @@
                 <tbody>
                     @foreach ($activities as $no => $activity)
                         <tr class="intro-x zoom-in transition">
+                            <td class="text-base w-fit">{{ $no + $activities->firstItem() }}</td>
                             <td class="text-base w-fit">{{ $activity->name }}</td>
                             <td class="text-base text-center w-1/2">{{ $activity->desc}}</td>
                             <td class="table-report__action w-fit">
@@ -58,7 +60,7 @@
             </table>
         </div>
         <!-- END: Data List -->
-        {{-- {{ $fppps->links('components.custom-pagination') }} --}}
+        {{ $activities->links('components.custom-pagination') }}
     </div>
     <!-- BEGIN: Modal Content -->
     <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">

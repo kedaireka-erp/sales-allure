@@ -9,7 +9,7 @@ class LeadPriorityController extends Controller
 {
     public function index()
     {
-        $leadPriorities = leadPriority::get();
+        $leadPriorities = leadPriority::latest()->paginate(10);
         return view('leadpriorities.index', compact('leadPriorities'));
     }
 

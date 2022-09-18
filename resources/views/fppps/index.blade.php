@@ -94,6 +94,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
+                        <th CLASS="whitespace-nowrap text-primary">NO.</th>
                         <th class="whitespace-nowrap text-primary">NO. FPPP</th>
                         <th class="text-center whitespace-nowrap text-primary">TIPE FPPP</th>
                         <th class="text-center whitespace-nowrap text-primary">TAHAP PRODUKSI</th>
@@ -104,6 +105,11 @@
                 <tbody>
                     @foreach ($fppps as $no => $fppp)
                         <tr class="intro-x zoom-in transition">
+                            <td class="w-10">
+                                <div class="flex">
+                                    <div class="font-medium whitespace-nowrap">{{ $no + $fppps->firstItem() }}</div>
+                                </div>
+                            </td>
                             <td class="text-base">{{ $fppp->fppp_no }}</td>
                             <td class="text-base text-center">{{ ucfirst($fppp->fppp_type) }}</td>
                             <td class="text-base text-center">{{ $fppp->production_phase }}</td>

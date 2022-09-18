@@ -94,7 +94,7 @@
                     <table class="table table-report -mt-2">
                         <thead>
                             <tr>
-                                <TH CLASS="whitespace-nowrap text-primary">NO.</TH>
+                                <th CLASS="whitespace-nowrap text-primary">NO.</th>
                                 <th class="whitespace-nowrap text-primary">NO. QUOTATION</th>
                                 <th class="text-center whitespace-nowrap text-primary">STATUS</th>
                                 <th class="text-center whitespace-nowrap text-primary">NOMINAL PENAWARAN</th>
@@ -102,11 +102,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($quotations as $quotation)
+                            @foreach ($quotations as $key => $quotation)
                                 <tr class="intro-x zoom-in transition">
                                     <td class="w-10">
                                         <div class="flex">
-                                            <div class="font-medium whitespace-nowrap">{{ $loop->iteration }}</div>
+                                            <div class="font-medium whitespace-nowrap">{{ $key + $quotations->firstItem() }}</div>
                                         </div>
                                     </td>
                                     <td>
@@ -181,6 +181,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{ $quotations->links('components.custom-pagination') }}
             </div>
         </div>
     </div>

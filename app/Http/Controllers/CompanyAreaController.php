@@ -11,7 +11,7 @@ class CompanyAreaController extends Controller
 {
     public function index()
     {
-        $company_areas = CompanyArea::all();
+        $company_areas = CompanyArea::latest()->paginate(10);
         
         return view('company_areas.index', compact('company_areas'));
     }

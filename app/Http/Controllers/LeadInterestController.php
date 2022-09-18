@@ -10,7 +10,7 @@ class LeadInterestController extends Controller
     
     public function index()
     {
-        $leadInterests = leadInterest::get();
+        $leadInterests = leadInterest::latest()->paginate(10);
         return view('leadinterests.index', compact('leadInterests'));
     }
 

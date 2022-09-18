@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach ($leadStatuses as $no => $leadstatus)
                         <tr class="intro-x zoom-in transition">
-                            <td class="text-left">{{ ++$no }}</td>
+                            <td class="text-left">{{ $no + $leadStatuses->firstItem() }}</td>
                             <td class="text-left">{{ $leadstatus->name }}</td>
                             <td class="text-left">{!! $leadstatus->description !!}</td>
                             <td class="table-report__action w-56">
@@ -46,5 +46,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadStatuses->links('components.custom-pagination') }}
     </div>
 @endsection

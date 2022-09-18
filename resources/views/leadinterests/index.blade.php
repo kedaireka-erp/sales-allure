@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach ($leadInterests as $no => $leadinterest)
                         <tr class="intro-x">
-                            <td class="text-left">{{ ++$no }}</td>
+                            <td class="text-left">{{ $no + $leadInterests->firstItem() }}</td>
                             <td class="text-left">{{ $leadinterest->name }}</td>
                             <td class="text-left">{!! $leadinterest->description !!}</td>
                             <td class="table-report__action w-56">
@@ -46,5 +46,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadInterests->links('components.custom-pagination') }}
     </div>
 @endsection
