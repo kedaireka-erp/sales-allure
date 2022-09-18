@@ -59,4 +59,14 @@ class User extends Authenticatable
             return url('media-example/no-image.png');
         }
     }
+
+
+    public function tempFiles(){
+        return $this->hasMany(TempFiles::class);
+    }
+
+    public function fppp()
+    {
+        return $this->hasMany(Fppp::class);
+    }
 }
