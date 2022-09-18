@@ -65,8 +65,13 @@ class User extends Authenticatable
         return $this->hasMany(TempFiles::class);
     }
 
+<<<<<<< Updated upstream
     public function fppp()
     {
         return $this->hasMany(Fppp::class);
+=======
+    public function contacts(){
+        return $this->hasMany(Contact::class);
+>>>>>>> Stashed changes
     }
 }
