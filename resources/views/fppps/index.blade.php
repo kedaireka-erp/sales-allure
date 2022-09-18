@@ -5,11 +5,13 @@
 @endsection
 
 @section('subcontent')
-    <h1 class="intro-y text-xl font-md mt-10 ">FPPP</h1>
-    <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('fppps.create') }}" class="btn btn-primary shadow-md mr-2 zoom-in transition">Tambah FPPP</a>
-            <div class="dropdown">
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">FPPP</h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a href="{{ route('fppps.create') }}" class="btn btn-primary shadow-md mr-2">
+                <span class="text">Tambah FPPP</span>
+            </a>
+            <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
                         <i class="w-4 h-4" data-lucide="plus"></i>
@@ -19,30 +21,74 @@
                     <ul class="dropdown-content">
                         <li>
                             <a href="" class="dropdown-item">
-                                <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                                <i data-lucide="file-plus" class="w-4 h-4 mr-2"></i> New Category
                             </a>
                         </li>
                         <li>
                             <a href="" class="dropdown-item">
-                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF
+                                <i data-lucide="users" class="w-4 h-4 mr-2"></i> New Group
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="hidden md:block mx-auto text-slate-500"></div>
-            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-                <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+        </div>
+    </div>
+
+    <div class="intro-y box p-5 mt-5">
+        <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
+            <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
+
+                <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
+                    <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
+                    <input id="tabulator-html-filter-value" type="text"
+                        class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
+                </div>
+                <div class="mt-2 xl:mt-0">
+                    <button id="tabulator-html-filter-go" type="button"
+                        class="btn btn-primary w-full sm:w-16">Search</button>
+                    <button id="tabulator-html-filter-reset" type="button"
+                        class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
+                </div>
+            </form>
+            <div class="flex mt-5 sm:mt-0">
+                <button id="tabulator-print" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
+                    <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                </button>
+                <div class="dropdown w-1/2 sm:w-auto">
+                    <button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false"
+                        data-tw-toggle="dropdown">
+                        <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export <i data-lucide="chevron-down"
+                            class="w-4 h-4 ml-auto sm:ml-2"></i>
+                    </button>
+                    <div class="dropdown-menu w-40">
+                        <ul class="dropdown-content">
+                            <li>
+                                <a id="tabulator-export-csv" href="javascript:;" class="dropdown-item">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export CSV
+                                </a>
+                            </li>
+                            <li>
+                                <a id="tabulator-export-json" href="javascript:;" class="dropdown-item">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export JSON
+                                </a>
+                            </li>
+                            <li>
+                                <a id="tabulator-export-xlsx" href="javascript:;" class="dropdown-item">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export XLSX
+                                </a>
+                            </li>
+                            <li>
+                                <a id="tabulator-export-html" href="javascript:;" class="dropdown-item">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export HTML
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <br>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
             <table class="table table-report -mt-2">

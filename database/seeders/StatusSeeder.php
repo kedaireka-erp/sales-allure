@@ -22,9 +22,9 @@ class StatusSeeder extends Seeder
         Status::factory()->create(["name"=>"Target Omset"]);
         Status::factory()->create(["name"=>"Invoice"]);
         Status::factory()->create(["name"=>"Won"]);
-        Status::factory()->create(["name"=>"Lost"]);
-        Status::factory()->create(["name"=>"Pending"]);
-        Status::factory()->create(["name"=>"Deal"]);
+        Status::factory()->create(["name"=>"Lost", "model"=>"approachment"]);
+        Status::factory()->create(["name"=>"Pending", "model"=>"approachment"]);
+        Status::factory()->create(["name"=>"Deal", "model"=>"approachment"]);
 
     }
 }

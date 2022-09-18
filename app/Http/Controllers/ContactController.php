@@ -11,6 +11,7 @@ use App\Models\ContactType;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Http\Requests\ContactRequest;
+use App\Models\LeadInterest;
 
 class ContactController extends Controller
 {
@@ -28,16 +29,19 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();        
         $leadStatuses = LeadStatus::all();
-        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses'));
+        $leadInterests = LeadInterest::all();
+        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests'));
     }
 
     
     public function store(ContactRequest $request)
     {
+        // dd($request->all());
         $validated = $request->validated();
 
         try {
             $contact = Contact::create($validated);
+            $contact->leadInterests()->sync($request->leadInterest);
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }  
@@ -48,29 +52,33 @@ class ContactController extends Controller
     
     public function show(Contact $contact)
     {
-        return view('contacts.detail', compact('contact'));
+        $companies = Company::all();
+        $contactTypes = ContactType::all();
+        $leadSources = LeadSource::all();
+        $leadStatuses = LeadStatus::all();
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses'));
     }
 
     
-    public function edit($id)
+    public function edit(Contact $contact)
     {
         $companies = Company::get();
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
         $leadStatuses = LeadStatus::get();
-        $contact = Contact::findOrFail($id);
+        $leadInterests = LeadInterest::all();
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses', 'leadInterests'));
     }
 
     
-    public function update(ContactRequest $request, $id)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        $contact = Contact::findOrFail($id);
         $validated = $request->validated();
 
         try {
             $contact->update($validated);
+            $contact->leadInterests()->sync($request->leadInterest);
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }

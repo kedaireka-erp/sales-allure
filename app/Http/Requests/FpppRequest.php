@@ -40,7 +40,7 @@ class FpppRequest extends FormRequest
             "sealant_usage" => 'nullable',
             "delivery_to_expedition" => 'nullable',
             "note" => 'nullable',
-            "file_id" => 'nullable',
+            "files" => 'nullable',
 
         ];
     }

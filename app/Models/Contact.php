@@ -34,6 +34,11 @@ class Contact extends Model
         return $this->belongsTo(LeadSource::class);
     }
 
+    public function Quotation()
+    {
+        return $this->hasMany(Quotation::class);
+    }
+
     public function Company()
     {
         return $this->belongsTo(Company::class);
@@ -43,8 +48,6 @@ class Contact extends Model
     {
         return $this->belongsTo(LeadStatus::class);
     }
-<<<<<<< Updated upstream
-=======
 
     public function leadInterests()
     {
@@ -59,6 +62,4 @@ class Contact extends Model
     {
         return $this->belongsTo(User::class);
     }
-
->>>>>>> Stashed changes
 }

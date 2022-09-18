@@ -32,6 +32,13 @@
         </div>
     </div>
 </div>
+@if ($fppp->files)
+    <div class="p-5">
+        @foreach ($fppp->files as $file)
+        <img src="{{ asset('storage/'.$file->path) }}" alt="{{ $file->name }}" srcset="" class="w-20">
+        @endforeach
+    </div>
+@endif
 <!-- BEGIN: Invoice -->
 <div class=" box overflow-hidden mt-5 w-full">
     <div class=" w-full border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
@@ -81,7 +88,7 @@
                     <div class=" font-semibold text-slate-500">BINA BAKTI OFFICE TAHAP 2</div>
                 </div>
             </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full mb-3">
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full ">
                 <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
                     <div class=" text-slate-500">Alamat Proyek </div>
                     <div class=" text-slate-500">:</div>
@@ -118,9 +125,99 @@
                 </div>
             </div>
             <hr>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <b>PAKET DATA PRODUKSI</b>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Warna</div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->color}} </div>
+                </div>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Kaca </div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->glass}}</div>
+                </div>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Jenis Kaca</div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->glass_type}}</div>
+                </div>
+            </div>
+            <hr>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <b>PENGIRIMAN</b>
+            </div>
+
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Deadline Pengambilan </div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{\Carbon\Carbon::parse($fppp->retrival_deadline)->format("d F Y")}}</div>
+                </div>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Penggunaan Peti</div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->box_usage}}</div>
+                </div>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Penggunaan Sealant</div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->sealant_usage}}</div>
+                </div>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Pengiriman ke Ekspedisi</div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->delivery_to_expedition}}</div>
+                </div>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Note</div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">{{$fppp->note}}</div>
+                </div>
+            </div>
+            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class=" text-slate-500">Attachment</div>
+                    <div class=" text-slate-500">:</div>
+                </div>
+                <div class=" w-full">
+                    <div class=" font-semibold text-slate-500">(GAMBAR GAMBAR)</div>
+                </div>
+            </div>
         </div>
+        <br><br>
     </div>
-    <div class="px-5 sm:px-16 py-10 sm:py-20">
+    {{-- <div class="px-5 sm:px-16 py-10 sm:py-20">
         <div class="overflow-x-auto">
             <table class="table">
                 <thead>
@@ -184,7 +281,7 @@
             <div class="text-xl text-primary font-medium mt-2">$20.600.00</div>
             <div class="mt-1">Taxes included</div>
         </div>
-    </div>
+    </div> --}}
 </div>
 <!-- END: Invoice -->
 @endsection

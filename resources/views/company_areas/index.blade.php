@@ -60,10 +60,10 @@
                     <td>{!!$area->description !!}</td>                   
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center text-primary mr-3" href="javascript:;">
+                            {{-- <a class="flex items-center text-primary mr-3" href="javascript:;">
                                 <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
-                            </a>                          
-                            <a class="flex items-center mr-3" href="{{ route('company_areas.edit', $area->id) }}">
+                            </a>                           --}}
+                            <a class="flex items-center mr-3" href="{{ route('company_areas.edit', $area) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>           
                             <form action="{{ route('company_areas.destroy', $area) }}" method="post">

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->text('address');
             $table->string('phone');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

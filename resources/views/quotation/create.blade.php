@@ -20,6 +20,16 @@
                             placeholder="Masukkan nomor Quotation">
                     </div>
                     <div class="mt-3">
+                        <label for="contact" class="form-label">Contact</label>
+                        <select class="tom-select w-full mb-3" id="contact"
+                            name="contact_id">
+                            <option selected>Contact</option>
+                            @foreach ($contacts as $contact)
+                                <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mt-3">
                         <label for="deal_source" class="form-label">Deal Source</label>
                         <select class="tom-select w-full mb-3" id="deal_source"
                             name="deal_source_id">

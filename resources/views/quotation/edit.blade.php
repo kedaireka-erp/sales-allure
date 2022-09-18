@@ -19,6 +19,13 @@
                         <input id="no_quotation" type="text" name="no_quotation" class="form-control w-full"
                             value="{{ $quotation->no_quotation }}">
                     </div>
+                        <label for="contact" class="form-label">Contact</label>
+                        <select class="custom-select d-block w-full form-control mb-3" id="contact"
+                                name="contact_id">
+                                @foreach ($contacts as $contact)
+                                    <option value="{{ $contact->id }}"   {{ $contact->id === $quotation->contact_id ? 'selected' : '' }}>{{ $contact->name }}</option>
+                                @endforeach
+                        </select>
                         <label for="deal_source" class="form-label">Deal Source</label>
                         <select class="custom-select d-block w-full form-control mb-3" id="deal_source"
                                 name="deal_source_id">
@@ -30,7 +37,7 @@
                         <select class="custom-select d-block w-full form-control mb-3" id="status"
                                 name="status_id">
                                 @foreach ($status as $stat)
-                                    <option value="{{ $stat->id }}"  {{ $stat->id === $quotation->stat_id ? 'selected' : '' }}>{{ $stat->name }}</option>
+                                    <option value="{{ $stat->id }}"  {{ $stat->id === $quotation->status_id ? 'selected' : '' }}>{{ $stat->name }}</option>
                                 @endforeach
                             </select>
                     <div class="mt-3">

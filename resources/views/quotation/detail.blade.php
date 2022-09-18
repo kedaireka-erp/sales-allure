@@ -43,6 +43,7 @@
                 <div class="flex flex-col items-center h-full">
                     <h1 class="text-primary font-semibold lg:text-xl text-md">QUOTATION</h1>
                     <h2 class="text-primary font-semibold lg:text-lg text-base">Quotation No. {{ $quotation->no_quotation }}</h2>
+                    <h2 class="text-primary font-semibold lg:text-lg text-base">Revisi Ke - 7</h2>
                 </div>
                 <div class="mt-1">Kode-kode</div>
             </div>
@@ -99,7 +100,7 @@
                             <div class="text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="font-semibold text-slate-500">{{ $fakers[0]['users'][1]['name'] }}</div>
+                            <div class="font-semibold text-slate-500">{{ $quotation->Contact->name }}</div>
                         </div>
                     </div>
                 </div>
@@ -151,7 +152,11 @@
                     </div>
                     <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
                         <div class="w-full max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Revisi ke- 7</div>
+                            <div class="text-base text-slate-500">Nominal Penawaran </div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">@currency($quotation->nominal())</div>
                         </div>
                     </div>
                 </div>
@@ -161,58 +166,6 @@
                     <div class="text-base text-slate-500"><b>Alasan</b></div>
                     <div class="mt-1">Lorem Ipsum is simply dummy text of the printing</div>
                 </div>
-            </div>
-        </div>
-        <div class="px-5 sm:px-16 py-10 sm:py-20">
-            <div class="overflow-x-auto">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="border-b-2 dark:border-darkmode-400 whitespace-nowrap">DESCRIPTION</th>
-                            <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">QTY</th>
-                            <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">PRICE</th>
-                            <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">SUBTOTAL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border-b dark:border-darkmode-400">
-                                <div class="font-medium whitespace-nowrap">Midone HTML Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">2</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$50</td>
-                        </tr>
-                        <tr>
-                            <td class="border-b dark:border-darkmode-400">
-                                <div class="font-medium whitespace-nowrap">Vuejs Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">1</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$25</td>
-                        </tr>
-                        <tr>
-                            <td class="border-b dark:border-darkmode-400">
-                                <div class="font-medium whitespace-nowrap">React Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">1</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$25</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="font-medium whitespace-nowrap">Laravel Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right w-32">3</td>
-                            <td class="text-right w-32">$25</td>
-                            <td class="text-right w-32 font-medium">$75</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
         <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
