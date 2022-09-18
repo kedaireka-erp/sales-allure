@@ -12,10 +12,6 @@ class AccountController extends Controller
     {
         return view('account.profile', compact('account'));
     }
-    public function personal(User $account)
-    {
-        return view('account.personal', compact('account'));
-    }
 
     public function photoProfile(Request $request, User $account)
     {

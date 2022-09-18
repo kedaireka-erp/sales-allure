@@ -15,6 +15,7 @@ class Quotation extends Model
     use SoftDeletes;
     protected $table="quotations";
     protected $fillable=["no_quotation","contact_id", "deal_source_id","status_id","keterangan"];
+    protected $appends=['nominal'];
 
     public function Contact(){
         return $this->belongsTo(Contact::class);
@@ -34,4 +35,8 @@ class Quotation extends Model
     public function DetailQuotation(){
         return $this->hasMany(DetailQuotation::class);
     }
+
+    public function Nominal() {
+    return $this->DetailQuotation()->sum(\DB::raw('qty * harga'));
+  }
 }
