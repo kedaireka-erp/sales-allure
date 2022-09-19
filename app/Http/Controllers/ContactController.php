@@ -8,10 +8,11 @@ use App\Models\Contact;
 use App\Models\LeadSource;
 use App\Models\LeadStatus;
 use App\Models\ContactType;
+use App\Models\LeadInterest;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContactRequest;
-use App\Models\LeadInterest;
 
 class ContactController extends Controller
 {
@@ -42,6 +43,7 @@ class ContactController extends Controller
         try {
             $contact = Contact::create($validated);
             $contact->leadInterests()->sync($request->leadInterest);
+            $contact->update(['user_id' => Auth::id()]);
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }  

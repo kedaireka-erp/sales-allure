@@ -14,7 +14,7 @@ class Quotation extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table="quotations";
-    protected $fillable=["no_quotation","contact_id", "deal_source_id","status_id","keterangan"];
+    protected $fillable=["no_quotation","contact_id", "deal_source_id","status_id","alasan","keterangan"];
     protected $appends=['nominal'];
 
     public function Contact(){
