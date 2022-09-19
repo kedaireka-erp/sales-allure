@@ -59,7 +59,9 @@
                     </div>
                     <div class=" w-full">
                         <div class=" font-semibold text-slate-500">
-                            {{ \Carbon\Carbon::parse($fppp->created_at)->format('d F Y') }}</div>
+
+                            {{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</div>
+
                     </div>
                 </div>
                 <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
@@ -127,7 +129,8 @@
                         @endif
                         @if ($fppp->order_status == 'lainlain')
                             <div class=" font-semibold text-slate-500"{{ $fppp->order_status == 'lainlain' ? 'selected' : '' }}
-                                value="lainlain">(UBAH JADI TIDAK ADA TAG HTML) Lain-lain ({{ $fppp->fppp_keterangan }})</div>
+                                value="lainlain">Lain-lain : {!! $fppp->fppp_keterangan !!}</div>
+
                         @endif
                     </div>
                 </div>
@@ -194,7 +197,8 @@
                     </div>
                     <div class=" w-full">
                         <div class=" font-semibold text-slate-500">
-                            {{ \Carbon\Carbon::parse($fppp->retrival_deadline)->format('d F Y') }}</div>
+                            {{ \Carbon\Carbon::parse($fppp->retrival_deadline)->translatedFormat('d F Y') }}</div>
+
                     </div>
                 </div>
                 <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
@@ -248,7 +252,9 @@
                         <div class=" text-slate-500">:</div>
                     </div>
                     <div class=" w-full">
-                        <div class=" font-semibold text-slate-500">(UBAH EDITOR JADI TIDAK ADA TAG HTML) {{ $fppp->note }}</div>
+
+                        <div class=" font-semibold text-slate-500">{!! $fppp->note !!}</div>
+
                     </div>
                 </div>
                 <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">

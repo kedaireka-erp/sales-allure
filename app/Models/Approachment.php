@@ -13,6 +13,7 @@ class Approachment extends Model
     protected $table="approachments";
     protected $fillable=[
         "contact_id",
+        "activity_id",
         "status_id",
         "date",
         "note", 
@@ -26,9 +27,9 @@ class Approachment extends Model
         return $this->belongsto(Contact::class);
     }
 
-    public function activities()
+    public function activity()
     {
-        return $this->belongsToMany(Activity::class, 'approachment_activities');
+        return $this->belongsto(Activity::class);
     }
 
 }

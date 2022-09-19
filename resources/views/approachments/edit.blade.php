@@ -25,6 +25,16 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="mt-3">
+                        <label for="activity" class = "form-label">Aktivitas</label>
+                        <select class="tom-select w-full mb-3" id="activity" name="activity_id">
+                            @foreach ($activities as $activity)
+                                <option value="{{ $activity->id }}"
+                                    {{ $activity->id == $approachment->activity_id ? 'selected' : '' }}>{{ $activity->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="mt-3">
                         <label for="date" class="form-label">Tanggal </label>
