@@ -28,16 +28,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($leadStatuses as $no => $leadstatus)
+                    @foreach ($leadStatuses as $no => $leadSt)
                         <tr class="intro-x zoom-in transition">
                             <td class="text-left">{{ $no + $leadStatuses->firstItem() }}</td>
-                            <td class="text-left">{{ $leadstatus->name }}</td>
-                            <td class="text-left">{!! $leadstatus->description !!}</td>
+                            <td class="text-left">{{ $leadSt->name }}</td>
+                            <td class="text-left">{!! $leadSt->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('leadstatuses.edit', $leadstatus) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('leadstatuses.edit', $leadSt) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Ubah
                                     </a>
+                                    <form action="{{ route('leadstatuses.destroy', $leadSt) }}" method="post">
+                                        @csrf
+                                        @method('Delete')
+                                        <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
