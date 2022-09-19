@@ -46,5 +46,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadPriorities->links('components.custom-pagination') }}
     </div>
 @endsection

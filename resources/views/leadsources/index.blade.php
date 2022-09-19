@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach ($leadSources as $no => $ls)
                         <tr class="intro-x zoom-in transition">
-                            <td class="text-left">{{ ++$no }}</td>
+                            <td class="text-left">{{ $no + $leadSources->firstItem() }}</td>
                             <td class="text-left">{{ $ls->name }}</td>
                             <td class="text-left">{!! $ls->description !!}</td>
                             <td class="table-report__action w-56">
@@ -46,5 +46,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadSources->links('components.custom-pagination') }}
     </div>
 @endsection

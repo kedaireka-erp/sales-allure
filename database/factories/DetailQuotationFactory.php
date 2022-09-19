@@ -18,7 +18,7 @@ class DetailQuotationFactory extends Factory
     public function definition()
     {
         return [
-            "id_quotation"=>Quotation::all()->random()->id,
+            "quotation_id"=>Quotation::all()->random()->id,
             "id_kode_gambar"=>$this->faker->numberBetween(1,10),
             "lokasi"=>$this->faker->city(),
             "kode_item"=> "FX",

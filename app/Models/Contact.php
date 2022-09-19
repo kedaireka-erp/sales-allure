@@ -58,4 +58,8 @@ class Contact extends Model
         return $this->hasMany(Approachment::class);
     }
 
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

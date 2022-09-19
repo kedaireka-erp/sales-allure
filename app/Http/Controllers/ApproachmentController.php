@@ -16,7 +16,7 @@ class ApproachmentController extends Controller
     //
     public function index()
     {
-        $approachments = Approachment::with('contact', 'status')->get();
+        $approachments = Approachment::with('contact', 'status')->latest()->paginate(10);
         return view("approachments.index", compact("approachments"));
     }
 

@@ -11,7 +11,7 @@ class CompanyTypeController extends Controller
     
     public function index()
     {
-        $company_types = CompanyType::all();
+        $company_types = CompanyType::latest()->paginate(10);
        
         return view('company_types.index', compact('company_types'));
     }

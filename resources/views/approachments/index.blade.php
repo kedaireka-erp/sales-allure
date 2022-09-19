@@ -125,7 +125,7 @@
             </table>
         </div>
         <!-- END: Data List -->
-        {{-- {{ $fppps->links('components.custom-pagination') }} --}}
+        {{ $approachments->links('components.custom-pagination') }}
     </div>
     <!-- BEGIN: Modal Content -->
     <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">

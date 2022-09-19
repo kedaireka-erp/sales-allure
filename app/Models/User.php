@@ -54,7 +54,20 @@ class User extends Authenticatable
         }
     }
 
+
     public function tempFiles(){
         return $this->hasMany(TempFiles::class);
     }
+
+
+    public function fppp()
+    {
+        return $this->hasMany(Fppp::class);
+    }
+    
+    public function contacts(){
+        return $this->hasMany(Contact::class);
+
+    }
+
 }

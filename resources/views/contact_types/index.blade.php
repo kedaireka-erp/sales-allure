@@ -48,18 +48,22 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="text-center whitespace-nowrap text-primary">JENIS KONTAK</th>
-                    <th class="text-center whitespace-nowrap text-primary">STATUS</th>
-                    <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
+                    <th class=" whitespace-nowrap text-primary">NO</th>
+                    <th class=" whitespace-nowrap text-primary">JENIS KONTAK</th>
+                    <th class=" whitespace-nowrap text-primary">STATUS</th>
+                    <th class=" whitespace-nowrap text-primary">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($contact_types as $no => $type)
                 <tr class="intro-x zoom-in transition">
+                    <td class="">
+                        {{ $no + $contact_types->firstItem() }}
+                    </td>
                     <td>{{ $type->name }}</td>
                     <td>{{ $type->status }}</td>
-                    <td class="table-report__action w-56">
-                        <div class="flex justify-center items-center">
+                    <td class="table-report__action w-fit">
+                        <div class="flex items-center">
                             <a class="flex items-center mr-3" href="{{ route('contact_types.edit', $type) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>
@@ -77,53 +81,7 @@
     </div>
     <!-- END: Data List -->
     <!-- BEGIN: Pagination -->
-    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-        <nav class="w-full sm:w-auto sm:mr-auto">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevrons-left"></i>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevron-left"></i>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">...</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">...</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevron-right"></i>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevrons-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <select class="w-20 form-select box mt-3 sm:mt-0">
-            <option>10</option>
-            <option>25</option>
-            <option>35</option>
-            <option>50</option>
-        </select>
-    </div>
+    {{ $contact_types->links('components.custom-pagination') }}
     <!-- END: Pagination -->
 </div>
 <!-- BEGIN: Delete Confirmation Modal -->
