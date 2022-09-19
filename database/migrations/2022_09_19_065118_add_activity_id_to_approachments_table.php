@@ -30,7 +30,7 @@ return new class extends Migration
     {
         Schema::table('approachments', function (Blueprint $table) {
             //
-            $table->dropForeign("approachments_activity_id_foreign");
+            $table->dropForeign("approachments_activity_id_foreign" );
             $table->dropColumn("activity_id");
 
         });

@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\Fppp;
 use App\Models\Status;
 use App\Models\Contact;
 use App\Models\Activity;
 use App\Models\Approachment;
-use App\Models\Fppp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ApproachmentRequest;
 
 class ApproachmentController extends Controller
 {
     //
     public function index()
     {
-        $approachments = Approachment::with('contact', 'status')->latest()->paginate(10);
+        $approachments = Approachment::with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->paginate(10);
         return view("approachments.index", compact("approachments"));
     }
 
@@ -29,88 +30,49 @@ class ApproachmentController extends Controller
         return view('approachments.create', compact("contacts", "activities", "statuses"));
     }
 
-    public function store(Request $request)
+    public function store(ApproachmentRequest $request)
     {
-        $validation = Validator::make($request->all(), [
-            'contact_id' => 'nullable',
-            'status_id' => 'nullable',
-            'activity_id' => 'nullable',
-            'date' => 'nullable',
-            'note' => 'nullable',
-        ]);
+        $validated = $request->validated();
+        $create = Approachment::create($validated);
 
-        if($validation->fails())
-        {
-            return back()->withErrors($validation)->with('error', 'Approachment gagal dibuat!')->withInput();
+        if ($create) {
+            return to_route("approachments.index")->with('success', 'Approachment berhasil dibuat!');
         }
-        else
-        {
-            $create = Approachment::create($request->all());
-            
-            if($create)
-            {
-                return redirect()->route('approachments.index')->with('success', 'Approachment berhasil dibuat!');
-            }
-            else
-            {
-                return redirect()->route('approachments.create')->with('error', 'Approachment gagal dibuat!');
-            }
-        }
+        return to_route("approachments.create")->with('error', 'Approachment gagal dibuat!');
 
-        // $validation = Validator::make($request->all(), [
-        //     'contact_id' => 'nullable',
-        //     'status_id' => 'nullable',
-        //     'activity_id' => 'nullable',
-        //     'date' => 'nullable',
-        //     'note' => 'nullable',
-        // ]);
-
-        // try {
-        //     $approachment = Approachment::create($validation->validated());
-        //     $approachment->status()->sync($request->status);
-        // } catch (Exception $e) {
-        //     return back()->with('error', $e->getMessage());
-        // }  
-        
-        // return redirect()->route('approachments.index');
     }
 
-    public function edit($id)
-    {      
-        $approachment = Approachment::findOrFail($id);
+    public function edit(Approachment $approachment)
+    {
+        $approachments = Approachment::get();
+        $activities = Activity::get();
         $contacts = Contact::get();
         $statuses = Status::where("model", "=", "approachment")->get();
 
-        return view("approachments.edit", compact("approachment", "contacts", "statuses"));
+        return view("approachments.edit", compact("approachments", "approachment", "activities", "contacts", "statuses"));
     }
 
-    public function update(Request $request, $id)
+    public function update(ApproachmentRequest $request, $id)
     {
         $approachment = Approachment::findOrFail($id);
-
-        $update = $approachment ->update([
-            'contact_id' => $request->contact_id ?? $approachment->contact_id,
-            'status_id'=> $request->status_id ?? $approachment->status_id,
-            "date"=>$request->date ?? $approachment->date,
-            "note"=>$request->note ?? $approachment->note,
-        ]);
+        $validated = $request->validated();
+        $update = $approachment->update($validated);
         if ($update) {
             return to_route("approachments.index")->with('success', 'Approachment berhasil diubah!');
         }
-        return to_route("approachments.edit", $approachment->id)->with('error', 'Approachment gagal diubah!');
+        return to_route("approachments.edit", $approachment->id)->with('error', 'FPPP gagal diubah!');
+
     }
 
-    public function destroy(Approachment $approachment)
+    public function destroy($id)
     {
+        $approachment = Approachment::findOrFail($id);
         $deleted = $approachment->delete();
 
         if ($deleted) {
             return to_route("approachments.index")->with('success', 'Approachment berhasil dihapus!');
         }
         return to_route("approachments.index")->with('error', 'Approachment gagal dihapus!');
+
     }
-
-
-
-
 }

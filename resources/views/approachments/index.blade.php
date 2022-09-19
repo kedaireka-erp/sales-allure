@@ -55,9 +55,9 @@
                         <tr class="intro-x zoom-in transition">
                             <td class="text-base text-center">{{ $no + $approachments->firstItem() }}</td>
                             <td class="text-base ">{{ $approachment->contact->name ?? '' }}</td>
-                            <td class="text-base text-center">AAAAAAAAA</td>
+                            <td class="text-base text-center">{{ $approachment->activity->name ?? '' }}</td>
                             <td class="text-base text-center">
-                                {{ \Carbon\Carbon::parse($approachment->date)->format('d F Y') }}</td>
+                                {{ \Carbon\Carbon::parse($approachment->date)->translatedFormat('d F Y') }}</td>
                             <td>
                                 @if ($approachment->status->name == 'Lost')
                                     <a class="w-40">
@@ -104,7 +104,7 @@
                                 </div> --}}
 
                             </td>
-                            <td class="text-base text-center">{{ $approachment->note }}</td>
+                            <td class="text-base text-center">{!! $approachment->note !!}</td>
                             <td class="table-report__action w-fit">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3"
