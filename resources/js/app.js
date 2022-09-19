@@ -58,4 +58,5 @@ import "./side-menu-tooltip";
 import "./dark-mode-switcher";
 import "./fppp-form";
 import "./quotation-form";
+import "./filepond";
 

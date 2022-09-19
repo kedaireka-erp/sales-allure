@@ -30,12 +30,12 @@
                 <tbody>
                     @foreach ($leadSources as $no => $ls)
                         <tr class="intro-x zoom-in transition">
-                            <td class="text-left">{{ ++$no }}</td>
+                            <td class="text-left">{{ $no + $leadSources->firstItem() }}</td>
                             <td class="text-left">{{ $ls->name }}</td>
                             <td class="text-left">{!! $ls->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('leadsources.edit', $ls->id) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('leadsources.edit', $ls) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Ubah
                                     </a>
                                 </div>
@@ -46,5 +46,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadSources->links('components.custom-pagination') }}
     </div>
 @endsection

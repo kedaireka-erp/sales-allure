@@ -27,17 +27,17 @@ class SideMenu
                 'sub_menu' => [
                     'pendekatan' => [
                         'icon' => 'message-circle',
-                        'route_name' => 'dashboard-overview-2',
+                        'route_name' => 'approachments.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
                         'title' => 'Pendekatan'
                     ],
                     'activity' => [
-                        'icon' => 'activity',
-                        'route_name' => 'dashboard-overview-2',
+                        'icon' => 'coffee',
+                        'route_name' => 'activities.index',
                         'params' => [
-                            'layout' => 'simple-menu'
+                            'layout' => 'side-menu'
                         ],
                         'title' => 'Activity'
                     ],
@@ -130,8 +130,8 @@ class SideMenu
                         'title' => 'Lead Priority'
                     ],
                     'lead-interest' => [
-                        'icon' => 'smile',
-                        'route_name' => 'categories',
+                        'icon' => 'star',
+                        'route_name' => 'leadinterests.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],

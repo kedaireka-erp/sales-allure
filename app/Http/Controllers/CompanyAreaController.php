@@ -11,7 +11,7 @@ class CompanyAreaController extends Controller
 {
     public function index()
     {
-        $company_areas = CompanyArea::all();
+        $company_areas = CompanyArea::latest()->paginate(10);
         
         return view('company_areas.index', compact('company_areas'));
     }
@@ -34,7 +34,7 @@ class CompanyAreaController extends Controller
         }
         else
         {
-            $create = CompanyArea::create($request->all());
+            $create = CompanyArea::create($validated->validated());
             
             if($create)
             {
@@ -52,19 +52,16 @@ class CompanyAreaController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(CompanyArea $company_area)
     {
-        $company_area = CompanyArea::findOrFail($id);
 
         $company_areas = CompanyArea::all();
        
         return view('company_areas.edit', compact('company_area', 'company_areas'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, CompanyArea $company_area)
     {
-        $company_area = CompanyArea::findOrFail($id);
-
         $validated = Validator::make($request->all(), [
             'name' => 'required|min:3',
             'description' => 'nullable',
@@ -76,7 +73,7 @@ class CompanyAreaController extends Controller
         }
         else
         {
-            $update = $company_area->update($request->all());
+            $update = $company_area->update($validated->validated());
             
             if($update)
             {
@@ -89,10 +86,8 @@ class CompanyAreaController extends Controller
         }
 }
 
-    public function destroy($id)
-    {
-        $company_area = CompanyArea::findOrFail($id);
-        
+    public function destroy(CompanyArea $company_area)
+    {        
         $deleted = $company_area->delete();
         
         if($deleted)

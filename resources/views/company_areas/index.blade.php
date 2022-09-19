@@ -48,6 +48,7 @@
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
+                    <th class="whitespace-nowrap text-primary">NO</th>
                     <th class="whitespace-nowrap text-primary">NAME</th>
                     <th class="whitespace-nowrap text-primary">DESCRIPTION</th>
                     <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
@@ -56,14 +57,15 @@
             <tbody>
                 @foreach ($company_areas as $no => $area)
                 <tr class="intro-x zoom-in transition">
+                    <td>{{ $no + $company_areas->firstItem() }}</td>
                     <td>{{ $area->name }}</td>
                     <td>{!!$area->description !!}</td>                   
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center text-primary mr-3" href="javascript:;">
+                            {{-- <a class="flex items-center text-primary mr-3" href="javascript:;">
                                 <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
-                            </a>                          
-                            <a class="flex items-center mr-3" href="{{ route('company_areas.edit', $area->id) }}">
+                            </a>                           --}}
+                            <a class="flex items-center mr-3" href="{{ route('company_areas.edit', $area) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>           
                             <form action="{{ route('company_areas.destroy', $area) }}" method="post">
@@ -80,53 +82,7 @@
     </div>
     <!-- END: Data List -->
     <!-- BEGIN: Pagination -->
-    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-        <nav class="w-full sm:w-auto sm:mr-auto">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevrons-left"></i>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevron-left"></i>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">...</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">...</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevron-right"></i>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="w-4 h-4" data-lucide="chevrons-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <select class="w-20 form-select box mt-3 sm:mt-0">
-            <option>10</option>
-            <option>25</option>
-            <option>35</option>
-            <option>50</option>
-        </select>
-    </div>
+    {{ $company_areas->links('components.custom-pagination') }}
     <!-- END: Pagination -->
 </div>
 <!-- BEGIN: Delete Confirmation Modal -->

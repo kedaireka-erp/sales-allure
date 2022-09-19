@@ -1,13 +1,7 @@
 <!-- BEGIN: Top Bar -->
 <div class="top-bar">
-    <!-- BEGIN: Breadcrumb -->
-    <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Application</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-        </ol>
-    </nav>
-    <!-- END: Breadcrumb -->
+    
+    {{ Breadcrumbs::render() }}
     <!-- BEGIN: Search -->
     <div class="intro-x relative mr-3 sm:mr-6">
         <div class="search hidden sm:block">
@@ -96,7 +90,7 @@
     <!-- BEGIN: Account Menu -->
     <div class="intro-x dropdown w-8 h-8">
         <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false" data-tw-toggle="dropdown">
-            <img alt="Midone - HTML Admin Template" src="{{ asset('storage/profile/' . Auth()->user()->photo) }}">
+            <img alt="Midone - HTML Admin Template" src="{{ Auth::user()->getPhotoUrlAttribute() }}">
         </div>
         <div class="dropdown-menu w-56">
             <ul class="dropdown-content bg-primary text-white">

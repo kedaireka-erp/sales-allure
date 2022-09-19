@@ -16,7 +16,7 @@ class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DetailQuotation')->get();
+        $quotations = Quotation::with('Status', 'DetailQuotation')->paginate(10);
 
         return view('quotation.index', compact('quotations'));
     }

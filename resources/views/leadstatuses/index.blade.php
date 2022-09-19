@@ -28,14 +28,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($leadStatuses as $no => $lstat)
+                    @foreach ($leadStatuses as $no => $leadstatus)
                         <tr class="intro-x zoom-in transition">
-                            <td class="text-left">{{ ++$no }}</td>
-                            <td class="text-left">{{ $lstat->name }}</td>
-                            <td class="text-left">{!! $lstat->description !!}</td>
+                            <td class="text-left">{{ $no + $leadStatuses->firstItem() }}</td>
+                            <td class="text-left">{{ $leadstatus->name }}</td>
+                            <td class="text-left">{!! $leadstatus->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('leadstatuses.edit', $lstat->id) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('leadstatuses.edit', $leadstatus) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Ubah
                                     </a>
                                 </div>
@@ -46,5 +46,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadStatuses->links('components.custom-pagination') }}
     </div>
 @endsection

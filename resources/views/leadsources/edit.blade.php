@@ -11,7 +11,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
-            <form action="{{ route('leadsources.update', $leadSource->id) }}" method="POST">
+            <form action="{{ route('leadsources.update', $leadSource) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="intro-y box p-5">

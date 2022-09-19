@@ -35,7 +35,7 @@
                             <td class="text-left">{!! $leadPriority->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('leadpriorities.edit', $leadPriority->id) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('leadpriorities.edit', $leadPriority) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Ubah
                                     </a>
                                 </div>
@@ -46,5 +46,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadPriorities->links('components.custom-pagination') }}
     </div>
 @endsection

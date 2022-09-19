@@ -19,7 +19,7 @@
                         <input id="name" type="text" class="@error('name') border-red-700 @enderror form-control w-full" 
                             placeholder="Input Nama Company Area" name="name" value="{{ old('name') }}">
                         @error('name')
-                            <p class="text-red-700 text-sm mt-1"></p>
+                            <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="text-left mt-5">
@@ -27,7 +27,7 @@
                         <textarea class="editor" name="description" id="description" class="@error('description') border-red-700 @enderror form-control w-full" 
                             placeholder="Input Deskripsi Company Area" rows="10">{{ old('description') }}</textarea>
                         @error('description')
-                            <p class="text-red-700 text-sm mt-1"></p>
+                            <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="text-right mt-5">

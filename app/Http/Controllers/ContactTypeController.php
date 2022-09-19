@@ -12,7 +12,7 @@ class ContactTypeController extends Controller
     
     public function index()
     {
-        $contact_types = ContactType::all();
+        $contact_types = ContactType::latest()->paginate(10);
         return view('contact_types.index', compact('contact_types'));
     }
 
@@ -26,56 +26,74 @@ class ContactTypeController extends Controller
     public function store(Request $request)
     {
         
-        $request->validate([
+        $validated = Validator::make($request->all(), [
             'name' => 'required|unique:contact_types|max:255',
             'status' => 'required',
         ]);
-            
-        try {
-            $contact_type = ContactType::create($request->all());
-        } catch (Exception $e) {
-            return back()->with('error', $e->getMessage());
+        
+        if($validated->fails())
+        {
+            return back()->withErrors($validated)->with('error', 'Contact Type Created Failed!')->withInput();
         }
-        return redirect()->route('contact_types.index')->with('success', 'Contact Type created successfully.');
+        else
+        {
+            $create = ContactType::create($request->all());
+            
+            if($create)
+            {
+                return redirect()->route('contact_types.index')->with('success', 'Contact Type Created Successfuly!');
+            }
+            else
+            {
+                return redirect()->route('contact_types.create')->with('error', 'Contact Type Created Failed!');
+            }
+        }
     }
 
     
-    public function show(ContactType $contactType)
+    public function show(ContactType $contact_type)
     {
         //
     }
 
     
-    public function edit($id)
+    public function edit(ContactType $contact_type)
     {
-        $contact_type = ContactType::findOrFail($id);
         $contact_types = ContactType::all();
         return view('contact_types.edit', compact('contact_type', 'contact_types'));
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request, ContactType $contact_type)
     {
-        $contact_type = ContactType::findOrFail($id);
-        $request->validate([
-            'name' => 'required|unique:contact_types|max:255',
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|max:255',
             'status' => 'required',
         ]);
 
-        try {
-            $contact_type->update($request->all());
-        } catch (Exception $e) {
-            return back()->with('error', $e->getMessage());
+        if($validated->fails())
+        {
+            return back()->withErrors($validated)->with('error', 'Contact Type Created Failed!')->withInput();
         }
-
-        return redirect()->route('contact_types.index')->with('success', 'Contact Type Update Successfully.');
+        else
+        {
+            $update = $contact_type->update($request->all());
+            
+            if($update)
+            {
+                return redirect()->route('contact_types.index')->with('success', 'Contact Type Created Successfuly!');
+            }
+            else
+            {
+                return redirect()->route('contact_types.edit')->with('error', 'Contact Type Created Failed!');
+            }
+        }
     }
 
     
-    public function destroy(ContactType $contactType)
+    public function destroy(ContactType $contact_type)
     {
-        $contactType->delete();
-        $deleted = $contactType->delete();
+        $deleted = $contact_type->delete();
         if($deleted)
         {
             return redirect()->route('contact_types.index')->with('success', 'Contact Type Deleted Successfully!');

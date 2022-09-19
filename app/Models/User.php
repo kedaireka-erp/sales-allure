@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','gender','phone_number','address'
+        'name', 'email', 'password','gender','phone_number','address', 'photo'
     ];
 
     /**
@@ -39,12 +39,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The attributes that appends to returned entities.
-     *
-     * @var array
-     */
-    protected $appends = ['photo'];
 
     /**
      * The getter that return accessible URL for user photo.
@@ -53,10 +47,27 @@ class User extends Authenticatable
      */
     public function getPhotoUrlAttribute()
     {
-        if ($this->photo !== null) {
-            return url('media/user/' . $this->id . '/' . $this->photo);
+        if ($this->photo != null) {
+            return asset('storage/'.$this->photo);
         } else {
-            return url('media-example/no-image.png');
+            return "https://ui-avatars.com/api/?name=" . $this->name;
         }
     }
+
+
+    public function tempFiles(){
+        return $this->hasMany(TempFiles::class);
+    }
+
+
+    public function fppp()
+    {
+        return $this->hasMany(Fppp::class);
+    }
+    
+    public function contacts(){
+        return $this->hasMany(Contact::class);
+
+    }
+
 }
