@@ -16,7 +16,7 @@ class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DetailQuotation')->get();
+        $quotations = Quotation::with('Status', 'DetailQuotation')->paginate(10);
 
         return view('quotation.index', compact('quotations'));
     }
@@ -36,6 +36,7 @@ class QuotationController extends Controller
             'contact_id' => $request->contact_id,
             'deal_source_id' => $request->deal_source_id,
             'status_id' => $request->status_id,
+            'alasan' => $request->alasan,
             'keterangan' => $request->keterangan,
         ]);
 
@@ -71,6 +72,7 @@ class QuotationController extends Controller
             'contact_id' => 'required',
             'deal_source_id' => 'required',
             'status_id' => 'required',
+            'alasan' => 'nullable|max:300',
             'keterangan' => 'nullable|max:300',
         ]);
         $quotation->update($validator->validate());

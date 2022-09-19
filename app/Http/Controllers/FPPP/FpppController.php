@@ -22,7 +22,7 @@ class FpppController extends Controller
 {
     public function index()
     {
-        $fppps = Fppp::with("quotation")->orderBy('created_at', 'desc')->orderBy('quotation_id', 'desc')->paginate(10);
+        $fppps = Fppp::with("quotation")->orderBy('created_at', 'desc')->orderBy('quotation_id', 'desc')->paginate(20);
         return view("fppps.index", compact("fppps"));
     }
 
@@ -47,6 +47,7 @@ class FpppController extends Controller
     {
         $validated = $request->validated();
         $create = Fppp::create($validated);
+        $create->update(['user_id' => Auth::id()]);
 
         if (Auth::user()->tempFiles) {
             foreach (Auth::user()->tempFiles as $tempFile) {

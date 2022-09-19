@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="intro-y box p-5 mt-5">
+    <div class="intro-y  p-5 mt-5">
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
             <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
 
@@ -52,11 +52,11 @@
                 </div>
             </form>
             <div class="flex mt-5 sm:mt-0">
-                <button id="tabulator-print" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
+                <button id="tabulator-print" class="btn btn-primary w-1/2 sm:w-auto mr-2">
                     <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
                 </button>
                 <div class="dropdown w-1/2 sm:w-auto">
-                    <button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false"
+                    <button class="dropdown-toggle btn btn-primary w-full sm:w-auto" aria-expanded="false"
                         data-tw-toggle="dropdown">
                         <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export <i data-lucide="chevron-down"
                             class="w-4 h-4 ml-auto sm:ml-2"></i>
@@ -94,6 +94,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
+                        <th CLASS="whitespace-nowrap text-primary">NO.</th>
                         <th class="whitespace-nowrap text-primary">NO. FPPP</th>
                         <th class="text-center whitespace-nowrap text-primary">TIPE FPPP</th>
                         <th class="text-center whitespace-nowrap text-primary">TAHAP PRODUKSI</th>
@@ -104,6 +105,11 @@
                 <tbody>
                     @foreach ($fppps as $no => $fppp)
                         <tr class="intro-x zoom-in transition">
+                            <td class="w-10">
+                                <div class="flex">
+                                    <div class="font-medium whitespace-nowrap">{{ $no + $fppps->firstItem() }}</div>
+                                </div>
+                            </td>
                             <td class="text-base">{{ $fppp->fppp_no }}</td>
                             <td class="text-base text-center">{{ ucfirst($fppp->fppp_type) }}</td>
                             <td class="text-base text-center">{{ $fppp->production_phase }}</td>

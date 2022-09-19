@@ -9,7 +9,7 @@ class LeadSourceController extends Controller
 {
     public function index()
     {
-        $leadSources = LeadSource::get();
+        $leadSources = LeadSource::latest()->paginate(10);
         return view('leadsources.index', compact('leadSources'));
     }
 

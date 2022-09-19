@@ -10,7 +10,7 @@ class DealSourceController extends Controller
 {
     public function index()
     {
-        $dealSources = DealSource::all();
+        $dealSources = DealSource::latest()->paginate(10);
 
         return view('deal_sources.index', compact('dealSources'));
     }

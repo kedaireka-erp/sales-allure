@@ -327,8 +327,7 @@ Breadcrumbs::for('activities.show', function ($trail, $activity) {
 //Activity Edit
 Breadcrumbs::for('activities.edit', function ($trail, $activity) {
     $trail->parent('activities.index');
-    $trail->push($activity->name, route('activities.show', $activity->id));
-    $trail->push('Edit', route('activities.edit', $activity->id));
+    $trail->push('Edit', route('activities.edit', $activity));
 });
 
 //========================[Lead Interests]========================//

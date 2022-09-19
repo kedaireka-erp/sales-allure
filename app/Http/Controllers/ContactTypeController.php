@@ -12,7 +12,7 @@ class ContactTypeController extends Controller
     
     public function index()
     {
-        $contact_types = ContactType::all();
+        $contact_types = ContactType::latest()->paginate(10);
         return view('contact_types.index', compact('contact_types'));
     }
 

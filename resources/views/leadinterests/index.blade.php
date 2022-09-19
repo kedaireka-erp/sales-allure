@@ -28,16 +28,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($leadInterests as $no => $leadinterest)
+                    @foreach ($leadInterests as $no => $leadI)
                         <tr class="intro-x">
-                            <td class="text-left">{{ ++$no }}</td>
-                            <td class="text-left">{{ $leadinterest->name }}</td>
-                            <td class="text-left">{!! $leadinterest->description !!}</td>
+                            <td class="text-left">{{ $no + $leadInterests->firstItem() }}</td>
+                            <td class="text-left">{{ $leadI->name }}</td>
+                            <td class="text-left">{!! $leadI->description !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('leadinterests.edit', $leadinterest) }}" >
+                                    <a class="flex items-center mr-3" href="{{ route('leadinterests.edit', $leadI) }}" >
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Ubah
                                     </a>
+                                    <form action="{{ route('leadinterests.destroy', $leadI) }}" method="post">
+                                        @csrf
+                                        @method('Delete')
+                                        <button type="submit" class="flex items-center text-danger"><i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>Hapus</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -46,5 +51,6 @@
             </table>
         </div>
         <!-- END: Data List -->
+        {{ $leadInterests->links('components.custom-pagination') }}
     </div>
 @endsection

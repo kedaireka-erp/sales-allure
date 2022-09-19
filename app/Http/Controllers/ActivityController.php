@@ -10,7 +10,7 @@ class ActivityController extends Controller
     //
     public function index()
     {
-        $activities = Activity::get();
+        $activities = Activity::latest()->paginate(10);
         return view("activities.index", compact("activities"));
     }
 

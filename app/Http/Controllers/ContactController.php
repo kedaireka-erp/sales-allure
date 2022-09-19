@@ -8,21 +8,20 @@ use App\Models\Contact;
 use App\Models\LeadSource;
 use App\Models\LeadStatus;
 use App\Models\ContactType;
+use App\Models\LeadInterest;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContactRequest;
-<<<<<<< Updated upstream
-use App\Models\LeadInterest;
-=======
 use App\Models\LeadPriority;
->>>>>>> Stashed changes
+
 
 class ContactController extends Controller
 {
     
     public function index()
     {
-        $contacts = Contact::all();    
+        $contacts = Contact::latest()->paginate(10);    
         return view('contacts.index', compact('contacts'));
     }
 
@@ -47,6 +46,7 @@ class ContactController extends Controller
         try {
             $contact = Contact::create($validated);
             $contact->leadInterests()->sync($request->leadInterest);
+            $contact->update(['user_id' => Auth::id()]);
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }  
@@ -61,13 +61,10 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();
         $leadStatuses = LeadStatus::all();
-<<<<<<< Updated upstream
-        $leadInterests = LeadInterest::all();
-        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests'));
-=======
         $leadPriority = LeadPriority::all();
-        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadPriority'));
->>>>>>> Stashed changes
+        $leadInterests = LeadInterest::all();
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests', 'leadPriority'));
+
     }
 
     

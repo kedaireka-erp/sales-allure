@@ -7,6 +7,7 @@
             <th><b>CONTACT_ID</b></th>
             <th><b>DEAL_SOURCE_ID</b></th>
             <th><b>STATUS_ID</b></th>
+            <th><b>NOMINAL_PENAWARAN</b></th>
             <th><b>KETERANGAN</b></th>
             <th><b>CREATED_AT</b></th>
         </tr>
@@ -20,6 +21,7 @@
             <td>{{ $quotation->contact_id}}</td>
             <td>{{ $quotation->deal_source_id }}</td>
             <td>{{ $quotation->status_id }}</td>
+            <td>@currency($quotation->nominal())</td>
             <td>{{ $quotation->keterangan }}</td>
             <td>{{ $quotation->created_at }}</td>
         </tr>
