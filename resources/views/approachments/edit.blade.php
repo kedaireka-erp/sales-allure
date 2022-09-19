@@ -15,13 +15,35 @@
                 @csrf
                 @method('PATCH')
                 <div class="intro-y box p-5">
-                    <div class="mt-5">
-                        <label for="date" class="form-label">Tanggal </label>
-                        <input id="date" type="date" class="form-control w-full"
-                            placeholder="Input Tanggal " name="date"
-                            value="{{ $approachment->date }}">
+                    <div class="mt-3">
+                        <label for="contact" class = "form-label">Nama Kontak</label>
+                        <select class="tom-select w-full mb-3" id="contact" name="contact_id">
+                            @foreach ($contacts as $contact)
+                                <option value="{{ $contact->id }}"
+                                    {{ $contact->id == $approachment->contact_id ? 'selected' : '' }}>{{ $contact->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="mt-5">
+
+                    <div class="mt-3">
+                        <label for="date" class="form-label">Tanggal </label>
+                        <input id="date" type="date" class="form-control w-full" placeholder="Input Tanggal "
+                            name="date" value="{{ $approachment->date }}">
+                    </div>
+
+                    <div class="mt-3">
+                        <label for="itemType" class = "form-label">Status</label>
+                        <select class="tom-select w-full mb-3" id="status" name="status_id">
+                            @foreach ($statuses as $status)
+                                <option value="{{ $status->id }}"
+                                    {{ $status->id == $approachment->status_id ? 'selected' : '' }}>{{ $status->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mt-3">
                         <label for="note">Catatan</label>
                         <div class="mt-2">
                             <textarea name="note" id="note" cols="30" rows="10" class="editor">{!! old('note', $approachment->note) !!}</textarea>

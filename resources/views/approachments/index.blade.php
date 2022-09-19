@@ -41,7 +41,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap text-primary">NO</th>
+                        <th class="text-center whitespace-nowrap text-primary ">NO</th>
                         <th class="whitespace-nowrap text-primary">NAMA KONTAK</th>
                         <th class="text-center whitespace-nowrap text-primary">AKTIVITAS</th>
                         <th class="text-center whitespace-nowrap text-primary">TANGGAL</th>
@@ -54,14 +54,54 @@
                     @foreach ($approachments as $no => $approachment)
                         <tr class="intro-x zoom-in transition">
                             <td class="text-base text-center">{{ $no + $approachments->firstItem() }}</td>
-                            <td class="text-base text-center">{{ $approachment->contact->name ?? '' }}</td>
+                            <td class="text-base ">{{ $approachment->contact->name ?? '' }}</td>
                             <td class="text-base text-center">AAAAAAAAA</td>
-                            <td class="text-base text-center">{{ $approachment->date }}</td>
                             <td class="text-base text-center">
+                                {{ \Carbon\Carbon::parse($approachment->date)->format('d F Y') }}</td>
+                            <td>
+                                @if ($approachment->status->name == 'Lost')
+                                    <a class="w-40">
+                                        <div class="flex items-center justify-center text-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" icon-name="check-square"
+                                                data-lucide="check-square" class="lucide lucide-check-square w-4 h-4 mr-2">
+                                                <polyline points="9 11 12 14 22 4"></polyline>
+                                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                            </svg> Lost
+                                        </div>
+                                    </a>
+                                @endif
+                                @if ($approachment->status->name == 'Pending')
+                                    <a class="w-40">
+                                        <div class="flex items-center justify-center text-warning">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" icon-name="check-square"
+                                                data-lucide="check-square" class="lucide lucide-check-square w-4 h-4 mr-2 ">
+                                                <polyline points="9 11 12 14 22 4"></polyline>
+                                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                            </svg> Pending
+                                        </div>
+                                    </a>
+                                @endif
+                                @if ($approachment->status->name == 'Deal')
+                                    <a>
+                                        <div class="flex items-center justify-center text-success">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" icon-name="check-square"
+                                                data-lucide="check-square" class="lucide lucide-check-square w-4 h-4 mr-2">
+                                                <polyline points="9 11 12 14 22 4"></polyline>
+                                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                            </svg> Deal
+                                        </div>
+                                    </a>
+                                @endif
 
-                                <div class="flex items-center justify-center {{ 'true_false' ? 'text-success' : 'text-danger' }}">
+                                {{-- <div class="flex items-center justify-center {{ 'true_false' ? 'text-success' : 'text-danger' }}">
                                     <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> {{ 'true_false' ? 'Active' : 'Inactive' }}
-                                </div>
+                                </div> --}}
 
                             </td>
                             <td class="text-base text-center">{{ $approachment->note }}</td>

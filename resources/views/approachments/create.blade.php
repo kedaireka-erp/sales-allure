@@ -24,7 +24,7 @@
                         </select>
                     </div>
 
-                    <div class="mt-3">
+                    {{-- <div class="mt-3">
                         <label for="activity" class="form-label">Aktivitas</label>
                         <select class="tom-select w-full mb-3" id="activity"
                             name="activity_id">
@@ -32,8 +32,8 @@
                                 <option value="{{ $activity->id }}">{{ $activity->name }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="mt-5">
+                    </div> --}}
+                    <div class="mt-3">
                         <label for="date" class="form-label">Tanggal</label>
                         <input id="date" type="date" class="form-control w-full" placeholder="Input Tanggal"
                             name="date">
@@ -48,7 +48,7 @@
                         </select>
                     </div>
 
-                    <div class="mt-5" id="note">
+                    <div class="mt-3" id="note">
                         <label for="note" class="mb-2">Note</label>
                         <div class="mt-2">
                             <textarea name="note" cols="30" rows="10" class="editor "></textarea>
