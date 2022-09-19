@@ -18,6 +18,7 @@ class Contact extends Model
         'contact_type_id',
         'lead_source_id',
         'lead_status_id',
+        'lead_priority_id',
         'email',
         'address',
         'phone',
@@ -62,5 +63,10 @@ class Contact extends Model
     public function User()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function LeadPriority()
+    {
+        return $this->belongsTo(LeadPriority::class);
     }
 }

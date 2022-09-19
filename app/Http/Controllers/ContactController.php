@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContactRequest;
+use App\Models\LeadPriority;
+
 
 class ContactController extends Controller
 {
@@ -30,8 +32,9 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();        
         $leadStatuses = LeadStatus::all();
+        $leadPriorities = LeadPriority::all();
         $leadInterests = LeadInterest::all();
-        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests'));
+        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadPriorities', 'leadInterests'));
     }
 
     
@@ -58,7 +61,10 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();
         $leadStatuses = LeadStatus::all();
-        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses'));
+        $leadPriority = LeadPriority::all();
+        $leadInterests = LeadInterest::all();
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests', 'leadPriority'));
+
     }
 
     
@@ -68,14 +74,16 @@ class ContactController extends Controller
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
         $leadStatuses = LeadStatus::get();
+        $leadPriorities = LeadPriority::get();
         $leadInterests = LeadInterest::all();
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses', 'leadInterests'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses', 'leadPriorities', 'leadInterests'));
     }
 
     
     public function update(ContactRequest $request, Contact $contact)
     {
+        dd($request->all());
         $validated = $request->validated();
 
         try {
