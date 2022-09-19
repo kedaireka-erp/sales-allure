@@ -56,7 +56,8 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();
         $leadStatuses = LeadStatus::all();
-        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses'));
+        $leadInterests = LeadInterest::all();
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests'));
     }
 
     
@@ -74,6 +75,7 @@ class ContactController extends Controller
     
     public function update(ContactRequest $request, Contact $contact)
     {
+        dd($request->all());
         $validated = $request->validated();
 
         try {
