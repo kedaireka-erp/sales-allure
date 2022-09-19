@@ -11,7 +11,11 @@ use App\Models\ContactType;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Http\Requests\ContactRequest;
+<<<<<<< Updated upstream
 use App\Models\LeadInterest;
+=======
+use App\Models\LeadPriority;
+>>>>>>> Stashed changes
 
 class ContactController extends Controller
 {
@@ -29,8 +33,9 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();        
         $leadStatuses = LeadStatus::all();
+        $leadPriorities = LeadPriority::all();
         $leadInterests = LeadInterest::all();
-        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests'));
+        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadPriorities', 'leadInterests'));
     }
 
     
@@ -56,8 +61,13 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();
         $leadStatuses = LeadStatus::all();
+<<<<<<< Updated upstream
         $leadInterests = LeadInterest::all();
         return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests'));
+=======
+        $leadPriority = LeadPriority::all();
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadPriority'));
+>>>>>>> Stashed changes
     }
 
     
@@ -67,9 +77,10 @@ class ContactController extends Controller
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
         $leadStatuses = LeadStatus::get();
+        $leadPriorities = LeadPriority::get();
         $leadInterests = LeadInterest::all();
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses', 'leadInterests'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses', 'leadPriorities', 'leadInterests'));
     }
 
     
