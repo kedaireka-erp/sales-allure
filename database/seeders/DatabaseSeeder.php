@@ -9,8 +9,6 @@ use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Quotation;
 use App\Models\DealSource;
-use App\Models\LeadSource;
-use App\Models\LeadStatus;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
@@ -30,16 +28,16 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusSeeder::class);
         $this->call(DealSourceSeeder::class);
         $this->call(ActivitySeeder::class);
+        $this->call(LeadInterestSeeder::class);
+        $this->call(LeadSourceSeeder::class);
+        $this->call(LeadPrioritySeeder::class);
+        $this->call(LeadStatusSeeder::class);
 
         CompanyType::factory(20)->create();
 
         ContactType::factory(20)->create();
 
         CompanyArea::factory(20)->create();
-
-        LeadSource::factory(5)->create();
-
-        LeadStatus::factory(20)->create();
 
         Company::factory(20)->create();
         

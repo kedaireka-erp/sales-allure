@@ -8,13 +8,15 @@ use App\Models\Contact;
 use App\Models\Quotation;
 use App\Models\DealSource;
 use Illuminate\Http\Request;
+use App\Exports\QuotationExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
 class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DealSource')->get();
+        $quotations = Quotation::with('Status', 'DetailQuotation')->paginate(10);
 
         return view('quotation.index', compact('quotations'));
     }
@@ -96,5 +98,10 @@ class QuotationController extends Controller
         $quotations = Quotation::all();
         $fppps = Fppp::all();
         return view('fppps.create', compact('quotations', 'quo', 'fppps'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new QuotationExport, 'quotation.xlsx');
     }
 }

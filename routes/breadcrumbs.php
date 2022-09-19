@@ -287,6 +287,28 @@ Breadcrumbs::for('account.profile.edit', function ($trail, User $account) {
     $trail->push('Change Password', route('account.profile.edit', $account));
 });
 
+//========================[Approachment]========================//
+//Approachment Index
+Breadcrumbs::for('approachments.index', function ($trail) {
+    $trail->push('Approachment Index', route('approachments.index'));
+});
+//Approachment Create
+Breadcrumbs::for('approachments.create', function ($trail) {
+    $trail->parent('approachments.index');
+    $trail->push('Create', route('approachments.create'));
+});
+//Approachment Show
+Breadcrumbs::for('approachments.show', function ($trail, $approachment) {
+    $trail->parent('approachments.index');
+    $trail->push($approachment->id, route('approachments.show', $approachment));
+});
+//Approachment Edit
+Breadcrumbs::for('approachments.edit', function ($trail, $approachment) {
+    $trail->parent('approachments.index');
+    $trail->push('Edit', route('approachments.edit', $approachment));
+});
+
+
 //========================[Activity]========================//
 //Activity Index
 Breadcrumbs::for('activities.index', function ($trail) {
