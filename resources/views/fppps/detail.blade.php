@@ -1,223 +1,269 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-<title>Invoice Layout - Midone - Tailwind HTML Admin Template</title>
+    <title>Invoice Layout - Midone - Tailwind HTML Admin Template</title>
 @endsection
 
 @section('subcontent')
-<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">Detail FPPP</h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <button class="btn btn-primary shadow-md mr-2">Print</button>
-        <div class="dropdown ml-auto sm:ml-0">
-            <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                <span class="w-5 h-5 flex items-center justify-center">
-                    <i class="w-4 h-4" data-lucide="plus"></i>
-                </span>
-            </button>
-            <div class="dropdown-menu w-40">
-                <ul class="dropdown-content">
-                    <li>
-                        <a href="" class="dropdown-item">
-                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export Word
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="dropdown-item">
-                            <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export PDF
-                        </a>
-                    </li>
-                </ul>
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">Detail FPPP</h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <button class="btn btn-primary shadow-md mr-2">Print</button>
+            <div class="dropdown ml-auto sm:ml-0">
+                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                    <span class="w-5 h-5 flex items-center justify-center">
+                        <i class="w-4 h-4" data-lucide="plus"></i>
+                    </span>
+                </button>
+                <div class="dropdown-menu w-40">
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export Word
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export PDF
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@if ($fppp->files)
-    <div class="p-5">
-        @foreach ($fppp->files as $file)
-        <img src="{{ asset('storage/'.$file->path) }}" alt="{{ $file->name }}" srcset="" class="w-20">
-        @endforeach
-    </div>
-@endif
-<!-- BEGIN: Invoice -->
-<div class=" box overflow-hidden mt-5 w-full">
-    <div class=" w-full border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
-        <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
-            <span class="font-bold text-primary">LOGO</span>
-            <div class="flex flex-col items-center h-full">
-                <h1 class="text-primary font-semibold text-lg lg:text-xl">FORM PAKET PERMINTAAN PRODUKSI</h1>
-                <h2 class="text-primary font-semibold text-md lg:text-lg">No: {{ $fppp->fppp_no }}</h2>
-                <p class="text-primary  text-md lg:text-lg">Mockup/Produksi Tahap {{ $fppp->production_phase }}</p>
-            </div>
-            <div class="mt-1">Kode-Kode</div>
+    @if ($fppp->files)
+        <div class="p-5">
+            @foreach ($fppp->files as $file)
+                <img src="{{ asset('storage/' . $file->path) }}" alt="{{ $file->name }}" srcset="" class="w-20">
+            @endforeach
         </div>
-        <div class="mt-5 w-full flex flex-col gap-y-3">
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Tanggal </div>
-                    <div class=" text-slate-500">:</div>
+    @endif
+    <!-- BEGIN: Invoice -->
+    <div class=" box overflow-hidden mt-5 w-full">
+        <div class=" w-full border-slate-200/60 dark:border-darkmode-400 text-center sm:text-left">
+            <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
+                <span class="font-bold text-primary">LOGO</span>
+                <div class="flex flex-col items-center h-full">
+                    <h1 class="text-primary font-semibold text-lg lg:text-xl">FORM PAKET PERMINTAAN PRODUKSI</h1>
+                    <h2 class="text-primary font-semibold text-md lg:text-lg">No: {{ $fppp->fppp_no }}</h2>
+                    <p class="text-primary  text-md lg:text-lg">Mockup/Produksi Tahap {{ $fppp->production_phase }}</p>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{\Carbon\Carbon::parse($fppp->created_at)->format("d F Y")}}</div>
-                </div>
+                <div class="mt-1">Kode-Kode</div>
             </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Divisi </div>
-                    <div class=" text-slate-500">:</div>
+            <div class="mt-5 w-full flex flex-col gap-y-3">
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Tanggal </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">
+                            {{ \Carbon\Carbon::parse($fppp->created_at)->format('d F Y') }}</div>
+                    </div>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">ASTRAL</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Divisi </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">ASTRAL</div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Nama Aplikator </div>
-                    <div class=" text-slate-500">:</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Nama Aplikator </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">(CONTOH) PT KENCANA MIRAE INDUSTRI</div>
+                    </div>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">PT KENCANA MIRAE INDUSTRI</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Nama Proyek </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">(CONTOH) BINA BAKTI OFFICE TAHAP 2</div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Nama Proyek </div>
-                    <div class=" text-slate-500">:</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full ">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Alamat Proyek </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">(CONTOH) JAKARTA</div>
+                    </div>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">BINA BAKTI OFFICE TAHAP 2</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Sales/Site Manager </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">(CONTOH) IBU AGUSTIN</div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full ">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Alamat Proyek </div>
-                    <div class=" text-slate-500">:</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Status Order</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        @if ($fppp->order_status == 'baru')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->order_status == 'baru' ? 'selected' : '' }}
+                                value="baru">Baru</div>
+                        @endif
+                        @if ($fppp->order_status == 'tambahan')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->order_status == 'tambahan' ? 'selected' : '' }}
+                                value="tambahan">Tambahan</div>
+                        @endif
+                        @if ($fppp->order_status == 'revisino')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->order_status == 'revisino' ? 'selected' : '' }}
+                                value="revisino">Revisi dari FPPP No. {{ $fppp->fppp_revisino }}</div>
+                        @endif
+                        @if ($fppp->order_status == 'lainlain')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->order_status == 'lainlain' ? 'selected' : '' }}
+                                value="lainlain">(UBAH JADI TIDAK ADA TAG HTML) Lain-lain ({{ $fppp->fppp_keterangan }})</div>
+                        @endif
+                    </div>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">JAKARTA</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Waktu Produksi </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">{{ $fppp->production_time }} Hari</div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Sales/Site Manager </div>
-                    <div class=" text-slate-500">:</div>
+                <hr>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <b>PAKET DATA PRODUKSI</b>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">IBU AGUSTIN</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Warna</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">{{ $fppp->color }} </div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Status Order</div>
-                    <div class=" text-slate-500">:</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Kaca </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        @if ($fppp->glass == 'included')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->glass == 'included' ? 'selected' : '' }}
+                                value="included">Included</div>
+                        @endif
+                        @if ($fppp->glass == 'excluded')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->glass == 'excluded' ? 'selected' : '' }}
+                                value="excluded">Excluded</div>
+                        @endif
+                        @if ($fppp->glass == 'included_excluded')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->glass == 'included_excluded' ? 'selected' : '' }}
+                                value="included_excluded">Included & Excluded</div>
+                        @endif
+                    </div>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->order_status}}</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Jenis Kaca</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">{{ $fppp->glass_type }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Waktu Produksi </div>
-                    <div class=" text-slate-500">:</div>
+                <hr>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <b>PENGIRIMAN</b>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->production_time}} Hari</div>
-                </div>
-            </div>
-            <hr>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <b>PAKET DATA PRODUKSI</b>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Warna</div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->color}} </div>
-                </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Kaca </div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->glass}}</div>
-                </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Jenis Kaca</div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->glass_type}}</div>
-                </div>
-            </div>
-            <hr>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <b>PENGIRIMAN</b>
-            </div>
 
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Deadline Pengambilan </div>
-                    <div class=" text-slate-500">:</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Deadline Pengambilan </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">
+                            {{ \Carbon\Carbon::parse($fppp->retrival_deadline)->format('d F Y') }}</div>
+                    </div>
                 </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{\Carbon\Carbon::parse($fppp->retrival_deadline)->format("d F Y")}}</div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Penggunaan Peti</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        @if ($fppp->box_usage == '0')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->box_usage == '0' ? 'selected' : '' }}
+                                value="0">Tidak</div>
+                        @else
+                            <div class=" font-semibold text-slate-500"{{ $fppp->box_usage == '1' ? 'selected' : '' }}
+                                value="1">Ya</div>
+                        @endif
+                    </div>
+                </div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Penggunaan Sealant</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        @if ($fppp->sealant_usage == '0')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->sealant_usage == '0' ? 'selected' : '' }}
+                                value="0">Tidak</div>
+                        @else
+                            <div class=" font-semibold text-slate-500"{{ $fppp->sealant_usage == '1' ? 'selected' : '' }}
+                                value="1">Ya</div>
+                        @endif
+                    </div>
+                </div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Pengiriman ke Ekspedisi</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        @if ($fppp->delivery_to_expedition == '0')
+                            <div class=" font-semibold text-slate-500"{{ $fppp->delivery_to_expedition == '0' ? 'selected' : '' }}
+                                value="0">Tidak</div>
+                        @else
+                            <div class=" font-semibold text-slate-500"{{ $fppp->delivery_to_expedition == '1' ? 'selected' : '' }}
+                                value="1">Ya</div>
+                        @endif
+                    </div>
+                </div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Note</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">(UBAH EDITOR JADI TIDAK ADA TAG HTML) {{ $fppp->note }}</div>
+                    </div>
+                </div>
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">Attachment</div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">(GAMBAR GAMBAR)</div>
+                    </div>
                 </div>
             </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Penggunaan Peti</div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->box_usage}}</div>
-                </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Penggunaan Sealant</div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->sealant_usage}}</div>
-                </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Pengiriman ke Ekspedisi</div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->delivery_to_expedition}}</div>
-                </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Note</div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->note}}</div>
-                </div>
-            </div>
-            <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                    <div class=" text-slate-500">Attachment</div>
-                    <div class=" text-slate-500">:</div>
-                </div>
-                <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">(GAMBAR GAMBAR)</div>
-                </div>
-            </div>
+            <br><br>
         </div>
-        <br><br>
-    </div>
-    {{-- <div class="px-5 sm:px-16 py-10 sm:py-20">
+        {{-- <div class="px-5 sm:px-16 py-10 sm:py-20">
         <div class="overflow-x-auto">
             <table class="table">
                 <thead>
@@ -282,6 +328,6 @@
             <div class="mt-1">Taxes included</div>
         </div>
     </div> --}}
-</div>
-<!-- END: Invoice -->
+    </div>
+    <!-- END: Invoice -->
 @endsection
