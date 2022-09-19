@@ -47,6 +47,7 @@ class FpppController extends Controller
     {
         $validated = $request->validated();
         $create = Fppp::create($validated);
+        $create->update(['user_id' => Auth::id()]);
 
         if (Auth::user()->tempFiles) {
             foreach (Auth::user()->tempFiles as $tempFile) {

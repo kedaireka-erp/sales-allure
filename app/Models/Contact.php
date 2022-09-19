@@ -22,6 +22,7 @@ class Contact extends Model
         'address',
         'phone',
         'note',
+        'user_id'
     ];
 
     public function ContactType()
