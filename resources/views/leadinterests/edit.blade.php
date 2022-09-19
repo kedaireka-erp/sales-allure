@@ -11,9 +11,9 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
-            <form action="{{ route('leadinterests.update', $leadinterest) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('leadinterests.update', $leadinterest) }}" method="POST">
                 @csrf
-                @method('put')
+                @method('patch')
                 <div class="intro-y box p-5">
                     <div>
                         <label for="name" class="form-label">Nama Lead Interest</label>
