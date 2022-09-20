@@ -353,7 +353,7 @@
                                 
                             </div>
                             <div class="flex sm:ml-auto mt-5 sm:mt-0">
-                                <button class="btn btn-secondary w-20 ml-auto">Edit</button>
+                                <a href="{{ route('approachments.edit', $app) }}" class="btn btn-secondary w-20 ml-auto">Edit</a>
                                 <button class="btn btn-secondary w-20 ml-2">Details</button>
                             </div>
                         </div>
@@ -376,12 +376,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($contact->approachment as $app)
+                            @foreach ($summary_activity as $key => $app)
                                 
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $app->activity->name }}</td>
-                                <td>{{ $app->activity->groupBy('name')->count() }}</td>
+                                <td>{{ $key }}</td>
+                                <td>{{ $app->count() }}</td>
                                 <td class="text-center">
                                     <button class="btn btn-primary">Detail</button>
                                 </td>

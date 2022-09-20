@@ -14,7 +14,7 @@ use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContactRequest;
 use App\Models\LeadPriority;
-
+use Termwind\Components\Dd;
 
 class ContactController extends Controller
 {
@@ -63,7 +63,11 @@ class ContactController extends Controller
         $leadStatuses = LeadStatus::all();
         $leadPriorities = LeadPriority::all();
         $leadInterests = LeadInterest::all();
-        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests', 'leadPriorities'));
+
+        $summary_activity = $contact->approachment->groupBy('activity.name')->all();
+        // dd($summary_activity);
+
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests', 'leadPriorities', 'summary_activity'));
 
     }
 

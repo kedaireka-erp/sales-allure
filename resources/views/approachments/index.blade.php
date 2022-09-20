@@ -71,8 +71,7 @@
                                             </svg> Lost
                                         </div>
                                     </a>
-                                @endif
-                                @if ($approachment->status->name == 'Pending')
+                                @elseif ($approachment->status->name == 'Pending')
                                     <a class="w-40">
                                         <div class="flex items-center justify-center text-warning">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -84,8 +83,8 @@
                                             </svg> Pending
                                         </div>
                                     </a>
-                                @endif
-                                @if ($approachment->status->name == 'Deal')
+
+                                @elseif ($approachment->status->name == 'Deal')
                                     <a>
                                         <div class="flex items-center justify-center text-success">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
