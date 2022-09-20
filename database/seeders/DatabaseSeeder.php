@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Activity;
+use App\Models\Approachment;
 use App\Models\Fppp;
 use App\Models\Status;
 use App\Models\Company;
@@ -48,6 +49,8 @@ class DatabaseSeeder extends Seeder
         Fppp::factory(100)->create();
 
         DetailQuotation::factory(100)->create();
+
+        Approachment::factory(1000)->create();
 
     }
 }
