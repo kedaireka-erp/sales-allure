@@ -45,10 +45,11 @@ class CompanyController extends Controller
 
     public function show(Company $company)
     {
+        $company_types = CompanyType::get();
 
-        $companies = Company::with('company_type', 'company_area')->get();
+        $company_areas = CompanyArea::get();
         
-        return view('companies.detail', compact('company', 'companies'));
+        return view('companies.detail', compact('company', 'company_areas', 'company_types', 'company_areas'));
     }
 
     public function edit(Company $company)

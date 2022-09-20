@@ -68,7 +68,7 @@
                     </div>
                     <div class=" w-full">
                         <div class=" font-semibold text-slate-500">
-                            {{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormsat('d F Y') }}</div>
+                            {{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</div>
                     </div>
                 </div>
                 <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
