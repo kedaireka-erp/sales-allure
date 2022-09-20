@@ -3820,6 +3820,12 @@ select{
 .bg-success\/10{
     background-color: rgb(var(--color-success) / 0.1);
 }
+.bg-warning\/10{
+    background-color: rgb(var(--color-warning) / 0.1);
+}
+.bg-danger\/10{
+    background-color: rgb(var(--color-danger) / 0.1);
+}
 .bg-pending\/10{
     background-color: rgb(var(--color-pending) / 0.1);
 }

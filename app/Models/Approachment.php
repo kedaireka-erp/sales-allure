@@ -19,6 +19,10 @@ class Approachment extends Model
         "note", 
     ];
 
+    protected $dates = [
+        'date',
+    ];
+
     public function status(){
         return $this->belongsto(Status::class);
     }
