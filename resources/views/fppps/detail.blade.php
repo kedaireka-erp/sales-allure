@@ -51,7 +51,16 @@
                 </div>
                 <div class="mt-1">Kode-Kode</div>
             </div>
-            <div class="mt-5 w-full flex flex-col gap-y-3">
+            <div class="mt-1 w-full flex flex-col gap-y-3">
+                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
+                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                        <div class=" text-slate-500">No. Quotation </div>
+                        <div class=" text-slate-500">:</div>
+                    </div>
+                    <div class=" w-full">
+                        <div class=" font-semibold text-slate-500">{{$fppp->quotation->no_quotation}}</div>
+                    </div>
+                </div>
                 <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
                     <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
                         <div class=" text-slate-500">Tanggal </div>
@@ -59,9 +68,7 @@
                     </div>
                     <div class=" w-full">
                         <div class=" font-semibold text-slate-500">
-
-                            {{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</div>
-
+                            {{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormsat('d F Y') }}</div>
                     </div>
                 </div>
                 <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
