@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\ContactType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContactTypeController extends Controller
 {
     
     public function index()
     {
-        $contact_types = ContactType::all();
+        $contact_types = ContactType::latest()->paginate(10);
         return view('contact_types.index', compact('contact_types'));
     }
 
@@ -23,44 +25,82 @@ class ContactTypeController extends Controller
     
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
+        
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|unique:contact_types|max:255',
             'status' => 'required',
         ]);
-
-        ContactType::create($request->all());
-
-        return redirect()->route('contact_types.index')
-            ->with('success', 'ContactType created successfully.');
+        
+        if($validated->fails())
+        {
+            return back()->withErrors($validated)->with('error', 'Contact Type Created Failed!')->withInput();
+        }
+        else
+        {
+            $create = ContactType::create($request->all());
+            
+            if($create)
+            {
+                return redirect()->route('contact_types.index')->with('success', 'Contact Type Created Successfuly!');
+            }
+            else
+            {
+                return redirect()->route('contact_types.create')->with('error', 'Contact Type Created Failed!');
+            }
+        }
     }
 
     
-    public function show(ContactType $contactType)
+    public function show(ContactType $contact_type)
     {
         //
     }
 
     
-    public function edit($id)
+    public function edit(ContactType $contact_type)
     {
-        $contact_type = ContactType::findOrFail($id);
         $contact_types = ContactType::all();
         return view('contact_types.edit', compact('contact_type', 'contact_types'));
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request, ContactType $contact_type)
     {
-        $contact_type = ContactType::findOrFail($id);
-        $contact_type->update($request->all());
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'status' => 'required',
+        ]);
 
-        return to_route('contact_types.index');
+        if($validated->fails())
+        {
+            return back()->withErrors($validated)->with('error', 'Contact Type Created Failed!')->withInput();
+        }
+        else
+        {
+            $update = $contact_type->update($request->all());
+            
+            if($update)
+            {
+                return redirect()->route('contact_types.index')->with('success', 'Contact Type Created Successfuly!');
+            }
+            else
+            {
+                return redirect()->route('contact_types.edit')->with('error', 'Contact Type Created Failed!');
+            }
+        }
     }
 
     
-    public function destroy(ContactType $contactType)
+    public function destroy(ContactType $contact_type)
     {
-        $contactType->delete();
-        return redirect()->route('contact_types.index');
+        $deleted = $contact_type->delete();
+        if($deleted)
+        {
+            return redirect()->route('contact_types.index')->with('success', 'Contact Type Deleted Successfully!');
+        }
+        else
+        {
+            return redirect()->route('contact_types.index')->with('error', 'Contact Type Deleted Failed!');
+        }
     }
 }

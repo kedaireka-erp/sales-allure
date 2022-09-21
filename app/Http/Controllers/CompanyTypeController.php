@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyTypeController extends Controller
 {
     
     public function index()
     {
-        $company_types = CompanyType::all();
+        $company_types = CompanyType::latest()->paginate(10);
        
         return view('company_types.index', compact('company_types'));
     }
@@ -22,57 +23,72 @@ class CompanyTypeController extends Controller
   
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+        $validation = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'description' => 'nullable',
         ]);
 
-        $create = CompanyType::create($request->all());
-
-        if($create)
+        if($validation->fails())
         {
-            return redirect()->route('company_types.index')->with('success', 'Company Type berhasil dibuat!');
+            return back()->withErrors($validation)->with('error', 'Company Type gagal dibuat!')->withInput();
         }
         else
         {
-            return redirect()->route('company_types.create')->with('error', 'Company Type gagal dibuat!');
+            $create = CompanyType::create($request->all());
+            
+            if($create)
+            {
+                return redirect()->route('company_types.index')->with('success', 'Company Type berhasil dibuat!');
+            }
+            else
+            {
+                return redirect()->route('company_types.create')->with('error', 'Company Type gagal dibuat!');
+            }
         }
     }
    
-    public function show(CompanyType $companyType)
+    public function show(CompanyType $company_type)
     {
         //
     }
   
-    public function edit($id)
+    public function edit(CompanyType $company_type)
     {
-        $company_type = CompanyType::findOrFail($id);
 
         $company_types = CompanyType::all();
         
         return view('company_types.edit', compact('company_type', 'company_types'));
     }
      
-    public function update(Request $request, $id)
+    public function update(Request $request, CompanyType $company_type)
     {
 
-        $company_type = CompanyType::findOrFail($id);
+        $validation = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'description' => 'nullable',
+        ]);
 
-        $update = $company_type->update($request->all());
-
-        if($update)
+        if($validation->fails())
         {
-            return redirect()->route('company_types.index')->with('success', 'Company Type berhasil diubah!');
+            return back()->withErrors($validation)->with('error', 'Company Type gagal diubah!')->withInput();
         }
         else
         {
-            return redirect()->route('company_types.edit')->with('error', 'Company Type gagal diubah!');
+            $update = $company_type->update($request->all());
+            
+            if($update)
+            {
+                return redirect()->route('company_types.index')->with('success', 'Company Type berhasil diubah!');
+            }
+            else
+            {
+                return redirect()->route('company_types.edit', $id)->with('error', 'Company Type gagal diubah!');
+            }
         }
     }
 
-    public function destroy($id)
+    public function destroy(CompanyType $company_type)
     {
-        $company_type = CompanyType::findOrFail($id);
         
         $deleted = $company_type->delete();
         

@@ -130,51 +130,53 @@
                         <option value="1">Ya</option>
                     </select>
                 </div>
+                <div class="mt-5" id="note">
+                    <label for="note" class="mb-2">Note</label>
+                    <div class="mt-2">
+                        <textarea name="note" cols="30" rows="10" class="editor "></textarea>
+                    </div>
+                </div>
+
+
+                <div class="mt-5">
+                    <label for="filepond" class="form-label">Attachments </label>
+                    <input data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3" id="filepond" type="file" class="form-control w-full " name="file" multiple>
+                </div>
 
                 <div class="text-right mt-5">
                     <button type="submit" class="btn btn-primary w-24">Save</button>
                 </div>
-            </div>            
-
-            
-        </form>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-10 mt-3">
-    <div class="intro-y col-span-12 lg:col-span-6">
-        <!-- BEGIN: Form Layout -->
-        <form action="/file-upload" class="dropzone">
-            <div class="intro-y box p-5">
-                <div class="">
-                    <div class="fallback">
-                        <input name="file" type="file" multiple />
-                    </div>
-                    <div class="dz-message" data-dz-message>
-                        <div class="text-lg font-medium">Drop files here or click to upload.</div>
-                        <div class="text-slate-500">
-                            This is just a demo dropzone. Selected files are <span class="font-medium">not</span> actually uploaded.
-                        </div>
-                    </div>
-                </div>
-                {{-- <div class="text-right mt-5">
-                    <button type="submit" class="btn btn-primary w-24">Save</button>
-                </div> --}}
             </div>
+
+
         </form>
     </div>
 </div>
+{{-- <div class="grid grid-cols-12 gap-10 mt-3">
+    <div class="intro-y col-span-12 lg:col-span-6">
+        <form action="{{ route('fppps.store.attachments') }}" class="dropzone" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            @method('POST')
+            <div class="fallback">
+                <input name="file" type="file" multiple />
+            </div>
+            <div class="dz-message" data-dz-message>
+                <div class="text-lg font-medium">Drop files here or click to upload.</div>
+                <div class="text-slate-500">
+                    This is just a demo dropzone. Selected files are <span class="font-medium">not</span> actually
+                    uploaded.
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div> --}}
 @endsection
 
 @section('script')
-<script>
-
-
-
-
-
-
-
-
+<script type="text/javascript">
+    
 </script>
 <script src="{{ mix('dist/js/ckeditor-classic.js') }}"></script>
 @endsection

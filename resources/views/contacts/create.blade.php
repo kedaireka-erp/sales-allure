@@ -15,50 +15,119 @@
                 @csrf
                 <div class="intro-y box p-5">
                     <div class="mt-5">
+                        <label for="company" class="form-label">Company</label>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('company_id') border-red-700                            
+                        @enderror" id="company" placeholder="Select Company" name="company_id">
+                                @foreach ($companies as $company)
+                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('company_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
+                    </div>
+                    <div class="mt-5">
                         <label for="contact_type" class="form-label">Contact Type</label>
-                        <select class="custom-select d-block w-full form-control mb-3 tom-select" id="contact_type"
-                                name="contact_type_id">
-                                <option selected>Contact Type</option>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('contact_type_id') border-red-700                            
+                        @enderror" id="contact_type" placeholder="Contact Type" name="contact_type_id">
                                 @foreach ($contactTypes as $contactType)
                                     <option value="{{ $contactType->id }}">{{ $contactType->name }}</option>
                                 @endforeach
                         </select>
+                        @error('contact_type_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
                     </div>
                     <div class="mt-5">
                         <label for="lead_source" class="form-label">Lead Source</label>
-                            <select class="custom-select d-block w-full form-control mb-3 tom-select" id="lead_source"
-                                    name="lead_source_id">
-                                    
-                                    @foreach ($leadSources as $leadSource)
-                                        <option value="{{ $leadSource->id }}">{{ $leadSource->name }}</option>
-                                    @endforeach
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_source_id') border-red-700                            
+                        @enderror" id="lead_source" placeholder="Lead Source" name="lead_source_id">                                   
+                                @foreach ($leadSources as $leadSource)
+                                    <option value="{{ $leadSource->id }}">{{ $leadSource->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('lead_source_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mt-5">
+                        <label for="lead_status" class="form-label">Lead Status</label>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_status_id') border-red-700                            
+                        @enderror" id="lead_status" placeholder="Lead Status" name="lead_status_id">                                   
+                                @foreach ($leadStatuses as $leadStatus)
+                                    <option value="{{ $leadStatus->id }}">{{ $leadStatus->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('lead_status_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mt-5">
+                        <label for="lead_priority" class="form-label">Lead Priority</label>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_priority_id') border-red-700                            
+                        @enderror" id="lead_priority" placeholder="Lead Priority" name="lead_priority_id">
+                                @foreach ($leadPriorities as $leadPriority)
+                                    <option value="{{ $leadPriority->id }}">{{ $leadPriority->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('lead_priority_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
+                    </div>
+                    <div class="mt-5">
+                        <label for="note" class="mb-2">Lead Interest</label>
+                        <div class="mt-2">
+                            <select data-placeholder="Pilih Lead Interest" class="tom-select w-full" id="leadInterest" name="leadInterest[]" multiple>
+                                @foreach ($leadInterests as $key => $leadInterest)
+                                    <option value="{{ $leadInterest->id }}">{{ $leadInterest->name }}</option>
+                                @endforeach
                             </select>
+                        </div>
                     </div>
                     <div class="mt-5">
                         <label for="name" class="form-label">Contact Name </label>
-                        <input id="name" type="text" class="form-control w-full" placeholder="Masukkan Nama Kontak"
-                            name="name" required>
+                        <input id="name" type="text" class="@error('name') border-red-700                            
+                        @enderror form-control w-full" placeholder="Masukkan Nama Kontak"
+                            name="name" value="{{ old('name') }}">
+                        @error('name')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
                     </div>
                     <div class="mt-5">
                         <label for="email" class="form-label">E-mail </label>
-                        <input id="email" type="text" class="form-control w-full" placeholder="Masukkan Email"
-                            name="email" required>
+                        <input id="email" type="text" class="@error('email') border-red-700                            
+                        @enderror form-control w-full" placeholder="Masukkan Email"
+                            name="email" value="{{ old('email') }}">
+                        @error('email')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
                     </div>
                     <div class="mt-5">
                         <label for="address" class="form-label">Address </label>
-                        <input id="address" type="text" class="form-control w-full" placeholder="Masukkan Alamat"
-                            name="address" required>
+                        <input id="address" type="text" class="@error('address') border-red-700                            
+                        @enderror form-control w-full" placeholder="Masukkan Alamat"
+                            name="address" value="{{ old('address') }}">
+                        @error('address')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
                     </div>
                     <div class="mt-5">
                         <label for="phone" class="form-label">Phone Number </label>
-                        <input id="phone" type="text" class="form-control w-full" placeholder="Masukkan No Telepon"
-                            name="phone" required>
+                        <input id="phone" type="text" class="@error('phone') border-red-700                            
+                        @enderror form-control w-full" placeholder="Masukkan No Telepon"
+                            name="phone" value="{{ old('phone') }}">
+                        @error('phone')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
                     </div>
                     <div class="mt-5">
                         <label for="note" class="mb-2">Deskripsi</label>
                         <div class="mt-2">
-                            <textarea name="note" id="note" cols="30" rows="10" class="editor"></textarea>
+                            <textarea name="note" id="note" cols="30" rows="10" class="editor">{{ old('note') }}</textarea>
                         </div>
+                         @error('note')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="text-right mt-5">
                         <button type="submit" class="btn btn-primary w-24">Save</button>

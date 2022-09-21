@@ -15,7 +15,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $companies = Company::with(['company_area', 'company_type'])->get();
+        $companies = Company::with(['company_area', 'company_type'])->latest()->paginate(10);
 
         return view('companies.index', compact('companies'));
     }
@@ -43,18 +43,17 @@ class CompanyController extends Controller
         return redirect()->route('companies.index')->with('success', 'Company created successfully.');
     }
 
-    public function show($id)
+    public function show(Company $company)
     {
-        $company = Company::findOrFail($id);
+        $company_types = CompanyType::get();
 
-        $companies = Company::with('company_type', 'company_area')->get();
+        $company_areas = CompanyArea::get();
         
-        return view('companies.detail', compact('company', 'companies'));
+        return view('companies.detail', compact('company', 'company_areas', 'company_types', 'company_areas'));
     }
 
-    public function edit($id)
+    public function edit(Company $company)
     {
-        $company = Company::findOrFail($id);
 
         $companies = Company::all();
 
@@ -65,9 +64,8 @@ class CompanyController extends Controller
         return view('companies.edit', compact('company', 'companies', 'company_types', 'company_areas'));
     }
 
-    public function update(CompanyRequest $request, $id)
+    public function update(CompanyRequest $request, Company $company)
     {
-        $company = Company::findOrFail($id);
 
         $validated = $request->validated();
         
@@ -81,9 +79,8 @@ class CompanyController extends Controller
 
     }
 
-    public function destroy($id)
+    public function destroy(Company $company)
     {
-        $company = Company::findOrFail($id);
         $deleted = $company->delete();
 
 

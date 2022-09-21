@@ -29,8 +29,11 @@ class Fppp extends Model
         "sealant_usage", 
         "delivery_to_expedition", 
         "note", 
-        "attachment"
+        "attachment",
+        "user_id"
     ];
+
+    protected $dates = ['created_at'];
 
     public function quotation(){
         return $this->belongsto(Quotation::class);
@@ -38,6 +41,11 @@ class Fppp extends Model
 
     public function files(){
         return $this->hasMany(AttachmentFppp::class, "fppp_id", "id");
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 

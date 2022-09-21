@@ -9,7 +9,7 @@ class LeadSourceController extends Controller
 {
     public function index()
     {
-        $leadSources = LeadSource::get();
+        $leadSources = LeadSource::latest()->paginate(10);
         return view('leadsources.index', compact('leadSources'));
     }
 
@@ -28,34 +28,31 @@ class LeadSourceController extends Controller
         return redirect()->route('leadsources.index');
     }
 
-    public function edit($id)
-    {
-        $leadSource = LeadSource::findOrFail($id);
-
+    public function edit(LeadSource $leadsource)
+    {   
+        $leadSource = $leadsource;
         return view("leadsources.edit", compact("leadSource"));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, LeadSource $leadsource)
     {
-        $leadSource = LeadSource::findOrFail($id);
-        $leadSource->update([
-            "name" => $request->name ?? $leadSource->name,
-            "description" => $request->description ?? $leadSource->description
+        $leadsource->update([
+            "name" => $request->name ?? $leadsource->name,
+            "description" => $request->description ?? $leadsource->description
         ]);
 
         return redirect()->route('leadsources.index');
     }
 
-    public function destroy($id)
+    public function destroy(LeadSource $leadsource)
     {
-        $leadSource = LeadSource::findOrFail($id);
-        $leadSource->delete();
+        $leadsource->delete();
 
         return redirect()->route('leadsources.index');
     }
 
 
-    public function show(LeadSource $leadSource)
+    public function show(LeadSource $leadsource)
     {
         //
     }

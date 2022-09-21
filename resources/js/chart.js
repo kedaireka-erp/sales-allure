@@ -104,13 +104,13 @@ import Chart from "chart.js/auto";
             type: "pie",
             data: {
                 labels: [
-                    "31 - 50 Years old",
-                    ">= 50 Years old",
-                    "17 - 30 Years old",
+                    "Deals Approachments",
+                    "Pending Approachments",
+                    "Lost Approachments",
                 ],
                 datasets: [
                     {
-                        data: [15, 10, 65],
+                        data: [30, 45, 25],
                         backgroundColor: [
                             colors.pending(0.9),
                             colors.warning(0.9),
@@ -121,7 +121,7 @@ import Chart from "chart.js/auto";
                             colors.warning(0.9),
                             colors.primary(0.9),
                         ],
-                        borderWidth: 5,
+                        borderWidth: 10,
                         borderColor: $("html").hasClass("dark")
                             ? colors.darkmode[700]()
                             : colors.white,
@@ -132,7 +132,7 @@ import Chart from "chart.js/auto";
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false,
+                        display: true,
                     },
                 },
             },
