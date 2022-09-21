@@ -44,7 +44,7 @@
                 <div class="text-slate-500">Activities</div>
             </div>
             <div class="text-center rounded-md w-20 py-3">
-                <div class="font-medium text-primary text-xl">0</div>
+                <div class="font-medium text-primary text-xl">{{ $contact->approachment->where('status.name', 'Deal')->count() }}</div>
                 <div class="text-slate-500">Deals</div>
             </div>
         </div>

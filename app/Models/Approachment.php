@@ -22,6 +22,7 @@ class Approachment extends Model
 
     protected $dates = [
         'date',
+        'created_at'
     ];
 
     public function status(){

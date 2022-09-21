@@ -21,15 +21,15 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-lucide="shopping-cart" class="report-box__icon text-primary"></i>
+                                        <i data-lucide="thumbs-up" class="report-box__icon text-primary"></i>
                                         <div class="ml-auto">
                                             <div class="report-box__indicator bg-success tooltip cursor-pointer" title="33% Higher than last month">
                                                 33% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">4.710</div>
-                                    <div class="text-base text-slate-500 mt-1">Item Sales</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $approachments->where('status.name', 'Deal')->count() }}</div>
+                                    <div class="text-base text-slate-500 mt-1">{{ \Carbon\Carbon::now()->format('F') }}'s Deals</div>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +44,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">3.721</div>
-                                    <div class="text-base text-slate-500 mt-1">New Orders</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $quotations->where('Status.name', 'Won')->count() }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Quotation Won</div>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +60,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">2.149</div>
-                                    <div class="text-base text-slate-500 mt-1">Total Products</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $fppps->count() }}</div>
+                                    <div class="text-base text-slate-500 mt-1">{{ \Carbon\Carbon::now()->format('F') }}'s FPPPs</div>
                                 </div>
                             </div>
                         </div>
@@ -76,8 +76,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">152.040</div>
-                                    <div class="text-base text-slate-500 mt-1">Unique Visitor</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $contacts->count() }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Contacts</div>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                 <!-- BEGIN: Weekly Top Seller -->
                 <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                     <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">Weekly Top Seller</h2>
+                        <h2 class="text-lg font-medium truncate mr-5">Monthly Approachment</h2>
                         <a href="" class="ml-auto text-primary truncate">Show More</a>
                     </div>
                     <div class="intro-y box p-5 mt-5">
@@ -144,17 +144,17 @@
                         <div class="w-52 sm:w-auto mx-auto mt-8">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                                <span class="truncate">17 - 30 Years old</span>
+                                <span class="truncate">Deals Approachmets</span>
                                 <span class="font-medium ml-auto">62%</span>
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                                <span class="truncate">31 - 50 Years old</span>
+                                <span class="truncate">Pending Approachmets</span>
                                 <span class="font-medium ml-auto">33%</span>
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
-                                <span class="truncate">>= 50 Years old</span>
+                                <span class="truncate">Lost Approachmets</span>
                                 <span class="font-medium ml-auto">10%</span>
                             </div>
                         </div>
