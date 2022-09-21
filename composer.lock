@@ -3023,8 +3023,6 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-<<<<<<< Updated upstream
-=======
                 "MIT"
             ],
             "authors": [
@@ -3103,7 +3101,6 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
->>>>>>> Stashed changes
                 "Apache-2.0"
             ],
             "authors": [
@@ -3607,8 +3604,6 @@
                 "files": [
                     "src/getallheaders.php"
                 ]
-<<<<<<< Updated upstream
-=======
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3897,7 +3892,6 @@
                 "psr-4": {
                     "Spatie\\ImageOptimizer\\": "src"
                 }
->>>>>>> Stashed changes
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
