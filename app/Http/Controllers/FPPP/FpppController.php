@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\AttachmentFppp;
 use App\Http\Requests\FpppRequest;
 use App\Http\Controllers\Controller;
+use App\Services\SearchService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
@@ -20,9 +21,12 @@ use Illuminate\Support\Facades\Storage;
 
 class FpppController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $fppps = Fppp::with("quotation")->orderBy('created_at', 'desc')->orderBy('quotation_id', 'desc')->paginate(20);
+        $ss = new SearchService();
+        $fppps = $ss->SearchFppp($request->search);
+        session()->flashInput($request->input());
+        
         return view("fppps.index", compact("fppps"));
     }
 
