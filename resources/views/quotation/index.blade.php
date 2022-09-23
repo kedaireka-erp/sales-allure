@@ -8,9 +8,22 @@
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Quotation - Data List</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <form action="{{ route('quotation.index') }}" class="xl:flex sm:mr-auto">
+                <div class="dropdown w-full sm:w-auto">
+                    <select class="tom-select mb-3" id="status_id" name="status">
+                        <option selected>Status</option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit"
+                        class="btn btn-primary w-full sm:w-16">Filter</button>
+            </form>
             <a href="{{ route('quotation.create') }}" class="btn btn-primary shadow-md mr-2">
                 <span class="text">Add Quotation</span>
             </a>
+            
             <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
@@ -37,21 +50,20 @@
     <!-- BEGIN: HTML Table Data -->
     <div class="intro-y p-5 mt-5">
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-            <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
+            <form action="{{ route('quotation.index') }}" id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
 
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
-                    <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
-                    <input id="tabulator-html-filter-value" type="text"
-                        class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
+                    <input id="search" type="text" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0"
+                        placeholder="Search..." name="search">
                 </div>
                 <div class="mt-2 xl:mt-0">
-                    <button id="tabulator-html-filter-go" type="button"
+                    <button id="tabulator-html-filter-go" type="submit"
                         class="btn btn-primary w-full sm:w-16">Search</button>
-                    <button id="tabulator-html-filter-reset" type="button"
+                    <a href="{{ route('quotation.index') }}"
                         class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
                 </div>
             </form>
-            <div class="flex mt-5 sm:mt-0">
+            <div class="flex mt-5 gap-0 sm:mt-0">
                 <button id="tabulator-print" class="btn btn-primary w-1/2 sm:w-auto mr-2">
                     <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
                 </button>
@@ -106,7 +118,8 @@
                                 <tr class="intro-x zoom-in transition">
                                     <td class="w-10">
                                         <div class="flex">
-                                            <div class="font-medium whitespace-nowrap">{{ $key + $quotations->firstItem() }}</div>
+                                            <div class="font-medium whitespace-nowrap">{{ $key + $quotations->firstItem() }}
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
