@@ -5,13 +5,10 @@
     "author": "Left4code",
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
         "watch": "concurrently \"postcss ./resources/css/app.css -o ./public/dist/css/_app.css --watch\" \"mix watch\"",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "postcss ./resources/css/app.css -o ./public/dist/css/_app.css && mix --production"
+        "production": "postcss ./resources/css/app.css -o ./public/dist/css/_app.css && mix --production",
+        "dev": "vite",
+        "build": "vite build"
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-balloon": "^29.1.0",
