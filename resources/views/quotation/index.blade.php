@@ -54,13 +54,13 @@
 
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
                     <input id="search" type="text" class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0"
-                        placeholder="Search..." name="search">
+                        placeholder="Search..." name="search" value="{{ request('search') }}">
                 </div>
                 <div class="mt-2 xl:mt-0">
                     <button id="tabulator-html-filter-go" type="submit"
                         class="btn btn-primary w-full sm:w-16">Search</button>
                     <a href="{{ route('quotation.index') }}"
-                        class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
+                        class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</a>
                 </div>
             </form>
             <div class="flex mt-5 gap-0 sm:mt-0">
