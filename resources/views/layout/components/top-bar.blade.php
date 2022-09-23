@@ -1,7 +1,7 @@
 <!-- BEGIN: Top Bar -->
 <div class="top-bar">
     
-    {{-- {{ Breadcrumbs::render() }} --}}
+    {{ Breadcrumbs::render() }}
     <!-- BEGIN: Search -->
     <div class="intro-x relative mr-3 sm:mr-6">
         <div class="search hidden sm:block">
