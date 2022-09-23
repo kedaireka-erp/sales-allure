@@ -3618,6 +3618,9 @@ select{
 .gap-3{
     gap: 0.75rem;
 }
+.gap-0{
+    gap: 0px;
+}
 .gap-x-5{
     -moz-column-gap: 1.25rem;
          column-gap: 1.25rem;
@@ -18750,9 +18753,6 @@ html body{
     }
     .lg\:w-56{
         width: 14rem;
-    }
-    .lg\:w-full{
-        width: 100%;
     }
     .lg\:flex-row{
         flex-direction: row;
