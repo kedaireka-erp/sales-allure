@@ -5,8 +5,6 @@ import Chart from "chart.js/auto";
 (function(){
     "use strict";
 
-    let data = [30, 45, 25];
-
    if($('report-apps-chart').length){
        let ctx = $("#report-apps-chart")[0].getContext("2d");
        let myPieChart = new Chart(ctx, {
@@ -19,7 +17,7 @@ import Chart from "chart.js/auto";
                ],
                datasets: [
                    {
-                       data: data,
+                       data: [30, 45, 25],
                        backgroundColor: [
                            colors.danger(0.9),
                            colors.warning(0.9),

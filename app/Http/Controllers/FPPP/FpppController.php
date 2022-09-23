@@ -11,9 +11,10 @@ use App\Exports\FpppExport;
 use Termwind\Components\Dd;
 use Illuminate\Http\Request;
 use App\Models\AttachmentFppp;
+use App\Services\SearchService;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\FpppRequest;
 use App\Http\Controllers\Controller;
-use App\Services\SearchService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
@@ -142,5 +143,10 @@ class FpppController extends Controller
     public function export()
     {
         return Excel::download(new FpppExport, 'fppps.xlsx');
+    }
+
+    public function toPdf(Fppp $fppp){
+        $pdf = Pdf::loadView('fppps.pdf', compact('fppp'));
+        return $pdf->download($fppp->fppp_no.'.pdf');
     }
 }

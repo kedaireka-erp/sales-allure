@@ -104,9 +104,9 @@ import Chart from "chart.js/auto";
             type: "pie",
             data: {
                 labels: [
-                    "Deals Approachments",
-                    "Pending Approachments",
-                    "Lost Approachments",
+                    "Deals",
+                    "Pending",
+                    "Lost",
                 ],
                 datasets: [
                     {
@@ -121,7 +121,7 @@ import Chart from "chart.js/auto";
                             colors.warning(0.9),
                             colors.primary(0.9),
                         ],
-                        borderWidth: 10,
+                        borderWidth: 5,
                         borderColor: $("html").hasClass("dark")
                             ? colors.darkmode[700]()
                             : colors.white,
@@ -132,7 +132,7 @@ import Chart from "chart.js/auto";
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: true,
+                        display: false,
                     },
                 },
             },
