@@ -54,5 +54,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ mix('dist/js/ckeditor-inline.js') }}"></script>
+    @vite('resources/dist/js/ckeditor-inline.js')
 @endsection

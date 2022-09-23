@@ -54,5 +54,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ mix('dist/js/ckeditor-balloon-block.js') }}"></script>
+    @vite('resources/dist/js/ckeditor-balloon-block.js')
 @endsection

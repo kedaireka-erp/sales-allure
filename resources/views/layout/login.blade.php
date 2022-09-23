@@ -7,7 +7,7 @@
         @include('layout.components.main-color-switcher')
 
         <!-- BEGIN: JS Assets-->
-        <script src="{{ mix('dist/js/app.js') }}"></script>
+        @vite('resources/dist/js/app.js')
         <!-- END: JS Assets-->
 
         @yield('script')

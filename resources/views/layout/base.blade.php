@@ -22,7 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
     @yield('head')
 
     <!-- BEGIN: CSS Assets-->
-    <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}" />
+    @vite('resources/dist/css/app.css')
     <!-- END: CSS Assets-->
 </head>
 <!-- END: Head -->
