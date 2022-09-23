@@ -6,6 +6,7 @@ use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
+use App\Services\SearchService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,10 +14,17 @@ use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+<<<<<<< Updated upstream
         $companies = Company::with(['company_area', 'company_type'])->get();
 
+=======
+        $ss = new SearchService();
+        $companies = $ss->SearchCompany($request->search);
+        session()->flashInput($request->input());
+        
+>>>>>>> Stashed changes
         return view('companies.index', compact('companies'));
     }
 
