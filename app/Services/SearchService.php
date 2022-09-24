@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Company;
 use App\Models\Fppp;
 
 /**
@@ -45,7 +46,25 @@ class SearchService
 
     public function SearchCompany($keywords)
     {
+        $result = "";
 
+        if ($keywords) {
+            $result = Company::where('name', 'like', '%' . $keywords . '%')
+            ->orWhere('phone_number', 'like', '%' . $keywords . '%')
+            ->orWhere('address', 'like', '%' . $keywords . '%')
+            ->orWhere('city', 'like', '%' . $keywords . '%')
+            ->orWhere('postal_code', 'like', '%' . $keywords . '%')
+            ->orWhere('number_of_employees', 'like', '%' . $keywords . '%')
+            ->orWhere('annual_revenue', 'like', '%' . $keywords . '%')
+            ->orWhere('time_zone', 'like', '%' . $keywords . '%')
+            ->orWhere('linkedin_company', 'like', '%' . $keywords . '%')
+            ->with("company_type", "company_area")->orderBy('created_at', 'desc')
+            ->paginate(10);
+        } else {
+            $result = Company::with("company_type", "company_area")->orderBy('created_at', 'desc')->paginate(10);
+        }
+
+        return $result;
     }
 
     public function SearchQuotation($keywords)
