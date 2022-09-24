@@ -130,6 +130,7 @@
                 <div class="text-right mt-5">
                     <button type="submit" class="btn btn-primary w-24">Save</button>
                 </div>
+            </div>
         </form>
         <!-- END: Form Layout -->
     </div>

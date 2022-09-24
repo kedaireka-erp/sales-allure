@@ -17,7 +17,7 @@ class Activity extends Model
     
     public function approachment()
     {
-        return $this->belongsToMany(Approachment::class, 'approachment_activities');
+        return $this->hasMany(Approachment::class);
     }
 
 

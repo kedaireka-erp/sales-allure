@@ -16,10 +16,10 @@ class Status extends Model
         return $this->hasMany(Quotation::class);
     }
 
-    public function approachments()
-    {
-        return $this->belongsToMany(Approachment::class, 'approachment_statuses');
+    public function approachment(){
+        return $this->hasMany(Approachment::class);
     }
+
 
 
 

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fppp;
+use App\Models\Contact;
+use App\Models\Quotation;
+use App\Models\Approachment;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 
 class PageController extends Controller
@@ -14,12 +19,21 @@ class PageController extends Controller
      */
     public function dashboardOverview1()
     {
-        return view('pages/dashboard-overview-1', [
+        $approachments = Approachment::whereMonth('date', Carbon::now()->month)->get();
+        $quo = Quotation::all();
+        $contacts = Contact::all();
+        $fppps = Fppp::whereMonth('created_at', Carbon::now()->month)->get();
+
+        return view('dashboard', [
             // Specify the base layout.
             // Eg: 'side-menu', 'simple-menu', 'top-menu', 'login'
             // The default value is 'side-menu'
 
-            'layout' => 'side-menu'
+            'layout' => 'side-menu',
+            'approachments' => $approachments,
+            'quotations' => $quo,
+            'contacts' => $contacts,
+            'fppps' => $fppps,
         ]);
     }
 

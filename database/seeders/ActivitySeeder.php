@@ -20,6 +20,8 @@ class ActivitySeeder extends Seeder
         Activity::factory()->create(["name"=>"WhatsApp Chat"]);
         Activity::factory()->create(["name"=>"Google Meet"]);
         Activity::factory()->create(["name"=>"Telepon"]);
+        Activity::factory()->create(["name"=>"Bertemu langsung"]);
+        Activity::factory()->create(["name"=>"SMS"]);
 
     }
 }

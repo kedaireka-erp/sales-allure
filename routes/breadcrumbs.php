@@ -4,8 +4,8 @@ use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 //========================[Dashboard]========================//
 //Dashboard
-Breadcrumbs::for('dashboard-overview-1', function ($trail) {
-    $trail->push('Dashboard', route('dashboard-overview-1'));
+Breadcrumbs::for('dashboard', function ($trail) {
+    $trail->push('Dashboard', route('dashboard'));
 });
 
 //========================[FPPP]========================//
@@ -327,8 +327,7 @@ Breadcrumbs::for('activities.show', function ($trail, $activity) {
 //Activity Edit
 Breadcrumbs::for('activities.edit', function ($trail, $activity) {
     $trail->parent('activities.index');
-    $trail->push($activity->name, route('activities.show', $activity->id));
-    $trail->push('Edit', route('activities.edit', $activity->id));
+    $trail->push('Edit', route('activities.edit', $activity));
 });
 
 //========================[Lead Interests]========================//

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Approachment extends Model
@@ -13,9 +14,15 @@ class Approachment extends Model
     protected $table="approachments";
     protected $fillable=[
         "contact_id",
+        "activity_id",
         "status_id",
         "date",
         "note", 
+    ];
+
+    protected $dates = [
+        'date',
+        'created_at'
     ];
 
     public function status(){
@@ -26,9 +33,9 @@ class Approachment extends Model
         return $this->belongsto(Contact::class);
     }
 
-    public function activities()
+    public function activity()
     {
-        return $this->belongsToMany(Activity::class, 'approachment_activities');
+        return $this->belongsto(Activity::class);
     }
 
 }
