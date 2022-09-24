@@ -50,7 +50,8 @@
                 </div>
                 <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
                     <a href="{{ route('contacts.show', $contact) }}" class="font-medium">{{ $contact->name }}</a>
-                    <div class="text-slate-500 text-xs mt-0.5">{{ $contact->ContactType ? $contact->ContactType->name : '' }}</div>
+                    <div class="text-slate-500 text-xs mt-0.5">{{ $contact->ContactType ? $contact->ContactType->name :
+                        '' }}</div>
                 </div>
                 <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
                     <a href=""

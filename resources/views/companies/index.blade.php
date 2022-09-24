@@ -36,11 +36,21 @@
             </div>
         </div>
         <div class="hidden md:block mx-auto text-slate-500"></div>
-        <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-            <div class="w-56 relative text-slate-500">
-                <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+        <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
+        <form class="xl:flex sm:mr-auto" action="{{ route('companies.index') }}" method="get">
+            @csrf
+            <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
+                <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
+                <input type="text" value="{{ old('search') }}" 
+                    class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" name="search" placeholder="Search...">
             </div>
+            <div class="mt-2 xl:mt-0">
+                <button id="tabulator-html-filter-go" type="submit"
+                    class="btn btn-primary w-full sm:w-16">Search</button>
+                <button id="tabulator-html-filter-reset" type="reset"
+                    class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
+            </div>
+        </form>
         </div>
     </div>
     <!-- BEGIN: Data List -->

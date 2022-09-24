@@ -16,7 +16,7 @@ class SideMenu
             'dashboard' => [
                 'icon' => 'layers',
                 'title' => 'Dashboard',
-                'route_name' => 'dashboard-overview-1',
+                'route_name' => 'dashboard',
                 'params' => [
                     'layout' => 'side-menu',
                 ],

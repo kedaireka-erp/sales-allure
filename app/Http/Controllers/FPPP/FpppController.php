@@ -11,6 +11,7 @@ use App\Exports\FpppExport;
 use Termwind\Components\Dd;
 use Illuminate\Http\Request;
 use App\Models\AttachmentFppp;
+use App\Services\SearchService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\FpppRequest;
 use App\Http\Controllers\Controller;
@@ -21,9 +22,12 @@ use Illuminate\Support\Facades\Storage;
 
 class FpppController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $fppps = Fppp::with("quotation")->orderBy('created_at', 'desc')->orderBy('quotation_id', 'desc')->paginate(20);
+        $ss = new SearchService();
+        $fppps = $ss->SearchFppp($request->search);
+        session()->flashInput($request->input());
+        
         return view("fppps.index", compact("fppps"));
     }
 
@@ -48,6 +52,7 @@ class FpppController extends Controller
     {
         $validated = $request->validated();
         $create = Fppp::create($validated);
+        $create->update(['user_id' => Auth::id()]);
 
         if (Auth::user()->tempFiles) {
             foreach (Auth::user()->tempFiles as $tempFile) {
@@ -144,5 +149,4 @@ class FpppController extends Controller
         $pdf = Pdf::loadView('fppps.pdf', compact('fppp'));
         return $pdf->download($fppp->fppp_no.'.pdf');
     }
-    
 }

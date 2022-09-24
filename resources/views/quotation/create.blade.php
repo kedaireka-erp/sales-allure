@@ -40,13 +40,19 @@
                         </select>
                     </div>
                     <div class="mt-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="tom-select w-full mb-3" id="status" name="status_id">
+                        <label for="status_id" class="form-label">Status</label>
+                        <select class="tom-select w-full mb-3" id="status_id" name="status_id">
                             <option selected>Status</option>
                             @foreach ($status as $stat)
                                 <option value="{{ $stat->id }}">{{ $stat->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mt-3" id="alasan_lost">
+                        <label for="alasan" class="form-label">Alasan Lost</label>
+                        <div class="mb-3">
+                            <textarea name="alasan" type="text" class="editor" cols="30" rows="10"></textarea>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <label for="deskripsi" class="form-label">Keterangan</label>
@@ -64,5 +70,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ mix('dist/js/ckeditor-classic.js') }}"></script>
+<script src="{{ mix('dist/js/ckeditor-classic.js') }}"></script>
 @endsection

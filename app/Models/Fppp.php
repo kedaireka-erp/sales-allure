@@ -29,8 +29,11 @@ class Fppp extends Model
         "sealant_usage", 
         "delivery_to_expedition", 
         "note", 
-        "attachment"
+        "attachment",
+        "user_id"
     ];
+
+    protected $dates = ['created_at'];
 
     public function quotation(){
         return $this->belongsto(Quotation::class);

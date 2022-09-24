@@ -16,14 +16,14 @@ class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DetailQuotation')->paginate(10);
-
-        return view('quotation.index', compact('quotations'));
+        $quotations = Quotation::with('Status', 'DetailQuotation')->search(request(['search']))->status(request(['status']))->paginate(20);
+        $statuses = Status::all();
+        return view('quotation.index', compact('quotations', 'statuses'));
     }
 
     public function create()
     {
-        $contacts=Contact::all();
+        $contacts = Contact::all();
         $status = Status::all();
         $deal_source = DealSource::all();
         return view('quotation.create', compact('contacts', 'status', 'deal_source'));
@@ -36,6 +36,7 @@ class QuotationController extends Controller
             'contact_id' => $request->contact_id,
             'deal_source_id' => $request->deal_source_id,
             'status_id' => $request->status_id,
+            'alasan' => $request->alasan,
             'keterangan' => $request->keterangan,
         ]);
 
@@ -57,7 +58,7 @@ class QuotationController extends Controller
 
     public function edit(Quotation $quotation)
     {
-        $contacts=Contact::get();
+        $contacts = Contact::get();
         $status = Status::get();
         $deal_source = DealSource::get();
 
@@ -71,6 +72,7 @@ class QuotationController extends Controller
             'contact_id' => 'required',
             'deal_source_id' => 'required',
             'status_id' => 'required',
+            'alasan' => 'nullable|max:300',
             'keterangan' => 'nullable|max:300',
         ]);
         $quotation->update($validator->validate());
@@ -102,6 +104,6 @@ class QuotationController extends Controller
 
     public function export()
     {
-        return Excel::download(new QuotationExport, 'quotation.xlsx');
+        return Excel::download(new QuotationExport(), 'quotation.xlsx');
     }
 }

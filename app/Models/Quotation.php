@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Status;
 use App\Models\DealSource;
 use App\Models\DetailQuotation;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,7 @@ class Quotation extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table="quotations";
-    protected $fillable=["no_quotation","contact_id", "deal_source_id","status_id","keterangan"];
+    protected $fillable=["no_quotation","contact_id", "deal_source_id","status_id","alasan","keterangan"];
     protected $appends=['nominal'];
 
     public function Contact(){
@@ -37,6 +38,16 @@ class Quotation extends Model
     }
 
     public function Nominal() {
-    return $this->DetailQuotation()->sum(\DB::raw('qty * harga'));
+    return $this->DetailQuotation()->sum(DB::raw('qty * harga'));
+  }
+  public function scopeSearch($query, $filter){
+    $query->when($filter['search'] ?? false, function($query, $search){
+        return $query->where('no_quotation','like','%'.$search.'%');
+    });
+  }
+  public function scopeStatus($query, $filter){
+    $query->when($filter['status'] ?? false, function($query, $status){
+        return $query->where('status_id','=', $status);
+    });
   }
 }

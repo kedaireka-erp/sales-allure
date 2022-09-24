@@ -44,10 +44,9 @@ class LeadInterestController extends Controller
         return redirect()->route('leadinterests.index');
     }
 
-    public function destroy($id)
+    public function destroy(LeadInterest $leadinterest)
     {
-        $leadInterest = leadInterest::findOrFail($id);
-        $leadInterest->delete();
+        $leadinterest->delete();
 
         return redirect()->route('leadinterests.index');
     }
