@@ -149,4 +149,9 @@ class FpppController extends Controller
         $pdf = Pdf::loadView('fppps.pdf', compact('fppp'));
         return $pdf->download($fppp->fppp_no.'.pdf');
     }
+
+    public function downloadAttachment(AttachmentFppp $attachment)
+    {
+        return Storage::download('public/'.$attachment->path);
+    }
 }
