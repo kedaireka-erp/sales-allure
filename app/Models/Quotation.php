@@ -40,4 +40,14 @@ class Quotation extends Model
     public function Nominal() {
     return $this->DetailQuotation()->sum(DB::raw('qty * harga'));
   }
+  public function scopeSearch($query, $filter){
+    $query->when($filter['search'] ?? false, function($query, $search){
+        return $query->where('no_quotation','like','%'.$search.'%');
+    });
+  }
+  public function scopeStatus($query, $filter){
+    $query->when($filter['status'] ?? false, function($query, $status){
+        return $query->where('status_id','=', $status);
+    });
+  }
 }
