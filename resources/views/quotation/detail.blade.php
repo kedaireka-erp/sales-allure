@@ -41,89 +41,33 @@
             <div class="px-5 py-10 sm:px-20 sm:py-20 w-full flex justify-between">
                 <span class="font-bold text-primary">LOGO</span>
                 <div class="flex flex-col items-center h-full">
-                    <h1 class="text-primary font-semibold text-xl">QUOTATION</h1>
-                    <h2 class="text-primary font-semibold text-lg">Quotation No. {{ $quotation->no_quotation }}</h2>
+                    <h1 class="text-primary font-semibold lg:text-xl text-md">QUOTATION</h1>
+                    <h2 class="text-primary font-semibold lg:text-lg text-base">Quotation No. {{ $quotation->no_quotation }}</h2>
                 </div>
                 <div class="mt-1">Kode-kode</div>
             </div>
-            <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
-                <div class="mt-5 w-full flex flex-col gap-y-3">
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">ID Penginput </div>
+            <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                <div class="mt-5 w-full flex flex-col text-sm lg:text-base gap-y-3">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-slate-500">Kontak</div>
+                            <div class="text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="font-semibold text-slate-500">{{ $quotation->Contact->name }}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Company </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">12345678</div>
+                            <div class="text-base font-semibold text-slate-500"></div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Kode Aplikator</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">APP1234</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">ID Currency</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">192/893/APPPP/1293</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Nama Proyek</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">Proyek Gajah Satwa</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Nama Owner</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">{{ $fakers[0]['users'][0]['name'] }}</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Kontak</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">{{ $fakers[0]['users'][1]['name'] }}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-5 w-full flex flex-col gap-y-3">
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">No. Quotation Customer</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">123/123/ASTRAL/321</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Alamat Proyek</div>
-                            <div class="text-base text-slate-500">:</div>
-                        </div>
-                        <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">Jl. Baru</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Status </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
@@ -131,8 +75,9 @@
                             <div class="text-base font-semibold text-slate-500">{{ $quotation->Status->name }}</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Deal Source </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
@@ -140,80 +85,35 @@
                             <div class="text-base font-semibold text-slate-500">{{ $quotation->DealSource->name }}</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Tanggal </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">12 Desember 2020</div>
+                            <div class="text-base font-semibold text-slate-500">{{ $quotation->created_at }}</div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-x-2 lg:flex-row px-5 sm:px-20 w-full">
-                        <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                            <div class="text-base text-slate-500">Revisi ke- 7</div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Nominal Penawaran </div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">@currency($quotation->nominal())</div>
                         </div>
                     </div>
                 </div>
             </div>
+            @if($quotation->status_id == 7)
             <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
                 <div class="text-center sm:text-left mt-10 sm:mt-0">
                     <div class="text-base text-slate-500"><b>Alasan</b></div>
-                    <div class="mt-1">Lorem Ipsum is simply dummy text of the printing</div>
+                    <div class="mt-1">{{ $quotation->alasan }}</div>
                 </div>
             </div>
-        </div>
-        <div class="px-5 sm:px-16 py-10 sm:py-20">
-            <div class="overflow-x-auto">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="border-b-2 dark:border-darkmode-400 whitespace-nowrap">DESCRIPTION</th>
-                            <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">QTY</th>
-                            <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">PRICE</th>
-                            <th class="border-b-2 dark:border-darkmode-400 text-right whitespace-nowrap">SUBTOTAL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border-b dark:border-darkmode-400">
-                                <div class="font-medium whitespace-nowrap">Midone HTML Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">2</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$50</td>
-                        </tr>
-                        <tr>
-                            <td class="border-b dark:border-darkmode-400">
-                                <div class="font-medium whitespace-nowrap">Vuejs Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">1</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$25</td>
-                        </tr>
-                        <tr>
-                            <td class="border-b dark:border-darkmode-400">
-                                <div class="font-medium whitespace-nowrap">React Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">1</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32">$25</td>
-                            <td class="text-right border-b dark:border-darkmode-400 w-32 font-medium">$25</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="font-medium whitespace-nowrap">Laravel Admin Template</div>
-                                <div class="text-slate-500 text-sm mt-0.5 whitespace-nowrap">Regular License</div>
-                            </td>
-                            <td class="text-right w-32">3</td>
-                            <td class="text-right w-32">$25</td>
-                            <td class="text-right w-32 font-medium">$75</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            @else
+            @endif
         </div>
         <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
             <div class="text-center sm:text-left mt-10 sm:mt-0">
@@ -222,5 +122,6 @@
             </div>
         </div>
     </div>
+    
     <!-- END: Invoice -->
 @endsection

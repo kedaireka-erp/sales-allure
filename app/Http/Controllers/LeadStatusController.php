@@ -9,7 +9,7 @@ class LeadStatusController extends Controller
 {
     public function index()
     {
-        $leadStatuses = LeadStatus::get();
+        $leadStatuses = LeadStatus::latest()->paginate(10);
         return view('leadstatuses.index', compact('leadStatuses'));
     }
 
@@ -28,16 +28,15 @@ class LeadStatusController extends Controller
         return redirect()->route('leadstatuses.index');
     }
 
-    public function edit($id)
+    public function edit(LeadStatus $leadstatus)
     {
-        $leadStatus = LeadStatus::findOrFail($id);
 
-        return view("leadstatuses.edit", compact("leadStatus"));
+        return view("leadstatuses.edit", compact("leadstatus"));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, LeadStatus $leadstatus)
     {
-        $leadStatus = LeadStatus::findOrFail($id);
+        $leadStatus = $leadstatus;
         $leadStatus->update([
             "name" => $request->name ?? $leadStatus->name,
             "description" => $request->description ?? $leadStatus->description
@@ -46,10 +45,9 @@ class LeadStatusController extends Controller
         return redirect()->route('leadstatuses.index');
     }
 
-    public function destroy($id)
+    public function destroy(LeadStatus $leadstatus)
     {
-        $leadStatus = LeadStatus::findOrFail($id);
-        $leadStatus->delete();
+        $leadstatus->delete();
 
         return redirect()->route('leadstatuses.index');
     }

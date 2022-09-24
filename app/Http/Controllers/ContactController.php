@@ -2,71 +2,101 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\Company;
 use App\Models\Contact;
 use App\Models\LeadSource;
+use App\Models\LeadStatus;
 use App\Models\ContactType;
+use App\Models\LeadInterest;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContactRequest;
+use App\Models\LeadPriority;
+use Termwind\Components\Dd;
 
 class ContactController extends Controller
 {
     
     public function index()
     {
-        $contacts = Contact::all();    
+        $contacts = Contact::latest()->paginate(10);    
         return view('contacts.index', compact('contacts'));
     }
 
    
     public function create()
     {
+        $companies = Company::all();
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();        
-        return view('contacts.create', compact('contactTypes', 'leadSources'));
+        $leadStatuses = LeadStatus::all();
+        $leadPriorities = LeadPriority::all();
+        $leadInterests = LeadInterest::all();
+        return view('contacts.create', compact('companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadPriorities', 'leadInterests'));
     }
 
     
     public function store(ContactRequest $request)
     {
+        // dd($request->all());
         $validated = $request->validated();
-        $create = Contact::create($validated);
 
-        if($create){
-            return redirect()->route('contacts.index')->with('success', 'Contact created successfully');
-        }   
+        try {
+            $contact = Contact::create($validated);
+            $contact->leadInterests()->sync($request->leadInterest);
+            $contact->update(['user_id' => Auth::id()]);
+        } catch (Exception $e) {
+            return back()->with('error', "gagal membuat contact!");
+        }  
 
-        return redirect()->route('contacts.create')->with('error', 'Contact Created Failed.');
+        return redirect()->route('contacts.index')->with('success', 'Contact Created Successfully.');
     }
 
     
     public function show(Contact $contact)
     {
-        $contact = Contact::with('ContactType', 'LeadSource')->get();
-        return view('contacts.detail', compact('contact'));
+        $companies = Company::all();
+        $contactTypes = ContactType::all();
+        $leadSources = LeadSource::all();
+        $leadStatuses = LeadStatus::all();
+        $leadPriorities = LeadPriority::all();
+        $leadInterests = LeadInterest::all();
+
+        $summary_activity = $contact->approachment->groupBy('activity.name')->all();
+        // dd($summary_activity);
+
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests', 'leadPriorities', 'summary_activity'));
+
     }
 
     
-    public function edit($id)
+    public function edit(Contact $contact)
     {
+        $companies = Company::get();
         $contactTypes = ContactType::get();
         $leadSources = LeadSource::get();
-        $contact = Contact::findOrFail($id);
+        $leadStatuses = LeadStatus::get();
+        $leadPriorities = LeadPriority::get();
+        $leadInterests = LeadInterest::all();
         $contacts = Contact::all();
-        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources'));
+        return view('contacts.edit', compact('contact', 'contacts', 'contactTypes', 'leadSources', 'companies', 'leadStatuses', 'leadPriorities', 'leadInterests'));
     }
 
     
-    public function update(ContactRequest $request, $id)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        $contact = Contact::findOrFail($id);
         $validated = $request->validated();
-        $update = $contact->update($validated);
 
-        if($update){
-            return redirect()->route('contacts.index')->with('success', 'Contact updated successfully');
+        try {
+            $contact->update($validated);
+            $contact->leadInterests()->sync($request->leadInterest);
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
 
-        return to_route('contacts.edit', $contact->id)->with('error', 'Contact Edited Failed.');
+        return back()->with('success', 'Contact Update Successfully.');
     }
 
     
@@ -79,6 +109,6 @@ class ContactController extends Controller
             return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully');
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Contact Deleted Failed.');
+        return redirect()->route('contacts.index')->with('error', 'Contact Deleted Failed.');
     }
 }

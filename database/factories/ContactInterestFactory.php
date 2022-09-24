@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Fppp;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\File>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ContactInterest>
  */
-class FileFactory extends Factory
+class ContactInterestFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +18,6 @@ class FileFactory extends Factory
     {
         return [
             //
-            "fppp_id"=> Fppp::all()->random()->id,
-            "name"=>$this->faker->text(),
-            "path"=>$this->faker->text(),
         ];
     }
 }

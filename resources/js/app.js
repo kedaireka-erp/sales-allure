@@ -23,6 +23,7 @@ import "@left4code/tw-starter/dist/js/tab";
  |
  */
 import "./chart";
+import "./dashboard-chart";
 import "./highlight";
 import "./lucide";
 import "./tiny-slider";
@@ -44,7 +45,7 @@ import "./calendar";
  | Import JS custom components.
  |
  */
-import "./maps";
+// import "./maps";
 import "./chat";
 import "./show-modal";
 import "./show-slide-over";
@@ -57,4 +58,7 @@ import "./mobile-menu";
 import "./side-menu-tooltip";
 import "./dark-mode-switcher";
 import "./fppp-form";
+import "./quotation-form";
+import "./filepond";
+
 

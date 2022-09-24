@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('files', function (Blueprint $table) {
+        Schema::table('approachments', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger("fppp_id")->default(1)->after("id");
-            $table->foreign("fppp_id")->references("id")->on("fppps")->onDelete("restrict")->onUpdate("cascade");
+            $table->unsignedBigInteger("status_id")->default(1)->after("id");
+            $table->foreign("status_id")->references("id")->on("statuses")->onDelete("restrict")->onUpdate("cascade");
 
         });
     }
@@ -28,10 +28,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('files', function (Blueprint $table) {
+        Schema::table('approachments', function (Blueprint $table) {
             //
-            $table->dropForeign("files_fppp_id_foreign");
-            $table->dropColumn("fppp_id");
+            $table->dropForeign("approachments_status_id_foreign" );
+            $table->dropColumn("status_id");
 
         });
     }

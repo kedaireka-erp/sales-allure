@@ -3,21 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\AccountController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\FPPP\FpppController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\DealSourceController;
 use App\Http\Controllers\LeadSourceController;
+use App\Http\Controllers\LeadStatusController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CompanyAreaController;
 use App\Http\Controllers\CompanyTypeController;
 use App\Http\Controllers\ContactTypeController;
+use App\Http\Controllers\ApproachmentController;
+use App\Http\Controllers\LeadInterestController;
 use App\Http\Controllers\LeadPriorityController;
-use App\Http\Controllers\LeadStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +44,7 @@ Route::controller(AuthController::class)->middleware('loggedin')->group(function
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::controller(PageController::class)->group(function () {
-        Route::get('/', 'dashboardOverview1')->name('dashboard-overview-1');
+        Route::get('/', 'dashboardOverview1')->name('dashboard');
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
         Route::get('dashboard-overview-3-page', 'dashboardOverview3')->name('dashboard-overview-3');
         Route::get('dashboard-overview-4-page', 'dashboardOverview4')->name('dashboard-overview-4');
@@ -121,10 +124,20 @@ Route::middleware('auth')->group(function () {
     //     return view('quotation.index');
     // })->name('quotation-index');
 
+    //route approachment -> approachment
+    Route::resource('approachments', ApproachmentController::class);
+
+    //route approachment -> activity
+    Route::resource('activities', ActivityController::class);
+
     //route status
     Route::resource('status', StatusController::class);
 
     //route FPPP
+    Route::get('fppps/topdf/{fppp}', [FpppController::class, 'topdf'])->name('fppps.topdf');
+    Route::get('fppps/export/', [FpppController::class, 'export'])->name('fppps.export');
+    Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
+    Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
     Route::resource('fppps', FpppController::class);
 
     //route company_types
@@ -140,13 +153,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('leadsources', LeadSourceController::class);
 
     // Quotation
+    Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
+    Route::get('quotation/export/', [QuotationController::class, 'export'])->name('quotation.export');
     Route::resource('quotation', QuotationController::class);
 
     //route company_areas
     Route::resource('company_areas', CompanyAreaController::class);
-
-    //Route Quotation-to-FPPP
-    Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
 
     //route contact
     Route::resource('contacts', ContactController::class);
@@ -156,8 +168,10 @@ Route::middleware('auth')->group(function () {
 
     //route user
     Route::get('account/{account}/profile', [AccountController::class, 'show'])->name('account.profile');
+    Route::get('account/{account}/personal-information', [AccountController::class, 'personal'])->name('account.personal-information');
     Route::get('account/{account}/profile/edit', [AccountController::class, 'edit'])->name('account.profile.edit');
     Route::patch('account/{account}/profile/update', [AccountController::class, 'update'])->name('account.profile.update');
+    Route::patch('account/{account}/photo-profile', [AccountController::class, 'photoProfile'])->name('account.photoProfile');
     // Route::get('user', [UserController::class, 'topProfile'])->name('user');
 
     //route Kontak -> Lead Status
@@ -165,4 +179,7 @@ Route::middleware('auth')->group(function () {
 
     //route Kontak -> Lead Priority
     Route::resource('leadpriorities', LeadPriorityController::class);
+
+    //route Kontak -> Lead Interest
+    Route::resource('leadinterests', LeadInterestController::class);
 });

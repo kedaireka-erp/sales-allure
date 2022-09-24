@@ -23,8 +23,8 @@
                     </div>
                     <div class="text-left mt-5">
                         <label for="phone_number" class="form-label">Company Phone Number</label>
-                        <input id="phone_number" value="{{ old('phone_number') }}" type="text" class="@error('name') border-red-700 @enderror form-control w-full" placeholder="Input Phone Number Company" name="phone_number" >
-                        @error('name')
+                        <input id="phone_number" value="{{ old('phone_number') }}" type="text" class="@error('phone_number') border-red-700 @enderror form-control w-full" placeholder="Input Phone Number Company" name="phone_number" >
+                        @error('phone_number')
                             <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
