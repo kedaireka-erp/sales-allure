@@ -2900,11 +2900,11 @@ select{
 .col-span-12{
     grid-column: span 12 / span 12;
 }
-.col-span-11{
-    grid-column: span 11 / span 11;
-}
 .col-span-5{
     grid-column: span 5 / span 5;
+}
+.col-span-11{
+    grid-column: span 11 / span 11;
 }
 .col-span-2{
     grid-column: span 2 / span 2;
@@ -3298,11 +3298,11 @@ select{
 .h-3{
     height: 0.75rem;
 }
-.h-screen{
-    height: 100vh;
-}
 .h-28{
     height: 7rem;
+}
+.h-screen{
+    height: 100vh;
 }
 .h-\[320px\]{
     height: 320px;
@@ -3540,14 +3540,20 @@ select{
 .grid-cols-12{
     grid-template-columns: repeat(12, minmax(0, 1fr));
 }
+<<<<<<< Updated upstream
+=======
+.grid-cols-7{
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.grid-cols-10{
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+>>>>>>> Stashed changes
 .grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid-cols-11{
     grid-template-columns: repeat(11, minmax(0, 1fr));
-}
-.grid-cols-10{
-    grid-template-columns: repeat(10, minmax(0, 1fr));
 }
 .grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -3618,6 +3624,19 @@ select{
 .gap-3{
     gap: 0.75rem;
 }
+<<<<<<< Updated upstream
+=======
+.gap-0{
+    gap: 0px;
+}
+.gap-x-6{
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
+}
+.gap-y-6{
+    row-gap: 1.5rem;
+}
+>>>>>>> Stashed changes
 .gap-x-5{
     -moz-column-gap: 1.25rem;
          column-gap: 1.25rem;
@@ -18404,11 +18423,11 @@ html body{
     .sm\:w-40{
         width: 10rem;
     }
-    .sm\:w-24{
-        width: 6rem;
-    }
     .sm\:w-16{
         width: 4rem;
+    }
+    .sm\:w-24{
+        width: 6rem;
     }
     .sm\:w-3\/4{
         width: 75%;

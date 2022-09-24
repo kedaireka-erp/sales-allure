@@ -9,16 +9,21 @@ use App\Models\Contact;
 use App\Models\Activity;
 use App\Models\Approachment;
 use Illuminate\Http\Request;
+use App\Services\SearchService;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ApproachmentRequest;
 
 class ApproachmentController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        $approachments = Approachment::with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->paginate(10);
-        return view("approachments.index", compact("approachments"));
+        $ss = new SearchService();
+        $approachments = $ss->SearchApproachment($request);
+        session()->flashInput($request->input());
+        $statuses = Status::where("model", "=", "approachment")->get();
+
+        return view("approachments.index", compact("approachments", "statuses"));
     }
 
     public function create()
@@ -60,7 +65,7 @@ class ApproachmentController extends Controller
         if ($update) {
             return to_route("approachments.index")->with('success', 'Approachment berhasil diubah!');
         }
-        return to_route("approachments.edit", $approachment->id)->with('error', 'FPPP gagal diubah!');
+        return to_route("approachments.index")->with('error', 'FPPP gagal diubah!');
 
     }
 

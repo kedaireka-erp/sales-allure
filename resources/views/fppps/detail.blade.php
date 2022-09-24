@@ -264,17 +264,7 @@
 
                     </div>
                 </div>
-                <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
-                    <div class="w-1/3 max-w-1/2 flex flex-row justify-between">
-                        <div class=" text-slate-500">Attachment</div>
-                        <div class=" text-slate-500">:</div>
-                    </div>
-                    <div class=" w-full">
-                        <div class=" font-semibold text-slate-500">(GAMBAR GAMBAR)</div>
-                    </div>
-                </div>
             </div>
-            <br><br>
         </div>
         {{-- <div class="px-5 sm:px-16 py-10 sm:py-20">
         <div class="overflow-x-auto">

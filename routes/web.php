@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Fppp;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
@@ -138,6 +139,9 @@ Route::middleware('auth')->group(function () {
     Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
     Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
     Route::resource('fppps', FpppController::class);
+    Route::get('tespdf/{fppp}', function(Fppp $fppp ){
+        return view("fppps.pdf", compact("fppp"));
+    })->name('fppps.pdf');
 
     //route company_types
     Route::resource('company_types', CompanyTypeController::class);
