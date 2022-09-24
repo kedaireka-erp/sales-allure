@@ -104,13 +104,13 @@ import Chart from "chart.js/auto";
             type: "pie",
             data: {
                 labels: [
-                    "31 - 50 Years old",
-                    ">= 50 Years old",
-                    "17 - 30 Years old",
+                    "Deals",
+                    "Pending",
+                    "Lost",
                 ],
                 datasets: [
                     {
-                        data: [15, 10, 65],
+                        data: [30, 45, 25],
                         backgroundColor: [
                             colors.pending(0.9),
                             colors.warning(0.9),

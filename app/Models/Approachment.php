@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Approachment extends Model
@@ -17,6 +18,11 @@ class Approachment extends Model
         "status_id",
         "date",
         "note", 
+    ];
+
+    protected $dates = [
+        'date',
+        'created_at'
     ];
 
     public function status(){

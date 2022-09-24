@@ -23,7 +23,7 @@ class ApproachmentFactory extends Factory
             //
             "contact_id" => Contact::all()->random()->id,
             "activity_id" => Activity::all()->random()->id,
-            "status_id" => Status::all()->random()->id,
+            "status_id" => $this->faker->numberBetween(7, 9),
             "date" => $this->faker->date(),
             "note" => $this->faker->word(),
         ];

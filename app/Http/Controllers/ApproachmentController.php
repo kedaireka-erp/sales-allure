@@ -63,7 +63,7 @@ class ApproachmentController extends Controller
         $validated = $request->validated();
         $update = $approachment->update($validated);
         if ($update) {
-            return to_route("approachments.index")->with('success', 'Approachment berhasil diubah!');
+            return back()->with('success', 'Approachment berhasil diubah!');
         }
         return to_route("approachments.index")->with('error', 'FPPP gagal diubah!');
 

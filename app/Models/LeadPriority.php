@@ -14,4 +14,9 @@ class LeadPriority extends Model
         'name',
         'description'
     ];
+
+    public function Contact()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

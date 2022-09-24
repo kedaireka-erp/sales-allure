@@ -63,6 +63,18 @@
                         @enderror
                     </div>
                     <div class="mt-5">
+                        <label for="lead_priority" class="form-label">Lead Priority</label>
+                        <select class="custom-select d-block w-full form-control mb-3 tom-select @error('lead_priority_id') border-red-700                            
+                        @enderror" id="lead_priority" placeholder="Lead Priority" name="lead_priority_id">
+                                @foreach ($leadPriorities as $leadPriority)
+                                    <option value="{{ $leadPriority->id }}">{{ $leadPriority->name }}</option>
+                                @endforeach
+                        </select>
+                        @error('lead_priority_id')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>                            
+                        @enderror
+                    </div>
+                    <div class="mt-5">
                         <label for="note" class="mb-2">Lead Interest</label>
                         <div class="mt-2">
                             <select data-placeholder="Pilih Lead Interest" class="tom-select w-full" id="leadInterest" name="leadInterest[]" multiple>
