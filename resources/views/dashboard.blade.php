@@ -150,7 +150,7 @@
                 <div class="intro-y box p-5 mt-5">
                     <div class="mt-3">
                         <div class="h-[213px]">
-                            <canvas id="report-apps-chart"></canvas>
+                            <canvas id="report-pie-chart"></canvas>
                         </div>
                     </div>
                     <div class="w-52 sm:w-auto mx-auto mt-8">
