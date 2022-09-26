@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\leadPriority;
+use App\Models\LeadPriority;
 use Illuminate\Http\Request;
 
 class LeadPriorityController extends Controller
 {
     public function index()
     {
-        $leadPriorities = leadPriority::latest()->paginate(10);
+        $leadPriorities = LeadPriority::latest()->paginate(10);
         return view('leadpriorities.index', compact('leadPriorities'));
     }
 
@@ -20,7 +20,7 @@ class LeadPriorityController extends Controller
 
     public function store(Request $request)
     {
-        $leadPriorities = leadPriority::create([
+        $leadPriorities = LeadPriority::create([
             "name" => $request->name,
             "description" => $request->description
         ]);
@@ -28,13 +28,13 @@ class LeadPriorityController extends Controller
         return redirect()->route('leadpriorities.index');
     }
 
-    public function edit(leadPriority $leadpriority)
+    public function edit(LeadPriority $leadpriority)
     {
 
         return view("leadpriorities.edit", compact("leadpriority"));
     }
 
-    public function update(Request $request, leadPriority $leadpriority)
+    public function update(Request $request, LeadPriority $leadpriority)
     {
         $leadpriority->update([
             "name" => $request->name ?? $leadpriority->name,
@@ -44,7 +44,7 @@ class LeadPriorityController extends Controller
         return redirect()->route('leadpriorities.index');
     }
 
-    public function destroy(leadPriority $leadpriority)
+    public function destroy(LeadPriority $leadpriority)
     {
         $leadpriority->delete();
 
@@ -52,7 +52,7 @@ class LeadPriorityController extends Controller
     }
 
 
-    public function show(leadPriority $leadPriority)
+    public function show(LeadPriority $leadPriority)
     {
         //
     }
