@@ -20,8 +20,8 @@
                     <div class="mt-2 xl:mt-0">
                         <button id="tabulator-html-filter-go" type="submit"
                             class="btn btn-primary w-full sm:w-16">Search</button>
-                        <button id="tabulator-html-filter-reset" type="reset"
-                            class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
+                        <a id="tabulator-html-filter-reset" href="{{ route('contacts.index') }}"
+                            class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</a>
                     </div>
                 </form>
             </div>
