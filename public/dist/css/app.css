@@ -3540,21 +3540,16 @@ select{
 .grid-cols-12{
     grid-template-columns: repeat(12, minmax(0, 1fr));
 }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 .grid-cols-7{
     grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 .grid-cols-10{
     grid-template-columns: repeat(10, minmax(0, 1fr));
 }
->>>>>>> Stashed changes
 =======
 .grid-cols-7{
     grid-template-columns: repeat(7, minmax(0, 1fr));
 }
->>>>>>> dev
 .grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -3627,14 +3622,9 @@ select{
 .gap-3{
     gap: 0.75rem;
 }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 .gap-0{
     gap: 0px;
 }
-=======
->>>>>>> dev
 .gap-x-6{
     -moz-column-gap: 1.5rem;
          column-gap: 1.5rem;
@@ -3642,10 +3632,6 @@ select{
 .gap-y-6{
     row-gap: 1.5rem;
 }
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> dev
 .gap-x-5{
     -moz-column-gap: 1.25rem;
          column-gap: 1.25rem;
@@ -19265,3 +19251,5 @@ html body{
         color: rgb(var(--color-success) / var(--tw-text-opacity));
     }
 }
+
+
