@@ -170,7 +170,7 @@
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li>
-                                                        <a href="" class="dropdown-item">
+                                                        <a href="{{ route('quotations.pdf', $quotation) }}" class="dropdown-item">
                                                             <i data-lucide="activity" class="w-4 h-4 mr-2"></i> PDF
                                                         </a>
                                                     </li>

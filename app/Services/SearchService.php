@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Fppp;
 use App\Models\Company;
 use App\Models\Approachment;
+use App\Models\Contact;
 
 /**
  * Class SearchService
@@ -45,7 +46,31 @@ class SearchService
 
     public function SearchContact($keywords)
     {
+        $result = '';
 
+        if ($keywords) {
+
+            $result = Contact::where('name', 'like', '%' . $keywords . '%')
+                ->orWhere('email', 'like', '%' . $keywords . '%')
+                ->orWhere('address', 'like', '%' . $keywords . '%')
+                ->orWhere('phone', 'like', '%' . $keywords . '%')
+                ->orWhere('note', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('ContactType', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('LeadSource', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('Quotation', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('Company', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('LeadStatus', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('leadInterests', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('approachment', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('User', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('LeadPriority', 'name', 'like', '%' . $keywords . '%')
+                ->with('ContactType', 'LeadSource', 'Quotation', 'Company', 'LeadStatus', 'leadInterests', 'approachment', 'LeadPriority')->orderBy('created_at', 'desc')
+                ->paginate(10);
+        } else {
+            $result = Contact::with('ContactType', 'LeadSource', 'Quotation', 'Company', 'LeadStatus', 'leadInterests', 'approachment', 'LeadPriority')->orderBy('created_at', 'desc')->paginate(20);
+        }
+
+        return $result;
     }
 
     public function SearchCompany($keywords)

@@ -26,7 +26,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown-item">
+                            <a href="{{ route('quotations.pdf', $quotation) }}" class="dropdown-item">
                                 <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export PDF
                             </a>
                         </li>
@@ -63,7 +63,7 @@
                             <div class="text-base text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500"></div>
+                            <div class="text-base font-semibold text-slate-500">{{ $quotation->Contact->Company->name }}</div>
                         </div>
                     </div>
                     <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
