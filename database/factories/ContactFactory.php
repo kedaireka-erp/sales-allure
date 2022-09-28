@@ -23,7 +23,8 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> $this->faker->name(),
+            'first_name'=> $this->faker->firstName(),
+            'last_name'=> $this->faker->lastName(),
             'company_id'=>Company::all()->random()->id,
             'contact_type_id'=>ContactType::all()->random()->id,
             'lead_source_id'=>LeadSource::all()->random()->id,
