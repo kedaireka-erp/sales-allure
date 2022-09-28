@@ -108,7 +108,7 @@
                     <div class=" text-slate-500">:</div>
                 </div>
                 <div class=" w-full">
-                    <div class=" font-semibold text-slate-500">{{$fppp->user->name}}</div>
+                    <div class=" font-semibold text-slate-500">{{$fppp->user->name ?? ""}}</div>
                 </div>
             </div>
             <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
