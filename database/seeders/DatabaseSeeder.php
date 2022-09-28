@@ -2,18 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Activity;
-use App\Models\Approachment;
 use App\Models\Fppp;
 use App\Models\Status;
 use App\Models\Company;
 use App\Models\Contact;
+use App\Models\Activity;
 use App\Models\Quotation;
 use App\Models\DealSource;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
+use App\Models\Approachment;
 use App\Models\DetailQuotation;
+use App\Models\MasterAplikator;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -43,6 +44,8 @@ class DatabaseSeeder extends Seeder
         Company::factory(20)->create();
         
         Contact::factory(20)->create();
+        
+        MasterAplikator::factory(15)->create();
 
         Quotation::factory(20)->create();
 
@@ -51,6 +54,8 @@ class DatabaseSeeder extends Seeder
         DetailQuotation::factory(100)->create();
 
         Approachment::factory(1000)->create();
+
+        
 
     }
 }

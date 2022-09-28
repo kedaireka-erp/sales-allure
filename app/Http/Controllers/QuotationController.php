@@ -17,7 +17,7 @@ class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DetailQuotation')->search(request(['search']))->status(request(['status']))->paginate(20);
+        $quotations = Quotation::with('Status', 'DetailQuotation','Aplikator')->search(request(['search']))->status(request(['status']))->paginate(20);
         $statuses = Status::all();
         return view('quotation.index', compact('quotations', 'statuses'));
     }

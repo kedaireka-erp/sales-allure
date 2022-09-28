@@ -153,6 +153,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('leadsources', LeadSourceController::class);
 
     // Quotation
+    Route::get('quotation/pdf', function () { return view('quotation.pdf-sample');});
     Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
     Route::get('quotation/export/', [QuotationController::class, 'export'])->name('quotation.export');
     Route::get('quotation/{quotation}/pdf/', [QuotationController::class, 'toPdf'])->name('quotations.pdf');
