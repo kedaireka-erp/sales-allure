@@ -11,12 +11,13 @@ use Illuminate\Http\Request;
 use App\Exports\QuotationExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
+use PDF;
 
 class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DetailQuotation')->search(request(['search']))->status(request(['status']))->paginate(20);
+        $quotations = Quotation::with('Status', 'DetailQuotation','Aplikator')->search(request(['search']))->status(request(['status']))->paginate(20);
         $statuses = Status::all();
         return view('quotation.index', compact('quotations', 'statuses'));
     }
@@ -105,5 +106,10 @@ class QuotationController extends Controller
     public function export()
     {
         return Excel::download(new QuotationExport(), 'quotation.xlsx');
+    }
+
+    public function toPdf(Quotation $quotation) {
+      $pdf = PDF::loadView('quotation.pdf', compact('quotation'));
+      return $pdf->download('QUOTATION_'.$quotation->no_quotation.'.pdf');
     }
 }

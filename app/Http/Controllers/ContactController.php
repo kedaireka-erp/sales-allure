@@ -13,15 +13,19 @@ use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContactRequest;
+use App\Services\SearchService;
 use App\Models\LeadPriority;
 use Termwind\Components\Dd;
 
 class ContactController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::latest()->paginate(10);    
+        $ss = new SearchService();
+        $contacts = $ss->SearchContact($request->search);
+        session()->flashInput($request->input());
+
         return view('contacts.index', compact('contacts'));
     }
 

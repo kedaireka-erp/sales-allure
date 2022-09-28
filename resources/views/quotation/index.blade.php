@@ -131,6 +131,7 @@
                             <tr>
                                 <th CLASS="whitespace-nowrap text-primary">NO.</th>
                                 <th class="whitespace-nowrap text-primary">NO. QUOTATION</th>
+                                <th class="whitespace-nowrap text-primary">APLIKATOR</th>
                                 <th class="text-center whitespace-nowrap text-primary">STATUS</th>
                                 <th class="text-center whitespace-nowrap text-primary">NOMINAL PENAWARAN</th>
                                 <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
@@ -148,6 +149,9 @@
                                     </td>
                                     <td>
                                         <div class="font-medium whitespace-nowrap">{{ $quotation->no_quotation }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator }}</div>
                                     </td>
                                     <td class="text-center">{{ $quotation->status->name }}</td>
                                     <td class="text-center">@currency($quotation->nominal())
@@ -170,7 +174,7 @@
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li>
-                                                        <a href="" class="dropdown-item">
+                                                        <a href="{{ route('quotations.pdf', $quotation) }}" class="dropdown-item">
                                                             <i data-lucide="activity" class="w-4 h-4 mr-2"></i> PDF
                                                         </a>
                                                     </li>

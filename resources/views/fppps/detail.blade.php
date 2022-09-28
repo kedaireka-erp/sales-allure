@@ -324,7 +324,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div> 
+        </div>
     </div>--}}
     {{--
     <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
@@ -363,8 +363,8 @@
                         @foreach ($fppp->files as $file)
                         <div class="col-span-5 md:col-span-2 h-28 relative image-fit cursor-pointer zoom-in">
                            <img class="rounded-md" src="{{ asset('storage/' . $file->path) }}" alt="{{ $file->name }}" srcset="">
-                            <a href="" title="Download this file?"
-                                class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                            <a href="{{ route('fppps.attachment.download', $file) }}" title="Download this file?"
+                                class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-success right-0 top-0 -mr-2 -mt-2">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </a>
                         </div>

@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Contact;
 use App\Models\Status;
+use App\Models\Contact;
 use App\Models\DealSource;
+use App\Models\MasterAplikator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,6 +25,7 @@ class QuotationFactory extends Factory
             'contact_id'=>Contact::all()->random()->id,
             'deal_source_id' => DealSource::all()->random()->id,
             'status_id' => Status::all()->random()->id,
+            'aplikator_id' => MasterAplikator::all()->random()->id,
             'keterangan' => $this->faker->realText($maxNbChars = 200, $indexSize = 2)
         ];
     }
