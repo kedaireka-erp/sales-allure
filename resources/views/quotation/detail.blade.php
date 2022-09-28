@@ -68,6 +68,15 @@
                     </div>
                     <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
                         <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Aplikator </div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">{{ $quotation->Aplikator->aplikator }}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
                             <div class="text-base text-slate-500">Status </div>
                             <div class="text-base text-slate-500">:</div>
                         </div>

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->foreign('deal_source_id')->references('id')->on('deal_sources')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->unsignedBigInteger('status_id')->default(1);
             $table->foreign('status_id')->references('id')->on('statuses')->onDelete('RESTRICT')->onUpdate('CASCADE');
+            $table->unsignedBigInteger('aplikator_id')->nullable();
+            $table->foreign('aplikator_id')->references('id')->on('master_aplikators')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->text('alasan')->nullable();
             $table->text('keterangan')->nullable();
             $table->softDeletes();
