@@ -14,4 +14,9 @@ class CompanyType extends Model
         'name',
         'description',
     ];
+
+    public function companies()
+    {
+        return $this->hasMany(Company::class);
+    }
 }

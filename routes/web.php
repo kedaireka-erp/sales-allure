@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Fppp;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
@@ -44,7 +45,7 @@ Route::controller(AuthController::class)->middleware('loggedin')->group(function
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::controller(PageController::class)->group(function () {
-        Route::get('/', 'dashboardOverview1')->name('dashboard-overview-1');
+        Route::get('/', 'dashboardOverview1')->name('dashboard');
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
         Route::get('dashboard-overview-3-page', 'dashboardOverview3')->name('dashboard-overview-3');
         Route::get('dashboard-overview-4-page', 'dashboardOverview4')->name('dashboard-overview-4');
@@ -134,11 +135,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('status', StatusController::class);
 
     //route FPPP
+    Route::get('fppps/attachment/download/{attachment}', [FPPPController::class, 'downloadAttachment'])->name('fppps.attachment.download');
+    Route::get('fppps/topdf/{fppp}', [FpppController::class, 'topdf'])->name('fppps.topdf');
     Route::get('fppps/export/', [FpppController::class, 'export'])->name('fppps.export');
     Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
-    Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
+    Route::post('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
+    Route::delete('fppps/delete/attachment/{attachment}', [FpppController::class, 'deleteAttachment'])->name('fppps.delete.attachment');
     Route::resource('fppps', FpppController::class);
-
+    
     //route company_types
     Route::resource('company_types', CompanyTypeController::class);
 
@@ -154,6 +158,7 @@ Route::middleware('auth')->group(function () {
     // Quotation
     Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
     Route::get('quotation/export/', [QuotationController::class, 'export'])->name('quotation.export');
+    Route::get('quotation/{quotation}/pdf/', [QuotationController::class, 'toPdf'])->name('quotations.pdf');
     Route::resource('quotation', QuotationController::class);
 
     //route company_areas

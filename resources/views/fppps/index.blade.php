@@ -37,18 +37,18 @@
 
     <div class="intro-y  p-5 mt-5">
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-            <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
-
+            <form class="xl:flex sm:mr-auto" action="{{ route('fppps.index') }}" method="get">
+                @csrf
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
                     <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
-                    <input id="tabulator-html-filter-value" type="text"
-                        class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
+                    <input type="text" value="{{ old('search') }}" 
+                        class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" name="search" placeholder="Search...">
                 </div>
                 <div class="mt-2 xl:mt-0">
-                    <button id="tabulator-html-filter-go" type="button"
+                    <button id="tabulator-html-filter-go" type="submit"
                         class="btn btn-primary w-full sm:w-16">Search</button>
-                    <button id="tabulator-html-filter-reset" type="button"
-                        class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
+                    <a id="tabulator-html-filter-reset" href="{{ route('fppps.index') }}"
+                        class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</a>
                 </div>
             </form>
             <div class="flex mt-5 sm:mt-0">
@@ -132,7 +132,7 @@
                                                 <hr class="dropdown-divider">
                                             </li>
                                             <li>
-                                                <a href="" class="dropdown-item">
+                                                <a href="{{ route('fppps.topdf', $fppp) }}" class="dropdown-item">
                                                     <i data-lucide="activity" class="w-4 h-4 mr-2"></i> PDF
                                                 </a>
                                             </li>

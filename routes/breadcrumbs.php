@@ -4,8 +4,8 @@ use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 //========================[Dashboard]========================//
 //Dashboard
-Breadcrumbs::for('dashboard-overview-1', function ($trail) {
-    $trail->push('Dashboard', route('dashboard-overview-1'));
+Breadcrumbs::for('dashboard', function ($trail) {
+    $trail->push('Dashboard', route('dashboard'));
 });
 
 //========================[FPPP]========================//

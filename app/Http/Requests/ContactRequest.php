@@ -28,6 +28,7 @@ class ContactRequest extends FormRequest
             'lead_source_id' => 'required|exists:lead_sources,id',
             'lead_status_id' => 'required|exists:lead_statuses,id',
             'lead_priority_id' => 'required|exists:lead_priorities,id',
+            'company_id' => 'required|exists:companies,id',
             'leadInterest' => 'nullable',
             'name' =>'required',
             'email' =>'required',

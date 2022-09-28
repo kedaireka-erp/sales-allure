@@ -13,18 +13,7 @@ class Contact extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'contacts';
-    protected $fillable = [
-        'name',
-        'contact_type_id',
-        'lead_source_id',
-        'lead_status_id',
-        'lead_priority_id',
-        'email',
-        'address',
-        'phone',
-        'note',
-        'user_id'
-    ];
+    protected $guarded = ['id'];
 
     public function ContactType()
     {

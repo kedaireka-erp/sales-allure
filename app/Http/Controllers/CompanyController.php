@@ -6,6 +6,7 @@ use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
+use App\Services\SearchService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $companies = Company::with(['company_area', 'company_type'])->latest()->paginate(10);
-
+        $ss = new SearchService();
+        $companies = $ss->SearchCompany($request->search);
+        session()->flashInput($request->input());
+        
         return view('companies.index', compact('companies'));
     }
 
@@ -45,10 +48,11 @@ class CompanyController extends Controller
 
     public function show(Company $company)
     {
+        $company_types = CompanyType::get();
 
-        $companies = Company::with('company_type', 'company_area')->get();
+        $company_areas = CompanyArea::get();
         
-        return view('companies.detail', compact('company', 'companies'));
+        return view('companies.detail', compact('company', 'company_areas', 'company_types', 'company_areas'));
     }
 
     public function edit(Company $company)

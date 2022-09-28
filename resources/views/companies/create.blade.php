@@ -42,7 +42,7 @@
                     </div>
                     <div class="text-left mt-5">
                         <label for="address" class="form-label">Company Address</label>
-                        <input id="address" value="{{ old('address') }}" type="text" class="form-control w-full" placeholder="Input Address Company" name="address" >
+                        <input id="address" value="{{ old('address') }}" type="text" class="@error('address') border-red-700 @enderror form-control w-full" placeholder="Input Address Company" name="address" >
                         @error('address')
                         <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
                         @enderror

@@ -33,6 +33,8 @@ class Fppp extends Model
         "user_id"
     ];
 
+    protected $dates = ['created_at'];
+
     public function quotation(){
         return $this->belongsto(Quotation::class);
     }
@@ -45,6 +47,9 @@ class Fppp extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    
+    
 
 
 }

@@ -13,15 +13,19 @@ use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ContactRequest;
+use App\Services\SearchService;
 use App\Models\LeadPriority;
-
+use Termwind\Components\Dd;
 
 class ContactController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::latest()->paginate(10);    
+        $ss = new SearchService();
+        $contacts = $ss->SearchContact($request->search);
+        session()->flashInput($request->input());
+
         return view('contacts.index', compact('contacts'));
     }
 
@@ -48,7 +52,7 @@ class ContactController extends Controller
             $contact->leadInterests()->sync($request->leadInterest);
             $contact->update(['user_id' => Auth::id()]);
         } catch (Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return back()->with('error', "gagal membuat contact!");
         }  
 
         return redirect()->route('contacts.index')->with('success', 'Contact Created Successfully.');
@@ -61,9 +65,13 @@ class ContactController extends Controller
         $contactTypes = ContactType::all();
         $leadSources = LeadSource::all();
         $leadStatuses = LeadStatus::all();
-        $leadPriority = LeadPriority::all();
+        $leadPriorities = LeadPriority::all();
         $leadInterests = LeadInterest::all();
-        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests', 'leadPriority'));
+
+        $summary_activity = $contact->approachment->groupBy('activity.name')->all();
+        // dd($summary_activity);
+
+        return view('contacts.detail', compact('contact', 'companies', 'contactTypes', 'leadSources', 'leadStatuses', 'leadInterests', 'leadPriorities', 'summary_activity'));
 
     }
 
@@ -83,7 +91,6 @@ class ContactController extends Controller
     
     public function update(ContactRequest $request, Contact $contact)
     {
-        dd($request->all());
         $validated = $request->validated();
 
         try {
@@ -93,7 +100,7 @@ class ContactController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Contact Update Successfully.');
+        return back()->with('success', 'Contact Update Successfully.');
     }
 
     

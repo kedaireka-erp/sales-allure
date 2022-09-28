@@ -7,11 +7,45 @@
 @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Quotation - Data List</h2>
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="{{ route('quotation.create') }}" class="btn btn-primary shadow-md mr-2">
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0 gap-2">
+            <div class="dropdown ml-auto">
+                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                    <span class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="w-4 h-4" data-lucide="sliders"></i>
+                    </span>
+                    Filter
+                </button>
+                <div class="dropdown-menu w-60">
+                    <ul class="dropdown-content">
+                        <form class="p-2" action="{{ route('quotation.index') }}">
+                            <div>
+                                <div class="text-xs">Status</div>
+                                <select class="tom-select mt-2" id="status_id" name="status">
+                                    <option selected>Status</option>
+                                    @foreach ($statuses as $status)
+                                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- <div class="mt-3">
+                            <div class="text-xs">Filter lain</div>
+                            <input type="text" class="form-control mt-2 flex-1" placeholder="example@gmail.com" />
+                        </div> --}}
+                            <div class="flex items-center mt-3">
+                                <button data-dismiss="dropdown" class="btn btn-secondary w-32 ml-auto"
+                                    id="close-filter">Close</button>
+                                <button class="btn btn-primary w-32 ml-2" type="submit">Apply</button>
+                            </div>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="{{ route('quotation.create') }}" class="btn btn-primary shadow-md">
                 <span class="text">Add Quotation</span>
             </a>
-            <div class="dropdown ml-auto sm:ml-0">
+
+            <div class="dropdown ml-auto">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
                         <i class="w-4 h-4" data-lucide="plus"></i>
@@ -37,21 +71,21 @@
     <!-- BEGIN: HTML Table Data -->
     <div class="intro-y p-5 mt-5">
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-            <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
-
+            <form method="get" action="{{ route('quotation.index') }}" class="xl:flex sm:mr-auto">
+                @csrf
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
-                    <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
                     <input id="tabulator-html-filter-value" type="text"
-                        class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search...">
+                        class="form-control sm:w-40 2xl:w-full mt-2 sm:mt-0" placeholder="Search..." name="search"
+                        value="{{ request('search') }}">
                 </div>
                 <div class="mt-2 xl:mt-0">
-                    <button id="tabulator-html-filter-go" type="button"
+                    <button id="tabulator-html-filter-go" type="submit"
                         class="btn btn-primary w-full sm:w-16">Search</button>
-                    <button id="tabulator-html-filter-reset" type="button"
-                        class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
+                    <a href="{{ route('quotation.index') }}" type="submit"
+                        class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</a>
                 </div>
             </form>
-            <div class="flex mt-5 sm:mt-0">
+            <div class="flex mt-5 gap-0 sm:mt-0">
                 <button id="tabulator-print" class="btn btn-primary w-1/2 sm:w-auto mr-2">
                     <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
                 </button>
@@ -88,6 +122,7 @@
                 </div>
             </div>
         </div>
+        <br>
         <div class="overflow-x-auto scrollbar-hidden">
             <div class="mt-5 table-report table-report--tabulator">
                 <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
@@ -106,7 +141,9 @@
                                 <tr class="intro-x zoom-in transition">
                                     <td class="w-10">
                                         <div class="flex">
-                                            <div class="font-medium whitespace-nowrap">{{ $key + $quotations->firstItem() }}</div>
+                                            <div class="font-medium whitespace-nowrap">
+                                                {{ $key + $quotations->firstItem() }}
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
@@ -118,8 +155,8 @@
                                     <td class="table-report__action w-fit">
 
                                         <div class="dropdown flex justify-center">
-                                            <button class="dropdown-toggle btn px-2 box rounded-full" aria-expanded="false"
-                                                data-tw-toggle="dropdown">
+                                            <button class="dropdown-toggle btn px-2 box rounded-full"
+                                                aria-expanded="false" data-tw-toggle="dropdown">
                                                 <span class="w-5 h-5 flex items-center justify-center text-primary">
                                                     <i data-lucide="settings" class="block mx-auto"></i>
                                                 </span>
@@ -133,7 +170,7 @@
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li>
-                                                        <a href="" class="dropdown-item">
+                                                        <a href="{{ route('quotations.pdf', $quotation) }}" class="dropdown-item">
                                                             <i data-lucide="activity" class="w-4 h-4 mr-2"></i> PDF
                                                         </a>
                                                     </li>
@@ -186,4 +223,12 @@
         </div>
     </div>
     <!-- END: HTML Table Data -->
+@endsection
+
+@section('script')
+    <script>
+        const button = document.querySelector("#close-filter");
+        const dropdown = tailwind.Dropdown.getOrCreateInstance(button);
+        dropdown.hide();
+    </script>
 @endsection

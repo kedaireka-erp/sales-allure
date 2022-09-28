@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Approachment extends Model
@@ -19,6 +20,11 @@ class Approachment extends Model
         "note", 
     ];
 
+    protected $dates = [
+        'date',
+        'created_at'
+    ];
+
     public function status(){
         return $this->belongsto(Status::class);
     }
@@ -31,5 +37,11 @@ class Approachment extends Model
     {
         return $this->belongsto(Activity::class);
     }
+
+    public function scopeStatus($query, $filter){
+        $query->when($filter['status'] ?? false, function($query, $status){
+            return $query->where('status_id','=', $status);
+        });
+      }
 
 }
