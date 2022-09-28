@@ -32,12 +32,10 @@ class DatabaseSeeder extends Seeder
         $this->call(LeadSourceSeeder::class);
         $this->call(LeadPrioritySeeder::class);
         $this->call(LeadStatusSeeder::class);
+        $this->call(CompanyTypeSeeder::class);
+        $this->call(CompanyAreaSeeder::class);
+        $this->call(ContactTypeSeeder::class);
 
-        CompanyType::factory(20)->create();
-
-        ContactType::factory(20)->create();
-
-        CompanyArea::factory(20)->create();
 
         Company::factory(20)->create();
         
