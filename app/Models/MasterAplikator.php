@@ -13,6 +13,6 @@ class MasterAplikator extends Model
     protected $fillable=["kode","aplikator","kontak","alamat","logo","email","password","id_status","penginput","created_date","last_login","login_stat"];
 
     public function Aplikator(){
-        return $this->hasMany(Quotation::class);
+        return $this->belongsTo(Quotation::class);
     }
 }
