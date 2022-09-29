@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('fppps', function (Blueprint $table) {
             $table->id();
+            $table->integer('number')->default(0)->nullable();
             $table->string("fppp_no")->nullable(); //format no fppp?
             $table->integer("production_phase")->nullable();
             // $table->integer("applicator_name"); //ambil dari quotation WON

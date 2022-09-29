@@ -26,6 +26,7 @@ class FpppRequest extends FormRequest
         return [
             //
             "fppp_type" => 'nullable',
+            "number" => 'nullable',
             "production_phase" => 'nullable',
             "quotation_id" => 'required',
             "order_status" => 'nullable',
@@ -51,4 +52,5 @@ class FpppRequest extends FormRequest
             return redirect()->route('fppps.create')->with('error', $validator->errors())->withInput();
         }
     }
+
 }

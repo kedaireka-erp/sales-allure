@@ -27,6 +27,7 @@ class FpppController extends Controller
     {
         $ss = new SearchService();
         $fppps = $ss->SearchFppp($request->search);
+        // $fppps = Fppp::with('quotation')->paginate(10);
         session()->flashInput($request->input());
 
         return view("fppps.index", compact("fppps"));
@@ -52,6 +53,7 @@ class FpppController extends Controller
     public function store(FpppRequest $request)
     {
         $validated = $request->validated();
+        $validated['number'] = 0;
         $create = Fppp::create($validated);
         $create->update(['user_id' => Auth::id()]);
 
