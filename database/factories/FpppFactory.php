@@ -21,6 +21,7 @@ class FpppFactory extends Factory
     {
         return [
             "fppp_no"=>"",
+            "number"=>0,
             "fppp_type"=>$this->faker->randomElement(["produksi", "memo"]),
             "production_phase"=>$this->faker->numberBetween(1,10),
             "quotation_id"=> Quotation::all()->random()->id,
