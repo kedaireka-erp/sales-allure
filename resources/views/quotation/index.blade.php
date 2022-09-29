@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <a href="{{ route('quotation.create') }}" class="btn btn-primary shadow-md">
+            {{-- <a href="{{ route('quotation.create') }}" class="btn btn-primary shadow-md">
                 <span class="text">Add Quotation</span>
             </a>
 
@@ -65,7 +65,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- BEGIN: HTML Table Data -->
@@ -86,9 +86,9 @@
                 </div>
             </form>
             <div class="flex mt-5 gap-0 sm:mt-0">
-                <button id="tabulator-print" class="btn btn-primary w-1/2 sm:w-auto mr-2">
+                {{-- <button id="tabulator-print" class="btn btn-primary w-1/2 sm:w-auto mr-2">
                     <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
-                </button>
+                </button> --}}
                 <div class="dropdown w-1/2 sm:w-auto">
                     <button class="dropdown-toggle btn btn-primary w-full sm:w-auto" aria-expanded="false"
                         data-tw-toggle="dropdown">
@@ -97,7 +97,7 @@
                     </button>
                     <div class="dropdown-menu w-40">
                         <ul class="dropdown-content">
-                            <li>
+                            {{-- <li>
                                 <a id="tabulator-export-csv" href="javascript:;" class="dropdown-item">
                                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export CSV
                                 </a>
@@ -106,17 +106,17 @@
                                 <a id="tabulator-export-json" href="javascript:;" class="dropdown-item">
                                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export JSON
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a id="tabulator-export-xlsx" href="{{ route('quotation.export') }}" class="dropdown-item">
                                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export XLSX
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a id="tabulator-export-html" href="javascript:;" class="dropdown-item">
                                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export HTML
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -151,9 +151,41 @@
                                         <div class="font-medium whitespace-nowrap">{{ $quotation->no_quotation }}</div>
                                     </td>
                                     <td>
-                                        <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator }}</div>
+                                        <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator }}
+                                        </div>
                                     </td>
-                                    <td class="text-center">{{ $quotation->status->name }}</td>
+                                    <td class="text-center">
+                                        <div class="dropdown ml-auto">
+                                            <button class="dropdown-toggle btn px-2 box" aria-expanded="false"
+                                                data-tw-toggle="dropdown">
+                                                <span class="w-5 h-5 flex items-center justify-center mr-2">
+                                                    <i class="w-4 h-4" data-lucide="edit"></i>
+                                                </span>
+                                                {{ $quotation->status->name }}
+                                            </button>
+                                            <div class="dropdown-menu w-45">
+                                                <ul class="dropdown-content">
+                                                    <form class="p-2"
+                                                        action="{{ route('quotation.edit.status', $quotation) }}"
+                                                        method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('patch')
+                                                        <div class="text-xs">Status</div>
+                                                        <select class="tom-select mt-2" id="status_id" name="status_id">
+                                                            @foreach ($statuses as $status)
+                                                                <option value="{{ $status->id }}" {{ $status->id === $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="flex items-center mt-3">
+                                                            <button class="btn btn-primary w-32 ml-2" type="submit">Ubah
+                                                                Status</button>
+                                                        </div>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td class="text-center">@currency($quotation->nominal())
                                     </td>
                                     <td class="table-report__action w-fit">
@@ -174,11 +206,12 @@
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li>
-                                                        <a href="{{ route('quotations.pdf', $quotation) }}" class="dropdown-item">
+                                                        <a href="{{ route('quotations.pdf', $quotation) }}"
+                                                            class="dropdown-item">
                                                             <i data-lucide="activity" class="w-4 h-4 mr-2"></i> PDF
                                                         </a>
                                                     </li>
-                                                    <li>
+                                                    {{-- <li>
                                                         <a href="" class="dropdown-item">
                                                             <i data-lucide="layout" class="w-4 h-4 mr-2"></i> EXCEL
                                                         </a>
@@ -187,18 +220,18 @@
                                                         <a href="" class="dropdown-item">
                                                             <i data-lucide="sidebar" class="w-4 h-4 mr-2"></i> PRINT
                                                         </a>
-                                                    </li>
+                                                    </li> --}}
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li>
                                                         <div class="flex gap-2 p-1 flex-wrap">
-                                                            <a href="{{ route('quotation.edit', $quotation) }}"
+                                                            {{-- <a href="{{ route('quotation.edit', $quotation) }}"
                                                                 class="flex items-center text-success mr-3">
                                                                 <i data-lucide="check-square"
                                                                     class="w-4 h-4 mr-1"></i>Edit
-                                                            </a>
-                                                            <form action="{{ route('quotation.destroy', $quotation) }}"
+                                                            </a> --}}
+                                                            {{-- <form action="{{ route('quotation.destroy', $quotation) }}"
                                                                 method="post">
                                                                 @csrf
                                                                 @method('Delete')
@@ -206,7 +239,7 @@
                                                                     class="flex items-center text-danger"><i
                                                                         data-lucide="trash-2"
                                                                         class="w-4 h-4 mr-1"></i>Hapus</button>
-                                                            </form>
+                                                            </form> --}}
                                                             <a class="flex items-center text-primary mr-3"
                                                                 href="{{ route('quotation.show', $quotation) }}">
                                                                 <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail
