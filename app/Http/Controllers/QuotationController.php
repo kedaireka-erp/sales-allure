@@ -85,6 +85,18 @@ class QuotationController extends Controller
         }
     }
 
+    public function updateStatus(Request $request, Quotation $quotation){
+        $validator = Validator::make($request->all(), [
+            'status_id' => 'required'
+    ]);
+    $quotation->update($validator->validate());
+    if ($quotation) {
+            return to_route('quotation.index')->with('success', 'Status quotation dengan Nomor ' . $quotation->no_quotation . '  berhasil diubah!');
+        } else {
+            return to_route('quotation.index')->with('error', 'Status quotation dengan Nomor ' . $quotation->no_quotation . '  gagal diubah!');
+        }
+    }
+
     public function destroy(Quotation $quotation)
     {
         $deleted = $quotation->delete();

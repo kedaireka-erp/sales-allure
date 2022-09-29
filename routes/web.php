@@ -157,6 +157,7 @@ Route::middleware('auth')->group(function () {
     Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
     Route::get('quotation/export/', [QuotationController::class, 'export'])->name('quotation.export');
     Route::get('quotation/{quotation}/pdf/', [QuotationController::class, 'toPdf'])->name('quotations.pdf');
+    Route::patch('quotation/edit/status/{quotation}', [QuotationController::class, 'updateStatus'])->name('quotation.edit.status');
     Route::resource('quotation', QuotationController::class);
 
     //route company_areas
