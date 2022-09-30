@@ -131,6 +131,7 @@
                             <tr>
                                 <th CLASS="whitespace-nowrap text-primary">NO.</th>
                                 <th class="whitespace-nowrap text-primary">NO. QUOTATION</th>
+                                <th class="whitespace-nowrap text-primary">PROYEK</th>
                                 <th class="whitespace-nowrap text-primary">APLIKATOR</th>
                                 <th class="text-center whitespace-nowrap text-primary">STATUS</th>
                                 <th class="text-center whitespace-nowrap text-primary">NOMINAL PENAWARAN</th>
@@ -148,7 +149,11 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="font-medium whitespace-nowrap">{{ $quotation->no_quotation }}</div>
+                                        <div class="font-medium whitespace-nowrap">{{ $quotation->DataQuotation->no_quotation ?? ''}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="font-medium whitespace-nowrap">{{ $quotation->DataQuotation->nama_proyek ?? '' }}
+                                        </div>
                                     </td>
                                     <td>
                                         <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator }}

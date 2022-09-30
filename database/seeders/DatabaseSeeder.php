@@ -15,6 +15,7 @@ use App\Models\ContactType;
 use App\Models\Approachment;
 use App\Models\DetailQuotation;
 use App\Models\MasterAplikator;
+use App\Models\ProyekQuotation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -42,20 +43,19 @@ class DatabaseSeeder extends Seeder
         CompanyArea::factory(20)->create();
 
         Company::factory(20)->create();
-        
+
         Contact::factory(20)->create();
-        
+
         MasterAplikator::factory(15)->create();
 
         Quotation::factory(20)->create();
+
+        ProyekQuotation::factory(20)->create();
 
         Fppp::factory(100)->create();
 
         DetailQuotation::factory(100)->create();
 
         Approachment::factory(1000)->create();
-
-        
-
     }
 }
