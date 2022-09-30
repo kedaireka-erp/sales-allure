@@ -6,6 +6,7 @@ use App\Models\Status;
 use App\Models\DealSource;
 use App\Models\DetailQuotation;
 use App\Models\MasterAplikator;
+use App\Models\ProyekQuotation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,7 +17,7 @@ class Quotation extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'quotations';
-    protected $fillable = ['no_quotation', 'contact_id', 'deal_source_id', 'status_id','aplikator_id', 'alasan', 'keterangan'];
+    protected $fillable = ['contact_id', 'deal_source_id', 'status_id','aplikator_id', 'alasan', 'keterangan'];
     protected $appends = ['nominal'];
 
     public function Contact()
@@ -63,5 +64,9 @@ class Quotation extends Model
     public function Aplikator()
     {
         return $this->belongsTo(MasterAplikator::class);
+    }
+
+    public function DataQuotation(){
+        return $this->hasOne(ProyekQuotation::class);
     }
 }

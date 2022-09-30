@@ -42,7 +42,7 @@
                 <span class="font-bold text-primary">LOGO</span>
                 <div class="flex flex-col items-center h-full">
                     <h1 class="text-primary font-semibold lg:text-xl text-md">QUOTATION</h1>
-                    <h2 class="text-primary font-semibold lg:text-lg text-base">Quotation No. {{ $quotation->no_quotation }}</h2>
+                    <h2 class="text-primary font-semibold lg:text-lg text-base">Quotation No. {{ $quotation->DataQuotation->no_quotation ?? '' }}</h2>
                 </div>
                 <div class="mt-1">Kode-kode</div>
             </div>
@@ -64,6 +64,15 @@
                         </div>
                         <div class=" w-full">
                             <div class="text-base font-semibold text-slate-500">{{ $quotation->Contact->Company->name }}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
+                        <div class="w-full max-w-1/2 flex flex-row justify-between">
+                            <div class="text-base text-slate-500">Proyek </div>
+                            <div class="text-base text-slate-500">:</div>
+                        </div>
+                        <div class=" w-full">
+                            <div class="text-base font-semibold text-slate-500">{{ $quotation->DataQuotation->nama_proyek ?? '' }}</div>
                         </div>
                     </div>
                     <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
