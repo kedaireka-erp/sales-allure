@@ -34,6 +34,9 @@ class ContactRequest extends FormRequest
             'email' =>'required',
             'address' =>'required',
             'phone' =>'required',
+            'facebook' =>'nullable',
+            'twitter' =>'nullable',
+            'linkedin' =>'nullable',
             'note' =>'nullable',
         ];
     }
