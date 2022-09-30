@@ -57,6 +57,11 @@
                                 title="Linked In">
                                 <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i>
                             </a>
+                            <a href=""
+                                class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
+                                title="Email">
+                                <i class="w-3 h-3 fill-current" data-lucide="mail"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="w-full flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
