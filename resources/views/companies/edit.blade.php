@@ -28,7 +28,7 @@
                     <input id="phone_number" type="text"
                         class="@error('phone_number') border-red-700  @enderror form-control w-full"
                         placeholder="Input Phone Number Company" name="phone_number"
-                        value="{{ old('phone_number', $company->phone_number) }}" required>
+                        value="{{ old('phone_number', $company->phone_number) }}">
                     @error('phone_number')
                     <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -50,7 +50,7 @@
                 <div class="text-left mt-5">
                     <label for="address" class="form-label">Company Address </label>
                     <input id="address" type="text" class="form-control w-full" placeholder="Input Address Company"
-                        name="address" value="{{ old('address', $company->address) }}" required>
+                        name="address" value="{{ old('address', $company->address) }}">
                     @error('address')
                     <p class="text-red-700 text-sm mt-1">{{ $message }}</p>
                     @enderror

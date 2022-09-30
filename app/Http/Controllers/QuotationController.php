@@ -17,7 +17,7 @@ class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DetailQuotation')->search(request(['search']))->status(request(['status']))->paginate(20);
+        $quotations = Quotation::with('Status', 'DetailQuotation','Aplikator')->search(request(['search']))->status(request(['status']))->paginate(20);
         $statuses = Status::all();
         return view('quotation.index', compact('quotations', 'statuses'));
     }
@@ -82,6 +82,18 @@ class QuotationController extends Controller
             return to_route('quotation.index')->with('success', 'Quotation dengan Nomor ' . $quotation->no_quotation . '  berhasil diubah!');
         } else {
             return to_route('quotation.edit', $quotation)->with('error', 'Quotation dengan Nomor ' . $quotation->no_quotation . '  gagal diubah!');
+        }
+    }
+
+    public function updateStatus(Request $request, Quotation $quotation){
+        $validator = Validator::make($request->all(), [
+            'status_id' => 'required'
+    ]);
+    $quotation->update($validator->validate());
+    if ($quotation) {
+            return to_route('quotation.index')->with('success', 'Status quotation dengan Nomor ' . $quotation->no_quotation . '  berhasil diubah!');
+        } else {
+            return to_route('quotation.index')->with('error', 'Status quotation dengan Nomor ' . $quotation->no_quotation . '  gagal diubah!');
         }
     }
 

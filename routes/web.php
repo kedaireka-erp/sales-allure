@@ -139,7 +139,8 @@ Route::middleware('auth')->group(function () {
     Route::get('fppps/topdf/{fppp}', [FpppController::class, 'topdf'])->name('fppps.topdf');
     Route::get('fppps/export/', [FpppController::class, 'export'])->name('fppps.export');
     Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
-    Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
+    Route::post('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
+    Route::delete('fppps/delete/attachment/{attachment}', [FpppController::class, 'deleteAttachment'])->name('fppps.delete.attachment');
     Route::resource('fppps', FpppController::class);
     
     //route company_types
@@ -155,9 +156,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('leadsources', LeadSourceController::class);
 
     // Quotation
+    Route::get('quotation/pdf', function () { return view('quotation.pdf-sample');});
     Route::get('quotation/{quo}/createfppp', [QuotationController::class, 'quotationToFppp'])->name('quotation.fppp');
     Route::get('quotation/export/', [QuotationController::class, 'export'])->name('quotation.export');
     Route::get('quotation/{quotation}/pdf/', [QuotationController::class, 'toPdf'])->name('quotations.pdf');
+    Route::patch('quotation/edit/status/{quotation}', [QuotationController::class, 'updateStatus'])->name('quotation.edit.status');
     Route::resource('quotation', QuotationController::class);
 
     //route company_areas

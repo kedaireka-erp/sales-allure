@@ -23,10 +23,10 @@
     <p>No. Quotation : <b>{{ $fppp->quotation->no_quotation ?? '' }}</b></p>
     <p>Tanggal : <b>{{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</b></p>
     <p>Divisi : <b>ASTRAL</b></p>
-    <p>Nama Aplikator : <b>(CONTOH) PT. KENCANA MIRAE INDUSTRI</b></p>
+    <p>Nama Aplikator : <b>{{$fppp->quotation->Aplikator->aplikator}}</b></p>
     <p>Nama Proyek : <b>(CONTOH) BINA BAKTI OFFICE TAHAP 2</b></p>
     <p>Alamat Proyek : <b>(CONTOH) JAKARTA</b></p>
-    <p>Sales/Site Manager : <b>(CONTOH) IBU AGUSTIN</b> </p>
+    <p>Sales/Site Manager : <b>{{$fppp->user->name}}</b> </p>
     <p>Status Order :
         @if ($fppp->order_status == 'baru')
             <b {{ $fppp->order_status == 'baru' ? 'selected' : '' }} value="baru">Baru</b>

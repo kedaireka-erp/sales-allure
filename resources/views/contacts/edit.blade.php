@@ -126,14 +126,21 @@
                         </div>
                     </div>
                     <div class="mt-5">
-                        <label for="name" class="form-label">Contact Name </label>
-                        <input id="name" type="text"
-                            class="@error('name') border-red-700                            
-                        @enderror form-control w-full"
-                            placeholder="Input Nama Contact" name="name" value="{{ old('name', $contact->name) }}">
-                        @error('name')
+                        <label for="first_name" class="form-label">Contact Name </label>
+                        <div class="flex gap-3 justify-between">
+                            <input id="first_name" type="text" class="@error('first_name') border-red-700                            
+                                                    @enderror form-control w-full" placeholder="Input Nama Contact" name="first_name"
+                                value="{{ old('first_name', $contact->first_name) }}">
+                            @error('first_name')
                             <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
-                        @enderror
+                            @enderror
+                            <input id="last_name" type="text" class="@error('last_name') border-red-700                            
+                                                    @enderror form-control w-full" placeholder="Input Nama Contact" name="last_name"
+                                value="{{ old('last_name', $contact->last_name) }}">
+                            @error('last_name')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                     <div class="mt-5">
                         <label for="email" class="form-label">E-mail </label>
