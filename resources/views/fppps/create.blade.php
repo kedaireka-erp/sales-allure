@@ -9,7 +9,7 @@
     <h2 class="text-lg font-medium mr-auto">Form Tambah FPPP</h2>
 </div>
 <div class="grid grid-cols-12 gap-10 mt-3">
-    <div class="intro-y col-span-12 lg:col-span-6">
+    <div class="intro-y col-span-12">
         <!-- BEGIN: Form Layout -->
         <form action="{{ route('fppps.store') }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -152,31 +152,12 @@
         </form>
     </div>
 </div>
-{{-- <div class="grid grid-cols-12 gap-10 mt-3">
-    <div class="intro-y col-span-12 lg:col-span-6">
-        <form action="{{ route('fppps.store.attachments') }}" class="dropzone" method="POST"
-            enctype="multipart/form-data">
-            @csrf
-            @method('POST')
-            <div class="fallback">
-                <input name="file" type="file" multiple />
-            </div>
-            <div class="dz-message" data-dz-message>
-                <div class="text-lg font-medium">Drop files here or click to upload.</div>
-                <div class="text-slate-500">
-                    This is just a demo dropzone. Selected files are <span class="font-medium">not</span> actually
-                    uploaded.
-                </div>
-            </div>
 
-        </form>
-    </div>
-</div> --}}
 @endsection
 
 @section('script')
 <script type="text/javascript">
-    
+ 
 </script>
 <script src="{{ mix('dist/js/ckeditor-classic.js') }}"></script>
 @endsection

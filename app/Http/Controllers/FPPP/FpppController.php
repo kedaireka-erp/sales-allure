@@ -14,6 +14,7 @@ use App\Models\AttachmentFppp;
 use App\Services\SearchService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\FpppRequest;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -26,8 +27,9 @@ class FpppController extends Controller
     {
         $ss = new SearchService();
         $fppps = $ss->SearchFppp($request->search);
+        // $fppps = Fppp::with('quotation')->paginate(10);
         session()->flashInput($request->input());
-        
+
         return view("fppps.index", compact("fppps"));
     }
 
@@ -51,6 +53,7 @@ class FpppController extends Controller
     public function store(FpppRequest $request)
     {
         $validated = $request->validated();
+        $validated['number'] = 0;
         $create = Fppp::create($validated);
         $create->update(['user_id' => Auth::id()]);
 
@@ -77,7 +80,7 @@ class FpppController extends Controller
     }
 
     public function edit(Fppp $fppp)
-    {      
+    {
         $fppps = Fppp::get();
         $quotations = Quotation::whereHas('Status', function ($query) {
             return $query->where('name', 'won');
@@ -91,6 +94,21 @@ class FpppController extends Controller
         $fppp = Fppp::findOrFail($id);
         $validated = $request->validated();
         $update = $fppp->update($validated);
+
+        if (Auth::user()->tempFiles) {
+            foreach (Auth::user()->tempFiles as $tempFile) {
+                AttachmentFppp::create([
+                    'name' => $tempFile->name,
+                    'path' => 'fppps/attachments/' . $tempFile->name,
+                    'fppp_id' => $id
+                ]);
+                Storage::move(
+                    'public/fppps/attachments/temp/' . $tempFile->name,
+                    'public/fppps/attachments/' . $tempFile->name
+                );
+            }
+        }
+
         if ($update) {
             return to_route("fppps.index")->with('success', 'FPPP dengan Nomor ' . $fppp->fppp_no . '  berhasil diubah!');
         }
@@ -114,7 +132,6 @@ class FpppController extends Controller
         if ($request->hasFile('file')) {
             $image = $request->file('file');
             $imageName = now()->timestamp . '-' . $image->getClientOriginalName();
-
             try {
                 Storage::putFileAs('public/fppps/attachments/temp/', $image, $imageName);
                 TempFiles::firstOrCreate([
@@ -131,13 +148,14 @@ class FpppController extends Controller
 
     public function deleteTempAttachments(Request $request)
     {
-        if ($request->header("_method") == "DELETE") {
-            $id = $request->getContent();
-            $tempFile = TempFiles::findOrFail($id);
+        $temp = json_decode($request->getContent(), true);
+        try {
+            $tempFile = TempFiles::where('name', $temp['success'])->first();
             $tempFile->delete();
             return response()->json(['success' => 'success']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'something wrong ' . $e->getMessage()], 500);
         }
-        return response()->json(['error' => 'something wrong']);
     }
 
     public function export()
@@ -145,8 +163,22 @@ class FpppController extends Controller
         return Excel::download(new FpppExport, 'fppps.xlsx');
     }
 
-    public function toPdf(Fppp $fppp){
+    public function toPdf(Fppp $fppp)
+    {
         $pdf = Pdf::loadView('fppps.pdf', compact('fppp'));
-        return $pdf->download($fppp->fppp_no.'.pdf');
+        return $pdf->download($fppp->fppp_no . '.pdf');
     }
+
+    public function downloadAttachment(AttachmentFppp $attachment)
+    {
+        return Storage::download('public/' . $attachment->path);
+    }
+
+    public function deleteAttachment(AttachmentFppp $attachment)
+    {
+        $attachment->delete();
+        Storage::delete('public/fppps/attachments' . $attachment->name);
+        return back()->with('success', 'Attachment berhasil dihapus!');
+    }
+
 }

@@ -35,12 +35,9 @@ class DatabaseSeeder extends Seeder
         $this->call(LeadSourceSeeder::class);
         $this->call(LeadPrioritySeeder::class);
         $this->call(LeadStatusSeeder::class);
-
-        CompanyType::factory(20)->create();
-
-        ContactType::factory(20)->create();
-
-        CompanyArea::factory(20)->create();
+        $this->call(CompanyTypeSeeder::class);
+        $this->call(CompanyAreaSeeder::class);
+        $this->call(ContactTypeSeeder::class);
 
         Company::factory(20)->create();
 
@@ -52,7 +49,8 @@ class DatabaseSeeder extends Seeder
 
         ProyekQuotation::factory(20)->create();
 
-        Fppp::factory(100)->create();
+        // Fppp::factory()->create();
+        // Fppp::factory()->create();
 
         DetailQuotation::factory(100)->create();
 

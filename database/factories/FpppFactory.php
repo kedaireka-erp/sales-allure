@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\File;
+use App\Models\User;
 use App\Models\Quotation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,7 @@ class FpppFactory extends Factory
     {
         return [
             "fppp_no"=>"",
+            "number"=>0,
             "fppp_type"=>$this->faker->randomElement(["produksi", "memo"]),
             "production_phase"=>$this->faker->numberBetween(1,10),
             "quotation_id"=> Quotation::all()->random()->id,
@@ -33,6 +35,7 @@ class FpppFactory extends Factory
             "sealant_usage"=>$this->faker->numberBetween(0,1),
             "delivery_to_expedition"=>$this->faker->numberBetween(0,1),
             "note"=>$this->faker->word(),
+            "user_id"=> User::all()->random()->id
         ];
     }
 }
