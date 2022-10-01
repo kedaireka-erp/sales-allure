@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
-            $table->string('no_quotation');
             $table->unsignedBigInteger('contact_id')->default(1);
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->unsignedBigInteger('deal_source_id')->default(1);

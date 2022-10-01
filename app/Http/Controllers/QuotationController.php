@@ -85,7 +85,6 @@ class QuotationController extends Controller
         }
     }
 
-
     public function destroy(Quotation $quotation)
     {
         $deleted = $quotation->delete();
