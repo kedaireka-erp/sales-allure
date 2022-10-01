@@ -125,7 +125,7 @@
         <br>
         <div class="overflow-x-auto scrollbar-hidden">
             <div class="mt-5 table-report table-report--tabulator">
-                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+                <div class="intro-y col-span-12 overflow-auto">
                     <table class="table table-report -mt-2">
                         <thead>
                             <tr>
