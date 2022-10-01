@@ -125,7 +125,7 @@
         <br>
         <div class="overflow-x-auto scrollbar-hidden">
             <div class="mt-5 table-report table-report--tabulator">
-                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+                <div class="intro-y col-span-12 overflow-auto">
                     <table class="table table-report -mt-2">
                         <thead>
                             <tr>
@@ -178,7 +178,9 @@
                                                         <div class="text-xs">Status</div>
                                                         <select class="tom-select mt-2" id="status_id" name="status_id">
                                                             @foreach ($statuses as $status)
-                                                                <option value="{{ $status->id }}" {{ $status->id === $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}
+                                                                <option value="{{ $status->id }}"
+                                                                    {{ $status->id === $quotation->status_id ? 'selected' : '' }}>
+                                                                    {{ $status->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

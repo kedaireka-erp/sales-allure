@@ -43,7 +43,7 @@
                             @foreach ($quotations as $quotation)
                                 <option value="{{ $quotation->id }}"
                                     {{ $quotation->id == $fppp->quotation_id ? 'selected' : '' }}>
-                                    {{ $quotation->no_quotation }}</option>
+                                    {{ $quotation->DataQuotation->no_quotation }}</option>
                             @endforeach
                         </select>
                     </div>
