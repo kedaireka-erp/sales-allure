@@ -30,11 +30,13 @@
                     <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{ $contact->email }}
                 </div>
                 <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                    <i data-lucide="instagram" class="w-4 h-4 mr-2"></i> Instagram {{ $fakers[0]['users'][0]['name'] }}
+                    <i data-lucide="facebook" class="w-4 h-4 mr-2"></i> {{ $contact->facebook }}
                 </div>
                 <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                    <i data-lucide="twitter" class="w-4 h-4 mr-2"></i> Twitter {{ $fakers[0]['users'][0]['name'] }}
+                    <i data-lucide="twitter" class="w-4 h-4 mr-2"></i> {{ $contact->twitter }}
                 </div>
+                <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                    <i data-lucide="linkedin" class="w-4 h-4 mr-2"></i> {{ $contact->linkedin }}
             </div>
         </div>
         <div
