@@ -173,7 +173,9 @@
                                                         <div class="text-xs">Status</div>
                                                         <select class="tom-select mt-2" id="status_id" name="status_id">
                                                             @foreach ($statuses as $status)
-                                                                <option value="{{ $status->id }}" {{ $status->id === $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}
+                                                                <option value="{{ $status->id }}"
+                                                                    {{ $status->id === $quotation->status_id ? 'selected' : '' }}>
+                                                                    {{ $status->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,10 @@
 </head>
 
 <style>
-    .flex{
+    .flex {
         display: flex;
         justify-content: center;
-        width:screen;
+        width: screen;
     }
 </style>
 
@@ -20,13 +21,21 @@
     <h4 style="text-align:center">No. <b>{{ $fppp->fppp_no }}</b></h4>
     <h4 style="text-align:center">Mockup/Produksi Tahap <b>{{ $fppp->production_phase }}</b></h4>
     <br>
-    <p>No. Quotation : <b>{{ $fppp->quotation->no_quotation ?? '' }}</b></p>
+    <p>Tipe FPPP :
+        @if ($fppp->fppp_type == 'produksi')
+            <b {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi</b>
+        @endif
+        @if ($fppp->fppp_type == 'memo')
+            <b {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</b>
+        @endif
+    </p>
+    <p>No. Quotation : <b>{{ $fppp->quotation->DataQuotation->no_quotation ?? '' }}</b></p>
     <p>Tanggal : <b>{{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</b></p>
     <p>Divisi : <b>ASTRAL</b></p>
-    <p>Nama Aplikator : <b>{{$fppp->quotation->Aplikator->aplikator}}</b></p>
-    <p>Nama Proyek : <b>(CONTOH) BINA BAKTI OFFICE TAHAP 2</b></p>
-    <p>Alamat Proyek : <b>(CONTOH) JAKARTA</b></p>
-    <p>Sales/Site Manager : <b>{{$fppp->user->name}}</b> </p>
+    <p>Nama Aplikator : <b>{{ $fppp->quotation->Aplikator->aplikator }}</b></p>
+    <p>Nama Proyek : <b>{{ $fppp->quotation->DataQuotation->nama_proyek }}</b></p>
+    <p>Alamat Proyek : <b>{{ $fppp->quotation->DataQuotation->alamat_proyek }}</b></p>
+    <p>Sales/Site Manager : <b>{{ $fppp->user->name }}</b> </p>
     <p>Status Order :
         @if ($fppp->order_status == 'baru')
             <b {{ $fppp->order_status == 'baru' ? 'selected' : '' }} value="baru">Baru</b>
@@ -89,7 +98,7 @@
         @endif
     </p>
     <p>Catatan : <b>{!! $fppp->note !!}</b></p>
-    <p>Banyak Attachment : {{$fppp->files->count()}}</p>
+    <p>Banyak Attachment : {{ $fppp->files->count() }}</p>
 
 
 </body>
