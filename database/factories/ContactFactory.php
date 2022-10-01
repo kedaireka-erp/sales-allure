@@ -32,6 +32,9 @@ class ContactFactory extends Factory
             'email'=> $this->faker->email(),
             'address'=> $this->faker->address(),
             'phone'=> $this->faker->phoneNumber(),
+            'facebook'=> $this->faker->userName(),
+            'twitter'=> $this->faker->userName(),
+            'linkedin'=> $this->faker->userName(),
             'note'=> $this->faker->text(),
         ];
     }
