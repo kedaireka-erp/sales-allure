@@ -44,4 +44,10 @@ class Approachment extends Model
         });
       }
 
+    public function scopeContact($query, $filter){
+        $query->when($filter['contact'] ?? false, function($query, $contact){
+            return $query->where('contact_id','=', $contact);
+        });
+      }
+
 }
