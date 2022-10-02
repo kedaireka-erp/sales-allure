@@ -168,10 +168,12 @@
                         <button type="submit" class="btn btn-primary w-24">Save</button>
                     </div>
             </form>
-            <form method="POST" action="{{route('fppps.delete.attachment', ['attachment' => $file])}}" id="delete_form">
-                @csrf
-                @method('DELETE')
-            </form>
+           @if ($fppp->files->first())
+               <form method="POST" action="{{route('fppps.delete.attachment', ['attachment' => $file])}}" id="delete_form">
+                    @csrf
+                    @method('DELETE')
+                </form>
+           @endif
             {{-- <form action="" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mt-5">
