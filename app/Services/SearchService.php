@@ -107,8 +107,7 @@ class SearchService
             $result = Approachment::where('date', 'like', '%' . $request->search . '%')
                 ->orWhere('note', 'like', '%' . $request->search . '%')
                 ->orWhereRelation('status', 'name', 'like', '%' . $request->search . '%')
-                ->orWhereRelation('contact', 'first_name', 'like', '%' . $request->search . '%')
-                ->orWhereRelation('contact', 'last_name', 'like', '%' . $request->search . '%')
+                ->orWhereRelation('contact', DB::raw("concat(first_name, ' ', last_name)"), 'like', '%' . $request->search . '%')
                 ->orWhereRelation('activity', 'name', 'like', '%' . $request->search . '%')
                 ->with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->filter($request)->paginate(10);
         } else {
