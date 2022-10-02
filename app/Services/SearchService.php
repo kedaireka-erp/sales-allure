@@ -88,12 +88,13 @@ class SearchService
             $result = Approachment::where('date', 'like', '%' . $request->search . '%')
                 ->orWhere('note', 'like', '%' . $request->search . '%')
                 ->orWhereRelation('status', 'name', 'like', '%' . $request->search . '%')
-                ->orWhereRelation('contact', 'name', 'like', '%' . $request->search . '%')
+                ->orWhereRelation('contact', 'first_name', 'like', '%' . $request->search . '%')
+                ->orWhereRelation('contact', 'last_name', 'like', '%' . $request->search . '%')
                 ->orWhereRelation('activity', 'name', 'like', '%' . $request->search . '%')
-                ->with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->status($request)->paginate(10);
+                ->with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->contact($request)->status($request)->paginate(10);
         } else {
             
-            $result = Approachment::with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->status($request)->paginate(10);
+            $result = Approachment::with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->contact($request)->status($request)->paginate(10);
         }
 
         return $result;

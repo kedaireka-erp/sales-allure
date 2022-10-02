@@ -22,8 +22,9 @@ class ApproachmentController extends Controller
         $approachments = $ss->SearchApproachment($request);
         session()->flashInput($request->input());
         $statuses = Status::where("model", "=", "approachment")->get();
+        $contacts = Contact::get();
 
-        return view("approachments.index", compact("approachments", "statuses"));
+        return view("approachments.index", compact("approachments", "statuses", "contacts"));
     }
 
     public function create()

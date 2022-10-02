@@ -7,7 +7,7 @@
 @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Approachments</h2>
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0 gap-2">
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0 gap-2 mr-5">
             <div class="dropdown ml-auto">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center mr-2">
@@ -21,19 +21,24 @@
                             <div>
                                 <div class="text-xs">Status</div>
                                 <select class="tom-select mt-2" id="status_id" name="status">
-                                    <option selected>Status</option>
+                                    <option selected>Pilih Status</option>
                                     @foreach ($statuses as $status)
                                         <option value="{{ $status->id }}">{{ $status->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="mt-3">
-                            <div class="text-xs">Filter lain</div>
-                            <input type="text" class="form-control mt-2 flex-1" placeholder="example@gmail.com" />
-                        </div> --}}
+                            <div class="mt-2">
+                                <div class="text-xs">Kontak</div>
+                                <select class="tom-select mt-2" id="contact_id" name="contact">
+                                    <option selected>Pilih Nama Kontak</option>
+                                    @foreach ($contacts as $contact)
+                                        <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="flex items-center mt-3">
-                                <a href="{{route('approachments.index')}}" data-dismiss="dropdown" class="btn btn-secondary w-32 ml-auto"
-                                    id="close-filter">Reset</a>
+                                <a href="{{ route('approachments.index') }}" data-dismiss="dropdown"
+                                    class="btn btn-secondary w-32 ml-auto" id="close-filter">Reset</a>
                                 <button class="btn btn-primary w-32 ml-2" type="submit">Apply</button>
                             </div>
                         </form>
@@ -44,27 +49,6 @@
             <a href="{{ route('approachments.create') }}" class="btn btn-primary shadow-md ">
                 <span class="text">Tambah Approachment</span>
             </a>
-            <div class="dropdown ml-auto sm:ml-0">
-                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center">
-                        <i class="w-4 h-4" data-lucide="plus"></i>
-                    </span>
-                </button>
-                <div class="dropdown-menu w-40">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="file-plus" class="w-4 h-4 mr-2"></i> New Category
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="users" class="w-4 h-4 mr-2"></i> New Group
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -127,22 +111,23 @@
                                     <a class="w-40">
                                         <div class="flex items-center justify-center text-warning">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" icon-name="check-square"
-                                                data-lucide="check-square" class="lucide lucide-check-square w-4 h-4 mr-2 ">
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                icon-name="check-square" data-lucide="check-square"
+                                                class="lucide lucide-check-square w-4 h-4 mr-2 ">
                                                 <polyline points="9 11 12 14 22 4"></polyline>
                                                 <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
                                             </svg> Pending
                                         </div>
                                     </a>
-
                                 @elseif ($approachment->status->name == 'Deal')
                                     <a>
                                         <div class="flex items-center justify-center text-success">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" icon-name="check-square"
-                                                data-lucide="check-square" class="lucide lucide-check-square w-4 h-4 mr-2">
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                icon-name="check-square" data-lucide="check-square"
+                                                class="lucide lucide-check-square w-4 h-4 mr-2">
                                                 <polyline points="9 11 12 14 22 4"></polyline>
                                                 <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
                                             </svg> Deal
@@ -162,7 +147,8 @@
                                         href="{{ route('approachments.edit', $approachment->id) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
-                                    <form action="{{ route('approachments.destroy', $approachment->id) }}" method="post">
+                                    <form action="{{ route('approachments.destroy', $approachment->id) }}"
+                                        method="post">
                                         @csrf
                                         @method('Delete')
                                         <button type="submit" class="flex items-center text-danger"><i
