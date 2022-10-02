@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Fppp extends Model
 {
     use HasFactory;
+    use BelongsToThrough;
     use SoftDeletes;
 
     protected $table="fppps";
@@ -49,8 +51,78 @@ class Fppp extends Model
                     $num = Fppp::latest()->first()->number;
                     return $num + 1;
                 } 
-                return 0;
+                return 1;
             },
+        );
+    }
+
+    protected function deliveryToExpedition(): Attribute{
+        return Attribute::make(
+            get: function($value){
+                if ($value == 0) {
+                    return "tidak";
+                }else{
+                    return "ya";
+                }
+            }
+        );
+    }
+    protected function sealantUsage(): Attribute{
+        return Attribute::make(
+            get: function($value){
+                if ($value == 0) {
+                    return "tidak";
+                }else{
+                    return "ya";
+                }
+            }
+        );
+    }
+
+    protected function boxUsage(): Attribute{
+        return Attribute::make(
+            get: function($value){
+                if ($value == 0) {
+                    return "tidak";
+                }else{
+                    return "ya";
+                }
+            }
+        );
+    }
+
+    protected function orderStatus(): Attribute{
+        return Attribute::make(
+            get: function($value){
+                if ($value == 'baru') {
+                    return "baru";
+                }
+                if ($value == 'tambahan') {
+                    return "tambahan";
+                }
+                if ($value == 'revisino') {
+                    return "revisi";
+                }
+                if ($value == 'lainlain') {
+                    return "lain-lain";
+                }
+            }
+        );
+    }
+
+    protected function glass(): Attribute{
+        return Attribute::make(
+            get: function($value){
+                if ($value == 'included') {
+                    return "included";
+                }
+                if ($value == 'excluded') {
+                    return "excluded";
+                }
+                if ($value == 'included_excluded') {
+                    return "included & excluded";
+                }
+            }
         );
     }
 
@@ -67,8 +139,8 @@ class Fppp extends Model
         return $this->belongsTo(User::class);
     }
 
-    
-    
-
+    public function dataQuotation(){
+        return $this->belongsToThrough(ProyekQuotation::class, Quotation::class);
+    }
 
 }

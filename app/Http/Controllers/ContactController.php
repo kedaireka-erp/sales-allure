@@ -100,7 +100,7 @@ class ContactController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return back()->with('success', 'Contact Update Successfully.');
+        return redirect()->route('contacts.index')->with('success', 'Contact updated successfully.');
     }
 
     

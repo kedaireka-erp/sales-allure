@@ -7,31 +7,10 @@
 @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">FPPP</h2>
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0 mr-3">
             <a href="{{ route('fppps.create') }}" class="btn btn-primary shadow-md mr-2">
                 <span class="text">Tambah FPPP</span>
             </a>
-            <div class="dropdown ml-auto sm:ml-0">
-                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center">
-                        <i class="w-4 h-4" data-lucide="plus"></i>
-                    </span>
-                </button>
-                <div class="dropdown-menu w-40">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="file-plus" class="w-4 h-4 mr-2"></i> New Category
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="users" class="w-4 h-4 mr-2"></i> New Group
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -52,9 +31,6 @@
                 </div>
             </form>
             <div class="flex mt-5 sm:mt-0">
-                <button id="tabulator-print" class="btn btn-primary w-1/2 sm:w-auto mr-2">
-                    <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
-                </button>
                 <div class="dropdown w-1/2 sm:w-auto">
                     <button class="dropdown-toggle btn btn-primary w-full sm:w-auto" aria-expanded="false"
                         data-tw-toggle="dropdown">
@@ -64,23 +40,8 @@
                     <div class="dropdown-menu w-40">
                         <ul class="dropdown-content">
                             <li>
-                                <a id="tabulator-export-csv" href="javascript:;" class="dropdown-item">
-                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export CSV
-                                </a>
-                            </li>
-                            <li>
-                                <a id="tabulator-export-json" href="javascript:;" class="dropdown-item">
-                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export JSON
-                                </a>
-                            </li>
-                            <li>
-                                <a id="tabulator-export-xlsx" href="javascript:;" class="dropdown-item">
+                                <a id="tabulator-export-xlsx" href="{{ route('fppps.export') }}" class="dropdown-item">
                                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export XLSX
-                                </a>
-                            </li>
-                            <li>
-                                <a id="tabulator-export-html" href="javascript:;" class="dropdown-item">
-                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export HTML
                                 </a>
                             </li>
                         </ul>
@@ -134,16 +95,6 @@
                                             <li>
                                                 <a href="{{ route('fppps.topdf', $fppp) }}" class="dropdown-item">
                                                     <i data-lucide="activity" class="w-4 h-4 mr-2"></i> PDF
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="dropdown-item">
-                                                    <i data-lucide="layout" class="w-4 h-4 mr-2"></i> EXCEL
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="dropdown-item">
-                                                    <i data-lucide="sidebar" class="w-4 h-4 mr-2"></i> PRINT
                                                 </a>
                                             </li>
                                             <li>

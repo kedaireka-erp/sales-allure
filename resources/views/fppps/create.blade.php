@@ -48,10 +48,10 @@
                         @foreach ($quotations as $quotation)
                         @isset($quo)
                         <option {{ $quo->id == $quotation->id ? 'selected' : '' }} value="{{ $quotation->id }}">
-                            {{ $quotation->no_quotation }}</option>
+                            {{ $quotation->DataQuotation->no_quotation ?? '' }}</option>
                         @endisset
                         <option value="{{ $quotation->id }}">
-                            {{ $quotation->no_quotation }}</option>
+                            {{ $quotation->DataQuotation->no_quotation ?? '' }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -69,6 +69,7 @@
                     <label for="fppp_revisino" class="form-label">No FPPP Yang Direvisi</label>
                     <select data-placeholder="Pilih No FPPP" class="tom-select w-full" name="fppp_revisino" single>
                         @foreach ($fppps as $fppp)
+                        <option value="">PILIH NO FPPP</option>
                         <option value="{{ $fppp->fppp_no }}">{{ $fppp->fppp_no }}</option>
                         @endforeach
                     </select>

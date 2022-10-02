@@ -43,7 +43,7 @@ Breadcrumbs::for('quotation.create', function ($trail) {
 //Quotation Show
 Breadcrumbs::for('quotation.show', function ($trail, $quotation) {
     $trail->parent('quotation.index');
-    $trail->push($quotation->no_quotation, route('quotation.show', $quotation->id));
+    $trail->push($quotation->DataQuotation->no_quotation ?? '', route('quotation.show', $quotation->id));
 });
 //Quotation Edit
 Breadcrumbs::for('quotation.edit', function ($trail, $quotation) {

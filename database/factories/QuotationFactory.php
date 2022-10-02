@@ -6,6 +6,7 @@ use App\Models\Status;
 use App\Models\Contact;
 use App\Models\DealSource;
 use App\Models\MasterAplikator;
+use App\Models\ProyekQuotation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,11 +22,12 @@ class QuotationFactory extends Factory
     public function definition()
     {
         return [
-            'no_quotation' => $this->faker->numberBetween(100,300).'/ASTRAL/'.$this->faker->numberBetween(0,100).'/AP'.$this->faker->numberBetween(0,100),
+            
             'contact_id'=>Contact::all()->random()->id,
             'deal_source_id' => DealSource::all()->random()->id,
             'status_id' => Status::all()->random()->id,
             'aplikator_id' => MasterAplikator::all()->random()->id,
+            'proyek_quotation_id' => ProyekQuotation::all()->random()->id,
             'keterangan' => $this->faker->realText($maxNbChars = 200, $indexSize = 2)
         ];
     }

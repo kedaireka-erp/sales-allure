@@ -4,8 +4,9 @@ namespace App\Services;
 
 use App\Models\Fppp;
 use App\Models\Company;
-use App\Models\Approachment;
 use App\Models\Contact;
+use App\Models\Approachment;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class SearchService
@@ -17,12 +18,10 @@ class SearchService
         $result = '';
 
         if ($keywords) {
-            //BELUM BISA CARI BERDASARKAN NOMOR QUOTATION//
-
             $result = Fppp::where('fppp_type', 'like', '%' . $keywords . '%')
                 ->orWhere('production_phase', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_no', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('quotation', 'no_quotation', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('dataQuotation', 'no_quotation', 'like', '%' . $keywords . '%')
                 ->orWhere('order_status', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_revisino', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_keterangan', 'like', '%' . $keywords . '%')
@@ -50,18 +49,15 @@ class SearchService
 
         if ($keywords) {
 
-            $result = Contact::where('name', 'like', '%' . $keywords . '%')
+            $result = Contact::where(DB::raw("concat(first_name, ' ', last_name)"), 'like', '%' . $keywords . '%')
                 ->orWhere('email', 'like', '%' . $keywords . '%')
                 ->orWhere('address', 'like', '%' . $keywords . '%')
                 ->orWhere('phone', 'like', '%' . $keywords . '%')
                 ->orWhere('note', 'like', '%' . $keywords . '%')
                 ->orWhereRelation('ContactType', 'name', 'like', '%' . $keywords . '%')
                 ->orWhereRelation('LeadSource', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('Quotation', 'name', 'like', '%' . $keywords . '%')
                 ->orWhereRelation('Company', 'name', 'like', '%' . $keywords . '%')
                 ->orWhereRelation('LeadStatus', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('leadInterests', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('approachment', 'name', 'like', '%' . $keywords . '%')
                 ->orWhereRelation('User', 'name', 'like', '%' . $keywords . '%')
                 ->orWhereRelation('LeadPriority', 'name', 'like', '%' . $keywords . '%')
                 ->with('ContactType', 'LeadSource', 'Quotation', 'Company', 'LeadStatus', 'leadInterests', 'approachment', 'LeadPriority')->orderBy('created_at', 'desc')
@@ -108,17 +104,15 @@ class SearchService
         $result = '';
 
         if ($request->search) {
-            //BELUM BISA CARI BERDASARKAN NAMA STATUS, NAMA CONTACT, NAMA ACTIVITY//
-
             $result = Approachment::where('date', 'like', '%' . $request->search . '%')
                 ->orWhere('note', 'like', '%' . $request->search . '%')
                 ->orWhereRelation('status', 'name', 'like', '%' . $request->search . '%')
-                ->orWhereRelation('contact', 'name', 'like', '%' . $request->search . '%')
+                ->orWhereRelation('contact', DB::raw("concat(first_name, ' ', last_name)"), 'like', '%' . $request->search . '%')
                 ->orWhereRelation('activity', 'name', 'like', '%' . $request->search . '%')
-                ->with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->status($request)->paginate(10);
+                ->with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->filter($request)->paginate(10);
         } else {
             
-            $result = Approachment::with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->status($request)->paginate(10);
+            $result = Approachment::with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->filter($request)->paginate(10);
         }
 
         return $result;

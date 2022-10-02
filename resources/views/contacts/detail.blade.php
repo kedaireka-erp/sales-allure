@@ -22,18 +22,20 @@
                 <div class="text-slate-500">{{ $contact->ContactType->name }}</div>
             </div>
         </div>
-        <div
-            class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+        <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
             <div class="font-medium text-center lg:text-left lg:mt-3">Contact Details</div>
             <div class="flex flex-col justify-center items-center lg:items-start mt-4">
                 <div class="truncate sm:whitespace-normal flex items-center">
                     <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{ $contact->email }}
                 </div>
                 <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                    <i data-lucide="instagram" class="w-4 h-4 mr-2"></i> Instagram {{ $fakers[0]['users'][0]['name'] }}
+                    <i data-lucide="facebook" class="w-4 h-4 mr-2"></i> {{ $contact->facebook }}
                 </div>
                 <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                    <i data-lucide="twitter" class="w-4 h-4 mr-2"></i> Twitter {{ $fakers[0]['users'][0]['name'] }}
+                    <i data-lucide="twitter" class="w-4 h-4 mr-2"></i> {{ $contact->twitter }}
+                </div>
+                <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                    <i data-lucide="linkedin" class="w-4 h-4 mr-2"></i> {{ $contact->linkedin }}
                 </div>
             </div>
         </div>
@@ -541,6 +543,36 @@
                                 value="{{ old('phone', $contact->phone) }}">
                             @error('phone')
                             <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="mt-5">
+                            <label for="facebook" class="form-label">Facebook URL </label>
+                            <input id="facebook" type="text"
+                                class="@error('facebook') border-red-700                            
+                            @enderror form-control w-full"
+                                placeholder="Masukkan Facebook URL" name="facebook" value="{{ old('facebook', $contact->facebook) }}">
+                            @error('facebook')
+                                <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="mt-5">
+                            <label for="twitter" class="form-label">Twitter URL </label>
+                            <input id="twitter" type="text"
+                                class="@error('twitter') border-red-700                            
+                            @enderror form-control w-full"
+                                placeholder="Masukkan Twitter URL" name="twitter" value="{{ old('twitter', $contact->twitter) }}">
+                            @error('twitter')
+                                <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="mt-5">
+                            <label for="linkedin" class="form-label">LinkedIn URL </label>
+                            <input id="linkedin" type="text"
+                                class="@error('linkedin') border-red-700                            
+                            @enderror form-control w-full"
+                                placeholder="Masukkan LinkedIn URL" name="linkedin" value="{{ old('linkedin', $contact->linkedin) }}">
+                            @error('linkedin')
+                                <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mt-5">

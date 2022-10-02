@@ -6,6 +6,8 @@ use App\Models\Status;
 use App\Models\DealSource;
 use App\Models\DetailQuotation;
 use App\Models\MasterAplikator;
+use App\Models\ProyekQuotation;
+use Attribute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,8 +18,12 @@ class Quotation extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'quotations';
-    protected $fillable = ['no_quotation', 'contact_id', 'deal_source_id', 'status_id','aplikator_id', 'alasan', 'keterangan'];
-    protected $appends = ['nominal'];
+    protected $fillable = ['proyek_quotation_id', 'contact_id', 'deal_source_id', 'status_id','aplikator_id', 'alasan', 'keterangan'];
+    protected $appends = ['nominal', 'no_quotation'];
+
+    public function getNoQuotationAttribute(){
+        return $this->DataQuotation->no_quotation;
+    }
 
     public function Contact()
     {
@@ -43,14 +49,15 @@ class Quotation extends Model
         return $this->hasMany(DetailQuotation::class);
     }
 
-    public function Nominal()
+    public function getNominalAttribute()
     {
         return $this->DetailQuotation()->sum(DB::raw('qty * harga'));
     }
+
     public function scopeSearch($query, $filter)
     {
         $query->when($filter['search'] ?? false, function ($query, $search) {
-            return $query->where('no_quotation', 'like', '%' . $search . '%');
+            return $query->whereRelation('DataQuotation','no_quotation', 'like', '%' . $search . '%');
         });
     }
     public function scopeStatus($query, $filter)
@@ -64,4 +71,9 @@ class Quotation extends Model
     {
         return $this->belongsTo(MasterAplikator::class);
     }
+
+    public function DataQuotation(){
+        return $this->hasOne(ProyekQuotation::class, 'id', 'proyek_quotation_id');
+    }
+
 }
