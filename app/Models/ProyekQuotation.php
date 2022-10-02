@@ -10,9 +10,9 @@ class proyekQuotation extends Model
 {
     use HasFactory;
     protected $table = 'proyek_quotations';
-    protected $fillable = ['quotation_id','id_penginput', 'kode_aplikator', 'no_quotation', 'id_currency', 'nama_proyek', 'nama_owner', 'kontak', 'no_quotation_cus', 'alamat_proyek', 'keterangan', 'status_quotation', 'date', 'alasan', 'revisi_ke'];
+    protected $fillable = ['id_penginput', 'kode_aplikator', 'no_quotation', 'id_currency', 'nama_proyek', 'nama_owner', 'kontak', 'no_quotation_cus', 'alamat_proyek', 'keterangan', 'status_quotation', 'date', 'alasan', 'revisi_ke'];
 
-    public function DataQuotation(){
+    public function Quotation(){
         return $this->belongsTo(Quotation::class);
     }
 }

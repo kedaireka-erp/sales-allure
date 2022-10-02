@@ -17,12 +17,10 @@ class SearchService
         $result = '';
 
         if ($keywords) {
-            //BELUM BISA CARI BERDASARKAN NOMOR QUOTATION//
-
             $result = Fppp::where('fppp_type', 'like', '%' . $keywords . '%')
                 ->orWhere('production_phase', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_no', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('quotation', 'no_quotation', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('dataQuotation', 'no_quotation', 'like', '%' . $keywords . '%')
                 ->orWhere('order_status', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_revisino', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_keterangan', 'like', '%' . $keywords . '%')

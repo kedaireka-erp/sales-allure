@@ -118,7 +118,7 @@
                             <div class="text-base text-slate-500">:</div>
                         </div>
                         <div class=" w-full">
-                            <div class="text-base font-semibold text-slate-500">@currency($quotation->nominal())</div>
+                            <div class="text-base font-semibold text-slate-500">@currency($quotation->nominal)</div>
                         </div>
                     </div>
                 </div>

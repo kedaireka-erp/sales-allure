@@ -75,7 +75,7 @@
                             <td class="text-base text-center">{{ ucfirst($fppp->fppp_type) }}</td>
                             <td class="text-base text-center">{{ $fppp->production_phase }}</td>
 
-                            <td class="text-base text-center">{{ $fppp->Quotation->DataQuotation->no_quotation ?? '' }}</td>
+                            <td class="text-base text-center">{{ $fppp->Quotation->no_quotation ?? '' }}</td>
                             <td class="table-report__action w-fit">
                                 <div class="dropdown flex justify-center">
                                     <button class="dropdown-toggle btn px-2 box rounded-full" aria-expanded="false"

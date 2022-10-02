@@ -193,7 +193,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center">@currency($quotation->nominal())
+                                    <td class="text-center">@currency($quotation->nominal)
                                     </td>
                                     <td class="table-report__action w-fit">
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Fppp extends Model
 {
     use HasFactory;
+    use BelongsToThrough;
     use SoftDeletes;
 
     protected $table="fppps";
@@ -137,8 +139,8 @@ class Fppp extends Model
         return $this->belongsTo(User::class);
     }
 
-    
-    
-
+    public function dataQuotation(){
+        return $this->belongsToThrough(ProyekQuotation::class, Quotation::class);
+    }
 
 }

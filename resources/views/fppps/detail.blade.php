@@ -221,7 +221,7 @@
                         <div class=" text-slate-500">:</div>
                     </div>
                     <div class=" w-full">
-                        <div class=" font-semibold text-slate-500">(GAMBAR GAMBAR)</div>
+                        <div class=" font-semibold text-slate-500">{{ $fppp->files->count() }}</div>
                     </div>
                 </div>
             </div>

@@ -45,9 +45,9 @@ class DatabaseSeeder extends Seeder
 
         MasterAplikator::factory(15)->create();
 
-        Quotation::factory(20)->create();
-
         ProyekQuotation::factory(20)->create();
+        
+        Quotation::factory(20)->create();
 
         // Fppp::factory()->create();
         // Fppp::factory()->create();
