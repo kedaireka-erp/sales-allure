@@ -21,18 +21,18 @@
                             <div>
                                 <div class="text-xs">Status</div>
                                 <select class="tom-select mt-2" id="status_id" name="status">
-                                    <option selected>Pilih Status</option>
+                                    <option selected value="">Pilih Status</option>
                                     @foreach ($statuses as $status)
-                                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                        <option {{ $status->id == old('status') ? 'selected' : '' }} value="{{ $status->id }}">{{ $status->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mt-2">
                                 <div class="text-xs">Kontak</div>
                                 <select class="tom-select mt-2" id="contact_id" name="contact">
-                                    <option selected>Pilih Nama Kontak</option>
+                                    <option selected value="">Pilih Nama Kontak</option>
                                     @foreach ($contacts as $contact)
-                                        <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                        <option {{ $status->id == old('status') ? 'selected' : '' }} value="{{ $contact->id }}">{{ $contact->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
