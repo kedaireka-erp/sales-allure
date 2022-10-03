@@ -1,30 +1,31 @@
 (function () {
     "use strict";
 
-    // Show code or preview
-    $('#catatan_status_order').hide();
-    $('#fppp_lain').hide();
+    const selected = $('#order_status').val();
+    
+    if (selected == 'lainlain') {
+        $('#catatan_status_order').removeClass('hidden');
+
+    } else if (selected == 'revisino') {
+        $('#fppp_lain').removeClass('hidden');
+    } else {
+
+    }
 
     $("body").on("change", "#order_status", function () {
         const selected = $(this).val();
 
         if (selected == 'lainlain') {
-            $('#fppp_lain').hide();
-            $('#catatan_status_order').show();
+            $('#catatan_status_order').removeClass('hidden');
+            $('#fppp_lain').addClass('hidden');
 
         } else if(selected == 'revisino'){
-            $('#catatan_status_order').hide();
-            $('#fppp_lain').show();
+            $('#catatan_status_order').addClass('hidden');
+            $('#fppp_lain').removeClass('hidden');
         } else {
-            $('#catatan_status_order').hide();
-            $('#fppp_lain').hide();
+            $('#fppp_lain').addClass('hidden');
+            $('#catatan_status_order').addClass('hidden');
         }
     });
 
-    $("body").on("load", "#order_status", function () {
-        const selected = $(this).val();
-        if(selected == 'lainlain'){
-            $('#catatan_status_order').show();
-        }
-    });
 })();

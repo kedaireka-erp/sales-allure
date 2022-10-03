@@ -65,7 +65,7 @@
                         <option value="lainlain">Lain-lain</option>
                     </select>
                 </div>
-                <div class="mt-5" id="fppp_lain">
+                <div class="mt-5 hidden" id="fppp_lain">
                     <label for="fppp_revisino" class="form-label">No FPPP Yang Direvisi</label>
                     <select data-placeholder="Pilih No FPPP" class="tom-select w-full" name="fppp_revisino" single>
                         @foreach ($fppps as $fppp)
@@ -74,7 +74,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="mt-5" id="catatan_status_order">
+                <div class="mt-5 hidden" id="catatan_status_order">
                     <label for="note" class="mb-2">Keterangan Lain-lain</label>
                     <div class="mt-2">
                         <textarea name="fppp_keterangan" cols="30" rows="10" class="editor "></textarea>

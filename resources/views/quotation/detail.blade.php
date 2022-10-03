@@ -9,7 +9,7 @@
         <h2 class="text-lg font-medium mr-auto">Detail Quotation</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             @if ($quotation->status->name == 'Won')
-                <a href="{{ route('quotation.fppp', ['quo' => $quotation]) }}" class="btn btn-primary shadow-md mr-2">
+                <a href="{{ route('fppps.create') }}" class="btn btn-primary shadow-md mr-2">
                     <span class="text">Buat FPPP</span>
                 </a>
             @endif
