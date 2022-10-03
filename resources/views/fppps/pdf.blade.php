@@ -37,19 +37,13 @@
     <p>Alamat Proyek : <b>{{ $fppp->quotation->DataQuotation->alamat_proyek }}</b></p>
     <p>Sales/Site Manager : <b>{{ $fppp->user->name }}</b> </p>
     <p>Status Order :
-        @if ($fppp->order_status == 'baru')
-            <b {{ $fppp->order_status == 'baru' ? 'selected' : '' }} value="baru">Baru</b>
-        @endif
-        @if ($fppp->order_status == 'tambahan')
-            <b {{ $fppp->order_status == 'tambahan' ? 'selected' : '' }} value="tambahan">Tambahan</b>
-        @endif
-        @if ($fppp->order_status == 'revisino')
-            <b {{ $fppp->order_status == 'revisino' ? 'selected' : '' }} value="revisino">Revisi dari FPPP No.
+        <b>{{ ucfirst($fppp->order_status) }}</b>
+        @if ($fppp->order_status == 'revisi')
+            <b {{ $fppp->order_status == 'revisino' ? 'selected' : '' }} value="revisino">dari FPPP No.
                 {{ $fppp->fppp_revisino }}</b>
         @endif
-        @if ($fppp->order_status == 'lainlain')
-            <b {{ $fppp->order_status == 'lainlain' ? 'selected' : '' }} value="lainlain">Lain-lain</b>
-            <p>Keterangan : </p>
+        @if ($fppp->order_status == 'lain-lain')
+            <b {{ $fppp->order_status == 'lainlain' ? 'selected' : '' }} value="lainlain"><p>Keterangan : </p></b>
             {!! $fppp->fppp_keterangan !!}
         @endif
     </p>
@@ -64,7 +58,7 @@
         @if ($fppp->glass == 'excluded')
             <b {{ $fppp->glass == 'excluded' ? 'selected' : '' }} value="excluded">Excluded</b>
         @endif
-        @if ($fppp->glass == 'included_excluded')
+        @if ($fppp->glass == 'included & excluded')
             <b {{ $fppp->glass == 'included_excluded' ? 'selected' : '' }} value="included_excluded">Included &
                 Excluded</b>
         @endif
@@ -74,29 +68,9 @@
     <h4>PENGIRIMAN</h4>
     <p>Deadline Pengambilan : <b>{{ \Carbon\Carbon::parse($fppp->retrival_deadline)->translatedFormat('d F Y') }}</b>
     </p>
-    <p>Penggunaan Peti :
-        @if ($fppp->box_usage == '0')
-            <b {{ $fppp->box_usage == '0' ? 'selected' : '' }} value="0">
-                Tidak</b>
-        @else
-            <b {{ $fppp->box_usage == '1' ? 'selected' : '' }} value="1">
-                Ya</b>
-        @endif
-    </p>
-    <p>Penggunaan Sealant :
-        @if ($fppp->sealant_usage == '0')
-            <b {{ $fppp->sealant_usage == '0' ? 'selected' : '' }} value="0">Tidak</b>
-        @else
-            <b {{ $fppp->sealant_usage == '1' ? 'selected' : '' }} value="1">Ya</b>
-        @endif
-    </p>
-    <p>Pengiriman ke Ekspedisi :
-        @if ($fppp->delivery_to_expedition == '0')
-            <b {{ $fppp->delivery_to_expedition == '0' ? 'selected' : '' }} value="0">Tidak</b>
-        @else
-            <b {{ $fppp->delivery_to_expedition == '1' ? 'selected' : '' }} value="1">Ya</b>
-        @endif
-    </p>
+    <p>Penggunaan Peti : <b>{{ ucfirst($fppp->box_usage) }}</b> </p>
+    <p>Penggunaan Sealant : <b>{{ ucfirst($fppp->sealant_usage) }}</b> </p>
+    <p>Pengiriman ke Ekspedisi : <b>{{ ucfirst($fppp->delivery_to_expedition) }}</b> </p>
     <p>Catatan : <b>{!! $fppp->note !!}</b></p>
     <p>Banyak Attachment : {{ $fppp->files->count() }}</p>
 

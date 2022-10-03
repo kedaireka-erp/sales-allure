@@ -118,7 +118,16 @@
                     </div>
                     <div class=" w-full">
                         <div class=" font-semibold text-slate-500">{{ ucfirst($fppp->order_status) }}</div>
-
+                        @if ($fppp->order_status == 'revisi')
+                            <div class=" font-semibold text-slate-500"
+                                {{ $fppp->order_status == 'revisino' ? 'selected' : '' }} value="revisino">Revisi dari FPPP
+                                No. {{ $fppp->fppp_revisino }}</div>
+                        @endif
+                        @if ($fppp->order_status == 'lain-lain')
+                            <div class=" font-semibold text-slate-500"
+                                {{ $fppp->order_status == 'lainlain' ? 'selected' : '' }} value="lainlain">Keterangan : 
+                                {!! $fppp->fppp_keterangan !!}</div>
+                        @endif
                     </div>
                 </div>
                 <div class="flex gap-x-2 text-sm lg:text-base flex-row px-5 sm:px-20 w-full">
