@@ -78,11 +78,8 @@ class DatabaseSeeder extends Seeder
         
         Quotation::factory(20)->create();
 
-        // Fppp::factory()->create();
-        // Fppp::factory()->create();
-
         DetailQuotation::factory(100)->create();
 
-        Approachment::factory(1000)->create();
+        Approachment::factory(100)->create();
     }
 }
