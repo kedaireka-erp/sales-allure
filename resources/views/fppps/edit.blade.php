@@ -54,9 +54,9 @@
                             <option {{ $fppp->order_status == 'baru' ? 'selected' : '' }} value="baru">Baru</option>
                             <option {{ $fppp->order_status == 'tambahan' ? 'selected' : '' }} value="tambahan">Tambahan
                             </option>
-                            <option {{ $fppp->order_status == 'revisino' ? 'selected' : '' }} value="revisino">Revisi
+                            <option {{ $fppp->order_status == 'revisi' ? 'selected' : '' }} value="revisino">Revisi
                             </option>
-                            <option {{ $fppp->order_status == 'lainlain' ? 'selected' : '' }} value="lainlain">Lain-Lain
+                            <option {{ $fppp->order_status == 'lain-lain' ? 'selected' : '' }} value="lainlain">Lain-Lain
                             </option>
                         </select>
                     </div>
@@ -92,7 +92,7 @@
                             single>
                             <option {{ $fppp->glass == 'included' ? 'selected' : '' }} value="included">Included</option>
                             <option {{ $fppp->glass == 'excluded' ? 'selected' : '' }} value="excluded">Excluded</option>
-                            <option {{ $fppp->glass == 'included_excluded' ? 'selected' : '' }} value="included_excluded">
+                            <option {{ $fppp->glass == 'included & excluded' ? 'selected' : '' }} value="included_excluded">
                                 Included & Excluded</option>
                         </select>
                     </div>
@@ -111,25 +111,25 @@
                         <label for="box_usage" class="form-label">Penggunaan Peti</label>
                         <select data-placeholder="Pilih Penggunaan Peti" class="tom-select w-full" id="box_usage"
                             name="box_usage" single>
-                            <option {{ $fppp->box_usage == '0' ? 'selected' : '' }} value="0">Tidak</option>
-                            <option {{ $fppp->box_usage == '1' ? 'selected' : '' }} value="1">Ya</option>
+                            <option {{ $fppp->box_usage == 'tidak' ? 'selected' : '' }} value="0">Tidak</option>
+                            <option {{ $fppp->box_usage == 'ya' ? 'selected' : '' }} value="1">Ya</option>
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="sealant_usage" class="form-label">Penggunaan Sealant</label>
                         <select data-placeholder="Pilih Penggunaan Sealant" class="tom-select w-full" id="sealant_usage"
                             name="sealant_usage" single>
-                            <option {{ $fppp->sealant_usage == '0' ? 'selected' : '' }} value="0">Tidak</option>
-                            <option {{ $fppp->sealant_usage == '1' ? 'selected' : '' }} value="1">Ya</option>
+                            <option {{ $fppp->sealant_usage == 'tidak' ? 'selected' : '' }} value="0">Tidak</option>
+                            <option {{ $fppp->sealant_usage == 'ya' ? 'selected' : '' }} value="1">Ya</option>
                         </select>
                     </div>
                     <div class="mt-5">
                         <label for="delivery_to_expedition" class="form-label">Pengiriman ke Ekspedisi</label>
                         <select data-placeholder="Pilih Pengiriman ke Ekspedisi" class="tom-select w-full"
                             id="delivery_to_expedition" name="delivery_to_expedition" single>
-                            <option {{ $fppp->delivery_to_expedition == '0' ? 'selected' : '' }} value="0">Tidak
+                            <option {{ $fppp->delivery_to_expedition == 'tidak' ? 'selected' : '' }} value="0">Tidak
                             </option>
-                            <option {{ $fppp->delivery_to_expedition == '1' ? 'selected' : '' }} value="1">Ya
+                            <option {{ $fppp->delivery_to_expedition == 'ya' ? 'selected' : '' }} value="1">Ya
                             </option>
                         </select>
                     </div>

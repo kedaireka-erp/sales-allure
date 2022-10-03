@@ -25,7 +25,7 @@ class QuotationFactory extends Factory
             
             'contact_id'=>Contact::all()->random()->id,
             'deal_source_id' => DealSource::all()->random()->id,
-            'status_id' => Status::all()->random()->id,
+            'status_id' => Status::WhereIn('name', ['Won', 'Negosiasi'])->get()->random()->id,
             'aplikator_id' => MasterAplikator::all()->random()->id,
             'proyek_quotation_id' => ProyekQuotation::all()->random()->id,
             'keterangan' => $this->faker->realText($maxNbChars = 200, $indexSize = 2)
