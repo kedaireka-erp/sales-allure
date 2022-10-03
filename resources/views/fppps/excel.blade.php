@@ -1,48 +1,59 @@
-
 <table>
     <thead>
-        <tr>  
+        <tr>
             <th><b>NO</b></th>
-            <th><b>FPPP_NO</b></th>
-            <th><b>PRODUCTION_PHASE</b></th>
-            <th><b>FPPP_REVISI_NO</b></th>
-            <th><b>FPPP_KETERANGAN</b></th>
-            <th><b>PRODUCTION_TIME</b></th>
-            <th><b>COLOR</b></th>
-            <th><b>GLASS_TYPE</b></th>
-            <th><b>RETRIEVAL_DEADLINE</b></th>
-            <th><b>FPPP_TYPE</b></th>
-            <th><b>ORDER_STATUS</b></th>
-            <th><b>GLASS</b></th>
-            <th><b>BOX_USAGE</b></th>
-            <th><b>SEALANT_USAGE</b></th>
-            <th><b>DELIVERY_TO_EXPEDITION</b></th>
-            <th><b>NOTE</b></th>
-            <th><b>CREATED_AT</b></th>
+            <th><b>NO_FPPP</b></th>
+            <th><b>TIPE_FPPP</b></th>
+            <th><b>TAHAP_PRODUKSI</b></th>
+            <th><b>NO_QUOTATION</b></th>
+            <th><b>TANGGAL</b></th>
+            <th><b>DIVISI</b></th>
+            <th><b>NAMA_APLIKATOR</b></th>
+            <th><b>NAMA_PROYEK</b></th>
+            <th><b>ALAMAT_PROYEK</b></th>
+            <th><b>SALES/SITE_MANAGER</b></th>
+            <th><b>STATUS_ORDER</b></th>
+            <th><b>REVISI_DARI_FPPP_NO</b></th>
+            <th><b>KETERANGAN_LAIN-LAIN</b></th>
+            <th><b>WAKTU_PRODUKSI</b></th>
+            <th><b>WARNA</b></th>
+            <th><b>KACA</b></th>
+            <th><b>JENIS_KACA</b></th>
+            <th><b>DEADLINE_PENGEMBALIAN</b></th>
+            <th><b>PENGGUNAAN_PETI</b></th>
+            <th><b>PENGGUNAAN_SEALANT</b></th>
+            <th><b>PENGIRIMAN_KE_EKSPEDISI</b></th>
+            <th><b>CATATAN</b></th>
         </tr>
     </thead>
     <br>
     <tbody>
         @foreach ($fppps as $fppp)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $fppp->fppp_no }}</td>
-            <td>{{ $fppp->production_phase }}</td>
-            <td>{{ $fppp->fppp_revisino }}</td>
-            <td>{{ $fppp->fppp_keterangan }}</td>
-            <td>{{ $fppp->production_time }}</td>
-            <td>{{ $fppp->color }}</td>
-            <td>{{ $fppp->glass_type }}</td>
-            <td>{{ $fppp->retrieval_deadline }}</td>
-            <td>{{ $fppp->fppp_type }}</td>
-            <td>{{ $fppp->order_status }}</td>
-            <td>{{ $fppp->glass }}</td>
-            <td>{{ $fppp->box_usage }}</td>
-            <td>{{ $fppp->sealant_usage }}</td>
-            <td>{{ $fppp->delivery_to_expedition }}</td>
-            <td>{{ $fppp->note }}</td>
-            <td>{{ $fppp->created_at }}</td>
-        </tr>
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $fppp->fppp_no }}</td>
+                <td>{{ $fppp->fppp_type }}</td>
+                <td>{{ $fppp->production_phase }}</td>
+                <td>{{ $fppp->quotation->DataQuotation->no_quotation ?? '' }}</td>
+                <td>{{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</td>
+                <td>ASTRAL</td>
+                <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
+                <td>{{ $fppp->quotation->DataQuotation->nama_proyek ?? '' }}</td>
+                <td>{{ $fppp->quotation->DataQuotation->alamat_proyek ?? '' }}</td>
+                <td>{{ $fppp->user->name }}</td>
+                <td> {{ $fppp->order_status }} </td>
+                <td>{{ $fppp->fppp_revisino }} </td>
+                <td>{{ $fppp->fppp_keterangan }} </td>
+                <td>{{ $fppp->production_time }} hari</td>
+                <td>{{ $fppp->color }}</td>
+                <td> {{ ucfirst($fppp->glass) }} </td>
+                <td>{{ $fppp->glass_type }}</td>
+                <td>{{ $fppp->retrieval_deadline }}</td>
+                <td> {{ $fppp->box_usage }} </td>
+                <td> {{ $fppp->sealant_usage }}</td>
+                <td> {{ $fppp->delivery_to_expedition }} </td>
+                <td>{!!$fppp->note!!}</td>
+            </tr>
         @endforeach
     </tbody>
 </table>

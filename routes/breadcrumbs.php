@@ -51,6 +51,11 @@ Breadcrumbs::for('quotation.edit', function ($trail, $quotation) {
     $trail->push($quotation->no_quotation, route('quotation.show', $quotation->id));
     $trail->push('Edit', route('quotation.edit', $quotation->id));
 });
+//Quotation Create Fppp
+Breadcrumbs::for('quotation.fppp', function ($trail, $quotation) {
+    $trail->parent('quotation.show', $quotation);
+    $trail->push('Create Fppp', route('quotation.fppp', $quotation));
+});
 
 //========================[Contacts ]========================//
 //Contact Index

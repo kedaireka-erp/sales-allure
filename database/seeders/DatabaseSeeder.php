@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Fppp;
+use App\Models\User;
 use App\Models\Status;
 use App\Models\Company;
 use App\Models\Contact;
@@ -14,9 +15,14 @@ use App\Models\CompanyType;
 use App\Models\ContactType;
 use App\Models\Approachment;
 use App\Models\DetailQuotation;
+use App\Models\LeadInterest;
+use App\Models\LeadPriority;
+use App\Models\LeadSource;
+use App\Models\LeadStatus;
 use App\Models\MasterAplikator;
 use App\Models\ProyekQuotation;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +33,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //Reset every tables
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+        Status::truncate();
+        DealSource::truncate();
+        Activity::truncate();
+        LeadInterest::truncate();
+        LeadSource::truncate();
+        LeadPriority::truncate();
+        LeadStatus::truncate();
+        CompanyType::truncate();
+        CompanyArea::truncate();
+        ContactType::truncate();
+        Company::truncate();
+        Contact::truncate();
+        MasterAplikator::truncate();
+        ProyekQuotation::truncate();
+        Quotation::truncate();
+        DetailQuotation::truncate();
+        Approachment::truncate();
+        Schema::enableForeignKeyConstraints();
+        //End reset
+
         $this->call(UserSeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(DealSourceSeeder::class);
@@ -45,9 +74,9 @@ class DatabaseSeeder extends Seeder
 
         MasterAplikator::factory(15)->create();
 
-        Quotation::factory(20)->create();
-
         ProyekQuotation::factory(20)->create();
+        
+        Quotation::factory(20)->create();
 
         // Fppp::factory()->create();
         // Fppp::factory()->create();

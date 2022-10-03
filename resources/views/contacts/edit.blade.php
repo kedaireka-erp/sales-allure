@@ -173,6 +173,36 @@
                         @enderror
                     </div>
                     <div class="mt-5">
+                        <label for="facebook" class="form-label">Facebook URL </label>
+                        <input id="facebook" type="text"
+                            class="@error('facebook') border-red-700                            
+                        @enderror form-control w-full"
+                            placeholder="Masukkan Facebook URL" name="facebook" value="{{ old('facebook', $contact->facebook) }}">
+                        @error('facebook')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mt-5">
+                        <label for="twitter" class="form-label">Twitter URL </label>
+                        <input id="twitter" type="text"
+                            class="@error('twitter') border-red-700                            
+                        @enderror form-control w-full"
+                            placeholder="MasukkanTwitter URL" name="twitter" value="{{ old('twitter', $contact->twitter) }}">
+                        @error('twitter')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mt-5">
+                        <label for="linkedin" class="form-label">LinkedIn URL </label>
+                        <input id="linkedin" type="text"
+                            class="@error('linkedin') border-red-700                            
+                        @enderror form-control w-full"
+                            placeholder="Masukkan LinkedIn URL" name="linkedin" value="{{ old('linkedin', $contact->linkedin) }}">
+                        @error('linkedin')
+                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mt-5">
                         <label for="note" class="mb-2">Deskripsi</label>
                         <div class="mt-2">
                             <textarea name="note" id="note" cols="30" rows="10" class="editor">{{ old('note', $contact->note) }}</textarea>

@@ -36,7 +36,7 @@
                     Tanggal : {{ $quotation->created_at }}
                 </div>
                 <div class="flex gap-x-2 flex-row px-5 sm:px-20 w-full">
-                    Nominal Penawaran   : @currency($quotation->nominal())
+                    Nominal Penawaran   : @currency($quotation->nominal)
                     
                 </div>
             </div>

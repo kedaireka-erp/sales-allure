@@ -18,7 +18,6 @@ class ProyekQuotationFactory extends Factory
     public function definition()
     {
         return [
-            'quotation_id'=>Quotation::all()->random()->id,
             'no_quotation' => $this->faker->numberBetween(100,300).'/ASTRAL/'.$this->faker->numberBetween(0,100).'/AP'.$this->faker->numberBetween(0,100),
             'nama_proyek' => $this->faker->catchPhrase()
         ];

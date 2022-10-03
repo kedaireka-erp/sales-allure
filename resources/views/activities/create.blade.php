@@ -17,7 +17,7 @@
                 <div class="mt-5">
                     <label for="name" class="form-label">Jenis </label>
                     <input id="name" type="text" class="form-control w-full"
-                        placeholder="Input Nama" name="name">
+                        placeholder="Input Jenis Aktivitas" name="name">
                 </div>
                 <div class="mt-5">
                     <label for="desc" class="form-label">Deskripsi </label>

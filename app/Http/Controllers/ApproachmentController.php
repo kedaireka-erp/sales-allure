@@ -22,8 +22,9 @@ class ApproachmentController extends Controller
         $approachments = $ss->SearchApproachment($request);
         session()->flashInput($request->input());
         $statuses = Status::where("model", "=", "approachment")->get();
+        $contacts = Contact::get();
 
-        return view("approachments.index", compact("approachments", "statuses"));
+        return view("approachments.index", compact("approachments", "statuses", "contacts"));
     }
 
     public function create()
@@ -63,7 +64,7 @@ class ApproachmentController extends Controller
         $validated = $request->validated();
         $update = $approachment->update($validated);
         if ($update) {
-            return back()->with('success', 'Approachment berhasil diubah!');
+            return  to_route("approachments.index")->with('success', 'Approachment berhasil diubah!');
         }
         return to_route("approachments.index")->with('error', 'FPPP gagal diubah!');
 

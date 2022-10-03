@@ -38,10 +38,14 @@ class Approachment extends Model
         return $this->belongsto(Activity::class);
     }
 
-    public function scopeStatus($query, $filter){
-        $query->when($filter['status'] ?? false, function($query, $status){
-            return $query->where('status_id','=', $status);
-        });
-      }
+    public function scopeFilter($query, $filter){
+        if($filter['status'] != ""){
+            $query->where('status_id','=', $filter['status']);
+        }
+        if($filter['contact'] != ""){
+            $query->where('contact_id','=', $filter['contact']);
+        }
+        return $query;
+    }
 
 }

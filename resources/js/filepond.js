@@ -8,13 +8,13 @@ const pond = FilePond.create(inputElement);
 FilePond.setOptions({
     server: {
         process:{
-            url: "route('fppps.store.attachments')",
+            url: "store/attachments",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
         },
         revert: {
-            url: "{{ route('fppps.delete.temp.attachments') }}",
+            url: "delete/temp/attachments",
             method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),

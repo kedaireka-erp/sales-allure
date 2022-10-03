@@ -139,7 +139,7 @@ Route::middleware('auth')->group(function () {
     Route::get('fppps/topdf/{fppp}', [FpppController::class, 'topdf'])->name('fppps.topdf');
     Route::get('fppps/export/', [FpppController::class, 'export'])->name('fppps.export');
     Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
-    Route::post('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
+    Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
     Route::delete('fppps/delete/attachment/{attachment}', [FpppController::class, 'deleteAttachment'])->name('fppps.delete.attachment');
     Route::resource('fppps', FpppController::class);
     

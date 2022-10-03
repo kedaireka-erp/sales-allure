@@ -127,16 +127,16 @@
                         
         <div class="overflow-x-auto scrollbar-hidden">
             <div class="mt-5 table-report table-report--tabulator">
-                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+                <div class="intro-y col-span-12 overflow-auto">
                     <table class="table table-report -mt-2">
                         <thead>
                             <tr>
                                 <th CLASS="whitespace-nowrap text-primary">NO.</th>
                                 <th class="whitespace-nowrap text-primary">NO. QUOTATION</th>
-                                <th class="whitespace-nowrap text-primary">PROYEK</th>
-                                <th class="whitespace-nowrap text-primary">APLIKATOR</th>
                                 <th class="text-center whitespace-nowrap text-primary">STATUS</th>
                                 <th class="text-center whitespace-nowrap text-primary">NOMINAL PENAWARAN</th>
+                                <th class="whitespace-nowrap text-primary">PROYEK</th>
+                                <th class="whitespace-nowrap text-primary">APLIKATOR</th>
                                 <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                             </tr>
                         </thead>@foreach ($quotations as $key => $quotation)
@@ -154,18 +154,9 @@
                                     <td>
                                         <div class="font-medium whitespace-nowrap">{{ $quotation->DataQuotation->no_quotation ?? ''}}</div>
                                     </td>
-                                    <td>
-                                        <div class="font-medium whitespace-nowrap">{{ $quotation->DataQuotation->nama_proyek ?? '' }}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator }}
-                                        </div>
-                                    </td>
                                     <td class="text-center">
                                         <div class="dropdown ml-auto">
-                                            <button class="dropdown-toggle btn px-2 box" aria-expanded="false"
-                                                data-tw-toggle="dropdown">
+                                            <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                                                 <span class="w-5 h-5 flex items-center justify-center mr-2">
                                                     <i class="w-4 h-4" data-lucide="edit"></i>
                                                 </span>
@@ -173,16 +164,16 @@
                                             </button>
                                             <div class="dropdown-menu w-45">
                                                 <ul class="dropdown-content">
-                                                    <form class="p-2"
-                                                        action="{{ route('quotation.edit.status', $quotation) }}"
-                                                        method="POST" enctype="multipart/form-data">
+                                                    <form class="p-2" action="{{ route('quotation.edit.status', $quotation) }}" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
                                                         @method('patch')
                                                         <div class="text-xs">Status</div>
                                                         <select class="tom-select mt-2" id="status_id" name="status_id">
                                                             @foreach ($statuses as $status)
-                                                                <option value="{{ $status->id }}" {{ $status->id === $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}
-                                                                </option>
+                                                            <option value="{{ $status->id }}" {{ $status->id === $quotation->status_id ? 'selected' : '' }}>
+                                                                {{ $status->name }}
+                                                            </option>
                                                             @endforeach
                                                         </select>
                                                         <div class="flex items-center mt-3">
@@ -194,7 +185,15 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center">@currency($quotation->nominal())
+                                    <td class="text-center">@currency($quotation->nominal)
+                                    </td>
+                                    <td>
+                                        <div class="font-medium whitespace-nowrap">{{ $quotation->DataQuotation->nama_proyek ? Str::limit($quotation->DataQuotation->nama_proyek, 15) : '' }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator }}
+                                        </div>
                                     </td>
                                     <td class="table-report__action w-fit">
 
