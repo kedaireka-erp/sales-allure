@@ -123,6 +123,8 @@
             </div>
         </div>
         <br>
+        
+                        
         <div class="overflow-x-auto scrollbar-hidden">
             <div class="mt-5 table-report table-report--tabulator">
                 <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
@@ -137,9 +139,10 @@
                                 <th class="text-center whitespace-nowrap text-primary">NOMINAL PENAWARAN</th>
                                 <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                             </tr>
-                        </thead>
+                        </thead>@foreach ($quotations as $key => $quotation)
+                        {{-- @if($quotation->count()) --}}
                         <tbody>
-                            @foreach ($quotations as $key => $quotation)
+                            
                                 <tr class="intro-x zoom-in transition">
                                     <td class="w-10">
                                         <div class="flex">
@@ -256,13 +259,20 @@
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            
                         </tbody>
+                        {{-- @elseif ($quotation->status_id !== request(status))
+                        Data dengan No. Quotation berikut tidak ditemukan --}}
+                        {{-- @else
+        <p class="text-center fs-4">Data Tidak Ditemukan.</p>
+        @endif --}}
+        @endforeach
                     </table>
                 </div>
                 {{ $quotations->links('components.custom-pagination') }}
             </div>
         </div>
+        
     </div>
     <!-- END: HTML Table Data -->
 @endsection
