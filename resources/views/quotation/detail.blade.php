@@ -13,20 +13,20 @@
                     <span class="text">Buat FPPP</span>
                 </a>
             @endif
-            <button class="btn btn-primary shadow-md mr-2">Print</button>
+            {{-- <button class="btn btn-primary shadow-md mr-2">Print</button> --}}
             <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
-                        <i class="w-4 h-4" data-lucide="plus"></i>
+                        <i class="w-4 h-4" data-lucide="file-text"></i>
                     </span>
                 </button>
                 <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
-                        <li>
+                        {{-- <li>
                             <a href="" class="dropdown-item">
                                 <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export Word
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('quotations.pdf', $quotation) }}" class="dropdown-item">
                                 <i data-lucide="file" class="w-4 h-4 mr-2"></i> Export PDF
