@@ -356,7 +356,7 @@
                             </div>
                             <div class="flex sm:ml-auto mt-5 sm:mt-0">
                                 <a href="{{ route('approachments.edit', $app) }}" class="btn btn-secondary w-20 ml-auto">Edit</a>
-                                <button class="btn btn-secondary w-20 ml-2">Details</button>
+                                {{-- <button class="btn btn-secondary w-20 ml-2">Details</button> --}}
                             </div>
                         </div>
                     </div>
@@ -374,7 +374,7 @@
                                 <th class="whitespace-nowrap">#</th>
                                 <th class="whitespace-nowrap">Activity Name</th>
                                 <th class="whitespace-nowrap">Times</th>
-                                <th class="whitespace-nowrap"></th>
+                                {{-- <th class="whitespace-nowrap"></th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -384,9 +384,9 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $key }}</td>
                                 <td>{{ $app->count() }}</td>
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                     <button class="btn btn-primary">Detail</button>
-                                </td>
+                                </td> --}}
                             </tr>
                             @endforeach
 
@@ -510,14 +510,21 @@
                             </div>
                         </div>
                         <div class="mt-5">
-                            <label for="name" class="form-label">Contact Name </label>
-                            <input id="name" type="text" class="@error('name') border-red-700                            
-                                                        @enderror form-control w-full" placeholder="Input Nama Contact" name="name"
-                                value="{{ old('name', $contact->name) }}">
-                            @error('name')
-                            <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
+                            <label for="first_name" class="form-label">Contact Name </label>
+                            <div class="flex gap-3 justify-between">
+                                <input id="first_name" type="text" class="@error('first_name') border-red-700                            
+                                                        @enderror form-control w-full" placeholder="Input Nama Contact" name="first_name"
+                                    value="{{ old('first_name', $contact->first_name) }}">
+                                @error('first_name')
+                                <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                                @enderror
+                                <input id="last_name" type="text" class="@error('last_name') border-red-700                            
+                                                        @enderror form-control w-full" placeholder="Input Nama Contact" name="last_name"
+                                    value="{{ old('last_name', $contact->last_name) }}">
+                                @error('last_name')
+                                <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
                         <div class="mt-5">
                             <label for="email" class="form-label">E-mail </label>
                             <input id="email" type="text" class="@error('email') border-red-700                            
