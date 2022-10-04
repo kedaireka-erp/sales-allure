@@ -141,7 +141,8 @@ Route::middleware('auth')->group(function () {
     Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
     Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
     Route::delete('fppps/delete/attachment/{attachment}', [FpppController::class, 'deleteAttachment'])->name('fppps.delete.attachment');
-    Route::resource('fppps', FpppController::class);
+    Route::get('fppps/create/{quo?}', [FpppController::class, 'create'])->name('fppps.create');
+    Route::resource('fppps', FpppController::class)->except(['create']);
     
     //route company_types
     Route::resource('company_types', CompanyTypeController::class);

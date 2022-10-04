@@ -41,12 +41,16 @@ class FpppController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Quotation $quo = null)
     {
         $fppps = Fppp::get();
         $quotations = Quotation::whereHas('Status', function ($query) {
             return $query->where('name', 'won');
         })->get();
+        
+        if($quo){
+            return view('fppps.create', compact('fppps', 'quotations', 'quo'));
+        }
         return view("fppps.create", compact("fppps", "quotations"));
     }
 
