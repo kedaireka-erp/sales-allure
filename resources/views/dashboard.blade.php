@@ -23,10 +23,10 @@
                                 <div class="flex">
                                     <i data-lucide="thumbs-up" class="report-box__icon text-primary"></i>
                                     <div class="ml-auto">
-                                        <div class="report-box__indicator bg-success tooltip cursor-pointer"
+                                        {{-- <div class="report-box__indicator bg-success tooltip cursor-pointer"
                                             title="33% Higher than last month">
                                             33% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">{{ $approachments->where('status.name',
@@ -42,10 +42,10 @@
                                 <div class="flex">
                                     <i data-lucide="credit-card" class="report-box__icon text-pending"></i>
                                     <div class="ml-auto">
-                                        <div class="report-box__indicator bg-danger tooltip cursor-pointer"
+                                        {{-- <div class="report-box__indicator bg-danger tooltip cursor-pointer"
                                             title="2% Lower than last month">
                                             2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">{{ $quotations->where('Status.name',
@@ -60,10 +60,10 @@
                                 <div class="flex">
                                     <i data-lucide="monitor" class="report-box__icon text-warning"></i>
                                     <div class="ml-auto">
-                                        <div class="report-box__indicator bg-success tooltip cursor-pointer"
+                                        {{-- <div class="report-box__indicator bg-success tooltip cursor-pointer"
                                             title="12% Higher than last month">
                                             12% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">{{ $fppps->count() }}</div>
@@ -78,10 +78,10 @@
                                 <div class="flex">
                                     <i data-lucide="user" class="report-box__icon text-success"></i>
                                     <div class="ml-auto">
-                                        <div class="report-box__indicator bg-success tooltip cursor-pointer"
+                                        {{-- <div class="report-box__indicator bg-success tooltip cursor-pointer"
                                             title="22% Higher than last month">
                                             22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">{{ $contacts->count() }}</div>
@@ -93,7 +93,7 @@
             </div>
             <!-- END: General Report -->
             <!-- BEGIN: Sales Report -->
-            <div class="col-span-12 lg:col-span-6 mt-8">
+            {{-- <div class="col-span-12 lg:col-span-6 mt-8">
                 <div class="intro-y block sm:flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Sales Report</h2>
                     <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
@@ -139,10 +139,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- END: Sales Report -->
             <!-- BEGIN: Weekly Top Seller -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
+            {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                 <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Monthly Approachment</h2>
                     <a href="" class="ml-auto text-primary truncate">Show More</a>
@@ -171,10 +171,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- END: Weekly Top Seller -->
             <!-- BEGIN: Sales Report -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
+            {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                 <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Sales Report</h2>
                     <a href="" class="ml-auto text-primary truncate">Show More</a>
@@ -203,10 +203,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- END: Sales Report -->
             <!-- BEGIN: Official Store -->
-            <div class="col-span-12 xl:col-span-8 mt-6">
+            {{-- <div class="col-span-12 xl:col-span-8 mt-6">
                 <div class="intro-y block sm:flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Official Store</h2>
                     <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
@@ -219,10 +219,10 @@
                     <div class="report-maps mt-5 bg-slate-200 rounded-md" data-center="-6.2425342, 106.8626478"
                         data-sources="/dist/json/location.json"></div>
                 </div>
-            </div>
+            </div> --}}
             <!-- END: Official Store -->
             <!-- BEGIN: Weekly Best Sellers -->
-            <div class="col-span-12 xl:col-span-4 mt-6">
+            {{-- <div class="col-span-12 xl:col-span-4 mt-6">
                 <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Weekly Best Sellers</h2>
                 </div>
@@ -248,10 +248,10 @@
                         class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View
                         More</a>
                 </div>
-            </div>
+            </div> --}}
             <!-- END: Weekly Best Sellers -->
             <!-- BEGIN: General Report -->
-            <div class="col-span-12 grid grid-cols-12 gap-6 mt-8">
+            {{-- <div class="col-span-12 grid grid-cols-12 gap-6 mt-8">
                 <div class="col-span-12 sm:col-span-6 2xl:col-span-3 intro-y">
                     <div class="box p-5 zoom-in">
                         <div class="flex items-center">
@@ -318,10 +318,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- END: General Report -->
             <!-- BEGIN: Weekly Top Products -->
-            <div class="col-span-12 mt-6">
+            {{-- <div class="col-span-12 mt-6">
                 <div class="intro-y block sm:flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Weekly Top Products</h2>
                     <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
@@ -442,11 +442,11 @@
                         <option>50</option>
                     </select>
                 </div>
-            </div>
+            </div> --}}
             <!-- END: Weekly Top Products -->
         </div>
     </div>
-    <div class="col-span-12 2xl:col-span-3">
+    {{-- <div class="col-span-12 2xl:col-span-3">
         <div class="2xl:border-l -mb-10 pb-10">
             <div class="2xl:pl-6 grid grid-cols-12 gap-x-6 2xl:gap-x-0 gap-y-6">
                 <!-- BEGIN: Transactions -->
@@ -727,6 +727,6 @@
                 <!-- END: Schedules -->
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection

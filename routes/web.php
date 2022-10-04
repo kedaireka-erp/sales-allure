@@ -4,6 +4,7 @@ use App\Models\Fppp;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompanyController;
@@ -37,13 +38,19 @@ use App\Http\Controllers\LeadPriorityController;
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
 Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
 
-Route::controller(AuthController::class)->middleware('loggedin')->group(function () {
+// Route::controller(AuthController::class)->middleware('loggedin')->group(function () {
+//     Route::get('login', 'loginView')->name('login.index');
+//     Route::post('login', 'login')->name('login.check');
+// });
+
+Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'loginView')->name('login.index');
     Route::post('login', 'login')->name('login.check');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::controller(PageController::class)->group(function () {
         Route::get('/', 'dashboardOverview1')->name('dashboard');
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
@@ -190,3 +197,5 @@ Route::middleware('auth')->group(function () {
     //route Kontak -> Lead Interest
     Route::resource('leadinterests', LeadInterestController::class);
 });
+
+

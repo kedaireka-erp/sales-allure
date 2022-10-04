@@ -6,7 +6,7 @@ use App\Models\Quotation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class proyekQuotation extends Model
+class ProyekQuotation extends Model
 {
     use HasFactory;
     protected $table = 'proyek_quotations';
