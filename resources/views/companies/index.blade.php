@@ -9,13 +9,13 @@
 <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
         <a href="{{ route('companies.create') }}" class="btn btn-primary shadow-md mr-2">Tambah Company</a>
-        <div class="dropdown">
+        {{-- <div class="dropdown">
             <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                 <span class="w-5 h-5 flex items-center justify-center">
                     <i class="w-4 h-4" data-lucide="plus"></i>
                 </span>
             </button>
-            <div class="dropdown-menu w-40">
+            {{-- <div class="dropdown-menu w-40">
                 <ul class="dropdown-content">
                     <li>
                         <a href="" class="dropdown-item">
@@ -33,8 +33,8 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-        </div>
+            </div> 
+        </div> --}}
         <div class="hidden md:block mx-auto text-slate-500"></div>
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
         <form class="xl:flex sm:mr-auto" action="{{ route('companies.index') }}" method="get">

@@ -74,7 +74,7 @@
                 </div>
                 <!-- END: Daily Sales -->
                 <!-- BEGIN: Announcement -->
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Announcement</h2>
                         <button data-carousel="announcement" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2">
@@ -110,10 +110,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Announcement -->
                 <!-- BEGIN: Projects -->
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Projects</h2>
                         <button data-carousel="projects" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2">
@@ -164,10 +164,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Projects -->
                 <!-- BEGIN: Today Schedules -->
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Today Schedules</h2>
                         <button data-carousel="today-schedule" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2">
@@ -212,10 +212,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Today Schedules -->
                 <!-- BEGIN: Top Products -->
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Top Products</h2>
                         <div class="dropdown ml-auto">
@@ -316,10 +316,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Top Products -->
                 <!-- BEGIN: Work In Progress -->
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Work In Progress</h2>
                         <div class="dropdown ml-auto sm:hidden">
@@ -409,10 +409,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Work In Progress -->
                 <!-- BEGIN: Latest Tasks -->
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">Latest Tasks</h2>
                         <div class="dropdown ml-auto sm:hidden">
@@ -510,10 +510,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Latest Tasks -->
                 <!-- BEGIN: General Statistics -->
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">General Statistics</h2>
                         <div class="dropdown ml-auto">
@@ -598,7 +598,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: General Statistics -->
             </div>
         </div>
