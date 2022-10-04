@@ -16,7 +16,7 @@
                 @method('PATCH')
                 <div class="intro-y box p-5">
                     <div class="mt-3">
-                        <label for="contact" class = "form-label">Nama Kontak</label>
+                        <label for="contact" class="form-label">Nama Kontak</label>
                         <select class="tom-select w-full mb-3" id="contact" name="contact_id">
                             @foreach ($contacts as $contact)
                                 <option value="{{ $contact->id }}"
@@ -26,11 +26,12 @@
                         </select>
                     </div>
                     <div class="mt-3">
-                        <label for="activity" class = "form-label">Aktivitas</label>
+                        <label for="activity" class="form-label">Aktivitas</label>
                         <select class="tom-select w-full mb-3" id="activity" name="activity_id">
                             @foreach ($activities as $activity)
                                 <option value="{{ $activity->id }}"
-                                    {{ $activity->id == $approachment->activity_id ? 'selected' : '' }}>{{ $activity->name }}
+                                    {{ $activity->id == $approachment->activity_id ? 'selected' : '' }}>
+                                    {{ $activity->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -43,7 +44,7 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="itemType" class = "form-label">Status</label>
+                        <label for="itemType" class="form-label">Status</label>
                         <select class="tom-select w-full mb-3" id="status" name="status_id">
                             @foreach ($statuses as $status)
                                 <option value="{{ $status->id }}"

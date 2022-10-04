@@ -6,7 +6,7 @@
 
 @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">Quotation - Data List</h2>
+        <h2 class="text-lg font-medium mr-auto">Quotation</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0 gap-2">
             <div class="dropdown ml-auto">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
