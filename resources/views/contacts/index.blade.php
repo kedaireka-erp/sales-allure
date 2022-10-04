@@ -42,22 +42,22 @@
                                 {{ $contact->ContactType ? $contact->ContactType->name : '' }}</div>
                         </div>
                         <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                            <a href=""
+                            <a href="{{ $contact->facebook ?? '' }}"
                                 class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
                                 title="Facebook">
                                 <i class="w-3 h-3 fill-current" data-lucide="facebook"></i>
                             </a>
-                            <a href=""
+                            <a href="{{ $contact->twitter ?? '' }}"
                                 class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
                                 title="Twitter">
                                 <i class="w-3 h-3 fill-current" data-lucide="twitter"></i>
                             </a>
-                            <a href=""
+                            <a href="{{ $contact->linkedin ?? '' }}"
                                 class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
                                 title="Linked In">
                                 <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i>
                             </a>
-                            <a href=""
+                            <a href="mailto:{{ $contact->email ?? '' }}"
                                 class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"
                                 title="Email">
                                 <i class="w-3 h-3 fill-current" data-lucide="mail"></i>
