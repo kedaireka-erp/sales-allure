@@ -16,4 +16,9 @@ class LoginController extends Controller
         Auth::loginUsingId(base64_decode($request->user_id));
         return redirect('/');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('http://erp.alluresystem.site/dashboard');
+    }
 }

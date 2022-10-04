@@ -49,7 +49,8 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::controller(PageController::class)->group(function () {
         Route::get('/', 'dashboardOverview1')->name('dashboard');
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
