@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function loginView()
     {
-        return redirect('http://erp.alluresystem.site/dashboard');
+        return redirect('http://erp.alluresystem.site');
     }
 
     public function login(Request $request){
@@ -19,6 +19,6 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect('http://erp.alluresystem.site/dashboard');
+        return redirect('http://erp.alluresystem.site');
     }
 }
