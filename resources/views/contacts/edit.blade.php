@@ -154,10 +154,12 @@
                     </div>
                     <div class="mt-5">
                         <label for="address" class="form-label">Address </label>
-                        <input id="address" type="text"
-                            class="@error('address') border-red-700                            
-                        @enderror form-control w-full"
-                            placeholder="Masukkan Alamat" name="address" value="{{ old('address', $contact->address) }}">
+                        <div class="mt-2">
+                            <textarea id="address" type="text"  cols="30" rows="10" 
+                                class="@error('address') border-red-700                            
+                            @enderror form-control w-full"
+                                placeholder="Masukkan Alamat" name="address">{{ old('address', $contact->address) }}</textarea>
+                        </div>
                         @error('address')
                             <p class="text-red-700 text-5m mt-1">{{ $message }}</p>
                         @enderror
