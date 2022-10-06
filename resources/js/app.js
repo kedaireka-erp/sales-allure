@@ -1,3 +1,4 @@
+
 /*
  |--------------------------------------------------------------------------
  | Midone Built-in Components
@@ -6,8 +7,10 @@
  | Import Midone built-in components.
  |
  */
+
 import "./bootstrap";
 import "@left4code/tw-starter/dist/js/svg-loader";
+import "./loading-page";
 import "@left4code/tw-starter/dist/js/accordion";
 import "@left4code/tw-starter/dist/js/alert";
 import "@left4code/tw-starter/dist/js/dropdown";
@@ -46,6 +49,7 @@ import "./calendar";
  |
  */
 // import "./maps";
+
 import "./chat";
 import "./show-modal";
 import "./show-slide-over";
@@ -60,5 +64,3 @@ import "./dark-mode-switcher";
 import "./fppp-form";
 import "./quotation-form";
 import "./filepond";
-
-
