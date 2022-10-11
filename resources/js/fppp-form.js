@@ -1,13 +1,16 @@
 (function () {
     "use strict";
 
-    const selected = $('#order_status').val();
+    const orderStatus = $('#order_status');
+    const selected = orderStatus.val();
+    const catatanStatusOrder = $('#catatan_status_order');
+    const fpppLain = $('#fppp_lain');
     
     if (selected == 'lainlain') {
-        $('#catatan_status_order').removeClass('hidden');
+        catatanStatusOrder.removeClass('hidden');
 
     } else if (selected == 'revisino') {
-        $('#fppp_lain').removeClass('hidden');
+        fpppLain.removeClass('hidden');
     } else {
 
     }
@@ -16,15 +19,15 @@
         const selected = $(this).val();
 
         if (selected == 'lainlain') {
-            $('#catatan_status_order').removeClass('hidden');
-            $('#fppp_lain').addClass('hidden');
+            catatanStatusOrder.removeClass('hidden');
+            fpppLain.addClass('hidden');
 
         } else if(selected == 'revisino'){
-            $('#catatan_status_order').addClass('hidden');
-            $('#fppp_lain').removeClass('hidden');
+            catatanStatusOrder.addClass('hidden');
+            fpppLain.removeClass('hidden');
         } else {
-            $('#fppp_lain').addClass('hidden');
-            $('#catatan_status_order').addClass('hidden');
+            fpppLain.addClass('hidden');
+            catatanStatusOrder.addClass('hidden');
         }
     });
 

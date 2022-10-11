@@ -22,5 +22,5 @@ mix.js("resources/js/app.js", "public/dist/js")
         processCssUrls: false,
     })
     .copyDirectory("resources/json", "public/dist/json")
-    .copyDirectory("resources/fonts", "public/dist/fonts")
-    .copyDirectory("resources/images", "public/dist/images");
+    .copyDirectory("resources/fonts", "public/dist/fonts");
+    // .copyDirectory("resources/images", "public/dist/images");

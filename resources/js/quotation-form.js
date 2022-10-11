@@ -1,23 +1,26 @@
 (function () {
     "use strict";
 
+    const alasanLost = $('#alasan_lost');
+    const statusId = $('#status_id');
+
     // Show code or preview
-    $('#alasan_lost').hide();
+    alasanLost.hide();
 
     $("body").on("change", "#status_id", function () {
         const selected = $(this).val();
         if (selected == '7') {
-            $('#alasan_lost').show();
+            alasanLost.show();
         }
      else {
-        $('#alasan_lost').hide();
+        alasanLost.hide();
     }
     });
 
 $("body").on("load", "#status_id", function () {
     const selected = $(this).val();
     if (selected == '7') {
-        $('#alasan_lost').show();
+        alasanLost.show();
     }
 });
 }) ();
