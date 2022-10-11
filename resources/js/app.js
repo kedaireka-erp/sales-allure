@@ -8,13 +8,13 @@
  |
  */
 
+// import "./loading-page";
 import "./bootstrap";
 import "@left4code/tw-starter/dist/js/svg-loader";
-import "./loading-page";
-import "@left4code/tw-starter/dist/js/accordion";
+// import "@left4code/tw-starter/dist/js/accordion";
 import "@left4code/tw-starter/dist/js/alert";
 import "@left4code/tw-starter/dist/js/dropdown";
-import "@left4code/tw-starter/dist/js/modal";
+// import "@left4code/tw-starter/dist/js/modal";
 import "@left4code/tw-starter/dist/js/tab";
 
 /*
@@ -25,8 +25,8 @@ import "@left4code/tw-starter/dist/js/tab";
  | Import 3rd party library JS files.
  |
  */
-import "./chart";
-import "./dashboard-chart";
+// import "./chart";
+// import "./dashboard-chart";
 import "./highlight";
 import "./lucide";
 import "./tiny-slider";
@@ -38,7 +38,7 @@ import "./validation";
 import "./zoom";
 import "./notification";
 import "./tabulator";
-import "./calendar";
+// import "./calendar";
 
 /*
  |--------------------------------------------------------------------------
@@ -50,13 +50,13 @@ import "./calendar";
  */
 // import "./maps";
 
-import "./chat";
-import "./show-modal";
-import "./show-slide-over";
+// import "./chat";
+// import "./show-modal";
+// import "./show-slide-over";
 import "./show-dropdown";
-import "./search";
-import "./copy-code";
-import "./show-code";
+// import "./search";
+// import "./copy-code";
+// import "./show-code";
 import "./side-menu";
 import "./mobile-menu";
 import "./side-menu-tooltip";

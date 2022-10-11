@@ -2,7 +2,7 @@
 
 @section('body')
     <body class="py-5">
-        <x-loading-page />
+        {{-- <x-loading-page /> --}}
         <div id="content">
             @yield('content')
         </div>

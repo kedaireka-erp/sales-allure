@@ -176,6 +176,7 @@
                                                             </option>
                                                             @endforeach
                                                         </select>
+                                                        {{-- <textarea name="alasan" id="alasan_lost" cols="30" rows="10" placeholder="Alasan Lost"></textarea> --}}
                                                         <div class="flex items-center mt-3">
                                                             <button class="btn btn-primary w-32 ml-2" type="submit">Ubah
                                                                 Status</button>
