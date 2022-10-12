@@ -12,14 +12,24 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Kyslik\ColumnSortable\Sortable;
 
 class Quotation extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use Sortable;
+    
     protected $table = 'quotations';
     protected $fillable = ['proyek_quotation_id', 'contact_id', 'deal_source_id', 'status_id','aplikator_id', 'alasan', 'keterangan'];
     protected $appends = ['nominal', 'no_quotation'];
+    public $sortable = [
+        'no_quotation',
+        'status_id',
+        'nominal',
+        'proyek_quotation_id',
+        'aplikator_id',
+    ];
 
     public function getNoQuotationAttribute(){
         return $this->DataQuotation->no_quotation;

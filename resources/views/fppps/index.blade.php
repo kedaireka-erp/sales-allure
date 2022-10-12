@@ -56,10 +56,10 @@
                 <thead>
                     <tr>
                         <th CLASS="whitespace-nowrap text-primary">NO.</th>
-                        <th class="whitespace-nowrap text-primary">NO. FPPP</th>
-                        <th class="text-center whitespace-nowrap text-primary">TIPE FPPP</th>
-                        <th class="text-center whitespace-nowrap text-primary">TAHAP PRODUKSI</th>
-                        <th class="text-center whitespace-nowrap text-primary">NO. QUOTATION</th>
+                        <th class="whitespace-nowrap text-primary">@sortablelink('fppp_no', "NO FPPP")</th>
+                        <th class="text-center whitespace-nowrap text-primary">@sortablelink('fppp_type', "TIPE FPPP")</th>
+                        <th class="text-center whitespace-nowrap text-primary">@sortablelink('production_phase', "TAHAP PRODUKSI")</th>
+                        <th class="text-center whitespace-nowrap text-primary">@sortablelink('quotation_id', "NO. QUOTATION")</th>
                         <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                     </tr>
                 </thead>

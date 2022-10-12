@@ -3933,6 +3933,9 @@ select{
 .p-2{
     padding: 0.5rem;
 }
+.p-10{
+    padding: 2.5rem;
+}
 .p-1{
     padding: 0.25rem;
 }
@@ -3941,9 +3944,6 @@ select{
 }
 .p-8{
     padding: 2rem;
-}
-.p-10{
-    padding: 2.5rem;
 }
 .px-4{
     padding-left: 1rem;

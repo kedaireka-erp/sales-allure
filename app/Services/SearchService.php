@@ -34,10 +34,10 @@ class SearchService
                 ->orWhere('sealant_usage', 'like', '%' . $keywords . '%')
                 ->orWhere('delivery_to_expedition', 'like', '%' . $keywords . '%')
                 ->orWhere('note', 'like', '%' . $keywords . '%')
-                ->with("quotation")->orderBy('created_at', 'desc')->orderBy('quotation_id', 'desc')
+                ->with("quotation")->sortable()
                 ->paginate(10);
         } else {
-            $result = Fppp::with("quotation")->orderBy('created_at', 'desc')->orderBy('quotation_id', 'desc')->paginate(20);
+            $result = Fppp::with("quotation")->sortable()->paginate(20);
         }
 
         return $result;
@@ -85,10 +85,10 @@ class SearchService
             ->orWhere('linkedin_company', 'like', '%' . $keywords . '%')
             ->orWhereRelation('company_type', 'name', 'like', '%' . $keywords . '%')
             ->orWhereRelation('company_area', 'name', 'like', '%' . $keywords . '%')
-            ->with("company_type", "company_area")->orderBy('created_at', 'desc')
+            ->with("company_type", "company_area")->sortable()
             ->paginate(10);
         } else {
-            $result = Company::with("company_type", "company_area")->orderBy('created_at', 'desc')->paginate(10);
+            $result = Company::with("company_type", "company_area")->sortable()->paginate(10);
         }
 
         return $result;
@@ -109,10 +109,10 @@ class SearchService
                 ->orWhereRelation('status', 'name', 'like', '%' . $request->search . '%')
                 ->orWhereRelation('contact', DB::raw("concat(first_name, ' ', last_name)"), 'like', '%' . $request->search . '%')
                 ->orWhereRelation('activity', 'name', 'like', '%' . $request->search . '%')
-                ->with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->filter($request)->paginate(10);
+                ->with('activity', 'contact', 'status')->sortable()->filter($request)->paginate(10);
         } else {
             
-            $result = Approachment::with('activity', 'contact', 'status')->orderBy('created_at', 'desc')->orderBy('contact_id', 'desc')->filter($request)->paginate(10);
+            $result = Approachment::with('activity', 'contact', 'status')->sortable()->filter($request)->paginate(10);
         }
 
         return $result;

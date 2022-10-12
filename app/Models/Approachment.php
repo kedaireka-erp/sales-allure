@@ -6,10 +6,12 @@ use App\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Kyslik\ColumnSortable\Sortable;
 
 class Approachment extends Model
 {
     use HasFactory;
+    use Sortable;
 
     protected $table="approachments";
     protected $fillable=[
@@ -20,8 +22,9 @@ class Approachment extends Model
         "note", 
     ];
 
+    public $sortable = ['date'];
+
     protected $dates = [
-        'date',
         'created_at'
     ];
 

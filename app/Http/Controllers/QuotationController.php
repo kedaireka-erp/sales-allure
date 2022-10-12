@@ -8,16 +8,16 @@ use App\Models\Contact;
 use App\Models\Quotation;
 use App\Models\DealSource;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\QuotationExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
-use PDF;
 
 class QuotationController extends Controller
 {
     public function index()
     {
-        $quotations = Quotation::with('Status', 'DetailQuotation', 'Aplikator', 'DataQuotation')->search(request(['search']))->status(request(['status']))->paginate(20);
+        $quotations = Quotation::sortable()->with('Status', 'DetailQuotation', 'Aplikator', 'DataQuotation')->search(request(['search']))->status(request(['status']))->paginate(20);
         $statuses = Status::all();
         return view('quotation.index', compact('quotations', 'statuses'));
     }
@@ -110,7 +110,7 @@ class QuotationController extends Controller
 
     public function toPdf(Quotation $quotation)
     {
-        $pdf = PDF::loadView('quotation.pdf', compact('quotation'));
+        $pdf = Pdf::loadView('quotation.pdf', compact('quotation'));
         return $pdf->download('QUOTATION_' . $quotation->DataQuotation->no_quotation . '.pdf');
     }
 

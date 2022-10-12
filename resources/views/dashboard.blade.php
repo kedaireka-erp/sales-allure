@@ -93,7 +93,7 @@
             </div>
             <!-- END: General Report -->
             <!-- BEGIN: Sales Report -->
-            {{-- <div class="col-span-12 lg:col-span-6 mt-8">
+            <div class="col-span-12 lg:col-span-6 mt-8">
                 <div class="intro-y block sm:flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Sales Report</h2>
                     <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
@@ -139,10 +139,10 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- END: Sales Report -->
             <!-- BEGIN: Weekly Top Seller -->
-            {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
+            <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                 <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Monthly Approachment</h2>
                     <a href="" class="ml-auto text-primary truncate">Show More</a>
@@ -150,7 +150,7 @@
                 <div class="intro-y box p-5 mt-5">
                     <div class="mt-3">
                         <div class="h-[213px]">
-                            <canvas id="report-pie-chart"></canvas>
+                            <canvas id="report-app-chart"></canvas>
                         </div>
                     </div>
                     <div class="w-52 sm:w-auto mx-auto mt-8">
@@ -171,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- END: Weekly Top Seller -->
             <!-- BEGIN: Sales Report -->
             {{-- <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">

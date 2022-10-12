@@ -5,8 +5,8 @@ import Chart from "chart.js/auto";
 (function(){
     "use strict";
 
-   if($('report-apps-chart').length){
-       let ctx = $("#report-apps-chart")[0].getContext("2d");
+   if($('#report-app-chart').length){
+       let ctx = $("#report-app-chart")[0].getContext("2d");
        let myPieChart = new Chart(ctx, {
            type: "pie",
            data: {
