@@ -1,5 +1,5 @@
 @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-dismissible show flex items-center mb-2" role="alert">
+    <div class="alert alert-success alert-dismissible show flex items-center mb-2" role="alert" id="session alert">
       <i data-lucide="alert-circle" class="w-6 h-6 mr-2"></i> 
       {{ $message }}
       <button type="button" class="btn-close text-white" data-tw-dismiss="alert" aria-label="Close">
@@ -9,7 +9,7 @@
 @endif
 
 @if ($message = Session::get('error'))
-<div class="alert alert-pending alert-dismissible show flex items-center mb-2" role="alert">
+<div class="alert alert-pending alert-dismissible show flex items-center mb-2" role="alert" id="session alert">
   <i data-lucide="alert-triangle" class="w-6 h-6 mr-2"></i> 
   @if ($errors->any())
   <ul>

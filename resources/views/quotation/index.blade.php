@@ -160,29 +160,29 @@
                             <td class="text-center">
                                 <div class="dropdown ml-auto">
                                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false"
-                                        data-tw-toggle="dropdown">
+                                        data-tw-toggle="dropdown" id="dropdown-status">
                                         <span class="w-5 h-5 flex items-center justify-center mr-2">
                                             <i class="w-4 h-4" data-lucide="edit"></i>
                                         </span>
                                         {{ $quotation->status->name }}
                                     </button>
                                     <div class="dropdown-menu w-45">
-                                        <ul class="dropdown-content">
+                                        <ul class="dropdown-content w-fit">
                                             <form class="p-2" action="{{ route('quotation.edit.status', $quotation) }}"
-                                                method="POST" enctype="multipart/form-data">
+                                                method="POST" enctype="multipart/form-data" class="w-fit form-status">
                                                 @csrf
                                                 @method('patch')
                                                 <div class="text-xs">Status</div>
                                                 <select class="tom-select mt-2" id="status_id" name="status_id">
                                                     @foreach ($statuses as $status)
-                                                    <option value="{{ $status->id }}" {{ $status->id ===
-                                                        $quotation->status_id ? 'selected' : '' }}>
-                                                        {{ $status->name }}
-                                                    </option>
+                                                    <option value="{{ $status->id }}" {{ $status->id == $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}</option>
                                                     @endforeach
                                                 </select>
-                                                {{-- <textarea name="alasan" id="alasan_lost" cols="30" rows="10"
-                                                    placeholder="Alasan Lost"></textarea> --}}
+                                                <div class="mt-2" id="lost-reason">
+                                                    <span class="text-xs">Lost Reason</span>
+                                                    <textarea name="alasan" id="alasan_lost" cols="30" rows="7"
+                                                        placeholder="Alasan Lost">{{ $quotation->alasan }}</textarea>
+                                                </div>
                                                 <div class="flex items-center mt-3">
                                                     <button class="btn btn-primary w-32 ml-2" type="submit">Ubah
                                                         Status</button>
@@ -285,8 +285,58 @@
 
 @section('script')
 <script>
-    const button = document.querySelector("#close-filter");
-        const dropdown = tailwind.Dropdown.getOrCreateInstance(button);
-        dropdown.hide();
+    // const button = document.querySelector("#close-filter");
+    // const dropdown = tailwind.Dropdown.getOrCreateInstance(button);
+    // dropdown.hide();
+
+    //hide all lost reason in each row with jquery
+    $(document).ready(function () {
+        $('tr td').each(function () {
+            $(this).find('#lost-reason').hide();
+        });
+
+        
+        $('tr td').click(function () {
+            //get a status id in each row
+            var status = $(this).find('#status_id').find('option:selected').text();
+            //if status id is 3 (lost) then show lost reason
+            if (status == 'Lost') {
+                $(this).find('#lost-reason').show();
+            }           
+        });
+
+        //if lost is selected then show lost reason
+        $(document).on('change', '#status_id', function () {
+            var status = $(this).find('option:selected').text();
+            if (status == 'Lost') {
+                
+                $(this).parent().find('#lost-reason').show();
+            } else {
+               
+                $(this).parent().find('#lost-reason').hide();
+            }
+        });
+    
+    });
+
+    //document ready
+    // $(document).on('change', '#status_id', function () {
+        
+    //     //change status
+    //         const selected = $( this ).find('option:selected').text();
+
+    //         //show lost reason
+    //         if (selected == "Lost") {
+    //             //only show the element on the selected row
+    //             $(this).closest(".form-status").find("#lost-reason").show();
+    //         } else {
+    //             $('#lost-reason').hide();
+    //         }
+     
+    // });
+    
+    
+    
+    
 </script>
 @endsection

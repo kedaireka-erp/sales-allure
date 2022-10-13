@@ -117,7 +117,8 @@ class QuotationController extends Controller
     public function updateStatus(Request $request, Quotation $quotation)
     {
         $validator = Validator::make($request->all(), [
-            'status_id' => 'required'
+            'status_id' => 'required',
+            'alasan' => 'nullable|max:300',
         ]);
         $quotation->update($validator->validate());
         if ($quotation) {
