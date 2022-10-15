@@ -70,4 +70,8 @@ class User extends Authenticatable
 
     }
 
+    public function approachments(){
+        return $this->hasMany(Approachment::class);
+    }
+
 }
