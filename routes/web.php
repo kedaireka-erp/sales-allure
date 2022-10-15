@@ -4,6 +4,7 @@ use App\Models\Fppp;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\AccountController;
@@ -196,6 +197,12 @@ Route::middleware('auth')->group(function () {
 
     //route Kontak -> Lead Interest
     Route::resource('leadinterests', LeadInterestController::class);
+
+    //route Charts
+    Route::controller(ChartController::class)->group(function(){
+        Route::get('pie-approachment', 'getApproachmentStatusData')->name('pie-aproachment');
+        Route::get('line-quotation', 'getQuotationNominalData')->name('line-quotation');
+    });
 });
 
 

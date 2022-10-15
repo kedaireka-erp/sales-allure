@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Carbon;
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,6 +15,7 @@ class Fppp extends Model
     use HasFactory;
     use BelongsToThrough;
     use SoftDeletes;
+    use Sortable;
 
     protected $table="fppps";
     protected $fillable=[
@@ -36,6 +38,13 @@ class Fppp extends Model
         "note", 
         "attachment",
         "user_id"
+    ];
+
+    public $sortable = [
+        "fppp_no",
+        "fppp_type",
+        "production_phase",
+        "quotation_id",
     ];
 
     protected $dates = ['created_at'];

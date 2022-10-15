@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Kyslik\ColumnSortable\Sortable;
 
 class Contact extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Sortable;
 
     protected $table = 'contacts';
     protected $guarded = ['id'];
     protected $appends = ['name'];
+    public $sortable = ['first_name', 'last_name', 'email', 'phone', 'contact_type_id', 'lead_source_id', 'created_at'];
 
     protected function firstName(): Attribute
     {

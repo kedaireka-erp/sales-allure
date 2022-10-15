@@ -59,12 +59,12 @@
             <thead>
                 <tr>
                     <th class="whitespace-nowrap text-primary">NO</th>
-                    <th class="whitespace-nowrap text-primary">COMPANY NAME</th>
-                    <th class="whitespace-nowrap text-primary">PHONE NUMBER</th>
-                    <th class="whitespace-nowrap text-primary">COMPANY TYPE</th>
+                    <th class="whitespace-nowrap text-primary">@sortablelink('name', "COMPANY NAME")</th>
+                    <th class="whitespace-nowrap text-primary">@sortablelink('phone_number', "PHONE NUMBER")</th>
+                    <th class="whitespace-nowrap text-primary">@sortablelink('company_type.name', "COMPANY TYPE")</th>
                     {{-- <th class="whitespace-nowrap">ADDRESS</th> --}}
                     {{-- <th class="whitespace-nowrap">CITY</th> --}}
-                    <th class="whitespace-nowrap text-primary">COMPANY AREA</th>
+                    <th class="whitespace-nowrap text-primary">@sortablelink('company_area.name', "COMPANY AREA")</th>
                     {{-- <th class="whitespace-nowrap">POSTAL CODE</th> --}}
                     {{-- <th class="whitespace-nowrap">NUMBER OF EMPLOYEES</th> --}}
                     {{-- <th class="whitespace-nowrap">ANNUAL REVENUE</th> --}}

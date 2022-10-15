@@ -3933,6 +3933,9 @@ select{
 .p-2{
     padding: 0.5rem;
 }
+.p-10{
+    padding: 2.5rem;
+}
 .p-1{
     padding: 0.25rem;
 }
@@ -3941,9 +3944,6 @@ select{
 }
 .p-8{
     padding: 2rem;
-}
-.p-10{
-    padding: 2.5rem;
 }
 .px-4{
     padding-left: 1rem;
@@ -4346,6 +4346,10 @@ select{
 .text-gray-700{
     --tw-text-opacity: 1;
     color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.text-slate-300{
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-slate-300) / var(--tw-text-opacity));
 }
 .text-opacity-70{
     --tw-text-opacity: 0.7;

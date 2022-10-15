@@ -323,7 +323,8 @@
                                 </div>
                                 <div class="mr-auto text-center sm:text-left mt-3 sm:mt-0">
                                     <a href="" class="font-medium text-lg">{{ $app->activity->name }}</a>
-                                    <div class="text-slate-500 mt-1 sm:mt-0">{{ $app->note }}
+                                    <div class="text-slate-500 mt-1 sm:mt-0">
+                                        {!! $app->note !!}
                                     </div>
                                 </div>
                             </div>

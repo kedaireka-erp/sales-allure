@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Fppp;
+use App\Models\User;
 use App\Models\Contact;
 use App\Models\Quotation;
 use App\Models\Approachment;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class PageController extends Controller
 {
@@ -20,9 +23,27 @@ class PageController extends Controller
     public function dashboardOverview1()
     {
         $approachments = Approachment::whereMonth('date', Carbon::now()->month)->get();
+        $approachments_all = Approachment::all();
         $quo = Quotation::all();
         $contacts = Contact::all();
         $fppps = Fppp::whereMonth('created_at', Carbon::now()->month)->get();
+
+        $quo_nominal_this_month =  Quotation::select(DB::raw('sum(detail_quotations.harga) as total'))
+            ->join('detail_quotations', 'detail_quotations.quotation_id', '=', 'quotations.id')
+            ->whereYear('quotations.created_at', date('Y'))
+            ->whereMonth('quotations.created_at', '=', Carbon::now()->month)
+            ->first()->total;
+        $quo_nominal_last_month =  Quotation::select(DB::raw('sum(detail_quotations.harga) as total'))
+            ->join('detail_quotations', 'detail_quotations.quotation_id', '=', 'quotations.id')
+            ->whereYear('quotations.created_at', date('Y'))
+            ->whereMonth('quotations.created_at', '=', Carbon::now()->month - 1)
+            ->first()->total;
+
+        $top_weekly_sellers = User::withCount(['approachments' => function (Builder $query) {
+            $query->whereRelation('status', 'name', 'Deal')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+        }])->orderBy('approachments_count', 'desc')->limit(4)->get();
+
+        $latest_five_quotation = Quotation::latest()->limit(5)->get();
 
         return view('dashboard', [
             // Specify the base layout.
@@ -34,6 +55,11 @@ class PageController extends Controller
             'quotations' => $quo,
             'contacts' => $contacts,
             'fppps' => $fppps,
+            'approachments_all' => $approachments_all,
+            'quo_nominal_this_month' => $quo_nominal_this_month,
+            'quo_nominal_last_month' => $quo_nominal_last_month,
+            'top_weekly_sellers' => $top_weekly_sellers,
+            'latest_five_quotation' => $latest_five_quotation,
         ]);
     }
 

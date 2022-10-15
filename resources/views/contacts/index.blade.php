@@ -67,7 +67,7 @@
                     <div class="w-full flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
                         <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
                             <p class="text-md text-slate-400">
-                                PT Graha Persada
+                                {{ $contact->Company ? $contact->Company->name : '' }}
                             </p>
                         </div>
                         <form action="{{ route('contacts.destroy', $contact) }}" method="post">
