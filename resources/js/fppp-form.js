@@ -2,17 +2,20 @@
     "use strict";
 
     const orderStatus = $('#order_status');
-    const selected = orderStatus.val();
     const catatanStatusOrder = $('#catatan_status_order');
     const fpppLain = $('#fppp_lain');
-    
-    if (selected == 'lainlain') {
-        catatanStatusOrder.removeClass('hidden');
 
-    } else if (selected == 'revisino') {
-        fpppLain.removeClass('hidden');
-    } else {
+    if(orderStatus.length){
+        const selected = orderStatus.val();
 
+        if (selected == 'lainlain') {
+            catatanStatusOrder.removeClass('hidden');
+
+        } else if (selected == 'revisino') {
+            fpppLain.removeClass('hidden');
+        } else {
+
+        }
     }
 
     $("body").on("change", "#order_status", function () {

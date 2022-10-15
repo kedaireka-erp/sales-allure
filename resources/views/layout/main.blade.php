@@ -2,10 +2,7 @@
 
 @section('body')
     <body class="py-5">
-        {{-- <x-loading-page /> --}}
-        <div id="content">
-            @yield('content')
-        </div>
+        @yield('content')
         @include('layout.components.dark-mode-switcher')
         @include('layout.components.main-color-switcher')
 

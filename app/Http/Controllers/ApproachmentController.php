@@ -39,6 +39,7 @@ class ApproachmentController extends Controller
     public function store(ApproachmentRequest $request)
     {
         $validated = $request->validated();
+        $validated["user_id"] = auth()->user()->id;
         $create = Approachment::create($validated);
 
         if ($create) {

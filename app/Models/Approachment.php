@@ -17,6 +17,7 @@ class Approachment extends Model
     protected $fillable=[
         "contact_id",
         "activity_id",
+        "user_id",
         "status_id",
         "date",
         "note", 
@@ -49,6 +50,10 @@ class Approachment extends Model
             $query->where('contact_id','=', $filter['contact']);
         }
         return $query;
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
 }
