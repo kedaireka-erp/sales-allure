@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','gender','phone_number','address', 'photo'
+        'name', 'email', 'password', 'gender', 'phone_number', 'address', 'photo'
     ];
 
     /**
@@ -48,14 +49,15 @@ class User extends Authenticatable
     public function getPhotoUrlAttribute()
     {
         if ($this->photo != null) {
-            return asset('storage/'.$this->photo);
+            return asset('storage/' . $this->photo);
         } else {
             return "https://ui-avatars.com/api/?name=" . $this->name;
         }
     }
 
 
-    public function tempFiles(){
+    public function tempFiles()
+    {
         return $this->hasMany(TempFiles::class);
     }
 
@@ -64,14 +66,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Fppp::class);
     }
-    
-    public function contacts(){
-        return $this->hasMany(Contact::class);
 
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
     }
 
-    public function approachments(){
+    public function approachments()
+    {
         return $this->hasMany(Approachment::class);
     }
-
 }
