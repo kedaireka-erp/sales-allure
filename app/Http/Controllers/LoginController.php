@@ -9,16 +9,16 @@ class LoginController extends Controller
 {
     public function loginView()
     {
-        return redirect('http://erp.alluresystem.site/dashboard');
+        return redirect('http://erp.alluresystem.site');
     }
 
     public function login(Request $request){
         Auth::loginUsingId(base64_decode($request->user_id));
-        return redirect('/');
+        return to_route('dashboard');
     }
 
     public function logout(){
         Auth::logout();
-        return redirect('http://erp.alluresystem.site/dashboard');
+        return redirect('http://erp.alluresystem.site');
     }
 }
