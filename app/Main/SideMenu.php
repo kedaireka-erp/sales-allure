@@ -172,7 +172,7 @@ class SideMenu
             'devider',
             'role-permission' => [
                 'icon' => 'lock',
-                'route_name' => 'chat',
+                'route_name' => 'fppps.index',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
