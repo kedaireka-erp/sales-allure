@@ -22,21 +22,21 @@ class PageController extends Controller
      */
     public function dashboardOverview1()
     {
-        $approachments = Approachment::whereMonth('date', Carbon::now()->month)->get();
+        $approachments = Approachment::whereMonth('created_at', Carbon::now()->month)->get();
         $approachments_all = Approachment::all();
         $quo = Quotation::all();
         $contacts = Contact::all();
         $fppps = Fppp::whereMonth('created_at', Carbon::now()->month)->get();
 
         $quo_nominal_this_month =  Quotation::select(DB::raw('sum(detail_quotations.harga) as total'))
-            ->join('detail_quotations', 'detail_quotations.quotation_id', '=', 'quotations.id')
-            ->whereYear('quotations.created_at', date('Y'))
-            ->whereMonth('quotations.created_at', '=', Carbon::now()->month)
+            ->join('detail_quotations', 'detail_quotations.quotation_id', '=', 'proyek_quotations.id')
+            ->whereYear('proyek_quotations.created_at', date('Y'))
+            ->whereMonth('proyek_quotations.created_at', '=', Carbon::now()->month)
             ->first()->total;
         $quo_nominal_last_month =  Quotation::select(DB::raw('sum(detail_quotations.harga) as total'))
-            ->join('detail_quotations', 'detail_quotations.quotation_id', '=', 'quotations.id')
-            ->whereYear('quotations.created_at', date('Y'))
-            ->whereMonth('quotations.created_at', '=', Carbon::now()->month - 1)
+            ->join('detail_quotations', 'detail_quotations.quotation_id', '=', 'proyek_quotations.id')
+            ->whereYear('proyek_quotations.created_at', date('Y'))
+            ->whereMonth('proyek_quotations.created_at', '=', Carbon::now()->month - 1)
             ->first()->total;
 
         $top_weekly_sellers = User::withCount(['approachments' => function (Builder $query) {

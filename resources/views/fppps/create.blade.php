@@ -48,10 +48,10 @@
                         @foreach ($quotations as $quotation)
                         @isset($quo)
                         <option {{ $quo->id == $quotation->id ? 'selected' : '' }} value="{{ $quotation->id }}">
-                            {{ $quotation->DataQuotation->no_quotation ?? '' }}</option>
+                            {{ $quotation->no_quotation ?? '' }}</option>
                         @endisset
                         <option value="{{ $quotation->id }}">
-                            {{ $quotation->DataQuotation->no_quotation ?? '' }}</option>
+                            {{ $quotation->no_quotation ?? '' }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -141,7 +141,8 @@
 
                 <div class="mt-5">
                     <label for="filepond" class="form-label">Attachments </label>
-                    <input data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3" id="filepond" type="file" class="form-control w-full " name="file" multiple>
+                    <input data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3" id="filepond"
+                        type="file" class="form-control w-full " name="file" multiple>
                 </div>
 
                 <div class="text-right mt-5">
@@ -158,7 +159,7 @@
 
 @section('script')
 <script type="text/javascript">
- 
+
 </script>
 <script src="{{ mix('dist/js/ckeditor-classic.js') }}"></script>
 @endsection

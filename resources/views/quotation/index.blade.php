@@ -131,14 +131,17 @@
                     <thead>
                         <tr>
                             <th CLASS="whitespace-nowrap text-primary">NO.</th>
-                            <th class="whitespace-nowrap text-primary">@sortablelink('DataQuotation.no_quotation', "NO.
+                            <th class="whitespace-nowrap text-primary">@sortablelink('no_quotation', "NO.
                                 QUOTATION")</th>
                             <th class="text-center whitespace-nowrap text-primary">@sortablelink('Status.name',
                                 "STATUS")</th>
-                            <th class="text-center whitespace-nowrap text-primary">@sortablelink('DataQuotation.no_quotation',"PENAWARAN")
+                            <th class="text-center whitespace-nowrap text-primary">
+                                @sortablelink('no_quotation',"PENAWARAN")
                             </th>
-                            <th class="whitespace-nowrap text-primary">@sortablelink('DataQuotation.nama_proyek', "PROYEK")</th>
-                            <th class="whitespace-nowrap text-primary">@sortablelink('Aplikator.aplikator', "APLIKATOR")</th>
+                            <th class="whitespace-nowrap text-primary">@sortablelink('nama_proyek',
+                                "PROYEK")</th>
+                            <th class="whitespace-nowrap text-primary">@sortablelink('Aplikator.aplikator', "APLIKATOR")
+                            </th>
                             <th class="text-center whitespace-nowrap text-primary">ACTIONS</th>
                         </tr>
                     </thead>@foreach ($quotations as $key => $quotation)
@@ -154,7 +157,7 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="font-medium whitespace-nowrap">{{ $quotation->DataQuotation->no_quotation ??
+                                <div class="font-medium whitespace-nowrap">{{ $quotation->no_quotation ??
                                     ''}}</div>
                             </td>
                             <td class="text-center">
@@ -164,7 +167,7 @@
                                         <span class="w-5 h-5 flex items-center justify-center mr-2">
                                             <i class="w-4 h-4" data-lucide="edit"></i>
                                         </span>
-                                        {{ $quotation->status->name }}
+                                        {{ $quotation->Status->name }}
                                     </button>
                                     <div class="dropdown-menu w-45">
                                         <ul class="dropdown-content w-fit">
@@ -175,7 +178,9 @@
                                                 <div class="text-xs">Status</div>
                                                 <select class="tom-select mt-2" id="status_id" name="status_id">
                                                     @foreach ($statuses as $status)
-                                                    <option value="{{ $status->id }}" {{ $status->id == $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                    <option value="{{ $status->id }}" {{ $status->id ==
+                                                        $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}
+                                                    </option>
                                                     @endforeach
                                                 </select>
                                                 <div class="mt-2" id="lost-reason">
@@ -196,12 +201,12 @@
                                 @currency($quotation->nominal)
                             </td>
                             <td>
-                                <div class="font-medium whitespace-nowrap">{{ $quotation->DataQuotation->nama_proyek ?
-                                    Str::limit($quotation->DataQuotation->nama_proyek, 15) : '' }}
+                                <div class="font-medium whitespace-nowrap">{{ $quotation->nama_proyek ?
+                                    Str::limit($quotation->nama_proyek, 15) : '' }}
                                 </div>
                             </td>
                             <td>
-                                <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator }}
+                                <div class="font-medium whitespace-nowrap">{{ $quotation->Aplikator->aplikator ?? '' }}
                                 </div>
                             </td>
                             <td class="table-report__action w-fit">
