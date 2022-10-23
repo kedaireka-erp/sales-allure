@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::table('fppps', function (Blueprint $table) {
             //
             $table->unsignedBigInteger("quotation_id")->default(1)->after("id");
-            $table->foreign("quotation_id")->references("id")->on("quotations")->onDelete("restrict")->onUpdate("cascade");
-
+            $table->foreign("quotation_id")->references("id")->on("proyek_quotations")->onDelete("restrict")->onUpdate("cascade");
         });
     }
 
@@ -32,7 +31,6 @@ return new class extends Migration
             //
             $table->dropForeign("fppps_quotation_id_foreign");
             $table->dropColumn("quotation_id");
-
         });
     }
 };

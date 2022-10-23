@@ -29,31 +29,31 @@
     <br>
     <tbody>
         @foreach ($fppps as $fppp)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $fppp->fppp_no }}</td>
-                <td>{{ $fppp->fppp_type }}</td>
-                <td>{{ $fppp->production_phase }}</td>
-                <td>{{ $fppp->quotation->DataQuotation->no_quotation ?? '' }}</td>
-                <td>{{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</td>
-                <td>ASTRAL</td>
-                <td>{{ $fppp->quotation->Aplikator->aplikator }}</td>
-                <td>{{ $fppp->quotation->DataQuotation->nama_proyek ?? '' }}</td>
-                <td>{{ $fppp->quotation->DataQuotation->alamat_proyek ?? '' }}</td>
-                <td>{{ $fppp->user->name }}</td>
-                <td> {{ $fppp->order_status }} </td>
-                <td>{{ $fppp->fppp_revisino }} </td>
-                <td>{{ $fppp->fppp_keterangan }} </td>
-                <td>{{ $fppp->production_time }} hari</td>
-                <td>{{ $fppp->color }}</td>
-                <td> {{ ucfirst($fppp->glass) }} </td>
-                <td>{{ $fppp->glass_type }}</td>
-                <td>{{ $fppp->retrieval_deadline }}</td>
-                <td> {{ $fppp->box_usage }} </td>
-                <td> {{ $fppp->sealant_usage }}</td>
-                <td> {{ $fppp->delivery_to_expedition }} </td>
-                <td>{!!$fppp->note!!}</td>
-            </tr>
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $fppp->fppp_no }}</td>
+            <td>{{ $fppp->fppp_type }}</td>
+            <td>{{ $fppp->production_phase }}</td>
+            <td>{{ $fppp->quotation->no_quotation ?? '' }}</td>
+            <td>{{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</td>
+            <td>ASTRAL</td>
+            <td>{{ $fppp->quotation->Aplikator->aplikator ?? '' }}</td>
+            <td>{{ $fppp->quotation->nama_proyek ?? '' }}</td>
+            <td>{{ $fppp->quotation->alamat_proyek ?? '' }}</td>
+            <td>{{ $fppp->user->name }}</td>
+            <td> {{ $fppp->order_status }} </td>
+            <td>{{ $fppp->fppp_revisino }} </td>
+            <td>{{ $fppp->fppp_keterangan }} </td>
+            <td>{{ $fppp->production_time }} hari</td>
+            <td>{{ $fppp->color }}</td>
+            <td> {{ ucfirst($fppp->glass) }} </td>
+            <td>{{ $fppp->glass_type }}</td>
+            <td>{{ $fppp->retrieval_deadline }}</td>
+            <td> {{ $fppp->box_usage }} </td>
+            <td> {{ $fppp->sealant_usage }}</td>
+            <td> {{ $fppp->delivery_to_expedition }} </td>
+            <td>{!!$fppp->note!!}</td>
+        </tr>
         @endforeach
     </tbody>
 </table>

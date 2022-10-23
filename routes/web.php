@@ -39,20 +39,20 @@ use App\Http\Controllers\LeadPriorityController;
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
 Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
 
-// Route::controller(AuthController::class)->middleware('loggedin')->group(function () {
-//     Route::get('login', 'loginView')->name('login.index');
-//     Route::post('login', 'login')->name('login.check');
-// });
-
-Route::controller(LoginController::class)->group(function () {
+Route::controller(AuthController::class)->middleware('loggedin')->group(function () {
     Route::get('login', 'loginView')->name('login.index');
     Route::post('login', 'login')->name('login.check');
 });
 
+// Route::controller(LoginController::class)->group(function () {
+//     Route::get('login', 'loginView')->name('login.index');
+//     Route::post('login', 'login')->name('login.check');
+// });
+
 Route::middleware('auth')->group(function () {
 
-    // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::middleware('role:Sales|Admin')->group(function () {
 
@@ -173,7 +173,7 @@ Route::middleware('auth')->group(function () {
         Route::get('quotation/export/', [QuotationController::class, 'export'])->name('quotation.export');
         Route::get('quotation/{quotation}/pdf/', [QuotationController::class, 'toPdf'])->name('quotations.pdf');
         Route::patch('quotation/edit/status/{quotation}', [QuotationController::class, 'updateStatus'])->name('quotation.edit.status');
-        Route::resource('quotation', QuotationController::class);
+        Route::resource('quotation', QuotationController::class)->only(['index', 'show']);
 
         //route company_areas
         Route::resource('company_areas', CompanyAreaController::class);

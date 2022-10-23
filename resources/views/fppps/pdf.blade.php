@@ -23,28 +23,28 @@
     <br>
     <p>Tipe FPPP :
         @if ($fppp->fppp_type == 'produksi')
-            <b {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi</b>
+        <b {{ $fppp->fppp_type == 'produksi' ? 'selected' : '' }} value="produksi">Produksi</b>
         @endif
         @if ($fppp->fppp_type == 'memo')
-            <b {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</b>
+        <b {{ $fppp->fppp_type == 'memo' ? 'selected' : '' }} value="memo">Memo</b>
         @endif
     </p>
-    <p>No. Quotation : <b>{{ $fppp->quotation->DataQuotation->no_quotation ?? '' }}</b></p>
+    <p>No. Quotation : <b>{{ $fppp->quotation->no_quotation ?? '' }}</b></p>
     <p>Tanggal : <b>{{ \Carbon\Carbon::parse($fppp->created_at)->translatedFormat('d F Y') }}</b></p>
     <p>Divisi : <b>ASTRAL</b></p>
-    <p>Nama Aplikator : <b>{{ $fppp->quotation->Aplikator->aplikator }}</b></p>
-    <p>Nama Proyek : <b>{{ $fppp->quotation->DataQuotation->nama_proyek }}</b></p>
-    <p>Alamat Proyek : <b>{{ $fppp->quotation->DataQuotation->alamat_proyek }}</b></p>
+    <p>Nama Aplikator : <b>{{ $fppp->quotation->Aplikator->aplikator ?? '' }}</b></p>
+    <p>Nama Proyek : <b>{{ $fppp->quotation->nama_proyek ?? '' }}</b></p>
+    <p>Alamat Proyek : <b>{{ $fppp->quotation->alamat_proyek ?? '' }}</b></p>
     <p>Sales/Site Manager : <b>{{ $fppp->user->name }}</b> </p>
     <p>Status Order :
         <b>{{ ucfirst($fppp->order_status) }}</b>
         @if ($fppp->order_status == 'revisi')
-            <b {{ $fppp->order_status == 'revisino' ? 'selected' : '' }} value="revisino">dari FPPP No.
-                {{ $fppp->fppp_revisino }}</b>
+        <b {{ $fppp->order_status == 'revisino' ? 'selected' : '' }} value="revisino">dari FPPP No.
+            {{ $fppp->fppp_revisino }}</b>
         @endif
         @if ($fppp->order_status == 'lain-lain')
-            <b {{ $fppp->order_status == 'lainlain' ? 'selected' : '' }} value="lainlain"><p>Keterangan : </p></b>
-            {!! $fppp->fppp_keterangan !!}
+        <b {{ $fppp->order_status == 'lainlain' ? 'selected' : '' }} value="lainlain"><p>Keterangan : </p></b>
+        {!! $fppp->fppp_keterangan !!}
         @endif
     </p>
     <p>Waktu Produksi : <b>{{ $fppp->production_time }} Hari</b></p>
@@ -53,14 +53,14 @@
     <p>Warna : <b>{{ $fppp->color }}</b></p>
     <p>Kaca :
         @if ($fppp->glass == 'included')
-            <b {{ $fppp->glass == 'included' ? 'selected' : '' }} value="included">Included</b>
+        <b {{ $fppp->glass == 'included' ? 'selected' : '' }} value="included">Included</b>
         @endif
         @if ($fppp->glass == 'excluded')
-            <b {{ $fppp->glass == 'excluded' ? 'selected' : '' }} value="excluded">Excluded</b>
+        <b {{ $fppp->glass == 'excluded' ? 'selected' : '' }} value="excluded">Excluded</b>
         @endif
         @if ($fppp->glass == 'included & excluded')
-            <b {{ $fppp->glass == 'included_excluded' ? 'selected' : '' }} value="included_excluded">Included &
-                Excluded</b>
+        <b {{ $fppp->glass == 'included_excluded' ? 'selected' : '' }} value="included_excluded">Included &
+            Excluded</b>
         @endif
     </p>
     <p>Jenis Kaca : <b>{{ $fppp->glass_type }}</b></p>

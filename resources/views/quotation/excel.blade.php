@@ -1,7 +1,6 @@
-
 <table>
     <thead>
-        <tr>  
+        <tr>
             <th><b>NO</b></th>
             <th><b>QUOTATION_NO</b></th>
             <th><b>NAMA_PROYEK</b></th>
@@ -18,11 +17,11 @@
         @foreach ($quotations as $quotation)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $quotation->DataQuotation->no_quotation ?? '' }}</td>
-            <td>{{ $quotation->DataQuotation->nama_proyek }}
-            <td>{{ $quotation->Contact->name}}</td>
-            <td>{{ $quotation->DealSource->name }}</td>
-            <td>{{ $quotation->Status->name }}</td>
+            <td>{{ $quotation->no_quotation ?? '' }}</td>
+            <td>{{ $quotation->nama_proyek }}
+            <td>{{ $quotation->Contact->name ?? ''}}</td>
+            <td>{{ $quotation->DealSource->name ?? '' }}</td>
+            <td>{{ $quotation->Status->name ?? '' }}</td>
             <td>@currency($quotation->nominal)</td>
             <td>{{ $quotation->keterangan }}</td>
             <td>{{ $quotation->created_at }}</td>

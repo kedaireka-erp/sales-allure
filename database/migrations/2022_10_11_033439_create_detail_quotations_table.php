@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('detail_quotations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('quotation_id')->default(1);
-            $table->foreign('quotation_id')->references('id')->on('quotations')->onDelete('RESTRICT')->onUpdate('CASCADE');
+            $table->unsignedBigInteger('quotation_id');
+            $table->foreign('quotation_id')->references('id')->on('proyek_quotations')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->integer('id_kode_gambar');
             $table->string('lokasi');
             $table->string('kode_item');

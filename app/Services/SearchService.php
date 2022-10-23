@@ -14,14 +14,15 @@ use Illuminate\Support\Facades\DB;
  */
 class SearchService
 {
-    public function SearchFppp($keywords){
+    public function SearchFppp($keywords)
+    {
         $result = '';
 
         if ($keywords) {
             $result = Fppp::where('fppp_type', 'like', '%' . $keywords . '%')
                 ->orWhere('production_phase', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_no', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('dataQuotation', 'no_quotation', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('quotation', 'no_quotation', 'like', '%' . $keywords . '%')
                 ->orWhere('order_status', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_revisino', 'like', '%' . $keywords . '%')
                 ->orWhere('fppp_keterangan', 'like', '%' . $keywords . '%')
@@ -75,18 +76,18 @@ class SearchService
 
         if ($keywords) {
             $result = Company::where('name', 'like', '%' . $keywords . '%')
-            ->orWhere('phone_number', 'like', '%' . $keywords . '%')
-            ->orWhere('address', 'like', '%' . $keywords . '%')
-            ->orWhere('city', 'like', '%' . $keywords . '%')
-            ->orWhere('postal_code', 'like', '%' . $keywords . '%')
-            ->orWhere('number_of_employees', 'like', '%' . $keywords . '%')
-            ->orWhere('annual_revenue', 'like', '%' . $keywords . '%')
-            ->orWhere('time_zone', 'like', '%' . $keywords . '%')
-            ->orWhere('linkedin_company', 'like', '%' . $keywords . '%')
-            ->orWhereRelation('company_type', 'name', 'like', '%' . $keywords . '%')
-            ->orWhereRelation('company_area', 'name', 'like', '%' . $keywords . '%')
-            ->with("company_type", "company_area")->sortable()
-            ->paginate(10);
+                ->orWhere('phone_number', 'like', '%' . $keywords . '%')
+                ->orWhere('address', 'like', '%' . $keywords . '%')
+                ->orWhere('city', 'like', '%' . $keywords . '%')
+                ->orWhere('postal_code', 'like', '%' . $keywords . '%')
+                ->orWhere('number_of_employees', 'like', '%' . $keywords . '%')
+                ->orWhere('annual_revenue', 'like', '%' . $keywords . '%')
+                ->orWhere('time_zone', 'like', '%' . $keywords . '%')
+                ->orWhere('linkedin_company', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('company_type', 'name', 'like', '%' . $keywords . '%')
+                ->orWhereRelation('company_area', 'name', 'like', '%' . $keywords . '%')
+                ->with("company_type", "company_area")->sortable()
+                ->paginate(10);
         } else {
             $result = Company::with("company_type", "company_area")->sortable()->paginate(10);
         }
@@ -96,7 +97,6 @@ class SearchService
 
     public function SearchQuotation($keywords)
     {
-
     }
 
     public function SearchApproachment($request)
@@ -111,12 +111,10 @@ class SearchService
                 ->orWhereRelation('activity', 'name', 'like', '%' . $request->search . '%')
                 ->with('activity', 'contact', 'status')->sortable()->filter($request)->paginate(10);
         } else {
-            
+
             $result = Approachment::with('activity', 'contact', 'status')->sortable()->filter($request)->paginate(10);
         }
 
         return $result;
-
-        
     }
 }
