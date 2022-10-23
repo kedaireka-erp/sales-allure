@@ -17,36 +17,33 @@ use Kyslik\ColumnSortable\Sortable;
 class Quotation extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     use Sortable;
-    
-    protected $table = 'quotations';
-    protected $fillable = ['proyek_quotation_id', 'contact_id', 'deal_source_id', 'status_id','aplikator_id', 'alasan', 'keterangan'];
+
+    protected $table = 'proyek_quotations';
+
+    protected $fillable = ['id_penginput', 'kode_aplikator', 'no_quotation', 'id_currency', 'nama_proyek', 'nama_owner', 'kontak', 'no_quotation_cus', 'alamat_proyek', 'keterangan', 'status_quotation', 'date', 'alasan', 'revisi_ke'];
+    public $sortable = ['no_quotation', 'nama_proyek'];
+
     protected $appends = ['nominal', 'no_quotation'];
-    public $sortable = [
-        'no_quotation',
-        'status_id',
-        'nominal',
-        'proyek_quotation_id',
-        'aplikator_id',
-    ];
 
-    public function getNoQuotationAttribute(){
-        return $this->DataQuotation->no_quotation;
-    }
+    // public function getNoQuotationAttribute()
+    // {
+    //     return $this->DataQuotation->no_quotation;
+    // }
 
-    public function Contact()
-    {
-        return $this->belongsTo(Contact::class);
-    }
+    // public function Contact()
+    // {
+    //     return $this->belongsTo(Contact::class);
+    // }
 
     public function DealSource()
     {
         return $this->belongsTo(DealSource::class);
     }
+
     public function Status()
     {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(Status::class, 'status_quotation');
     }
 
     public function fppp()
@@ -67,23 +64,23 @@ class Quotation extends Model
     public function scopeSearch($query, $filter)
     {
         $query->when($filter['search'] ?? false, function ($query, $search) {
-            return $query->whereRelation('DataQuotation','no_quotation', 'like', '%' . $search . '%');
+            return $query->where('no_quotation', 'like', '%' . $search . '%');
         });
     }
     public function scopeStatus($query, $filter)
     {
         $query->when($filter['status'] ?? false, function ($query, $status) {
-            return $query->where('status_id', '=', $status);
+            return $query->where('status_quotation', '=', $status);
         });
     }
 
     public function Aplikator()
     {
-        return $this->belongsTo(MasterAplikator::class);
+        return $this->belongsTo(MasterAplikator::class, 'kode_aplikator', 'kode');
     }
 
-    public function DataQuotation(){
-        return $this->hasOne(ProyekQuotation::class, 'id', 'proyek_quotation_id');
-    }
-
+    // public function DataQuotation()
+    // {
+    //     return $this->hasOne(ProyekQuotation::class, 'id', 'proyek_quotation_id');
+    // }
 }

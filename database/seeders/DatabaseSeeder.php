@@ -75,8 +75,8 @@ class DatabaseSeeder extends Seeder
         MasterAplikator::factory(15)->create();
 
         ProyekQuotation::factory(20)->create();
-        
-        Quotation::factory(20)->create();
+
+        // Quotation::factory(20)->create();
 
         DetailQuotation::factory(100)->create();
 

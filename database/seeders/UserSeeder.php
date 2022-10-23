@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'active' => 1,
             'remember_token' => Str::random(10)
 
-        ]);
+        ])->assignRole('Admin');
 
         User::create([
             'name' => 'Samantha',
