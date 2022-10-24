@@ -27,7 +27,7 @@ class ApproachmentFactory extends Factory
             "user_id" => User::all()->random()->id,
             "status_id" => $this->faker->numberBetween(7, 9),
             "date" => $this->faker->date(),
-            "note" => $this->faker->paragraph(3),
+            "note" => $this->faker->sentence(),
         ];
     }
 }

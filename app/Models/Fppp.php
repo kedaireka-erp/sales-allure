@@ -49,21 +49,22 @@ class Fppp extends Model
 
     protected $dates = ['created_at'];
 
-    protected function number(): Attribute
+    //boot
+    protected static function boot()
     {
-        return Attribute::make(
-            set: function ($value) {
-                $now_month = Carbon::now()->format('m');
-                $last_data_month = Fppp::latest()->first() ? Fppp::latest()->first()->created_at->format('m') : 0;
+        parent::boot();
 
-                if ($now_month == $last_data_month) {
-                    $num = Fppp::latest()->first()->number;
-                    return $num + 1;
-                }
-                return 1;
-            },
-        );
+        static::creating(function ($model) {
+            //get current month fppp count
+            $fpppCount = Fppp::whereMonth('created_at', Carbon::now()->month)->count();
+            $fpppCount++;
+            $model->increment('number');
+            $model->fppp_no = $fpppCount . "/FPPP/AST/" . Carbon::now()->format("m/Y");
+            return true;
+        });
     }
+
+
 
     protected function deliveryToExpedition(): Attribute
     {
