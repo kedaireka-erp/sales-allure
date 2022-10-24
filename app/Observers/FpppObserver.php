@@ -6,7 +6,7 @@ use App\Models\Fppp;
 use Carbon\Carbon;
 
 class FpppObserver
-{ 
+{
     /**
      * Handle the Fppp "created" event.
      *
@@ -14,9 +14,9 @@ class FpppObserver
      * @return void
      */
     public function created(Fppp $fppp)
-    {   
-        $no = $fppp->number . "/FPPP/AST/" . Carbon::now()->format("m/Y"); 
-        $fppp->update(["fppp_no"=>$no]);  
+    {
+        // $no = $fppp->number . "/FPPP/AST/" . Carbon::now()->format("m/Y");
+        // $fppp->update(["fppp_no" => $no]);
     }
 
     /**
