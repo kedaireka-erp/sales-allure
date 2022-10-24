@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         Role::firstOrCreate(['name' => 'Admin']);
         Role::firstOrCreate(['name' => 'Sales']);
 
-        User::create([
+        User::firstOrCreate([
 
             'name' => 'Left4code',
             'email' => 'midone@left4code.com',
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
 
         ])->assignRole('Admin');
 
-        User::create([
+        User::firstOrCreate([
             'name' => 'Samantha',
             'email' => 'sales@sales.com',
             'email_verified_at' => now(),
@@ -44,6 +44,6 @@ class UserSeeder extends Seeder
         ])->assignRole('Sales');
 
         // Fake users
-        User::factory()->times(9)->create();
+        // User::factory()->times(9)->create();
     }
 }

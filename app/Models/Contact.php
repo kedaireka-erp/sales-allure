@@ -4,20 +4,30 @@ namespace App\Models;
 
 use App\Models\LeadSource;
 use App\Models\ContactType;
+use Spatie\Activitylog\LogOptions;
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Kyslik\ColumnSortable\Sortable;
 
 class Contact extends Model
 {
-    use HasFactory, SoftDeletes, Sortable;
+    use HasFactory, SoftDeletes, Sortable, LogsActivity;
 
     protected $table = 'contacts';
     protected $guarded = ['id'];
     protected $appends = ['name'];
     public $sortable = ['first_name', 'last_name', 'email', 'phone', 'contact_type_id', 'lead_source_id', 'created_at'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logUnguarded()
+            ->logOnlyDirty()
+            ->useLogName('Contact');
+    }
 
     protected function firstName(): Attribute
     {
@@ -70,7 +80,8 @@ class Contact extends Model
         return $this->belongsToMany(LeadInterest::class, 'contact_interests');
     }
 
-    public function approachment(){
+    public function approachment()
+    {
         return $this->hasMany(Approachment::class);
     }
 
