@@ -40,34 +40,23 @@ use App\Http\Controllers\LeadPriorityController;
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
 Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
 
-if (App::environment('local')) {
-    Route::controller(AuthController::class)->middleware('loggedin')->group(function () {
-        Route::get('login', 'loginView')->name('login.index');
-        Route::post('login', 'login')->name('login.check');
-    });
-}
-
-if (App::environment('production')) {
-    Route::controller(LoginController::class)->group(function () {
-        Route::get('login', 'loginView')->name('login.index');
-        Route::post('login', 'login')->name('login.check');
-    });
-}
-
+// Route::controller(AuthController::class)->middleware('loggedin')->group(function () {
+//     Route::get('login', 'loginView')->name('login.index');
+//     Route::post('login', 'login')->name('login.check');
+// });
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'loginView')->name('login.index');
     Route::post('login', 'login')->name('login.check');
 });
 
+
 Route::middleware('auth')->group(function () {
 
-    if (App::environment('local')) {
-        Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    }
-    if (App::environment('production')) {
-        Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-    }
+    // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
 
     Route::middleware('role:Sales|Admin')->group(function () {
 
