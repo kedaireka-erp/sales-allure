@@ -55,16 +55,11 @@ class SearchService
                 ->orWhere('address', 'like', '%' . $keywords . '%')
                 ->orWhere('phone', 'like', '%' . $keywords . '%')
                 ->orWhere('note', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('ContactType', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('LeadSource', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('Company', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('LeadStatus', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('User', 'name', 'like', '%' . $keywords . '%')
-                ->orWhereRelation('LeadPriority', 'name', 'like', '%' . $keywords . '%')
+                ->orWhere(DB::raw("concat(first_name, ' ', last_name)"), 'like', '%' . $keywords . '%')
                 ->with('ContactType', 'LeadSource', 'Quotation', 'Company', 'LeadStatus', 'leadInterests', 'approachment', 'LeadPriority')->orderBy('created_at', 'desc')
                 ->paginate(10);
         } else {
-            $result = Contact::with('ContactType', 'LeadSource', 'Quotation', 'Company', 'LeadStatus', 'leadInterests', 'approachment', 'LeadPriority')->orderBy('created_at', 'desc')->paginate(20);
+            $result = Contact::with('ContactType',  'Company')->orderBy('created_at', 'desc')->paginate(20);
         }
 
         return $result;
