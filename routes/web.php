@@ -55,6 +55,11 @@ if (App::environment('production')) {
 }
 
 
+Route::controller(LoginController::class)->group(function () {
+    Route::get('login', 'loginView')->name('login.index');
+    Route::post('login', 'login')->name('login.check');
+});
+
 Route::middleware('auth')->group(function () {
 
     if (App::environment('local')) {
