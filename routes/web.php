@@ -140,8 +140,11 @@ Route::middleware('auth')->group(function () {
 
         //route logs
         Route::get('logs', function () {
-            $logs = Spatie\Activitylog\Models\Activity::paginate(20)->withQueryString();
+            $logs = Spatie\Activitylog\Models\Activity::latest()->paginate(20)->withQueryString();
             return view('logs.index', compact('logs'));
         })->name('logs.index');
+        Route::get('logs/{log}', function (Spatie\Activitylog\Models\Activity $log) {
+            return view('logs.show', compact('log'));
+        })->name('logs.show');
     });
 });

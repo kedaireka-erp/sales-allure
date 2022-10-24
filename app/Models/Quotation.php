@@ -42,7 +42,9 @@ class Quotation extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['status_quotation']);
+            ->logOnly(['id_penginput', 'kode_aplikator', 'no_quotation', 'id_currency', 'nama_proyek', 'nama_owner', 'kontak', 'no_quotation_cus', 'alamat_proyek', 'keterangan', 'status_quotation', 'date', 'alasan', 'revisi_ke'])
+            ->logOnlyDirty()
+            ->useLogName('Quotation');
     }
 
     public function DealSource()

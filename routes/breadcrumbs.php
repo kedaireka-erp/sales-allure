@@ -361,3 +361,7 @@ Breadcrumbs::for('leadinterests.edit', function ($trail, $leadInterest) {
 Breadcrumbs::for('logs.index', function ($trail) {
     $trail->push('Logs Index', route('logs.index'));
 });
+Breadcrumbs::for('logs.show', function ($trail, $log) {
+    $trail->parent('logs.index');
+    $trail->push('Show', route('logs.show', $log));
+});

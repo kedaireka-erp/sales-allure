@@ -88,21 +88,17 @@
                 @foreach ($logs as $no => $log)
                 <tr class="intro-x zoom-in transition">
                     <td class="text-base text-center">{{ $no + $logs->firstItem() }}</td>
-                    <td class="text-base ">{{ $log->event }}</td>
+                    <td class="text-base ">{{ class_basename($log->subject) }}</td>
                     <td class="text-base text-center">{{ $log->description }}</td>
                     <td class="text-base text-center">{{ \App\Models\User::find($log->causer_id)->name ?? '' }}</td>
                     <td class="text-base text-center">
-                        {{ \Carbon\Carbon::parse($log->created_at)->translatedFormat('d F Y, h:m') }}
+                        {{ \Carbon\Carbon::parse($log->created_at)->translatedFormat('d F Y, H:i') }}
                     </td>
 
                     <td class="text-base text-center">
-
-
-                        <a href="javascript:;" data-note="{{ $log->changes }}" data-tw-toggle="modal"
-                            data-tw-target="#note-modal" class="btn btn-sm btn-primary" id="btn-note-modal">
+                        <a href="{{ route('logs.show', $log) }}" class="btn btn-sm btn-primary">
                             Show
                         </a>
-
                     </td>
                 </tr>
                 @endforeach

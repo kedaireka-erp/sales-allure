@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Support\Carbon;
+use Spatie\Activitylog\LogOptions;
 use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +18,7 @@ class Fppp extends Model
     use BelongsToThrough;
     use SoftDeletes;
     use Sortable;
+    use LogsActivity;
 
     protected $table = "fppps";
     protected $fillable = [
@@ -48,6 +51,34 @@ class Fppp extends Model
     ];
 
     protected $dates = ['created_at'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly([
+                "fppp_no",
+                "number",
+                "fppp_type",
+                "production_phase",
+                "quotation_id",
+                "order_status",
+                "fppp_revisino",
+                "fppp_keterangan",
+                "production_time",
+                "color",
+                "glass",
+                "glass_type",
+                "retrieval_deadline",
+                "box_usage",
+                "sealant_usage",
+                "delivery_to_expedition",
+                "note",
+                "attachment",
+                "user_id"
+            ])
+            ->logOnlyDirty()
+            ->useLogName('Fppp');
+    }
 
     //boot
     protected static function boot()

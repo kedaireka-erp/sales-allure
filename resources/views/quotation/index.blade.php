@@ -179,7 +179,8 @@
                                                 <select class="tom-select mt-2" id="status_id" name="status_id">
                                                     @foreach ($statuses as $status)
                                                     <option value="{{ $status->id }}" {{ $status->id ==
-                                                        $quotation->status_id ? 'selected' : '' }}>{{ $status->name }}
+                                                        $quotation->status_quotation ? 'selected' : '' }}>{{
+                                                        $status->name }}
                                                     </option>
                                                     @endforeach
                                                 </select>
@@ -311,7 +312,7 @@
         });
 
         //if lost is selected then show lost reason
-        $(document).on('change', '#status_id', function () {
+        $('tr td').on('change', '#status_id', function () {
             var status = $(this).find('option:selected').text();
             if (status == 'Lost') {
                 
