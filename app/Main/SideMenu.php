@@ -182,6 +182,14 @@ class SideMenu
                 ],
                 'title' => 'User Role'
             ],
+            'log-activity' => [
+                'icon' => 'layout-list',
+                'route_name' => 'logs.index',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Logs'
+            ],
         ];
 
         if (auth()->user()) {

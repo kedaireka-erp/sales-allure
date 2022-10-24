@@ -2,29 +2,32 @@
 
 namespace App\Models;
 
+use Attribute;
 use App\Models\Status;
 use App\Models\DealSource;
 use App\Models\DetailQuotation;
 use App\Models\MasterAplikator;
 use App\Models\ProyekQuotation;
-use Attribute;
 use Illuminate\Support\Facades\DB;
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Kyslik\ColumnSortable\Sortable;
+use Spatie\Activitylog\LogOptions;
 
 class Quotation extends Model
 {
     use HasFactory;
     use Sortable;
+    use LogsActivity;
 
     protected $table = 'proyek_quotations';
 
     protected $fillable = ['id_penginput', 'kode_aplikator', 'no_quotation', 'id_currency', 'nama_proyek', 'nama_owner', 'kontak', 'no_quotation_cus', 'alamat_proyek', 'keterangan', 'status_quotation', 'date', 'alasan', 'revisi_ke'];
     public $sortable = ['no_quotation', 'nama_proyek'];
 
-    protected $appends = ['nominal', 'no_quotation'];
+    protected $appends = ['nominal'];
 
     // public function getNoQuotationAttribute()
     // {
@@ -35,6 +38,12 @@ class Quotation extends Model
     // {
     //     return $this->belongsTo(Contact::class);
     // }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['status_quotation']);
+    }
 
     public function DealSource()
     {

@@ -10,18 +10,19 @@ use App\Models\Contact;
 use App\Models\Activity;
 use App\Models\Quotation;
 use App\Models\DealSource;
+use App\Models\LeadSource;
+use App\Models\LeadStatus;
 use App\Models\CompanyArea;
 use App\Models\CompanyType;
 use App\Models\ContactType;
 use App\Models\Approachment;
-use App\Models\DetailQuotation;
 use App\Models\LeadInterest;
 use App\Models\LeadPriority;
-use App\Models\LeadSource;
-use App\Models\LeadStatus;
+use App\Models\DetailQuotation;
 use App\Models\MasterAplikator;
 use App\Models\ProyekQuotation;
 use Illuminate\Database\Seeder;
+use Database\Seeders\FpppSeeder;
 use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
@@ -53,6 +54,7 @@ class DatabaseSeeder extends Seeder
         Quotation::truncate();
         DetailQuotation::truncate();
         Approachment::truncate();
+        Fppp::truncate();
         Schema::enableForeignKeyConstraints();
         //End reset
 
@@ -81,5 +83,7 @@ class DatabaseSeeder extends Seeder
         DetailQuotation::factory(100)->create();
 
         Approachment::factory(100)->create();
+
+        $this->call(FpppSeeder::class);
     }
 }
