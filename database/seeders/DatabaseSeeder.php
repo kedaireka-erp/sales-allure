@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
     {
         //Reset every tables
         Schema::disableForeignKeyConstraints();
-        User::truncate();
+        // User::truncate();
         Status::truncate();
         DealSource::truncate();
         Activity::truncate();
