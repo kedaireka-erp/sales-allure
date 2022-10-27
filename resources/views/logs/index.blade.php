@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<div class="intro-y  p-5 mt-5">
+<div class="intro-y p-5 mt-5">
     <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
         {{-- <form class="xl:flex sm:mr-auto" action="{{ route('approachments.index') }}" method="get">
             @csrf
