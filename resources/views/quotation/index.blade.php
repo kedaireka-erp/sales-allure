@@ -178,10 +178,7 @@
                                                 <div class="text-xs">Status</div>
                                                 <select class="tom-select mt-2" id="status_id" name="status_id">
                                                     @foreach ($statuses as $status)
-                                                    <option value="{{ $status->id }}" {{ $status->id ==
-                                                        $quotation->status_quotation ? 'selected' : '' }}>{{
-                                                        $status->name }}
-                                                    </option>
+                                                    <option value="{{ $status->id }}" {{ $status->id == $quotation->status_quotation ? 'selected' : ''}}>{{$status->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 <div class="mt-2" id="lost-reason">
@@ -312,10 +309,9 @@
         });
 
         //if lost is selected then show lost reason
-        $('tr td').on('change', '#status_id', function () {
+        $(this).on('change', '#status_id', function () {
             var status = $(this).find('option:selected').text();
             if (status == 'Lost') {
-                
                 $(this).parent().find('#lost-reason').show();
             } else {
                
