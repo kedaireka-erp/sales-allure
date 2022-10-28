@@ -111,7 +111,7 @@ class QuotationController extends Controller
     public function toPdf(Quotation $quotation)
     {
         $pdf = Pdf::loadView('quotation.pdf', compact('quotation'));
-        return $pdf->download('QUOTATION_' . $quotation->DataQuotation->no_quotation . '.pdf');
+        return $pdf->download('QUOTATION_' . $quotation->no_quotation . '.pdf');
     }
 
     public function updateStatus(Request $request, Quotation $quotation)
