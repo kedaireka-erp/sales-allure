@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         // Default credentials
         Role::firstOrCreate(['name' => 'Sales']);
 
-        User::firstOrNew([
+        User::firstOrCreate([
             'name' => 'Samantha',
             'email' => 'sales@sales.com',
             'email_verified_at' => now(),

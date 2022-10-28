@@ -39,7 +39,7 @@ class PageController extends Controller
             ->whereMonth('proyek_quotations.created_at', '=', Carbon::now()->month - 1)
             ->first()->total;
 
-        $top_weekly_sellers = User::withCount(['approachments' => function (Builder $query) {
+        $top_weekly_sellers = User::role('Sales')->withCount(['approachments' => function (Builder $query) {
             $query->whereRelation('status', 'name', 'Deal')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
         }])->orderBy('approachments_count', 'desc')->limit(4)->get();
 
