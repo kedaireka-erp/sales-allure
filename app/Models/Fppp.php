@@ -174,7 +174,7 @@ class Fppp extends Model
 
     public function quotation()
     {
-        return $this->belongsto(ProyekQuotation::class);
+        return $this->belongsto(Quotation::class);
     }
 
     public function files()
