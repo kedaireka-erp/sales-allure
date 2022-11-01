@@ -113,6 +113,8 @@ class FpppController extends Controller
             }
         }
 
+        TempFiles::where('user_id', Auth::id())->delete();
+
         if ($update) {
             return to_route("fppps.index")->with('success', 'FPPP dengan Nomor ' . $fppp->fppp_no . '  berhasil diubah!');
         }
@@ -130,7 +132,7 @@ class FpppController extends Controller
         return to_route("fppps.index")->with('error', 'FPPP gagal dihapus!');
     }
 
-    public function storeAttachments(Request $request)
+    public function storeAttachments(Request $request, $id = null)
     {
 
         if ($request->hasFile('file')) {
@@ -150,7 +152,7 @@ class FpppController extends Controller
         }
     }
 
-    public function deleteTempAttachments(Request $request)
+    public function deleteTempAttachments(Request $request, $id = null)
     {
         $temp = json_decode($request->getContent(), true);
         try {

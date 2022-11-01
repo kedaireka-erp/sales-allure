@@ -3313,6 +3313,9 @@ select{
 .h-screen{
     height: 100vh;
 }
+.h-48{
+    height: 12rem;
+}
 .h-28{
     height: 7rem;
 }
@@ -3342,9 +3345,6 @@ select{
 }
 .h-\[196px\]{
     height: 196px;
-}
-.h-48{
-    height: 12rem;
 }
 .h-64{
     height: 16rem;
@@ -4201,6 +4201,10 @@ select{
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+.text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+}
 .text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -4208,10 +4212,6 @@ select{
 .text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
-}
-.text-8xl{
-    font-size: 6rem;
-    line-height: 1;
 }
 .text-5xl{
     font-size: 3rem;
@@ -4296,6 +4296,10 @@ select{
     --tw-text-opacity: 1;
     color: rgb(var(--color-warning) / var(--tw-text-opacity));
 }
+.text-slate-400{
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-slate-400) / var(--tw-text-opacity));
+}
 .text-white{
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -4303,10 +4307,6 @@ select{
 .text-slate-600{
     --tw-text-opacity: 1;
     color: rgb(var(--color-slate-600) / var(--tw-text-opacity));
-}
-.text-slate-400{
-    --tw-text-opacity: 1;
-    color: rgb(var(--color-slate-400) / var(--tw-text-opacity));
 }
 .text-red-700{
     --tw-text-opacity: 1;
@@ -4346,10 +4346,6 @@ select{
 .text-gray-700{
     --tw-text-opacity: 1;
     color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-.text-slate-300{
-    --tw-text-opacity: 1;
-    color: rgb(var(--color-slate-300) / var(--tw-text-opacity));
 }
 .text-opacity-70{
     --tw-text-opacity: 0.7;
@@ -18253,13 +18249,13 @@ html body{
     --tw-text-opacity: 1;
     color: rgb(var(--color-slate-500) / var(--tw-text-opacity));
 }
-.dark .dark\:text-slate-400{
-    --tw-text-opacity: 1;
-    color: rgb(var(--color-slate-400) / var(--tw-text-opacity));
-}
 .dark .dark\:text-slate-200{
     --tw-text-opacity: 1;
     color: rgb(var(--color-slate-200) / var(--tw-text-opacity));
+}
+.dark .dark\:text-slate-400{
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-slate-400) / var(--tw-text-opacity));
 }
 .dark .dark\:text-white{
     --tw-text-opacity: 1;
@@ -18658,17 +18654,17 @@ html body{
     }
 }
 @media (min-width: 1024px){
-    .lg\:col-span-6{
-        grid-column: span 6 / span 6;
+    .lg\:col-span-8{
+        grid-column: span 8 / span 8;
     }
     .lg\:col-span-3{
         grid-column: span 3 / span 3;
     }
-    .lg\:col-span-8{
-        grid-column: span 8 / span 8;
-    }
     .lg\:col-span-4{
         grid-column: span 4 / span 4;
+    }
+    .lg\:col-span-6{
+        grid-column: span 6 / span 6;
     }
     .lg\:col-span-12{
         grid-column: span 12 / span 12;
@@ -18710,14 +18706,14 @@ html body{
     .lg\:mb-0{
         margin-bottom: 0px;
     }
+    .lg\:mr-20{
+        margin-right: 5rem;
+    }
     .lg\:mt-5{
         margin-top: 1.25rem;
     }
     .lg\:mt-6{
         margin-top: 1.5rem;
-    }
-    .lg\:mr-20{
-        margin-right: 5rem;
     }
     .lg\:ml-auto{
         margin-left: auto;
@@ -18842,6 +18838,10 @@ html body{
     .lg\:text-justify{
         text-align: justify;
     }
+    .lg\:text-3xl{
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
     .lg\:text-xl{
         font-size: 1.25rem;
         line-height: 1.75rem;
@@ -18853,10 +18853,6 @@ html body{
     .lg\:text-base{
         font-size: 1rem;
         line-height: 1.5rem;
-    }
-    .lg\:text-3xl{
-        font-size: 1.875rem;
-        line-height: 2.25rem;
     }
     .before\:lg\:block::before{
         content: var(--tw-content);
@@ -19091,11 +19087,11 @@ html body{
     .\32xl\:col-span-9{
         grid-column: span 9 / span 9;
     }
-    .\32xl\:col-span-3{
-        grid-column: span 3 / span 3;
-    }
     .\32xl\:col-span-12{
         grid-column: span 12 / span 12;
+    }
+    .\32xl\:col-span-3{
+        grid-column: span 3 / span 3;
     }
     .\32xl\:col-span-6{
         grid-column: span 6 / span 6;

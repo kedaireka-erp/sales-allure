@@ -161,24 +161,36 @@
                             <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
                             <span class="truncate">Deals Approachmets</span>
                             <span class="font-medium ml-auto">
-                                {{ ceil($approachments_all->where('status.name', 'Deal')->count() /
-                                $approachments_all->count() * 100) }}%
+                                @if ($approachments_all->count() > 0)
+                                    {{ ceil($approachments_all->where('status.name', 'Deal')->count() /
+                                    $approachments_all->count() * 100) }}% 
+                                @else
+                                    0%
+                                @endif
                             </span>
                         </div>
                         <div class="flex items-center mt-4">
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             <span class="truncate">Pending Approachmets</span>
                             <span class="font-medium ml-auto">
-                                {{ ceil($approachments_all->where('status.name', 'Pending')->count() /
-                                $approachments_all->count() * 100) }}%
+                                @if ($approachments_all->count() > 0)
+                                    {{ ceil($approachments_all->where('status.name', 'Pending')->count() /
+                                    $approachments_all->count() * 100) }}%
+                                @else
+                                    0%
+                                @endif
                             </span>
                         </div>
                         <div class="flex items-center mt-4">
                             <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
                             <span class="truncate">Lost Approachmets</span>
                             <span class="font-medium ml-auto">
-                                {{ ceil($approachments_all->where('status.name', 'Lost')->count() /
-                                $approachments_all->count() * 100) }}%
+                                @if ($approachments_all->count() > 0)
+                                    {{ ceil($approachments_all->where('status.name', 'Lost')->count() /
+                                    $approachments_all->count() * 100) }}%
+                                @else
+                                    0%
+                                @endif
                             </span>
                         </div>
                     </div>
