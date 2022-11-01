@@ -141,8 +141,8 @@
                 </div>
 
                 <div class="mt-5">
-                    <label for="fppp_file" class="form-label">Delete Attachments FPPP</label>
                     @if ($fppp->files->first())
+                    <label for="fppp_file" class="form-label">Delete Attachments FPPP</label>
                     <div class="form-inline items-start flex-col xl:flex-row">
                         <div
                             class="w-full mt-3 xl:mt-0 flex-1 border-2 border-dashed dark:border-darkmode-400 rounded-md py-4">
@@ -164,6 +164,12 @@
                     @else
 
                     @endif
+                </div>
+
+                <div class="mt-5">
+                    <label for="filepond" class="form-label"> Add New Attachments </label>
+                    <input data-allow-reorder="true" data-max-file-size="3MB" data-max-files="3" id="filepond" type="file"
+                        class="form-control w-full " name="file" multiple>
                 </div>
 
                 <div class="text-right mt-5">
@@ -192,4 +198,7 @@
 
 @section('script')
 <script src="{{ mix('dist/js/ckeditor-classic.js') }}"></script>
+<script>
+
+</script>
 @endsection

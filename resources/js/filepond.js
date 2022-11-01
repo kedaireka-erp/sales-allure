@@ -5,16 +5,17 @@ const inputElement = document.querySelector('input[id="filepond"]');
 // Create a multi file upload component
 const pond = FilePond.create(inputElement);
 
-FilePond.setOptions({
+pond.setOptions({
     server: {
+        url: 'http://127.0.0.1:8000/fppps',
         process:{
-            url: "store/attachments",
+            url: "/store/attachments",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
         },
         revert: {
-            url: "delete/temp/attachments",
+            url: "/delete/temp/attachments",
             method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -23,3 +24,4 @@ FilePond.setOptions({
         },
     },
 });
+

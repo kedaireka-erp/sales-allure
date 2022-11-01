@@ -174,14 +174,6 @@ class SideMenu
             ];
 
         $roles = [
-            'role-permission' => [
-                'icon' => 'lock',
-                'route_name' => 'fppps.index',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'User Role'
-            ],
             'log-activity' => [
                 'icon' => 'layout-list',
                 'route_name' => 'logs.index',

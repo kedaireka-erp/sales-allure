@@ -8713,16 +8713,17 @@ __webpack_require__.r(__webpack_exports__);
 var inputElement = document.querySelector('input[id="filepond"]'); // Create a multi file upload component
 
 var pond = filepond__WEBPACK_IMPORTED_MODULE_0__.create(inputElement);
-filepond__WEBPACK_IMPORTED_MODULE_0__.setOptions({
+pond.setOptions({
   server: {
+    url: 'http://127.0.0.1:8000/fppps',
     process: {
-      url: "store/attachments",
+      url: "/store/attachments",
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     },
     revert: {
-      url: "delete/temp/attachments",
+      url: "/delete/temp/attachments",
       method: 'DELETE',
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
