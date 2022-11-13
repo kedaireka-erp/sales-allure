@@ -94,8 +94,7 @@
             <!-- BEGIN: Sales Report -->
             <div class="col-span-12 lg:col-span-8 mt-8">
                 <div class="intro-y block sm:flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">Nominal Quotations <span
-                            class="text-slate-400 font-normal">(this year vs last year)</span></h2>
+                    <h2 class="text-lg font-medium truncate mr-5">Nominal Quotations ({{ \Carbon\Carbon::now()->format('Y') }})</h2>
                     {{-- <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
                         <i data-lucide="calendar" class="w-4 h-4 z-10 absolute my-auto inset-y-0 ml-3 left-0"></i>
                         <input type="text" class="datepicker form-control sm:w-56 box pl-10">
@@ -145,7 +144,7 @@
             </div>
             <!-- END: Sales Report -->
             <!-- BEGIN: Weekly Top Seller -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
+            <div class="col-span-12 sm:col-span-6 lg:col-span-4 mt-8">
                 <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Monthly Approachment</h2>
                 </div>
@@ -160,9 +159,9 @@
                             <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
                             <span class="truncate">Deals Approachmets</span>
                             <span class="font-medium ml-auto">
-                                @if ($approachments_all->count() > 0)
+                                @if ($approachments->count() > 0)
                                     {{ ceil($this_month_app_deal->count() /
-                                    $approachments_all->count() * 100) }}% 
+                                    $approachments->count() * 100) }}% 
                                 @else
                                     0%
                                 @endif
@@ -172,9 +171,9 @@
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             <span class="truncate">Pending Approachmets</span>
                             <span class="font-medium ml-auto">
-                                @if ($approachments_all->count() > 0)
+                                @if ($approachments->count() > 0)
                                     {{ ceil($this_month_app_pending->count() /
-                                    $approachments_all->count() * 100) }}%
+                                    $approachments->count() * 100) }}%
                                 @else
                                     0%
                                 @endif
@@ -184,9 +183,9 @@
                             <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
                             <span class="truncate">Lost Approachmets</span>
                             <span class="font-medium ml-auto">
-                                @if ($approachments_all->count() > 0)
+                                @if ($approachments->count() > 0)
                                     {{ ceil($this_month_app_lost->count() /
-                                    $approachments_all->count() * 100) }}%
+                                    $approachments->count() * 100) }}%
                                 @else
                                     0%
                                 @endif
