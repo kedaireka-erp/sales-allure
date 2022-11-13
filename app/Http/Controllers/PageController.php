@@ -27,6 +27,7 @@ class PageController extends Controller
         $this_month_app_deal = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Deal')->get();
         $this_month_app_pending = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Pending')->get();
         $this_month_app_lost = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Lost')->get();
+        
         $quo = Quotation::all();
         $contacts = Contact::all();
         $fppps = Fppp::whereMonth('created_at', Carbon::now()->month)->get();

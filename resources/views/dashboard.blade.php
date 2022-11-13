@@ -29,9 +29,9 @@
                                         </div> --}}
                                     </div>
                                 </div>
-                                <div class="text-3xl font-medium leading-8 mt-6">{{ $approachments->where('status.name',
-                                    'Deal')->count() }}</div>
-                                <div class="text-base text-slate-500 mt-1">Deals Approachments</div>
+                                <div class="text-3xl font-medium leading-8 mt-6">{{ $this_month_app_deal->count() }}</div>
+                                <div class="text-base text-slate-500 mt-1">{{ \Carbon\Carbon::now()->format('F') }}'s
+                                    Deals</div>
                             </div>
                         </div>
                     </div>
@@ -145,9 +145,9 @@
             </div>
             <!-- END: Sales Report -->
             <!-- BEGIN: Weekly Top Seller -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-4 mt-8">
+            <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
                 <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">{{ \Carbon\Carbon::now()->format('F') }}'s Approachment</h2>
+                    <h2 class="text-lg font-medium truncate mr-5">Monthly Approachment</h2>
                 </div>
                 <div class="intro-y box p-5 mt-5">
                     <div class="mt-3">
