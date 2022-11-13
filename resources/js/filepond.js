@@ -7,7 +7,7 @@ const pond = FilePond.create(inputElement);
 
 pond.setOptions({
     server: {
-        url: 'http://sales.alluresystem.site/fppps',
+        url: 'http://sales.alluresystem.site/api/v1/fppps',
         process:{
             url: "/store/attachments",
             headers: {

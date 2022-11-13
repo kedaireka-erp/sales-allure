@@ -8599,7 +8599,7 @@ __webpack_require__.r(__webpack_exports__);
 
   function getPieChartData() {
     jquery__WEBPACK_IMPORTED_MODULE_3___default().ajax({
-      url: "http://sales.alluresystem.site/pie-approachment",
+      url: "http://sales.alluresystem.site/api/v1/pie-approachment",
       success: function success(result) {
         renderPieChart(result.data, result.labels);
       },
@@ -8677,7 +8677,7 @@ __webpack_require__.r(__webpack_exports__);
 
   function getLineChartData() {
     jquery__WEBPACK_IMPORTED_MODULE_3___default().ajax({
-      url: "http://sales.alluresystem.site/line-quotation",
+      url: "http://sales.alluresystem.site/api/v1/line-quotation",
       success: function success(result) {
         var labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         renderLineChart(result.this_year, result.last_year, labels);
@@ -8715,7 +8715,7 @@ var inputElement = document.querySelector('input[id="filepond"]'); // Create a m
 var pond = filepond__WEBPACK_IMPORTED_MODULE_0__.create(inputElement);
 pond.setOptions({
   server: {
-    url: 'http://sales.alluresystem.site/fppps',
+    url: 'http://sales.alluresystem.site/api/v1/fppps',
     process: {
       url: "/store/attachments",
       headers: {

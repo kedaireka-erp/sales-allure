@@ -25,6 +25,7 @@ class Approachment extends Model
         "date",
         "note",
     ];
+    protected $date = ['created_at'];
 
     public function getActivitylogOptions(): LogOptions
     {

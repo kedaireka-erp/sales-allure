@@ -69,10 +69,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanyTypeSeeder::class);
         $this->call(CompanyAreaSeeder::class);
         $this->call(ContactTypeSeeder::class);
-
-        Company::factory(20)->create();
-
-        Contact::factory(20)->create();
+        $this->call(CompanySeeder::class);
+        $this->call(ContactSeeder::class);
+        $this->call(ApproachmentSeeder::class);
 
         MasterAplikator::factory(15)->create();
 
@@ -81,8 +80,6 @@ class DatabaseSeeder extends Seeder
         // Quotation::factory(20)->create();
 
         DetailQuotation::factory(100)->create();
-
-        Approachment::factory(100)->create();
 
         $this->call(FpppSeeder::class);
     }

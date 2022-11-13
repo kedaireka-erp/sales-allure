@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\FPPP\FpppController;
 
 /*
@@ -19,4 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post("/fppps/destroy/{id}", [FpppController::class, "destroy"])->name("fppps.destroy");
+
+Route::prefix('v1')->group(function(){
+    //route Charts
+    Route::controller(ChartController::class)->group(function () {
+        Route::get('pie-approachment', 'getApproachmentStatusData')->name('pie-aproachment');
+        Route::get('line-quotation', 'getQuotationNominalData')->name('line-quotation');
+    });
+
+    Route::post('fppps/store/attachments', [FpppController::class, 'storeAttachments'])->name('fppps.store.attachments');
+    Route::delete('fppps/delete/temp/attachments', [FpppController::class, 'deleteTempAttachments'])->name('fppps.delete.temp.attachments');
+});
