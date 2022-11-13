@@ -45,7 +45,7 @@ import $ from "jquery";
 
     function getPieChartData(){
         $.ajax({
-            url: "http://127.0.0.1:8000/pie-approachment",
+            url: "http://sales.alluresystem.site/pie-approachment",
             success: function (result) {
                 
                 renderPieChart(result.data, result.labels);
@@ -131,7 +131,7 @@ import $ from "jquery";
 
     function getLineChartData(){
         $.ajax({
-            url: "http://127.0.0.1:8000/line-quotation",
+            url: "http://sales.alluresystem.site/line-quotation",
             success: function (result) {
                 const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 renderLineChart(result.this_year, result.last_year, labels);
