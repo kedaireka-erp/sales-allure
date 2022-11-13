@@ -22,7 +22,7 @@ class PageController extends Controller
      */
     public function dashboardOverview1()
     {
-        $approachments = Approachment::whereMonth('created_at', Carbon::now()->month)->get();
+        $approachments = Approachment::whereMonth('date', Carbon::now()->month)->get();
         $approachments_all = Approachment::all();
         $this_month_app_deal = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Deal')->get();
         $this_month_app_pending = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Pending')->get();
