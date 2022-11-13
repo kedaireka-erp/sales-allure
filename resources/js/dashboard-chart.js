@@ -45,14 +45,13 @@ import $ from "jquery";
 
     function getPieChartData(){
         $.ajax({
-            url: "http://sales.alluresystem.site/pie-approachment",
+            url: "http://sales.alluresystem.site/api/v1/pie-approachment",
             success: function (result) {
-                
                 renderPieChart(result.data, result.labels);
             },
             error: function (err) {
                 console.log(err);
-            }
+            },
         });
     }
 
@@ -131,7 +130,7 @@ import $ from "jquery";
 
     function getLineChartData(){
         $.ajax({
-            url: "http://sales.alluresystem.site/line-quotation",
+            url: "http://sales.alluresystem.site/api/v1/line-quotation",
             success: function (result) {
                 const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 renderLineChart(result.this_year, result.last_year, labels);

@@ -31,8 +31,7 @@
                                 </div>
                                 <div class="text-3xl font-medium leading-8 mt-6">{{ $approachments->where('status.name',
                                     'Deal')->count() }}</div>
-                                <div class="text-base text-slate-500 mt-1">{{ \Carbon\Carbon::now()->format('F') }}'s
-                                    Deals</div>
+                                <div class="text-base text-slate-500 mt-1">Deals Approachments</div>
                             </div>
                         </div>
                     </div>
@@ -146,9 +145,9 @@
             </div>
             <!-- END: Sales Report -->
             <!-- BEGIN: Weekly Top Seller -->
-            <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-8">
+            <div class="col-span-12 sm:col-span-6 lg:col-span-4 mt-8">
                 <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">Monthly Approachment</h2>
+                    <h2 class="text-lg font-medium truncate mr-5">{{ \Carbon\Carbon::now()->format('F') }}'s Approachment</h2>
                 </div>
                 <div class="intro-y box p-5 mt-5">
                     <div class="mt-3">
@@ -162,7 +161,7 @@
                             <span class="truncate">Deals Approachmets</span>
                             <span class="font-medium ml-auto">
                                 @if ($approachments_all->count() > 0)
-                                    {{ ceil($approachments_all->where('status.name', 'Deal')->count() /
+                                    {{ ceil($this_month_app_deal->count() /
                                     $approachments_all->count() * 100) }}% 
                                 @else
                                     0%
@@ -174,7 +173,7 @@
                             <span class="truncate">Pending Approachmets</span>
                             <span class="font-medium ml-auto">
                                 @if ($approachments_all->count() > 0)
-                                    {{ ceil($approachments_all->where('status.name', 'Pending')->count() /
+                                    {{ ceil($this_month_app_pending->count() /
                                     $approachments_all->count() * 100) }}%
                                 @else
                                     0%
@@ -186,7 +185,7 @@
                             <span class="truncate">Lost Approachmets</span>
                             <span class="font-medium ml-auto">
                                 @if ($approachments_all->count() > 0)
-                                    {{ ceil($approachments_all->where('status.name', 'Lost')->count() /
+                                    {{ ceil($this_month_app_lost->count() /
                                     $approachments_all->count() * 100) }}%
                                 @else
                                     0%

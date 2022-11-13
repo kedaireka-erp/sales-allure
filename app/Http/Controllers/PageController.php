@@ -24,6 +24,9 @@ class PageController extends Controller
     {
         $approachments = Approachment::whereMonth('created_at', Carbon::now()->month)->get();
         $approachments_all = Approachment::all();
+        $this_month_app_deal = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Deal')->get();
+        $this_month_app_pending = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Pending')->get();
+        $this_month_app_lost = Approachment::whereMonth('date', Carbon::now()->month)->whereRelation('status', 'name', 'Lost')->get();
         $quo = Quotation::all();
         $contacts = Contact::all();
         $fppps = Fppp::whereMonth('created_at', Carbon::now()->month)->get();
@@ -60,6 +63,9 @@ class PageController extends Controller
             'quo_nominal_last_month' => $quo_nominal_last_month,
             'top_weekly_sellers' => $top_weekly_sellers,
             'latest_five_quotation' => $latest_five_quotation,
+            'this_month_app_deal' => $this_month_app_deal,
+            'this_month_app_pending' => $this_month_app_pending,
+            'this_month_app_lost' => $this_month_app_lost,
         ]);
     }
 

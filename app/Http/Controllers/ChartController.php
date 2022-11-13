@@ -20,6 +20,8 @@ class ChartController extends Controller
         $data2 = Approachment::select(DB::raw('count(*) as total'))
             ->join('statuses', 'statuses.id', '=', 'approachments.status_id')
             ->groupBy('status_id')
+            //this month
+            ->whereMonth('approachments.date', date('m'))
             ->pluck('total')->toArray();
 
         return response()->json([
